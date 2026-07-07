@@ -59,6 +59,18 @@ This lineage is a map of influence, not a public archive of notes. The public re
 
 See [`research/`](research/) for curated public research briefs.
 
+## Roadmap and Contributions
+
+Kairos is an open working map, not final truth. Contributions are welcome when they improve evidence quality, correct sources, challenge overconfident claims, or make the website easier to inspect.
+
+- Read the public roadmap: [`ROADMAP.md`](ROADMAP.md)
+- Read the contribution guide: [`CONTRIBUTING.md`](CONTRIBUTING.md)
+- Explore open research questions: [`research/OPEN_QUESTIONS.md`](research/OPEN_QUESTIONS.md)
+
+Good public contributions include source corrections, evidence contributions, alternative periodization proposals, counterevidence, website feedback, and curated research-brief improvements.
+
+The contribution process is evidence-gated. Kairos does not accept unsupported macro predictions, trading advice, AI-generated summaries as evidence, or claims that K6 has already been confirmed.
+
 ## Screenshots
 
 ![Kairos dashboard desktop screenshot](assets/screenshots/kairos-dashboard-desktop.png)
@@ -130,11 +142,14 @@ http://127.0.0.1:8765/index.html?lang=en
 ├── index.html
 ├── README.md
 ├── README.zh-CN.md
+├── ROADMAP.md
+├── CONTRIBUTING.md
 ├── LICENSE
 ├── LICENSE-CODE-MIT
 ├── CONTENT_LICENSE.md
 ├── PUBLIC_RELEASE_MANIFEST.md
 ├── .gitignore
+├── .github/
 ├── assets/
 └── research/
 ```

@@ -1,0 +1,51 @@
+name: Alternative periodization
+description: Propose a source-backed alternative K4 / K5 / K6 candidate boundary.
+title: "[Periodization]: "
+labels: ["alternative-periodization", "contested", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Kairos treats K4 / K5 / K6 boundaries as a working map, not final truth. Please use soft date ranges and provide sources.
+  - type: input
+    id: target_phase
+    attributes:
+      label: Target phase or boundary
+      placeholder: "K5-A start, K5-E, K4-D / K5 transition"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed alternative
+      description: What date range or phase structure do you propose?
+    validations:
+      required: true
+  - type: textarea
+    id: reasoning
+    attributes:
+      label: Reasoning
+      description: Explain technology, credit, monetary regime, asset behavior, or crisis turning point logic.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources
+      description: Include direct URLs, book/page references, papers, datasets, or historical sources.
+    validations:
+      required: true
+  - type: textarea
+    id: implications
+    attributes:
+      label: Implications for Kairos
+      description: What would change in the Long Wave Atlas or current reading if this is accepted?
+  - type: checkboxes
+    id: guardrails
+    attributes:
+      label: Guardrails
+      options:
+        - label: I understand that long-wave dates are soft ranges, not final truth.
+          required: true
+        - label: This proposal does not claim that K6 is confirmed.
+          required: true

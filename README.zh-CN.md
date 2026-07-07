@@ -59,6 +59,18 @@ Kairos 将理论底座压缩成几组公开可读的分析镜头：
 
 查看 [`research/`](research/) 获取公开研究摘要。
 
+## Roadmap 与外部贡献
+
+Kairos 是一张开放的 working map，不是 final truth。欢迎外部贡献证据、修正来源、提出反证、校准 K4 / K5 / K6 分段，或帮助改善网站体验。
+
+- 公开路线图：[`ROADMAP.md`](ROADMAP.md)
+- 贡献指南：[`CONTRIBUTING.md`](CONTRIBUTING.md)
+- 公开研究问题：[`research/OPEN_QUESTIONS.md`](research/OPEN_QUESTIONS.md)
+
+适合贡献的内容包括 source correction、evidence contribution、alternative periodization、counterevidence、website feedback 和 public research brief improvement。
+
+贡献过程必须遵守 evidence-gated 原则。Kairos 不接受无来源宏观预测、交易建议、把 AI 摘要当证据，或把 K6 写成已确认的贡献。
+
 ## 网站截图
 
 ![Kairos 桌面端仪表盘截图](assets/screenshots/kairos-dashboard-desktop.png)
@@ -138,11 +150,14 @@ http://127.0.0.1:8765/index.html?lang=en
 ├── index.html
 ├── README.md
 ├── README.zh-CN.md
+├── ROADMAP.md
+├── CONTRIBUTING.md
 ├── LICENSE
 ├── LICENSE-CODE-MIT
 ├── CONTENT_LICENSE.md
 ├── PUBLIC_RELEASE_MANIFEST.md
 ├── .gitignore
+├── .github/
 ├── assets/
 └── research/
 ```

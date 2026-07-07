@@ -1,0 +1,45 @@
+name: Source correction
+description: Report a broken link, wrong date, wrong source type, or claim-source mismatch.
+title: "[Source correction]: "
+labels: ["source-correction", "needs-review"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Where is the source issue?
+      description: File path, section, URL, or screenshot location.
+      placeholder: "research/KW-006_AI_Capex_Financing_Fragility.md"
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What is wrong?
+      description: Broken link, wrong date, wrong publisher, wrong source type, source does not support claim, etc.
+    validations:
+      required: true
+  - type: input
+    id: current_source
+    attributes:
+      label: Current source URL or citation
+  - type: input
+    id: corrected_source
+    attributes:
+      label: Suggested corrected source
+      placeholder: "https://..."
+  - type: textarea
+    id: explanation
+    attributes:
+      label: Explanation
+      description: Why is the correction better or necessary?
+    validations:
+      required: true
+  - type: checkboxes
+    id: guardrails
+    attributes:
+      label: Guardrails
+      options:
+        - label: I am reporting a source issue, not submitting investment advice.
+          required: true
+        - label: I understand that Kairos may keep the claim contested or marked needs-source.
+          required: true

@@ -1,0 +1,44 @@
+name: Website feedback
+description: Report website, layout, mobile, accessibility, copy, or documentation issues.
+title: "[Website]: "
+labels: ["website", "needs-review"]
+body:
+  - type: dropdown
+    id: feedback_type
+    attributes:
+      label: Feedback type
+      options:
+        - layout / visual
+        - mobile
+        - accessibility
+        - copy clarity
+        - broken link
+        - documentation
+        - screenshot / asset
+        - other
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page or section
+      placeholder: "Home, Long Wave Atlas, Evidence Ledger, README"
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What should be improved?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+  - type: checkboxes
+    id: guardrails
+    attributes:
+      label: Guardrails
+      options:
+        - label: This feedback does not ask Kairos to present watchlist items as confirmed facts.
+          required: true

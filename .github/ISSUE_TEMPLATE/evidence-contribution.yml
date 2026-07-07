@@ -1,0 +1,79 @@
+name: Evidence contribution
+description: Submit source-backed evidence for a Kairos open question or watch item.
+title: "[Evidence]: "
+labels: ["evidence", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing evidence. Please provide direct, inspectable sources. AI summaries and Google search result pages are not evidence.
+  - type: input
+    id: related_question
+    attributes:
+      label: Related Kairos question or watch item
+      description: "Example: OQ-001, KW-006, K5-E, Long Wave Atlas."
+      placeholder: "OQ-001 / KW-006"
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Claim supported or challenged
+      description: What exact claim does this source support or challenge?
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Source URL / DOI / dataset code / filing link
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: input
+    id: source_title
+    attributes:
+      label: Source title
+    validations:
+      required: true
+  - type: input
+    id: publisher_date
+    attributes:
+      label: Publisher and publication date / filing period
+      placeholder: "Publisher, YYYY-MM-DD"
+    validations:
+      required: true
+  - type: dropdown
+    id: source_type
+    attributes:
+      label: Source type
+      options:
+        - primary
+        - high-quality-secondary
+        - secondary
+        - raw-search
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Why this source matters
+      description: Explain the claim-source mapping and any limitations.
+    validations:
+      required: true
+  - type: textarea
+    id: conflicting_evidence
+    attributes:
+      label: Conflicting evidence or caveats
+      description: If known, include sources or reasons this evidence might be incomplete.
+  - type: checkboxes
+    id: guardrails
+    attributes:
+      label: Guardrails
+      options:
+        - label: This submission does not claim that AI or K6 is confirmed.
+          required: true
+        - label: This submission is not investment advice or a trading signal.
+          required: true
+        - label: This submission does not rely on an AI summary as the source.
+          required: true

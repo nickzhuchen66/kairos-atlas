@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Kairos Roadmap
+    url: https://github.com/nickzhuchen66/kairos-atlas/blob/main/ROADMAP.md
+    about: Read the public roadmap before opening broad project questions.
+  - name: Open Research Questions
+    url: https://github.com/nickzhuchen66/kairos-atlas/blob/main/research/OPEN_QUESTIONS.md
+    about: Check current public research questions before submitting a new one.

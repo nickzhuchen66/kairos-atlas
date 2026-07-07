@@ -1,0 +1,39 @@
+name: Research question
+description: Suggest a public research question for Kairos to track.
+title: "[Research question]: "
+labels: ["open-question", "needs-review"]
+body:
+  - type: input
+    id: question
+    attributes:
+      label: Research question
+      placeholder: "Is ...?"
+    validations:
+      required: true
+  - type: textarea
+    id: why_it_matters
+    attributes:
+      label: Why it matters for Kairos
+      description: Connect it to regime reading, Long Wave Atlas, Watchlist, asset behavior, or evidence discipline.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence_needed
+    attributes:
+      label: What evidence would help?
+      description: List source types, datasets, papers, official data, or counterevidence.
+    validations:
+      required: true
+  - type: textarea
+    id: current_sources
+    attributes:
+      label: Initial sources, if any
+  - type: checkboxes
+    id: guardrails
+    attributes:
+      label: Guardrails
+      options:
+        - label: This is an open question, not a confirmed claim.
+          required: true
+        - label: This is not investment advice or a trading signal.
+          required: true

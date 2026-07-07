@@ -9,13 +9,18 @@
 | `index.html` | included | Public static website entry |
 | `README.md` | included | English-first GitHub README |
 | `README.zh-CN.md` | included | Chinese README |
+| `ROADMAP.md` | included | Public roadmap and collaboration tracks |
+| `CONTRIBUTING.md` | included | Public contribution rules and evidence discipline |
 | `LICENSE` | included | Split license notice |
 | `LICENSE-CODE-MIT` | included | MIT license for website implementation code |
 | `CONTENT_LICENSE.md` | included | Content and research framing rights boundary |
+| `.github/ISSUE_TEMPLATE/` | included | Structured public issue templates for evidence, source correction, periodization, website feedback, and research questions |
+| `.github/pull_request_template.md` | included | Pull request guardrails for research and website changes |
 | `.gitignore` | included | Public repo hygiene |
 | `assets/screenshots/` | included | Public README screenshots |
 | `assets/` | included | Reserved for OG image and static assets |
 | `research/` | included | Curated public research briefs only; not raw internal Evidence Packs |
+| `research/OPEN_QUESTIONS.md` | included | Public research questions open to source-backed contributions |
 
 ## Excluded From Public Release
 
@@ -46,4 +51,5 @@ Before publishing:
 - verify `index.html`;
 - check mobile layout;
 - confirm no private files are present;
+- confirm Roadmap / Contributing / issue templates preserve K6 Candidate and evidence-gated boundaries;
 - update WebOps `Sites_Register.md`.
