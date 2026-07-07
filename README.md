@@ -8,7 +8,7 @@ Chinese name: **周期天象图**
 English subtitle: **Macro Cycle Observatory**
 
 Public repository: **kairos-atlas**  
-Planned website domain: **kairos-atlas.com**
+Live website: **[kairos-atlas.com](https://kairos-atlas.com/)**
 
 `kairos-atlas` is the public repository and domain identity. `Macro Cycle Observatory` remains the product subtitle because the site is designed as an observatory-style macro dashboard, while the Atlas name anchors the public URL and the Long Wave Atlas concept.
 

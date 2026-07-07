@@ -8,7 +8,7 @@
 英文副标题：**Macro Cycle Observatory**
 
 公开仓库名：**kairos-atlas**  
-计划官网域名：**kairos-atlas.com**
+正式网站：**[kairos-atlas.com](https://kairos-atlas.com/)**
 
 `kairos-atlas` 用作公开仓库和域名身份；`Macro Cycle Observatory` 继续作为产品英文副标题，因为当前网站更接近一个“宏观周期观测仪表盘”，而 Atlas 更适合作为公开入口和 Long Wave Atlas 的命名锚点。
 
