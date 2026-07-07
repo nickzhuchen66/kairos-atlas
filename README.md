@@ -32,6 +32,21 @@ The public release is influenced by research traditions associated with Schumpet
 
 The private reading notes are not included in this public repository. They are used as a research foundation, while the public site exposes only curated structure, current watch items, evidence status, and falsifiable judgment boundaries.
 
+## Research Lineage
+
+Kairos compresses its theoretical base into a few public-facing lenses:
+
+| Lineage | Representative sources / traditions | How it informs Kairos |
+|---|---|---|
+| Long waves and innovation cycles | Schumpeter; Chinese long-wave cycle research, including Zhou Jintao | Frames K4 / K5 / K6 candidate phases and the question of technology diffusion. |
+| Debt cycles and crisis mechanics | Ray Dalio; Minsky; Kindleberger / Aliber / McCauley | Separates hedge finance, speculative finance, fragility, mania, panic, and reset dynamics. |
+| Market cycles and asset behavior | Howard Marks; Merrill Lynch Investment Clock; asset-regime research | Links macro regimes to asset behavior without turning the site into trading advice. |
+| Monetary regimes and dollar liquidity | Bordo / Eichengreen; Eichengreen; Yoichi Funabashi; Hélène Rey | Connects Bretton Woods, gold constraints, global dollar liquidity, and cross-border financial cycles. |
+| Economic history and business-cycle synthesis | DeLong; Tvede; Ellis / Goldman-style forecasting frameworks | Keeps historical comparison grounded in recurring structures rather than narrative analogy alone. |
+| Gold and monetary trust | Erb / Harvey; monetary-history literature | Treats gold as a changing regime signal, not a single-factor real-rate instrument. |
+
+This lineage is a map of influence, not a public archive of notes. The public repository keeps the synthesis and judgment scaffolding; the extracted private notes remain outside the release package.
+
 ## Watchlist Highlights
 
 - **AI as K6 Candidate**: AI may become a new long-wave diffusion engine, but it must remain `Candidate Watch` until evidence supports broad productivity diffusion.
