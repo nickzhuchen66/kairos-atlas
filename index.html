@@ -1,0 +1,2287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairos · 周期天象图</title>
+<meta name="description" content="Kairos · 周期天象图：一个可点击、可复盘、可证伪的宏观周期观测仪，连接当前 regime、长波图谱、观察清单和证据包。">
+<meta name="application-name" content="Kairos">
+<meta name="apple-mobile-web-app-title" content="Kairos">
+<meta name="theme-color" content="#0b0d10">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Kairos · 周期天象图">
+<meta property="og:description" content="Macro Cycle Observatory for regime readings, Long Wave Atlas, Watchlist, and evidence-gated validation.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kairos">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kairos · Macro Cycle Observatory">
+<meta name="twitter:description" content="A macro-cycle observatory where every regime read is clickable, reviewable, and falsifiable.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b0d10'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23c8a15a' stroke-width='2'/%3E%3Cpath d='M32 8v48M8 32h48' stroke='%23343a43' stroke-width='1'/%3E%3Cpath d='M20 40L32 14l12 26' fill='none' stroke='%23efd082' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --night:#0b0d10;
+    --panel:#12151a;
+    --panel-2:#171b22;
+    --panel-3:#20242c;
+    --ink:#f0eadb;
+    --muted:#a2a8ae;
+    --quiet:#737b85;
+    --line:#343a43;
+    --brass:#c8a15a;
+    --brass-2:#efd082;
+    --green:#78b7a8;
+    --amber:#d99a4e;
+    --red:#c96b62;
+    --blue:#7fa8cf;
+    --violet:#a98dca;
+    --shadow:0 24px 80px rgba(0,0,0,.38);
+    --shadow-tight:0 14px 34px rgba(0,0,0,.28);
+    --line-soft:rgba(255,255,255,.075);
+    --glass:rgba(18,21,26,.72);
+    --font-body:"PingFang SC","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --font-mono:"SFMono-Regular","IBM Plex Mono",Consolas,monospace;
+    --font-display:"Songti SC","STSong","Noto Serif SC",Georgia,serif;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:
+      linear-gradient(180deg, rgba(200,161,90,.055), transparent 310px),
+      linear-gradient(90deg, rgba(120,183,168,.035), transparent 42%, rgba(200,161,90,.035)),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.018) 0 1px, transparent 1px 96px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.014) 0 1px, transparent 1px 96px),
+      var(--night);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  body.drawer-open{overflow:hidden}
+
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit}
+  .wrap{width:min(1180px, calc(100% - 44px));margin:0 auto}
+  .mono{font-family:var(--font-mono)}
+  .muted{color:var(--muted)}
+  .quiet{color:var(--quiet)}
+  .brass{color:var(--brass-2)}
+  .green{color:var(--green)}
+  .amber{color:var(--amber)}
+  .red{color:var(--red)}
+
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(11,13,16,.86);
+    border-bottom:1px solid rgba(200,161,90,.2);
+    backdrop-filter:blur(18px);
+  }
+  .topbar-inner{
+    min-height:62px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:22px;
+  }
+  .top-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:0;
+  }
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    min-width:0;
+  }
+  .brand-name{
+    font-family:var(--font-display);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:23px;
+  }
+  .brand-sub{
+    font-family:var(--font-mono);
+    color:var(--muted);
+    font-size:11px;
+    letter-spacing:.1em;
+    white-space:nowrap;
+  }
+  html[lang="en"] .brand-sub{
+    font-size:10.5px;
+    letter-spacing:.075em;
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  nav::-webkit-scrollbar{display:none}
+  .nav-link{
+    color:var(--muted);
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:.06em;
+    padding:9px 10px;
+    border:1px solid transparent;
+    white-space:nowrap;
+  }
+  .nav-link:hover{
+    color:var(--ink);
+    border-color:rgba(200,161,90,.32);
+    background:rgba(200,161,90,.08);
+  }
+  .lang-toggle{
+    display:flex;
+    align-items:center;
+    border:1px solid rgba(200,161,90,.24);
+    background:rgba(18,21,26,.7);
+    padding:2px;
+    flex:0 0 auto;
+  }
+  .lang-btn{
+    border:0;
+    background:transparent;
+    color:var(--quiet);
+    cursor:pointer;
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:.08em;
+    padding:6px 8px;
+  }
+  .lang-btn.active{
+    color:#101113;
+    background:var(--brass);
+  }
+  .nav-link:focus-visible,.btn:focus-visible,.js-open:focus-visible,.close:focus-visible{
+    outline:1px solid var(--brass-2);
+    outline-offset:3px;
+  }
+  .lang-btn:focus-visible{
+    outline:1px solid var(--brass-2);
+    outline-offset:2px;
+  }
+
+  .hero{
+    min-height:calc(100vh - 62px);
+    display:grid;
+    grid-template-columns:minmax(300px, .76fr) minmax(500px, 1.24fr);
+    gap:34px;
+    align-items:center;
+    padding:58px 0 44px;
+  }
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--brass);
+    letter-spacing:.22em;
+    text-transform:uppercase;
+  }
+  h1,h2,h3,p{margin:0}
+  h1{
+    margin:14px 0 14px;
+    font-family:var(--font-display);
+    font-size:clamp(54px,7.8vw,98px);
+    font-weight:500;
+    line-height:.9;
+    letter-spacing:.08em;
+  }
+  .hero-title{
+    max-width:680px;
+    font-family:var(--font-display);
+    font-size:clamp(24px,3.2vw,36px);
+    line-height:1.14;
+    font-weight:500;
+    margin-bottom:20px;
+  }
+  .hero-copy{
+    color:var(--muted);
+    max-width:660px;
+    font-size:15px;
+  }
+  html[lang="en"] .hero-title{
+    max-width:640px;
+    font-size:clamp(25px,3vw,34px);
+    line-height:1.12;
+  }
+  html[lang="en"] .hero-copy{max-width:620px}
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:28px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    min-height:38px;
+    padding:8px 13px;
+    border:1px solid var(--line);
+    background:rgba(18,21,26,.8);
+    color:var(--ink);
+    cursor:pointer;
+    font-family:var(--font-mono);
+    font-size:12px;
+    transition:border-color .18s ease, background .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{border-color:var(--brass);background:rgba(200,161,90,.1);transform:translateY(-1px)}
+  .btn.primary{background:var(--brass);border-color:var(--brass);color:#101113}
+  .btn.primary:hover{background:var(--brass-2);box-shadow:0 10px 28px rgba(200,161,90,.18)}
+
+  .dashboard{
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.04), transparent 28%),
+      linear-gradient(180deg, rgba(23,27,34,.96), rgba(13,15,19,.96));
+    border:1px solid rgba(200,161,90,.26);
+    box-shadow:var(--shadow);
+    padding:22px;
+    position:relative;
+    overflow:hidden;
+    animation:instrumentBoot .68s cubic-bezier(.2,.7,.25,1) both;
+  }
+  .hero,.dashboard,.orbital,.instrument-strip,.triad{min-width:0}
+  .dashboard::before{
+    content:"";
+    position:absolute;
+    inset:20px;
+    border:1px solid rgba(200,161,90,.08);
+    pointer-events:none;
+  }
+  .dashboard::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(90deg, transparent 49.8%, rgba(200,161,90,.08) 50%, transparent 50.2%),
+      linear-gradient(0deg, transparent 49.8%, rgba(200,161,90,.055) 50%, transparent 50.2%);
+    opacity:.26;
+    pointer-events:none;
+  }
+  .scanline{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
+    overflow:hidden;
+    mix-blend-mode:screen;
+  }
+  .scanline::before{
+    content:"";
+    position:absolute;
+    left:-18%;
+    right:-18%;
+    top:-30%;
+    height:34%;
+    background:
+      linear-gradient(180deg, transparent, rgba(239,208,130,.06), rgba(127,168,207,.035), transparent);
+    transform:translateY(-120%) rotate(-4deg);
+    animation:scanSweep 9.5s ease-in-out 1.1s infinite;
+  }
+  .dash-head{
+    position:relative;
+    z-index:1;
+    display:flex;
+    justify-content:space-between;
+    gap:18px;
+    margin-bottom:22px;
+    animation:calibrateIn .5s ease .1s both;
+  }
+  .regime-label{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .regime-title{
+    margin-top:6px;
+    font-family:var(--font-display);
+    font-size:34px;
+    line-height:1.08;
+  }
+  html[lang="en"] .regime-title{font-size:32px}
+  .instrument-strip{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin:-8px 0 16px;
+    animation:calibrateIn .5s ease .18s both;
+  }
+  .instrument-cell{
+    min-height:52px;
+    padding:9px 10px;
+    border:1px solid rgba(255,255,255,.075);
+    background:rgba(11,13,16,.38);
+  }
+  .instrument-cell span{
+    display:block;
+    color:var(--quiet);
+    font-family:var(--font-mono);
+    font-size:9.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .instrument-cell b{
+    display:block;
+    margin-top:3px;
+    color:var(--ink);
+    font-family:var(--font-mono);
+    font-size:11px;
+    font-weight:500;
+    line-height:1.25;
+  }
+  .orbit-legend{
+    position:absolute;
+    left:14px;
+    bottom:12px;
+    z-index:1;
+    display:grid;
+    grid-template-columns:repeat(3, auto);
+    gap:6px 10px;
+    max-width:92%;
+  }
+  .orbit-key{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color:var(--quiet);
+    font-family:var(--font-mono);
+    font-size:9px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .orbit-key::before{
+    content:"";
+    width:7px;
+    height:7px;
+    border:1px solid currentColor;
+    transform:rotate(45deg);
+  }
+  .orbit-key:nth-child(1){color:var(--brass-2)}
+  .orbit-key:nth-child(2){color:var(--green)}
+  .orbit-key:nth-child(3){color:var(--amber)}
+  .orbit-key:nth-child(4){color:var(--red)}
+  .orbit-key:nth-child(5){color:var(--blue)}
+  .orbit-key:nth-child(6){color:var(--violet)}
+  .status-block{
+    text-align:right;
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--muted);
+    min-width:150px;
+  }
+  .status-block b{color:var(--brass-2);font-weight:500}
+  .orbital{
+    position:relative;
+    min-height:288px;
+    display:grid;
+    place-items:center;
+    border:1px solid rgba(200,161,90,.16);
+    background:
+      linear-gradient(90deg, transparent 49.7%, rgba(200,161,90,.12) 50%, transparent 50.3%),
+      linear-gradient(0deg, transparent 49.7%, rgba(200,161,90,.09) 50%, transparent 50.3%),
+      linear-gradient(180deg, rgba(255,255,255,.026), transparent),
+      var(--panel);
+    margin-bottom:18px;
+    overflow:hidden;
+    animation:calibrateIn .55s ease .28s both;
+  }
+  .orbital::before{
+    content:"";
+    position:absolute;
+    inset:16px;
+    border:1px solid rgba(200,161,90,.08);
+    pointer-events:none;
+  }
+  .orbital::after{
+    content:"";
+    position:absolute;
+    width:min(93%, 430px);
+    aspect-ratio:1;
+    border:1px dashed rgba(200,161,90,.16);
+    transform:rotate(-11deg);
+    pointer-events:none;
+    animation:outerDrift 36s linear infinite;
+  }
+  .rings{
+    position:absolute;
+    width:min(86%, 390px);
+    aspect-ratio:1;
+    animation:ringDrift 52s linear infinite;
+  }
+  .rings span{
+    position:absolute;
+    inset:calc(var(--i) * 7%);
+    border:1px solid rgba(200,161,90,.26);
+    border-radius:50%;
+    box-shadow:inset 0 0 18px rgba(200,161,90,.018);
+    animation:ringPulse 7.5s ease-in-out infinite;
+    animation-delay:calc(var(--i) * -.7s);
+  }
+  .rings span:nth-child(2){border-color:rgba(120,183,168,.28)}
+  .rings span:nth-child(3){border-color:rgba(217,154,78,.28)}
+  .rings span:nth-child(4){border-color:rgba(201,107,98,.24)}
+  .rings span:nth-child(5){border-color:rgba(127,168,207,.24)}
+  .rings span:nth-child(6){border-color:rgba(169,141,202,.22)}
+  .needle{
+    position:absolute;
+    width:1px;
+    height:44%;
+    top:6%;
+    background:linear-gradient(var(--brass-2), transparent);
+    transform-origin:bottom;
+    transform:rotate(38deg);
+    animation:needleDrift 11s ease-in-out infinite;
+  }
+  .center-reading{
+    position:relative;
+    z-index:1;
+    width:min(72%, 290px);
+    text-align:center;
+    padding:18px;
+    background:rgba(11,13,16,.78);
+    border:1px solid rgba(200,161,90,.3);
+    box-shadow:0 0 34px rgba(0,0,0,.32);
+    animation:readingPulse 7.5s ease-in-out infinite;
+  }
+  .center-reading .small{
+    font-family:var(--font-mono);
+    color:var(--muted);
+    font-size:10px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  .center-reading .big{
+    margin-top:8px;
+    font-family:var(--font-display);
+    font-size:25px;
+    line-height:1.16;
+  }
+  html[lang="en"] .center-reading .big{font-size:24px}
+  .center-reading .note{
+    margin-top:10px;
+    color:var(--muted);
+    font-size:12px;
+  }
+  .triad{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    animation:calibrateIn .5s ease .38s both;
+  }
+  .triad-card{
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:rgba(18,21,26,.74);
+    padding:12px;
+    min-height:118px;
+    cursor:pointer;
+    transition:border-color .18s ease, background .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .triad-card::before,.stack-card::before,.atlas-card::before,.watch-card::before,.evidence-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border:1px solid transparent;
+    background:
+      linear-gradient(90deg, rgba(239,208,130,.2), transparent 26%, transparent 74%, rgba(239,208,130,.12)) left bottom / 0 1px no-repeat;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .18s ease, background-size .26s ease, border-color .18s ease;
+  }
+  .triad-card:hover{
+    border-color:rgba(200,161,90,.55);
+    background:rgba(23,27,34,.92);
+    transform:translateY(-1px);
+    box-shadow:0 12px 26px rgba(0,0,0,.18);
+  }
+  .triad-card:hover::before,.stack-card:hover::before,.atlas-card:hover::before,.watch-card:hover::before,.evidence-card:hover::before{
+    opacity:1;
+    border-color:rgba(239,208,130,.16);
+    background-size:100% 1px;
+  }
+  .triad-card h3{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .triad-card p{
+    font-size:12.5px;
+    color:var(--muted);
+    line-height:1.52;
+  }
+
+  section{
+    border-top:1px solid rgba(200,161,90,.16);
+    padding:82px 0;
+  }
+  .section-head{
+    display:grid;
+    grid-template-columns:minmax(0,.8fr) minmax(280px,.55fr);
+    gap:42px;
+    align-items:end;
+    margin-bottom:30px;
+  }
+  h2{
+    margin-top:9px;
+    font-family:var(--font-display);
+    font-size:clamp(34px,5vw,56px);
+    line-height:1.04;
+    font-weight:500;
+  }
+  .section-note{
+    color:var(--muted);
+    font-size:14px;
+  }
+
+  .stack-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .stack-card,.atlas-card,.watch-card,.asset-row,.evidence-card,.validation-row{
+    border:1px solid var(--line);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.032), transparent 34%),
+      linear-gradient(180deg, rgba(23,27,34,.94), rgba(18,21,26,.86));
+  }
+  .stack-card,.atlas-card,.watch-card,.triad-card,.evidence-card{
+    color:var(--ink);
+    text-align:left;
+    position:relative;
+    overflow:hidden;
+  }
+  .stack-card{
+    padding:18px;
+    min-height:224px;
+    cursor:pointer;
+    transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .stack-card:hover,.atlas-card:hover,.watch-card:hover,.evidence-card:hover{
+    border-color:rgba(200,161,90,.7);
+    transform:translateY(-2px);
+    box-shadow:var(--shadow-tight);
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    align-items:flex-start;
+    margin-bottom:12px;
+  }
+  .card-kicker{
+    font-family:var(--font-mono);
+    font-size:10px;
+    color:var(--quiet);
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  .card-title{
+    margin-top:4px;
+    font-family:var(--font-display);
+    font-size:24px;
+    line-height:1.08;
+    color:var(--ink);
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    border:1px solid var(--line);
+    padding:4px 7px;
+    font-family:var(--font-mono);
+    font-size:10px;
+    color:var(--muted);
+    white-space:nowrap;
+    background:rgba(11,13,16,.34);
+  }
+  .badge::before{
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--quiet);
+  }
+  .badge.supported::before{background:var(--green)}
+  .badge.watch::before{background:var(--amber)}
+  .badge.contested::before{background:var(--red)}
+  .badge.partial::before{background:var(--blue)}
+  .badge.manual::before{background:var(--violet)}
+  .card-text{
+    color:var(--muted);
+    font-size:13px;
+    min-height:48px;
+  }
+  .status-lines{
+    display:grid;
+    gap:6px;
+    margin-top:14px;
+    padding:10px 0 0;
+    border-top:1px solid rgba(255,255,255,.07);
+  }
+  .status-line{
+    display:grid;
+    grid-template-columns:78px 1fr;
+    gap:10px;
+    font-size:11.5px;
+    line-height:1.35;
+  }
+  .status-line span:first-child{
+    color:var(--quiet);
+    font-family:var(--font-mono);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  .status-line span:last-child{color:var(--muted)}
+  .card-foot{
+    margin-top:16px;
+    padding-top:12px;
+    border-top:1px solid var(--line);
+    color:var(--quiet);
+    font-family:var(--font-mono);
+    font-size:10.5px;
+  }
+
+  .split{
+    display:grid;
+    grid-template-columns:minmax(0,.95fr) minmax(340px,.55fr);
+    gap:18px;
+  }
+  .atlas-board{
+    border:1px solid var(--line);
+    background:
+      linear-gradient(90deg, rgba(200,161,90,.08) 0 1px, transparent 1px),
+      linear-gradient(180deg, rgba(23,27,34,.78), rgba(18,21,26,.62));
+    background-size:100% 100%, 100% 100%;
+    padding:18px;
+    position:relative;
+    overflow:hidden;
+  }
+  .atlas-board::before{
+    content:"";
+    position:absolute;
+    left:54px;
+    top:26px;
+    bottom:26px;
+    width:1px;
+    background:linear-gradient(transparent, rgba(200,161,90,.5), transparent);
+    pointer-events:none;
+  }
+  .atlas-board::after{
+    content:"软日期区间";
+    position:absolute;
+    right:16px;
+    top:12px;
+    color:rgba(200,161,90,.52);
+    font-family:var(--font-mono);
+    font-size:9px;
+    letter-spacing:.16em;
+  }
+  html[lang="en"] .atlas-board::after{content:"SOFT DATE RANGE"}
+  .wave-row{
+    display:grid;
+    grid-template-columns:72px 1fr;
+    gap:14px;
+    padding:14px 0;
+    border-top:1px solid var(--line);
+    position:relative;
+  }
+  .wave-row:first-child{border-top:0}
+  .wave-label{
+    font-family:var(--font-display);
+    font-size:30px;
+    color:var(--brass-2);
+    line-height:1;
+    position:relative;
+    z-index:1;
+  }
+  .wave-label::after{
+    content:"";
+    display:block;
+    width:9px;
+    height:9px;
+    margin-top:12px;
+    border:1px solid var(--brass);
+    background:var(--night);
+    transform:rotate(45deg);
+  }
+  .phase-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+  .atlas-card{
+    padding:13px;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .atlas-card::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:2px;
+    background:linear-gradient(90deg, var(--brass), transparent);
+    opacity:.28;
+  }
+  .atlas-card.candidate{
+    border-color:rgba(169,141,202,.42);
+    background:
+      linear-gradient(135deg, rgba(169,141,202,.13), transparent 42%),
+      linear-gradient(180deg, rgba(23,27,34,.94), rgba(18,21,26,.86));
+  }
+  .atlas-card h3{
+    font-size:14px;
+    margin:7px 0 4px;
+    line-height:1.28;
+    color:var(--ink);
+  }
+  .atlas-card p{font-size:12px;color:var(--muted);line-height:1.45}
+  .priority-panel{
+    border:1px solid rgba(200,161,90,.34);
+    background:linear-gradient(180deg, rgba(200,161,90,.1), rgba(18,21,26,.8));
+    padding:18px;
+    box-shadow:var(--shadow-tight);
+  }
+  .priority-panel h3{
+    font-family:var(--font-display);
+    font-size:28px;
+    line-height:1.08;
+    margin-bottom:12px;
+  }
+  .priority-panel p{color:var(--muted);font-size:13.5px}
+  .priority-list{
+    margin:18px 0 0;
+    padding:0;
+    list-style:none;
+  }
+  .priority-list li{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:10px 0;
+    border-top:1px solid rgba(255,255,255,.08);
+    font-size:13px;
+  }
+  .priority-list span:last-child{
+    color:var(--muted);
+    font-family:var(--font-mono);
+    font-size:11px;
+    white-space:nowrap;
+  }
+
+  .watch-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .watch-card{
+    padding:16px;
+    min-height:210px;
+    cursor:pointer;
+    transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .watch-card.featured{
+    border-color:rgba(217,154,78,.62);
+    background:
+      linear-gradient(135deg, rgba(217,154,78,.16), transparent 38%),
+      linear-gradient(180deg, rgba(217,154,78,.11), rgba(18,21,26,.9));
+    box-shadow:0 16px 44px rgba(217,154,78,.08);
+  }
+  .watch-id{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--brass);
+    letter-spacing:.08em;
+  }
+  .watch-card h3{
+    margin:8px 0 10px;
+    font-family:var(--font-display);
+    font-size:25px;
+    line-height:1.08;
+    color:var(--ink);
+  }
+  .watch-card p{
+    color:var(--muted);
+    font-size:13px;
+  }
+  .watch-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:14px;
+  }
+
+  .asset-table{
+    border:1px solid var(--line);
+    box-shadow:var(--shadow-tight);
+  }
+  .asset-row{
+    display:grid;
+    grid-template-columns:150px 1fr 170px;
+    gap:18px;
+    padding:16px 18px;
+    border:0;
+    border-top:1px solid var(--line);
+    background:
+      linear-gradient(90deg, rgba(200,161,90,.055), transparent 32%),
+      rgba(18,21,26,.72);
+  }
+  .asset-row:hover{background:linear-gradient(90deg, rgba(200,161,90,.09), transparent 35%), rgba(23,27,34,.82)}
+  .asset-row:first-child{border-top:0}
+  .asset-name{
+    font-family:var(--font-display);
+    font-size:24px;
+    line-height:1.05;
+  }
+  .asset-read{
+    color:var(--muted);
+    font-size:13px;
+  }
+  .asset-status{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--quiet);
+  }
+
+  .evidence-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+  }
+  .evidence-card{
+    padding:14px;
+    min-height:170px;
+    cursor:pointer;
+    transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .evidence-card h3{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--brass-2);
+    margin-bottom:10px;
+  }
+  .evidence-card p{
+    color:var(--muted);
+    font-size:12px;
+  }
+  .evidence-index{
+    margin-top:12px;
+    padding-top:10px;
+    border-top:1px solid rgba(255,255,255,.07);
+    color:var(--quiet);
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:.06em;
+  }
+  .validation{
+    margin-top:16px;
+    display:grid;
+    gap:10px;
+  }
+  .validation-row{
+    padding:14px 16px;
+    display:grid;
+    grid-template-columns:140px 1fr 210px;
+    gap:16px;
+    align-items:start;
+    box-shadow:0 10px 24px rgba(0,0,0,.16);
+  }
+  .validation-row p{color:var(--muted);font-size:13px}
+
+  footer{
+    border-top:1px solid rgba(200,161,90,.16);
+    padding:42px 0 54px;
+    color:var(--muted);
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:.45fr 1fr;
+    gap:24px;
+  }
+  .foot-brand{
+    font-family:var(--font-display);
+    font-size:34px;
+    letter-spacing:.14em;
+    color:var(--ink);
+  }
+  .disclaimer{
+    font-size:12.5px;
+    border-left:2px solid var(--line);
+    padding-left:16px;
+  }
+
+  .drawer-backdrop{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.56);
+    z-index:40;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease;
+  }
+  .drawer{
+    position:fixed;
+    top:0;
+    right:0;
+    width:min(520px, 100%);
+    height:100vh;
+    background:var(--panel);
+    border-left:1px solid rgba(200,161,90,.32);
+    box-shadow:var(--shadow);
+    z-index:41;
+    transform:translateX(100%);
+    transition:transform .24s ease;
+    display:flex;
+    flex-direction:column;
+  }
+  .drawer-open .drawer-backdrop{opacity:1;pointer-events:auto}
+  .drawer-open .drawer{transform:translateX(0)}
+  .drawer-head{
+    padding:18px 20px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:20px;
+  }
+  .drawer-head h3{
+    font-family:var(--font-display);
+    font-size:29px;
+    line-height:1.08;
+  }
+  .close{
+    width:34px;
+    height:34px;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    font-family:var(--font-mono);
+  }
+  .drawer-body{
+    padding:20px;
+    overflow:auto;
+  }
+  .drawer-section{
+    border-top:1px solid var(--line);
+    padding-top:14px;
+    margin-top:14px;
+  }
+  .drawer-open .drawer-section{
+    animation:drawerSectionIn .32s ease both;
+  }
+  .drawer-open .drawer-section:nth-child(2){animation-delay:.04s}
+  .drawer-open .drawer-section:nth-child(3){animation-delay:.08s}
+  .drawer-open .drawer-section:nth-child(4){animation-delay:.12s}
+  .drawer-open .drawer-section:nth-child(5){animation-delay:.16s}
+  .drawer-open .drawer-section:nth-child(6){animation-delay:.2s}
+  .drawer-section:first-child{
+    border-top:0;
+    margin-top:0;
+    padding-top:0;
+  }
+  .drawer-section h4{
+    margin:0 0 8px;
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--brass);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+  }
+  .drawer-section p,.drawer-section li{
+    color:var(--muted);
+    font-size:13px;
+  }
+  .drawer-section ul{
+    margin:0;
+    padding-left:18px;
+  }
+  .inspector-grid{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:8px 12px;
+    font-size:12.5px;
+  }
+  .inspector-grid span:nth-child(odd){
+    color:var(--quiet);
+    font-family:var(--font-mono);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  .inspector-grid span:nth-child(even){color:var(--muted)}
+
+  @keyframes instrumentBoot{
+    from{opacity:.78;transform:translateY(10px) scale(.992);filter:saturate(.8)}
+    to{opacity:1;transform:none;filter:saturate(1)}
+  }
+  @keyframes calibrateIn{
+    from{opacity:0;transform:translateY(8px)}
+    to{opacity:1;transform:none}
+  }
+  @keyframes scanSweep{
+    0%,72%{transform:translateY(-130%) rotate(-4deg);opacity:0}
+    78%{opacity:.85}
+    100%{transform:translateY(430%) rotate(-4deg);opacity:0}
+  }
+  @keyframes outerDrift{
+    from{transform:rotate(-11deg)}
+    to{transform:rotate(349deg)}
+  }
+  @keyframes ringDrift{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(-360deg)}
+  }
+  @keyframes ringPulse{
+    0%,100%{opacity:.74;box-shadow:inset 0 0 18px rgba(200,161,90,.018)}
+    50%{opacity:1;box-shadow:inset 0 0 26px rgba(200,161,90,.045)}
+  }
+  @keyframes needleDrift{
+    0%,100%{transform:rotate(36deg)}
+    50%{transform:rotate(41deg)}
+  }
+  @keyframes readingPulse{
+    0%,100%{border-color:rgba(200,161,90,.3);box-shadow:0 0 34px rgba(0,0,0,.32)}
+    50%{border-color:rgba(239,208,130,.45);box-shadow:0 0 34px rgba(0,0,0,.32),0 0 30px rgba(200,161,90,.06)}
+  }
+  @keyframes drawerSectionIn{
+    from{opacity:0;transform:translateX(10px)}
+    to{opacity:1;transform:none}
+  }
+
+  @media(max-width:980px){
+    .hero,.section-head,.split,.footer-grid{grid-template-columns:1fr}
+    .dashboard{order:-1}
+    .instrument-strip{grid-template-columns:repeat(2,1fr)}
+    .stack-grid,.watch-grid{grid-template-columns:repeat(2,1fr)}
+    .evidence-grid{grid-template-columns:repeat(2,1fr)}
+    .validation-row,.asset-row{grid-template-columns:1fr}
+  }
+  @media(max-width:680px){
+    .wrap{width:calc(100% - 28px);max-width:1180px}
+    .topbar-inner{align-items:flex-start;flex-direction:column;padding:12px 0}
+    .top-actions{width:100%;align-items:flex-start;flex-direction:column;gap:8px}
+    nav{width:100%}
+    .hero{padding-top:34px}
+    h1{font-size:clamp(46px,18vw,68px)}
+    .hero-title{font-size:25px}
+    .dashboard{padding:18px}
+    .dashboard,.orbital{width:100%;max-width:100%}
+    .instrument-strip{grid-template-columns:1fr 1fr;gap:7px}
+    .instrument-cell{min-height:48px;padding:8px}
+    .orbit-legend{grid-template-columns:repeat(2, auto);left:10px;bottom:9px;gap:4px 8px}
+    .orbit-key{font-size:8px}
+    .triad,.stack-grid,.phase-grid,.watch-grid,.evidence-grid{grid-template-columns:1fr}
+    section{padding:58px 0}
+    .orbital{min-height:334px}
+    .rings{width:min(91%, 330px)}
+    .center-reading{width:min(76%, 275px);transform:translateY(-18px)}
+    .center-reading .big{font-size:23px}
+    .regime-title{font-size:28px}
+    .dash-head{display:block}
+    .status-block{text-align:left;margin-top:14px}
+    .status-line{grid-template-columns:72px 1fr}
+    .inspector-grid{grid-template-columns:1fr}
+    .scanline::before{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{
+      animation:none!important;
+    }
+    .btn,.stack-card,.atlas-card,.watch-card,.triad-card,.evidence-card,.drawer,.drawer-backdrop{
+      transition:none;
+    }
+    .btn:hover,.stack-card:hover,.atlas-card:hover,.watch-card:hover,.triad-card:hover,.evidence-card:hover{
+      transform:none;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#home" aria-label="Kairos 首页">
+        <span class="brand-name">Kairos</span>
+        <span class="brand-sub">周期天象图</span>
+      </a>
+      <div class="top-actions">
+        <nav aria-label="Kairos 分区">
+          <a class="nav-link" href="#reading">当前读数</a>
+          <a class="nav-link" href="#stack">周期栈</a>
+          <a class="nav-link" href="#atlas">长波图谱</a>
+          <a class="nav-link" href="#watchlist">观察清单</a>
+          <a class="nav-link" href="#assets">资产映射</a>
+          <a class="nav-link" href="#evidence">证据</a>
+        </nav>
+        <div class="lang-toggle" aria-label="语言切换">
+          <button class="lang-btn active" type="button" data-lang="zh" aria-pressed="true">中文</button>
+          <button class="lang-btn" type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="home">
+    <div class="wrap hero" id="reading">
+      <div>
+        <div class="eyebrow">Kairos v1 · 静态仪表盘</div>
+        <h1>KAIROS</h1>
+        <p class="hero-title">把宏观周期做成可点击、可复盘、可证伪的天象图。</p>
+        <p class="hero-copy">
+          第一版不追逐每日新闻，不做日期预言机。Kairos 先回答“现在处在哪个周期状态”，再把读数连接到长波图谱、观察清单、证据包和来源检查器。
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#stack">-> 查看六层周期栈</a>
+          <a class="btn" href="#atlas">-> 进入长波图谱</a>
+          <a class="btn" href="#watchlist">-> 查看观察清单</a>
+        </div>
+      </div>
+
+      <aside class="dashboard" aria-label="当前周期状态仪表盘">
+        <div class="scanline" aria-hidden="true"></div>
+        <div class="dash-head">
+          <div>
+            <div class="regime-label">当前周期状态</div>
+            <div class="regime-title">K5-E / K6 候选观察</div>
+          </div>
+          <div class="status-block">
+            <div><b>手动复核</b></div>
+            <div>中等置信度</div>
+            <div>规格日期：2026-07-06</div>
+            <div>来源：Kairos 文件</div>
+          </div>
+        </div>
+
+        <div class="instrument-strip" aria-label="读数元信息">
+          <div class="instrument-cell"><span>更新模式</span><b>手动复核</b></div>
+          <div class="instrument-cell"><span>置信度</span><b>中等</b></div>
+          <div class="instrument-cell"><span>证据状态</span><b>证据门控</b></div>
+          <div class="instrument-cell"><span>K6 状态</span><b>仅候选</b></div>
+        </div>
+
+        <div class="orbital">
+          <div class="rings" aria-hidden="true">
+            <span style="--i:0"></span>
+            <span style="--i:1"></span>
+            <span style="--i:2"></span>
+            <span style="--i:3"></span>
+            <span style="--i:4"></span>
+            <span style="--i:5"></span>
+          </div>
+          <div class="needle" aria-hidden="true"></div>
+          <div class="center-reading">
+            <div class="small">长波背景</div>
+            <div class="big">K5 后段与 K6 转换观察重叠</div>
+            <div class="note">AI 资本开支有真实地面信号，但不支持确认 K6。</div>
+          </div>
+          <div class="orbit-legend" aria-hidden="true">
+            <span class="orbit-key">宏观</span>
+            <span class="orbit-key">信用</span>
+            <span class="orbit-key">政策</span>
+            <span class="orbit-key">美元</span>
+            <span class="orbit-key">长波</span>
+            <span class="orbit-key">市场</span>
+          </div>
+        </div>
+
+        <div class="triad">
+          <button class="triad-card js-open" data-title="已支持方向" data-kind="supported">
+            <h3 class="green">已支持方向</h3>
+            <p>AI 基础设施资本开支在电力设备、数据中心、半导体和网络设备端已有真实地面信号。</p>
+          </button>
+          <button class="triad-card js-open" data-title="争议判断" data-kind="contested">
+            <h3 class="red">争议判断</h3>
+            <p>AI 生产率扩散时点、2020 是否是 K5 硬终点、移动互联网 / 平台经济的 TFP 影响仍存在争议。</p>
+          </button>
+          <button class="triad-card js-open" data-title="活动观察清单" data-kind="watchlist">
+            <h3 class="amber">观察清单</h3>
+            <p>KW-006 跟踪 AI 资本开支 ROI、GPU 定价、数据中心融资、电网瓶颈与企业采用。</p>
+          </button>
+        </div>
+      </aside>
+    </div>
+
+    <section id="stack">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">周期栈</div>
+            <h2>六层周期栈</h2>
+          </div>
+          <p class="section-note">首页只显示主读数，内部判断保留六层结构。每层都是一个可点击判断，后续可下钻到证据抽屉。</p>
+        </div>
+
+        <div class="stack-grid">
+          <button class="stack-card js-open" data-title="宏观时钟" data-kind="macro">
+            <div class="card-top">
+              <div><div class="card-kicker">增长 x 通胀</div><div class="card-title">宏观时钟</div></div>
+              <span class="badge watch">观察</span>
+            </div>
+            <p class="card-text">当前页面先采用观察状态：增长、通胀和政策约束需由后续当前读数内容正式填数。</p>
+            <div class="status-lines">
+              <div class="status-line"><span>状态</span><span>当前数据包待补</span></div>
+              <div class="status-line"><span>证据</span><span>部分完成 / 证据门控</span></div>
+            </div>
+            <div class="card-foot">待补：当前数据包 / 来源硬度</div>
+          </button>
+
+          <button class="stack-card js-open" data-title="金融周期" data-kind="financial">
+            <div class="card-top">
+              <div><div class="card-kicker">信用 / 杠杆</div><div class="card-title">金融周期</div></div>
+              <span class="badge watch">观察</span>
+            </div>
+            <p class="card-text">AI 资本开支和融资结构是重点，不把局部脆弱性直接写成系统性危机。</p>
+            <div class="status-lines">
+              <div class="status-line"><span>状态</span><span>融资脆弱性观察</span></div>
+              <div class="status-line"><span>证据</span><span>KW-006 / EP_001-EP_005</span></div>
+            </div>
+            <div class="card-foot">关联：KW-006 / EP_001-EP_005</div>
+          </button>
+
+          <button class="stack-card js-open" data-title="流动性 / 政策" data-kind="policy">
+            <div class="card-top">
+              <div><div class="card-kicker">利率 / 财政</div><div class="card-title">流动性 / 政策</div></div>
+              <span class="badge partial">部分</span>
+            </div>
+            <p class="card-text">先展示政策约束层，不写未核验的实时利率或央行结论。</p>
+            <div class="status-lines">
+              <div class="status-line"><span>状态</span><span>财政货币约束观察</span></div>
+              <div class="status-line"><span>证据</span><span>KW-002 / 来源补核中</span></div>
+            </div>
+            <div class="card-foot">待补：政策来源包</div>
+          </button>
+
+          <button class="stack-card js-open" data-title="全球美元" data-kind="dollar">
+            <div class="card-top">
+              <div><div class="card-kicker">美元 / VIX / 融资</div><div class="card-title">全球美元</div></div>
+              <span class="badge partial">部分</span>
+            </div>
+            <p class="card-text">全球美元层用于连接 Rey 全球金融周期、美元融资与风险偏好。</p>
+            <div class="status-lines">
+              <div class="status-line"><span>状态</span><span>融资压力观察</span></div>
+              <div class="status-line"><span>证据</span><span>BIS / IMF / FRED 来源补核中</span></div>
+            </div>
+            <div class="card-foot">待补：FRED / BIS / IMF 来源补核</div>
+          </button>
+
+          <button class="stack-card js-open" data-title="长波背景" data-kind="longwave">
+            <div class="card-top">
+              <div><div class="card-kicker">K4 / K5 / K6</div><div class="card-title">长波背景</div></div>
+              <span class="badge manual">手动</span>
+            </div>
+            <p class="card-text">K5-E / K6 候选观察是当前长波背景，但 K6 不得写成已确认。</p>
+            <div class="status-lines">
+              <div class="status-line"><span>状态</span><span>K5-E / K6 候选观察</span></div>
+              <div class="status-line"><span>模式</span><span>手动 / 证据门控</span></div>
+            </div>
+            <div class="card-foot">手动证据门控复核</div>
+          </button>
+
+          <button class="stack-card js-open" data-title="市场验证" data-kind="market">
+            <div class="card-top">
+              <div><div class="card-kicker">资产行为</div><div class="card-title">市场验证</div></div>
+              <span class="badge watch">观察</span>
+            </div>
+            <p class="card-text">市场表现是验证层，不是唯一真相。资产含义进入资产映射，而不是交易建议。</p>
+            <div class="status-lines">
+              <div class="status-line"><span>状态</span><span>AI 主导分化观察</span></div>
+              <div class="status-line"><span>证据</span><span>资产映射 / 复盘记录</span></div>
+            </div>
+            <div class="card-foot">关联：资产映射 / 复盘记录</div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="atlas">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">长波图谱</div>
+            <h2>K4 / K5 / K6 候选</h2>
+          </div>
+          <p class="section-note">长波图谱展示历史阶段、研究状态和当前候选观察区。K6 仅作为 Candidate Watch，不作为已确认长波阶段。</p>
+        </div>
+
+        <div class="split">
+          <div class="atlas-board">
+            <div class="wave-row">
+              <div class="wave-label">K4</div>
+              <div class="phase-grid">
+                <button class="atlas-card js-open" data-title="K4-A 大萧条 / 战争重置" data-kind="k4a">
+                  <span class="badge partial">来源补核中</span>
+                  <h3>1930s-1945 · 大萧条 / 战争重置</h3>
+                  <p>大萧条、金本位约束、战争财政和制度重置。</p>
+                </button>
+                <button class="atlas-card js-open" data-title="K4-B 战后重建" data-kind="k4b">
+                  <span class="badge partial">来源补核中</span>
+                  <h3>1945-1958 · 战后重建</h3>
+                  <p>战后重建、美国主导、布雷顿森林框架成形。</p>
+                </button>
+                <button class="atlas-card js-open" data-title="K4-C 布雷顿森林黄金时代" data-kind="k4c">
+                  <span class="badge contested">有争议</span>
+                  <h3>1958-1968/71 · 布雷顿森林黄金时代</h3>
+                  <p>固定汇率、资本管制、美元-黄金体系共存。</p>
+                </button>
+                <button class="atlas-card js-open" data-title="K4-D 滞胀 / Volcker 重置" data-kind="k4d">
+                  <span class="badge watch">重点</span>
+                  <h3>1968/71-1982 · 滞胀 / Volcker 重置</h3>
+                  <p>美元黄金脱钩、供给冲击、通胀失控与 Volcker 重置。</p>
+                </button>
+              </div>
+            </div>
+
+            <div class="wave-row">
+              <div class="wave-label">K5</div>
+              <div class="phase-grid">
+                <button class="atlas-card js-open" data-title="K5-A 去通胀 / 金融化起点" data-kind="k5a">
+                  <span class="badge contested">重点</span>
+                  <h3>1979/82-1991 · 去通胀 / 美元重置</h3>
+                  <p>通胀被压制，利率下行长周期与金融化起点出现。</p>
+                </button>
+                <button class="atlas-card js-open" data-title="K5-B 全球化 / ICT" data-kind="k5b">
+                  <span class="badge partial">部分核验</span>
+                  <h3>1991-2000/04 · 全球化 / ICT</h3>
+                  <p>全球化、ICT 扩散、低通胀增长和风险资产繁荣。</p>
+                </button>
+                <button class="atlas-card js-open" data-title="K5-C 信用泡沫" data-kind="k5c">
+                  <span class="badge watch">重点</span>
+                  <h3>2004-2008 · 信用泡沫 / 美元杠杆</h3>
+                  <p>全球失衡、住房信用、影子银行和美元杠杆共振。</p>
+                </button>
+                <button class="atlas-card js-open" data-title="K5-D QE / 平台经济" data-kind="k5d">
+                  <span class="badge watch">重点</span>
+                  <h3>2008-2020 · QE / 低利率资产负债表时代</h3>
+                  <p>QE、低利率、平台经济和久期资产重估。</p>
+                </button>
+                <button class="atlas-card js-open" data-title="K5-E 财政货币冲击 / AI 作为 K6 候选" data-kind="k5e">
+                  <span class="badge manual">第一优先</span>
+                  <h3>2020-now · 财政货币冲击 / AI 作为 K6 候选</h3>
+                  <p>财政货币冲击、通胀回归、高利率重估、AI 成为 K6 候选。</p>
+                </button>
+              </div>
+            </div>
+
+            <div class="wave-row">
+              <div class="wave-label">K6</div>
+              <div class="phase-grid">
+                <button class="atlas-card candidate js-open" data-title="K6 Candidate Watch / AI" data-kind="k6ai">
+                  <span class="badge manual">候选观察</span>
+                  <h3>AI / 智能自动化</h3>
+                  <p>观察 AI 是否从资本开支和局部生产率，扩散为跨行业生产范式。</p>
+                </button>
+                <button class="atlas-card candidate js-open" data-title="K6 Candidate Watch / Energy & Power" data-kind="k6energy">
+                  <span class="badge watch">候选观察</span>
+                  <h3>能源 / 电力约束</h3>
+                  <p>观察电网、能源密度和数据中心需求是否成为新周期的物理约束。</p>
+                </button>
+                <button class="atlas-card candidate js-open" data-title="K6 Candidate Watch / Automation" data-kind="k6auto">
+                  <span class="badge watch">候选观察</span>
+                  <h3>自动化 / 机器人</h3>
+                  <p>观察自动化是否从软件效率提升，进入实体生产和服务流程改造。</p>
+                </button>
+                <button class="atlas-card candidate js-open" data-title="K6 Candidate Watch / Biotech" data-kind="k6bio">
+                  <span class="badge partial">候选观察</span>
+                  <h3>生物技术</h3>
+                  <p>观察生物技术是否形成足够广泛的生产率和资本形成证据。</p>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="priority-panel">
+            <h3>研究状态矩阵</h3>
+            <p>阶段卡可以先展示结构，但每个节点必须保留研究状态。优先补强当前判断最相关的 K5-E、K4-D、K5-A、K5-C、K5-D。</p>
+            <ul class="priority-list">
+              <li><span>K5-E</span><span>第一优先</span></li>
+              <li><span>K4-D / K5-A</span><span>重点</span></li>
+              <li><span>K5-C / K5-D</span><span>重点</span></li>
+              <li><span>K5-B</span><span>部分核验</span></li>
+              <li><span>K4-A / B / C</span><span>来源补核中</span></li>
+              <li><span>K6 Candidate</span><span>候选观察</span></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="watchlist">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">观察清单</div>
+            <h2>改变判断的观察项</h2>
+          </div>
+          <p class="section-note">观察清单记录会改变判断的未决问题，不等于已确认事实。触发、证伪和关闭都需要人工复核。</p>
+        </div>
+
+        <div class="watch-grid">
+          <button class="watch-card js-open" data-title="KW-001 AI / K6 扩散" data-kind="kw1">
+            <div class="watch-id">KW-001</div>
+            <h3>AI / K6 扩散</h3>
+            <p>观察 AI 是从 K5 尾部金融狂热升级为 K6 扩散，还是仍停留在候选观察区。</p>
+            <div class="watch-meta"><span class="badge watch">观察</span><span class="badge partial">手动</span></div>
+          </button>
+
+          <button class="watch-card js-open" data-title="KW-002 财政货币冲击" data-kind="kw2">
+            <div class="watch-id">KW-002</div>
+            <h3>财政货币冲击</h3>
+            <p>观察 2020-2021 财政货币冲击是一次疫情脉冲，还是改变了未来通胀中枢。</p>
+            <div class="watch-meta"><span class="badge contested">有争议</span></div>
+          </button>
+
+          <button class="watch-card js-open" data-title="KW-003 实际利率重估" data-kind="kw3">
+            <div class="watch-id">KW-003</div>
+            <h3>实际利率重估</h3>
+            <p>观察高实际利率是周期性暂态，还是打断低利率金融化定价体系的结构性断裂。</p>
+            <div class="watch-meta"><span class="badge supported">已核源</span><span class="badge contested">有争议</span></div>
+          </button>
+
+          <button class="watch-card js-open" data-title="KW-004 金融条件" data-kind="kw4">
+            <div class="watch-id">KW-004</div>
+            <h3>金融条件</h3>
+            <p>观察金融条件宽松是否抵消高利率紧缩，并构成 K5-E 的核心反证项。</p>
+            <div class="watch-meta"><span class="badge supported">已支持</span></div>
+          </button>
+
+          <button class="watch-card js-open" data-title="KW-005 黄金 / 货币信任" data-kind="kw5">
+            <div class="watch-id">KW-005</div>
+            <h3>黄金 / 货币信任</h3>
+            <p>观察黄金是否正在从真实利率资产，转向法币信用、央行需求与美元体系重估的混合对冲。</p>
+            <div class="watch-meta"><span class="badge partial">来源补核中</span></div>
+          </button>
+
+          <button class="watch-card featured js-open" data-title="KW-006 AI 资本开支融资脆弱性" data-kind="kw6">
+            <div class="watch-id">KW-006 · 重点</div>
+            <h3>AI 资本开支融资脆弱性</h3>
+            <p>AI 基础设施资本开支有真实地面信号；ROI、融资脆弱性、GPU 定价、企业采用仍是活动观察项。</p>
+            <div class="watch-meta"><span class="badge supported">地面信号</span><span class="badge watch">活动观察</span><span class="badge manual">手动</span></div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="assets">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">资产映射</div>
+            <h2>资产表现映射</h2>
+          </div>
+          <p class="section-note">资产映射用于解释不同 regime 下的含义，不构成交易建议。</p>
+        </div>
+
+        <div class="asset-table">
+          <div class="asset-row">
+            <div class="asset-name">股票</div>
+            <p class="asset-read">AI 基础设施股票仍是当前叙事核心，但需要用 ROI、现金流和融资结构验证，不把价格上涨直接当作 K6 证据。</p>
+            <div class="asset-status">状态：观察清单</div>
+          </div>
+          <div class="asset-row">
+            <div class="asset-name">债券</div>
+            <p class="asset-read">债券含义取决于增长下行、通胀黏性和政策空间的组合，需等待当前读数数据包补齐。</p>
+            <div class="asset-status">状态：部分</div>
+          </div>
+          <div class="asset-row">
+            <div class="asset-name">商品</div>
+            <p class="asset-read">商品连接通胀、能源瓶颈和 K6 物理约束，但不能单独证明长波转换。</p>
+            <div class="asset-status">状态：有争议</div>
+          </div>
+          <div class="asset-row">
+            <div class="asset-name">黄金</div>
+            <p class="asset-read">黄金需要在真实利率、货币信任、央行需求和美元体系变化之间分解。</p>
+            <div class="asset-status">状态：观察清单</div>
+          </div>
+          <div class="asset-row">
+            <div class="asset-name">美元 / 现金</div>
+            <p class="asset-read">美元和现金是全球金融周期压力与防御性的验证层，需与全球美元层联动。</p>
+            <div class="asset-status">状态：来源补核中</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidence">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">判断依据</div>
+            <h2>判断依据与复盘</h2>
+          </div>
+          <p class="section-note">把证据拆成用户可读的状态桶：已支持、有争议、未确认、待补证和复盘记录。EP 编号保留为追溯索引。</p>
+        </div>
+
+        <div class="evidence-grid">
+          <button class="evidence-card js-open" data-title="已支持：AI 地面信号" data-kind="supported">
+            <h3>已支持</h3>
+            <p>AI 基础设施资本开支存在真实产业扩散迹象，但这不确认 K6。</p>
+            <div class="evidence-index">EP_005 / KW-006</div>
+          </button>
+          <button class="evidence-card js-open" data-title="有争议：生产率扩散" data-kind="contested">
+            <h3>有争议</h3>
+            <p>AI 生产率扩散、2020 是否为硬终点、平台经济 TFP 影响仍需反证并列。</p>
+            <div class="evidence-index">K4 / K5 / K6</div>
+          </button>
+          <button class="evidence-card js-open" data-title="未确认：K6 仍是候选" data-kind="unconfirmed">
+            <h3>未确认</h3>
+            <p>K6 仍处于候选观察区，不写成已确认长波，也不自动随新闻更新。</p>
+            <div class="evidence-index">Decision015</div>
+          </button>
+          <button class="evidence-card js-open" data-title="待补证：来源与数据缺口" data-kind="gaps">
+            <h3>待补证</h3>
+            <p>GPU 历史价格、企业 ROI、数据中心融资和 K4/K5 资产表现仍需补齐。</p>
+            <div class="evidence-index">EP_001-EP_005</div>
+          </button>
+          <button class="evidence-card js-open" data-title="复盘记录：当前读数保持" data-kind="validation">
+            <h3>复盘记录</h3>
+            <p>当前结论保持：AI 有真实地面扩散，但融资脆弱性仍是活动观察项。</p>
+            <div class="evidence-index">EP_005 v0.2</div>
+          </button>
+        </div>
+
+        <div class="validation">
+          <div class="validation-row">
+            <div class="mono brass">复盘记录</div>
+            <p>KW-006 结论保持：AI 资本开支有真实地面扩散，但融资脆弱性仍为活动观察项；不确认系统性危机，不确认 AI 已确认 K6。</p>
+            <div class="mono quiet">来源：EP_005 v0.2</div>
+          </div>
+          <div class="validation-row">
+            <div class="mono brass">更新模式</div>
+            <p>K6 候选默认手动复核、证据门控、事件驱动；不做自动新闻流或每日 API 轮询。</p>
+            <div class="mono quiet">来源：Decision015</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <div class="foot-brand">KAIROS</div>
+        <div class="mono quiet">v1 静态仪表盘</div>
+      </div>
+      <p class="disclaimer">
+        Kairos 输出的是带证据状态、置信度、观察清单和证伪条件的阶段 / 窗口判断，不是投资建议，也不是日期预言机。
+      </p>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop js-close" aria-hidden="true"></div>
+  <aside class="drawer" aria-label="证据抽屉" aria-hidden="true">
+    <div class="drawer-head">
+      <div>
+        <div class="eyebrow" id="drawer-kicker">证据抽屉</div>
+        <h3 id="drawer-title">证据</h3>
+      </div>
+      <button class="close js-close" type="button" aria-label="关闭抽屉">x</button>
+    </div>
+    <div class="drawer-body" id="drawer-body"></div>
+  </aside>
+
+<script>
+  const staticTextEn = {
+    "周期天象图": "Macro Cycle Observatory",
+    "当前读数": "Current Reading",
+    "周期栈": "Cycle Stack",
+    "长波图谱": "Long Wave Atlas",
+    "观察清单": "Watchlist",
+    "资产映射": "Asset Map",
+    "证据": "Evidence",
+    "中文": "中文",
+    "Kairos v1 · 静态仪表盘": "Kairos v1 · Static Regime Console",
+    "把宏观周期做成可点击、可复盘、可证伪的天象图。": "A macro-cycle observatory where every regime read is clickable, reviewable, and falsifiable.",
+    "第一版不追逐每日新闻，不做日期预言机。Kairos 先回答“现在处在哪个周期状态”，再把读数连接到长波图谱、观察清单、证据包和来源检查器。": "Kairos does not chase daily headlines or pretend to date exact turns. It maps the current regime first, then ties each reading to the Long Wave Atlas, Watchlist, Evidence Packs, and Source Inspector.",
+    "-> 查看六层周期栈": "-> Inspect Cycle Stack",
+    "-> 进入长波图谱": "-> Open Long Wave Atlas",
+    "-> 查看观察清单": "-> Review Watchlist",
+    "当前周期状态": "Current Regime",
+    "K5-E / K6 候选观察": "K5-E / K6 Candidate Watch",
+    "手动复核": "Manual Review",
+    "中等置信度": "Medium confidence",
+    "规格日期：2026-07-06": "Spec date: 2026-07-06",
+    "来源：Kairos 文件": "Source: Kairos files",
+    "更新模式": "Update Mode",
+    "置信度": "Confidence",
+    "中等": "Medium",
+    "证据状态": "Evidence Status",
+    "证据门控": "Evidence-Gated",
+    "K6 状态": "K6 Status",
+    "仅候选": "Candidate Only",
+    "长波背景": "Long Wave Context",
+    "K5 后段与 K6 转换观察重叠": "Late K5 overlaps with K6 transition watch",
+    "AI 资本开支有真实地面信号，但不支持确认 K6。": "AI capex shows real ground signals, but does not yet confirm K6.",
+    "宏观": "Macro",
+    "信用": "Credit",
+    "政策": "Policy",
+    "美元": "Dollar",
+    "长波": "Long Wave",
+    "市场": "Market",
+    "已支持方向": "Supported Reading",
+    "AI 基础设施资本开支在电力设备、数据中心、半导体和网络设备端已有真实地面信号。": "AI infrastructure capex shows real ground signals across power equipment, data centers, semiconductors, and networking.",
+    "争议判断": "Contested Claims",
+    "AI 生产率扩散时点、2020 是否是 K5 硬终点、移动互联网 / 平台经济的 TFP 影响仍存在争议。": "AI productivity diffusion timing, whether 2020 is a hard K5 endpoint, and the TFP legacy of mobile internet / platform economy remain contested.",
+    "活动观察清单": "Active Watchlist",
+    "KW-006 跟踪 AI 资本开支 ROI、GPU 定价、数据中心融资、电网瓶颈与企业采用。": "KW-006 tracks AI capex ROI, GPU pricing, data center financing, grid bottlenecks, and enterprise adoption.",
+    "六层周期栈": "Six-Layer Cycle Stack",
+    "首页只显示主读数，内部判断保留六层结构。每层都是一个可点击判断，后续可下钻到证据抽屉。": "The first screen keeps the main reading prominent; the underlying judgment still uses six layers. Each layer can drill into the Evidence Drawer.",
+    "增长 x 通胀": "Growth x Inflation",
+    "宏观时钟": "Macro Clock",
+    "观察": "Watch",
+    "当前页面先采用观察状态：增长、通胀和政策约束需由后续当前读数内容正式填数。": "Held in watch state for now; growth, inflation, and policy constraints need a formal Current Reading data pack.",
+    "状态": "State",
+    "当前数据包待补": "Current data pack pending",
+    "部分完成 / 证据门控": "Partial / evidence-gated",
+    "待补：当前数据包 / 来源硬度": "Needs: current data pack / source hardness",
+    "信用 / 杠杆": "Credit / Leverage",
+    "金融周期": "Financial Cycle",
+    "AI 资本开支和融资结构是重点，不把局部脆弱性直接写成系统性危机。": "AI capex and financing structure are the focus; localized fragility is not elevated into systemic-crisis language.",
+    "融资脆弱性观察": "Fragility watch",
+    "关联：KW-006 / EP_001-EP_005": "Linked: KW-006 / EP_001-EP_005",
+    "利率 / 财政": "Rates / Fiscal",
+    "流动性 / 政策": "Liquidity / Policy",
+    "部分": "Partial",
+    "先展示政策约束层，不写未核验的实时利率或央行结论。": "This layer shows policy constraints without writing unverified real-time rate or central-bank conclusions.",
+    "财政货币约束观察": "Fiscal-monetary constraint watch",
+    "KW-002 / 来源补核中": "KW-002 / source review",
+    "待补：政策来源包": "Needs: policy source pack",
+    "美元 / VIX / 融资": "Dollar / VIX / Funding",
+    "全球美元": "Global Dollar",
+    "全球美元层用于连接 Rey 全球金融周期、美元融资与风险偏好。": "The global dollar layer connects Rey's global financial cycle, dollar funding, and risk appetite.",
+    "融资压力观察": "Funding pressure watch",
+    "BIS / IMF / FRED 来源补核中": "BIS / IMF / FRED source review",
+    "待补：FRED / BIS / IMF 来源补核": "Needs: FRED / BIS / IMF source review",
+    "K5-E / K6 候选观察是当前长波背景，但 K6 不得写成已确认。": "K5-E / K6 Candidate Watch is the current long-wave context, but K6 must not be written as confirmed.",
+    "模式": "Mode",
+    "手动 / 证据门控": "Manual / evidence-gated",
+    "手动证据门控复核": "Manual evidence-gated review",
+    "资产行为": "Asset Behavior",
+    "市场验证": "Market Validation",
+    "市场表现是验证层，不是唯一真相。资产含义进入资产映射，而不是交易建议。": "Market behavior is a validation layer, not the only truth. Asset implications belong in Asset Map, not trading advice.",
+    "AI 主导分化观察": "AI-led divergence watch",
+    "资产映射 / 复盘记录": "Asset Map / validation log",
+    "关联：资产映射 / 复盘记录": "Linked: Asset Map / validation log",
+    "K4 / K5 / K6 候选": "K4 / K5 / K6 Candidate",
+    "长波图谱展示历史阶段、研究状态和当前候选观察区。K6 仅作为 Candidate Watch，不作为已确认长波阶段。": "The Long Wave Atlas shows historical phases, research status, and the current candidate watch zone. K6 is shown only as Candidate Watch, not as a confirmed long-wave phase.",
+    "来源补核中": "Source review",
+    "部分核验": "Partly reviewed",
+    "1930s-1945 · 大萧条 / 战争重置": "1930s-1945 · Depression / War Reset",
+    "大萧条、金本位约束、战争财政和制度重置。": "Depression, gold-standard constraints, war finance, and institutional reset.",
+    "1945-1958 · 战后重建": "1945-1958 · Postwar Reconstruction",
+    "战后重建、美国主导、布雷顿森林框架成形。": "Postwar reconstruction, U.S. leadership, and the Bretton Woods framework taking shape.",
+    "有争议": "Contested",
+    "1958-1968/71 · 布雷顿森林黄金时代": "1958-1968/71 · Bretton Woods Golden Age",
+    "固定汇率、资本管制、美元-黄金体系共存。": "Fixed exchange rates, capital controls, and the dollar-gold system coexisting.",
+    "重点": "Priority",
+    "1968/71-1982 · 滞胀 / Volcker 重置": "1968/71-1982 · Stagflation / Volcker Reset",
+    "美元黄金脱钩、供给冲击、通胀失控与 Volcker 重置。": "Dollar-gold break, supply shocks, inflation instability, and the Volcker reset.",
+    "1979/82-1991 · 去通胀 / 美元重置": "1979/82-1991 · Disinflation / Dollar Reset",
+    "通胀被压制，利率下行长周期与金融化起点出现。": "Inflation was suppressed as the long rate-down cycle and financialization began.",
+    "1991-2000/04 · 全球化 / ICT": "1991-2000/04 · Globalization / ICT",
+    "全球化、ICT 扩散、低通胀增长和风险资产繁荣。": "Globalization, ICT diffusion, low-inflation growth, and risk-asset expansion.",
+    "2004-2008 · 信用泡沫 / 美元杠杆": "2004-2008 · Credit Bubble / Dollar Leverage",
+    "全球失衡、住房信用、影子银行和美元杠杆共振。": "Global imbalances, housing credit, shadow banking, and dollar leverage reinforcing each other.",
+    "2008-2020 · QE / 低利率资产负债表时代": "2008-2020 · QE / Low-Rate Balance Sheet Era",
+    "QE、低利率、平台经济和久期资产重估。": "QE, low rates, platform economy, and duration-asset repricing.",
+    "第一优先": "First priority",
+    "2020-now · 财政货币冲击 / AI 作为 K6 候选": "2020-now · Fiscal-Monetary Shock / AI as K6 Candidate",
+    "财政货币冲击、通胀回归、高利率重估、AI 成为 K6 候选。": "Fiscal-monetary shock, inflation return, higher-rate repricing, and AI becoming a K6 candidate.",
+    "候选观察": "Candidate watch",
+    "AI / 智能自动化": "AI / Intelligent Automation",
+    "观察 AI 是否从资本开支和局部生产率，扩散为跨行业生产范式。": "Watch whether AI moves from capex and local productivity gains into a cross-industry production paradigm.",
+    "能源 / 电力约束": "Energy / Power Constraint",
+    "观察电网、能源密度和数据中心需求是否成为新周期的物理约束。": "Watch whether grids, energy density, and data center demand become physical constraints for a new cycle.",
+    "自动化 / 机器人": "Automation / Robotics",
+    "观察自动化是否从软件效率提升，进入实体生产和服务流程改造。": "Watch whether automation moves from software efficiency into physical production and service workflows.",
+    "生物技术": "Biotech",
+    "观察生物技术是否形成足够广泛的生产率和资本形成证据。": "Watch whether biotech develops broad enough productivity and capital-formation evidence.",
+    "研究状态矩阵": "Research Status Matrix",
+    "阶段卡可以先展示结构，但每个节点必须保留研究状态。优先补强当前判断最相关的 K5-E、K4-D、K5-A、K5-C、K5-D。": "Phase cards can show the structure first, but every node must keep its research status. Priority work should strengthen K5-E, K4-D, K5-A, K5-C, and K5-D.",
+    "改变判断的观察项": "Watch Items That Could Change the Reading",
+    "观察清单是动态观察层，不是事实库。每个观察项都应有触发条件、证伪条件、复核模式和关联证据。": "The Watchlist is a dynamic observation layer, not a fact database. Every item should retain triggers, kill criteria, review mode, and related evidence.",
+    "观察清单记录会改变判断的未决问题，不等于已确认事实。触发、证伪和关闭都需要人工复核。": "The Watchlist records open questions that could change the reading; it is not confirmed fact. Triggers, falsification, and closure all require manual review.",
+    "AI / K6 扩散": "AI / K6 Diffusion",
+    "观察 AI 是从 K5 尾部金融狂热升级为 K6 扩散，还是仍停留在候选观察区。": "Watch whether AI upgrades from K5 late-phase financial mania to K6 diffusion, or remains in the candidate zone.",
+    "财政货币冲击": "Fiscal-Monetary Shock",
+    "观察 2020-2021 财政货币冲击是一次疫情脉冲，还是改变了未来通胀中枢。": "Watch whether the 2020-2021 fiscal-monetary shock was a pandemic impulse or changed the future inflation center.",
+    "实际利率重估": "Real Yield Reset",
+    "观察高实际利率是周期性暂态，还是打断低利率金融化定价体系的结构性断裂。": "Watch whether high real rates are cyclical or a structural break in low-rate financialized pricing.",
+    "已核源": "Source-checked",
+    "金融条件": "Financial Conditions",
+    "观察金融条件宽松是否抵消高利率紧缩，并构成 K5-E 的核心反证项。": "Watch whether loose financial conditions offset high-rate tightening and become a core counterpoint to K5-E.",
+    "已支持": "Supported",
+    "黄金 / 货币信任": "Gold / Monetary Trust",
+    "观察黄金是否正在从真实利率资产，转向法币信用、央行需求与美元体系重估的混合对冲。": "Watch whether gold is shifting from a real-rate asset toward a hybrid hedge on fiat credit, central-bank demand, and dollar-system repricing.",
+    "KW-006 · 重点": "KW-006 · Featured",
+    "AI 资本开支融资脆弱性": "AI Capex Financing Fragility",
+    "AI 基础设施资本开支有真实地面信号；ROI、融资脆弱性、GPU 定价、企业采用仍是活动观察项。": "AI infrastructure capex has real ground signals; ROI, financing fragility, GPU pricing, and enterprise adoption remain active watch items.",
+    "地面信号": "Ground signal",
+    "活动观察": "Active watch",
+    "手动": "Manual",
+    "资产表现映射": "Asset Behavior Map",
+    "资产映射用于解释不同 regime 下的含义，不构成交易建议。": "Asset Map explains implications under different regimes; it is not trading advice.",
+    "股票": "Equities",
+    "AI 基础设施股票仍是当前叙事核心，但需要用 ROI、现金流和融资结构验证，不把价格上涨直接当作 K6 证据。": "AI infrastructure equities remain central to the current narrative, but ROI, cash flow, and financing structure must validate it; price action alone is not K6 evidence.",
+    "状态：观察清单": "Status: watchlist",
+    "债券": "Bonds",
+    "债券含义取决于增长下行、通胀黏性和政策空间的组合，需等待当前读数数据包补齐。": "Bond implications depend on the mix of growth downside, inflation stickiness, and policy space; the Current Reading data pack is still needed.",
+    "状态：部分": "Status: partial",
+    "商品": "Commodities",
+    "商品连接通胀、能源瓶颈和 K6 物理约束，但不能单独证明长波转换。": "Commodities connect inflation, energy bottlenecks, and K6 physical constraints, but cannot prove a long-wave transition alone.",
+    "状态：有争议": "Status: contested",
+    "黄金": "Gold",
+    "黄金需要在真实利率、货币信任、央行需求和美元体系变化之间分解。": "Gold must be decomposed across real rates, monetary trust, central-bank demand, and dollar-system shifts.",
+    "美元 / 现金": "Dollar / Cash",
+    "美元和现金是全球金融周期压力与防御性的验证层，需与全球美元层联动。": "Dollar and cash validate global financial-cycle pressure and defensiveness; they should link to the Global Dollar layer.",
+    "状态：来源补核中": "Status: source review",
+    "证据 / 复盘": "Evidence / Validation",
+    "判断依据": "Evidence Ledger",
+    "判断依据与复盘": "Evidence Ledger and Validation",
+    "把证据拆成用户可读的状态桶：已支持、有争议、未确认、待补证和复盘记录。EP 编号保留为追溯索引。": "Evidence is organized into readable status buckets: supported, contested, unconfirmed, evidence gaps, and validation notes. EP IDs remain as traceable indexes.",
+    "AI 资本开支融资脆弱性主证据包。": "Master evidence pack for AI capex financing fragility.",
+    "CoreWeave 收入、backlog、债务、PPE 与集中度跟踪。": "CoreWeave revenue, backlog, debt, PPE, and concentration tracker.",
+    "H100 / H200 / B200 / B300 公开挂牌价格基线与缺口。": "H100 / H200 / B200 / B300 public listed price baselines and gaps.",
+    "Digital Realty / Equinix 融资、资本开支和再融资敏感性。": "Digital Realty / Equinix financing, capex, and refinancing sensitivity.",
+    "AI 基础设施扩散的地面信号交叉验证与来源修复。": "Ground-signal cross-check and source review for AI infrastructure diffusion.",
+    "AI 基础设施资本开支存在真实产业扩散迹象，但这不确认 K6。": "AI infrastructure capex shows real industrial diffusion signals, but this does not confirm K6.",
+    "AI 生产率扩散、2020 是否为硬终点、平台经济 TFP 影响仍需反证并列。": "AI productivity diffusion, whether 2020 is a hard endpoint, and platform-economy TFP effects still need counter-evidence shown in parallel.",
+    "未确认": "Unconfirmed",
+    "K6 仍处于候选观察区，不写成已确认长波，也不自动随新闻更新。": "K6 remains in the candidate watch zone; it is not written as a confirmed long wave and does not update automatically with news.",
+    "待补证": "Evidence gaps",
+    "GPU 历史价格、企业 ROI、数据中心融资和 K4/K5 资产表现仍需补齐。": "GPU historical pricing, enterprise ROI, data center financing, and K4/K5 asset behavior still need to be filled in.",
+    "当前结论保持：AI 有真实地面扩散，但融资脆弱性仍是活动观察项。": "Current reading holds: AI has real ground diffusion, while financing fragility remains an active watch item.",
+    "复盘记录": "Validation Note",
+    "KW-006 结论保持：AI 资本开支有真实地面扩散，但融资脆弱性仍为活动观察项；不确认系统性危机，不确认 AI 已确认 K6。": "KW-006 reading holds: AI capex has real ground diffusion, but financing fragility remains an active watch item; no systemic crisis is confirmed, and AI is not confirmed K6.",
+    "来源：EP_005 v0.2": "Source: EP_005 v0.2",
+    "更新模式": "Update Mode",
+    "K6 候选默认手动复核、证据门控、事件驱动；不做自动新闻流或每日 API 轮询。": "K6 Candidate is manually reviewed, evidence-gated, and event-driven by default; no automatic news feed or daily API polling.",
+    "来源：Decision015": "Source: Decision015",
+    "v1 静态仪表盘": "v1 static regime console",
+    "Kairos 输出的是带证据状态、置信度、观察清单和证伪条件的阶段 / 窗口判断，不是投资建议，也不是日期预言机。": "Kairos outputs phase / window judgments with evidence status, confidence, watchlists, and kill criteria. It is not investment advice and not a date oracle.",
+    "证据抽屉": "Evidence Drawer",
+    "证据": "Evidence",
+    "关闭抽屉": "Close drawer"
+  };
+
+  const attrTextEn = {
+    "Kairos 首页": "Kairos Home",
+    "Kairos 分区": "Kairos sections",
+    "语言切换": "Language switch",
+    "当前周期状态仪表盘": "Current regime dashboard",
+    "读数元信息": "Reading metadata",
+    "已支持方向": "Supported Reading",
+    "争议判断": "Contested Claims",
+    "活动观察清单": "Active Watchlist",
+    "宏观时钟": "Macro Clock",
+    "金融周期": "Financial Cycle",
+    "流动性 / 政策": "Liquidity / Policy",
+    "全球美元": "Global Dollar",
+    "长波背景": "Long Wave Context",
+    "市场验证": "Market Validation",
+    "K4-A 大萧条 / 战争重置": "K4-A Depression / War Reset",
+    "K4-B 战后重建": "K4-B Postwar Reconstruction",
+    "K4-C 布雷顿森林黄金时代": "K4-C Bretton Woods Golden Age",
+    "K4-D 滞胀 / Volcker 重置": "K4-D Stagflation / Volcker Reset",
+    "K5-A 去通胀 / 金融化起点": "K5-A Disinflation / Financialization Start",
+    "K5-B 全球化 / ICT": "K5-B Globalization / ICT",
+    "K5-C 信用泡沫": "K5-C Credit Bubble",
+    "K5-D QE / 平台经济": "K5-D QE / Platform Economy",
+    "K5-E 财政货币冲击 / AI 作为 K6 候选": "K5-E Fiscal-Monetary Shock / AI as K6 Candidate",
+    "K6 Candidate Watch / AI": "K6 Candidate Watch / AI",
+    "K6 Candidate Watch / Energy & Power": "K6 Candidate Watch / Energy & Power",
+    "K6 Candidate Watch / Automation": "K6 Candidate Watch / Automation",
+    "K6 Candidate Watch / Biotech": "K6 Candidate Watch / Biotech",
+    "KW-001 AI / K6 扩散": "KW-001 AI / K6 Diffusion",
+    "KW-002 财政货币冲击": "KW-002 Fiscal-Monetary Shock",
+    "KW-003 实际利率重估": "KW-003 Real Yield Reset",
+    "KW-004 金融条件": "KW-004 Financial Conditions",
+    "KW-005 黄金 / 货币信任": "KW-005 Gold / Monetary Trust",
+    "KW-006 AI 资本开支融资脆弱性": "KW-006 AI Capex Financing Fragility",
+    "EP_001 KW-006 主证据包": "EP_001 KW-006 Master Evidence Pack",
+    "EP_002 CoreWeave 滚动跟踪": "EP_002 CoreWeave Rolling Tracker",
+    "EP_003 GPU 云价格跟踪": "EP_003 GPU Cloud Price Tracker",
+    "EP_004 数据中心 REIT 融资跟踪": "EP_004 Data Center REIT Financing Tracker",
+    "EP_005 SignalOS 交叉验证": "EP_005 SignalOS Cross-Check",
+    "已支持：AI 地面信号": "Supported: AI Ground Signals",
+    "有争议：生产率扩散": "Contested: Productivity Diffusion",
+    "未确认：K6 仍是候选": "Unconfirmed: K6 Remains Candidate",
+    "待补证：来源与数据缺口": "Evidence Gaps: Sources and Data",
+    "复盘记录：当前读数保持": "Validation Note: Current Reading Holds",
+    "证据抽屉": "Evidence Drawer",
+    "关闭抽屉": "Close drawer"
+  };
+
+  const pageTitles = {
+    zh: "Kairos · 周期天象图",
+    en: "Kairos · Macro Cycle Observatory"
+  };
+
+  const pageMeta = {
+    zh: {
+      description: "Kairos · 周期天象图：一个可点击、可复盘、可证伪的宏观周期观测仪，连接当前 regime、长波图谱、观察清单和证据包。",
+      ogTitle: "Kairos · 周期天象图",
+      ogDescription: "Macro Cycle Observatory for regime readings, Long Wave Atlas, Watchlist, and evidence-gated validation.",
+      ogLocale: "zh_CN",
+      ogLocaleAlternate: "en_US",
+      twitterTitle: "Kairos · 周期天象图",
+      twitterDescription: "把宏观周期做成可点击、可复盘、可证伪的天象图。"
+    },
+    en: {
+      description: "Kairos · Macro Cycle Observatory: a clickable, reviewable, and falsifiable macro-cycle instrument for regime readings, the Long Wave Atlas, Watchlist, and Evidence Packs.",
+      ogTitle: "Kairos · Macro Cycle Observatory",
+      ogDescription: "A macro-cycle observatory where every regime read is clickable, reviewable, and falsifiable.",
+      ogLocale: "en_US",
+      ogLocaleAlternate: "zh_CN",
+      twitterTitle: "Kairos · Macro Cycle Observatory",
+      twitterDescription: "A macro-cycle observatory where every regime read is clickable, reviewable, and falsifiable."
+    }
+  };
+
+  const drawerDataZh = {
+    supported: {
+      summary: "可保留的强结论：AI 基础设施资本开支已经有真实地面产业信号，不能简单写成金融空转。",
+      evidence: ["EP_005 记录电力设备、数据中心、半导体、网络设备端的地面信号交叉验证。", "该结论仍不等于确认 K6，也不等于系统性危机。"],
+      gaps: ["企业端 ROI / 采用率", "GPU 云历史价格", "电网瓶颈与融资脆弱性的硬证据"],
+      status: "已支持方向 / 不确认 K6",
+      hardness: "混合：证据包交叉验证 + 剩余来源补核",
+      related: ["EP_005 SignalOS Cross-Check", "KW-006"],
+      kill: ["不能由地面信号单独推出确认 K6", "不能写成系统性金融危机"]
+    },
+    contested: {
+      summary: "争议判断必须展示正反两侧，不能被包装成已支持结论。",
+      evidence: ["AI 生产率扩散时点仍有明显争议。", "2020 是否是 K5 硬终点不能作为事实。", "K4/K5 长波断代默认采用软日期区间。"],
+      gaps: ["K4/K5 阶段证据卡", "历史资产表现量化", "反证材料整理"],
+      status: "有争议",
+      hardness: "混合 / 需要展示反证",
+      related: ["BRD_004 长波图谱", "BRD_005 网站体验"],
+      kill: ["不得把争议判断包装成已支持结论"]
+    },
+    watchlist: {
+      summary: "观察清单记录会改变判断的观察项，不等于已确认事实。",
+      evidence: ["KW-006 是当前 K5-E / K6 候选下最重要的活动观察项。", "观察清单必须保留触发条件、证伪条件、复核模式和关联证据包。"],
+      gaps: ["下一轮可补 EP_005 剩余缺口", "当前读数数据包", "K5-E 节点内容补全"],
+      status: "观察清单",
+      hardness: "手动 / 证据门控",
+      related: ["Watchlist", "Evidence Ledger"],
+      kill: ["触发、证伪或关闭都必须保留 review note"]
+    },
+    unconfirmed: {
+      summary: "未确认项必须明确放在候选观察区，不能因为页面展示而升级为结论。",
+      evidence: ["K6 仍是 Candidate Watch。", "AI 地面信号支持观察价值，但不等于确认新长波。"],
+      gaps: ["跨行业生产率扩散", "企业采用 / ROI", "传统行业利润池迁移"],
+      status: "未确认 / 候选观察",
+      hardness: "手动 / 证据门控",
+      related: ["K6 Candidate Watch", "KW-001", "KW-006"],
+      kill: ["不得把 K6 写成 confirmed", "不得用新闻流自动更新 K6 判断"]
+    },
+    gaps: {
+      summary: "待补证项用于公开说明当前判断还缺什么，而不是把来源状态变成页面噪音。",
+      evidence: ["EP_001-EP_005 已经形成 KW-006 的初始证据链。", "K4/K5 历史阶段仍需要资产表现与来源页码补强。"],
+      gaps: ["GPU 历史价格", "企业采用 / ROI", "数据中心融资脆弱性", "K4/K5 阶段资产表现"],
+      status: "待补证 / 来源补核中",
+      hardness: "逐项补核",
+      related: ["Evidence Packs", "Long Wave Atlas"],
+      kill: ["待补证不能写成已支持", "来源补核中不能写成 confirmed"]
+    },
+    validation: {
+      summary: "当前复盘记录保持：AI 基础设施资本开支有真实地面扩散，但融资脆弱性仍是活动观察项。",
+      evidence: ["EP_005 支持地面信号交叉验证。", "KW-006 继续保留 ROI、GPU 定价、融资结构和企业采用观察。"],
+      gaps: ["持续同步 EP_002-EP_005", "下一版 Current Reading 数据包"],
+      status: "读数保持 / 不确认 K6",
+      hardness: "证据包交叉验证 + 人工复核",
+      related: ["EP_005 v0.2", "KW-006"],
+      kill: ["不能确认系统性危机", "不能确认 AI 已经是 K6"]
+    },
+    macro: {
+      summary: "宏观时钟需要正式当前读数内容填充，当前静态页面不写未核验的实时宏观数字。",
+      evidence: ["BRD_002 定义增长 x 通胀状态枚举。", "BRD_005 要求首页展示当前读数、置信度和来源状态。"],
+      gaps: ["当前读数 v0.1 正文", "官方数据源与来源硬度"]
+    },
+    financial: {
+      summary: "金融周期当前重点在 AI 资本开支、融资结构和信用脆弱性，而不是直接断言危机。",
+      evidence: ["EP_001 至 EP_005 已建立 KW-006 证据链。", "CoreWeave、GPU 市场、数据中心 REIT 与 SignalOS 交叉验证形成四层观察。"],
+      gaps: ["系统性压力触发条件", "融资利差和违约数据", "GPU 抵押价值"]
+    },
+    policy: {
+      summary: "流动性 / 政策层需要单独来源包，避免写入未核验实时政策数字。",
+      evidence: ["BRD_002 要求政策层包括利率、真实利率、央行流动性、财政空间和政策约束。"],
+      gaps: ["Fed / Treasury / FRED 来源包", "财政利息支出与政策空间"]
+    },
+    dollar: {
+      summary: "全球美元层连接 Rey 全球金融周期、美元融资、VIX 和跨境信用。",
+      evidence: ["理论笔记包含 Rey 全球金融周期。", "BRD_002 定义全球美元层。"],
+      gaps: ["BIS / IMF / FRED 来源补核", "VIX 与美元融资状态映射"]
+    },
+    longwave: {
+      summary: "K5-E / K6 候选观察是长波背景，不是确认 K6。",
+      evidence: ["BRD_004 明确 K5-E / AI 只能作为 K6 候选 / 转换观察。", "Decision015 明确 K6 采用手动证据门控更新模式。"],
+      gaps: ["K5-E 节点内容补全", "AI 生产率扩散证据", "历史类比反证"]
+    },
+    market: {
+      summary: "市场验证是验证层，不是单独决定宏观判断的真理。",
+      evidence: ["BRD_002 明确市场表现可以验证或反驳宏观判断，但不能独立决定宏观判断。"],
+      gaps: ["资产映射证据卡", "历史阶段资产行为"]
+    },
+    k4a: {summary:"K4-A 可展示骨架，但仍在来源补核中。", evidence:["金本位退出、债务通缩、银行危机、战时财政动员是证据重点。"], gaps:["战时资产表现","产业技术扩散细节","跨国可比数据"]},
+    k4b: {summary:"K4-B 可展示骨架，但资产表现和产业扩散数据不足。", evidence:["战后重建、资本管制、美元短缺、欧洲复兴。"], gaps:["马歇尔计划细节","战后债务压制","股票恢复与利率管制"]},
+    k4c: {summary:"K4-C 是有争议 / 来源补核中节点。", evidence:["Triffin dilemma、黄金池、美元外部负债、资本管制。"], gaps:["1950s-1960s 可比资产表现","Bretton Woods 稳定机制争议"]},
+    k4d: {summary:"K4-D 是优先补详细节点，连接通胀状态到 K5 金融化起点。", evidence:["Nixon shock、1970s inflation、oil shocks、Volcker disinflation。"], gaps:["Volcker 相关来源补核","1970s 资产行为定量化"]},
+    k5a: {summary:"K5-A 不应硬写 1982 起点，应显示 1979/82 转换窗口。", evidence:["Volcker disinflation、金融去管制、Plaza / Louvre、1987 crash。"], gaps:["1980s 金融自由化证据卡","资产表现证据"]},
+    k5b: {summary:"K5-B 支持全球化 / ICT / 大缓和框架，但仍有 TFP 争议。", evidence:["ICT productivity、Great Moderation、global supply chains、dotcom bubble。"], gaps:["2000-2004 是否单独作为转折过渡期"]},
+    k5c: {summary:"K5-C 是全球失衡、住房信用、影子银行和美元杠杆共振的重点节点。", evidence:["经常账户失衡、ABCP、证券化、住房泡沫。"], gaps:["ABCP 序列代码","影子银行规模与全球失衡映射"]},
+    k5d: {summary:"K5-D 连接 QE、平台经济和低利率资产重估。", evidence:["央行资产负债表、长期停滞、平台经济、低利率。"], gaps:["平台经济与宏观 TFP 的证据冲突"]},
+    k5e: {summary:"K5-E 是第一优先节点，承接财政货币冲击、通胀回归与 AI 作为 K6 候选。", evidence:["KW-006 与 EP_001 至 EP_005 已形成证据链。"], gaps:["AI 生产率扩散","企业采用 / ROI","传统行业利润池迁移","资本开支 ROI"]},
+    k6ai: {summary:"AI 是当前最重要的 K6 Candidate Watch，但仍不能确认 K6。", evidence:["KW-006 / EP_005 支持 AI 基础设施资本开支存在真实地面信号。"], gaps:["跨行业生产率扩散","企业 ROI","传统行业利润池迁移"], status:"候选观察 / 未确认", hardness:"部分核验 / 证据门控", related:["KW-001","KW-006"], kill:["AI 采用停留在少数行业或浅层功能","AI 收入无法覆盖资本开支和折旧压力"]},
+    k6energy: {summary:"能源与电力约束是 K6 Candidate 的物理约束观察项，不是独立确认条件。", evidence:["数据中心、电网和电力设备地面信号可作为观察入口。"], gaps:["NERC 完整警报","电网投资与瓶颈数据","能源密度约束"], status:"候选观察 / 未确认", hardness:"来源补核中", related:["KW-006","EP_005"], kill:["电力瓶颈缓解且不限制 AI 扩散","能源约束不能解释资本开支路径"]},
+    k6auto: {summary:"自动化 / 机器人需要证明它从软件效率扩展到实体生产和服务流程。", evidence:["当前页面仅作为候选观察，不写成已支持结论。"], gaps:["机器人采用率","单位经济性","跨行业劳动生产率"], status:"候选观察 / 未确认", hardness:"待补证", related:["K6 Candidate Watch"], kill:["自动化仍停留在局部场景","生产率和利润池迁移缺乏证据"]},
+    k6bio: {summary:"生物技术暂列 K6 Candidate 观察项，需要更强的生产率和资本形成证据。", evidence:["当前仅保留为候选方向，不进入已支持判断。"], gaps:["产业化速度","资本形成强度","生产率影响"], status:"候选观察 / 未确认", hardness:"待补证", related:["K6 Candidate Watch"], kill:["技术进展不能形成广泛资本开支或生产率扩散"]},
+    kw1: {summary:"KW-001 观察 AI 是否从 K5 尾部金融狂热升级为 K6 扩散。", evidence:["Acemoglu NBER WP32487 支持审慎判断。","Census BTOS 支持采用率观察。","Brynjolfsson / Li / Raymond WP31161 支持微观生产率反证。"], gaps:["AI 资本开支 / ROI 公司级补证","传统行业利润池迁移","跨行业生产率扩散"], status:"活动观察项", hardness:"部分已核源 / 来源补核中", related:["K5-E / K6 候选","KW-006"], kill:["AI 采用停留在少数行业或浅层功能","资本开支 ROI 下降或 AI 收入无法覆盖折旧压力","BLS / BEA 生产率没有扩散"]},
+    kw2: {summary:"KW-002 观察财政货币冲击是否形成新通胀状态。", evidence:["FRED FYFSD 可用于赤字观察。","FRED CPIAUCSL / CPILFESL 可用于 headline / core CPI。"], gaps:["CBO 财政冲击直接来源","BEA 转移支付细节","长期通胀中枢反证"], status:"活动 / 有争议", hardness:"FRED / BLS 已核源；CBO / BEA 来源补核中", related:["K5-E","流动性 / 政策"], kill:["通胀回落至 2% 附近且长期预期稳定","财政赤字显著收缩","工资和服务通胀下行"]},
+    kw3: {summary:"KW-003 观察高实际利率是否永久打断低利率资产定价体系。", evidence:["FRED DFII10 已核源。","NFCI 宽松状态可作为反证。"], gaps:["2020-now 股债商品黄金总回报数据源","长久期资产验证","信用再融资压力"], status:"活动 / 已支持但有争议", hardness:"FRED 已核源；资产总回报来源待补", related:["资产映射","当前读数"], kill:["Fed 被迫重新大幅降息","实际利率回到接近 0 或负值","长久期资产重新全面占优"]},
+    kw4: {summary:"KW-004 观察金融条件宽松是否抵消高利率紧缩。", evidence:["FRED NFCI notes 明确负值代表金融条件较平均更宽松。","FRED BAMLH0A0HYM2 可观察高收益信用利差。"], gaps:["私人信贷资金流向","C&I loans","违约或流动性压力证据"], status:"活动 / 已支持", hardness:"FRED 已核源", related:["金融周期","当前读数"], kill:["NFCI 转正","HY spreads 快速上行","私人信贷出现违约或流动性压力"]},
+    kw5: {summary:"KW-005 观察黄金是否从真实利率资产转向法币信用对冲资产。", evidence:["当前方向值得观察，但黄金数据直接来源仍在补核中。"], gaps:["FRED / LBMA / World Gold Council 直接来源","央行买金","ETF flows"], status:"观察中 / 来源补核中", hardness:"来源补核中", related:["资产映射","长波图谱"], kill:["实际利率上行重新压制黄金","央行买入放缓","美元信用疑虑缓和"]},
+    kw6: {summary:"KW-006 是当前重点：AI 资本开支有真实地面信号，但融资脆弱性仍是活动观察项。", evidence:["EP_001 主证据包、EP_002 CoreWeave、EP_003 GPU 定价、EP_004 数据中心 REIT、EP_005 SignalOS 交叉验证。"], gaps:["GPU 历史价格","企业采用 / ROI","NERC 完整警报","Equinix 直接来源","WoodMac 变压器交付周期"], status:"活动观察项 / 部分已核源", hardness:"证据包交叉验证；仍有来源补核", related:["EP_001","EP_002","EP_003","EP_004","EP_005"], kill:["AI 收入和自由现金流能持续覆盖资本开支","融资结构主要由现金流内生支持","资本开支扩散到传统行业并带来利润提升"]},
+    ep1: {summary:"EP_001 是 KW-006 主证据包。", evidence:["集中管理 AI 资本开支、现金流、RPO、承诺、租赁、债务与融资脆弱性。"], gaps:["持续同步 EP_002-EP_005 的结论"]},
+    ep2: {summary:"EP_002 是 CoreWeave 滚动跟踪表。", evidence:["跟踪收入、backlog、利息费用、债务到期、PPE 购买、租赁敞口等。"], gaps:["季度更新与 GPU 价格 / 利用率对照"]},
+    ep3: {summary:"EP_003 是 GPU 云市场价格跟踪表。", evidence:["以 Runpod / Lambda 公开挂牌价格基线建立初始观察。"], gaps:["历史成交价、可用性、利用率、供应商利润率"]},
+    ep4: {summary:"EP_004 是数据中心 REIT 融资跟踪表。", evidence:["DLR / EQIX 债务到期、开发资本开支、租赁、JV 敞口、租户集中度。"], gaps:["私有平台：Vantage / CyrusOne / QTS / NTT"]},
+    ep5: {summary:"EP_005 是 SignalOS 交叉验证与来源补核证据包。", evidence:["结论：AI 基础设施资本开支有真实产业扩散，但不支持已确认系统性危机或 AI 已确认 K6。"], gaps:["Eaton 取消率、TSMC CoWoS、Arista target、NERC details、GPU historical pricing"]}
+  };
+
+  const drawerDataEn = {
+    supported: {
+      summary: "Supported reading: AI infrastructure capex has real industrial ground signals and should not be reduced to pure financial churn.",
+      evidence: ["EP_005 records ground-signal cross-checks across power equipment, data centers, semiconductors, and networking.", "This does not confirm K6 and does not confirm a systemic crisis."],
+      gaps: ["Enterprise ROI / adoption rate", "GPU cloud historical pricing", "Hard evidence connecting grid bottlenecks and financing fragility"],
+      status: "supported reading / K6 not confirmed",
+      hardness: "mixed: Evidence Pack cross-check + remaining source review",
+      related: ["EP_005 SignalOS Cross-Check", "KW-006"],
+      kill: ["Ground signals alone cannot confirm K6", "Do not write this as a systemic financial crisis"]
+    },
+    contested: {
+      summary: "Contested claims must show both sides and cannot be packaged as supported conclusions.",
+      evidence: ["AI productivity diffusion timing remains contested.", "Whether 2020 is a hard K5 endpoint cannot be stated as fact.", "K4/K5 long-wave dating uses soft date ranges by default."],
+      gaps: ["K4/K5 phase evidence cards", "Quantified historical asset behavior", "Counter-evidence review"],
+      status: "contested",
+      hardness: "mixed / counter-evidence required",
+      related: ["BRD_004 Long Wave Atlas", "BRD_005 Website Experience"],
+      kill: ["Do not package contested judgment as supported conclusion"]
+    },
+    watchlist: {
+      summary: "The Watchlist records observations that could change the reading; it is not a confirmed-fact database.",
+      evidence: ["KW-006 is the most important active watch item under the current K5-E / K6 Candidate Watch.", "Each watch item must retain triggers, kill criteria, review mode, and related evidence packs."],
+      gaps: ["Next EP_005 remaining gaps", "Current Reading data pack", "K5-E node draft"],
+      status: "watchlist",
+      hardness: "manual / evidence-gated",
+      related: ["Watchlist", "Evidence Ledger"],
+      kill: ["Any trigger, falsification, or close action must keep a review note"]
+    },
+    unconfirmed: {
+      summary: "Unconfirmed items must remain in the candidate watch zone and cannot become conclusions just because they are visible on the page.",
+      evidence: ["K6 remains Candidate Watch.", "AI ground signals support the watch case but do not confirm a new long wave."],
+      gaps: ["Cross-industry productivity diffusion", "Enterprise adoption / ROI", "Traditional-industry profit-pool migration"],
+      status: "unconfirmed / candidate watch",
+      hardness: "manual / evidence-gated",
+      related: ["K6 Candidate Watch", "KW-001", "KW-006"],
+      kill: ["Do not write K6 as confirmed", "Do not auto-update K6 judgment from news flow"]
+    },
+    gaps: {
+      summary: "Evidence gaps publicly explain what the reading still needs, without turning source status into page noise.",
+      evidence: ["EP_001-EP_005 form the initial KW-006 evidence chain.", "K4/K5 historical phases still need stronger asset-behavior evidence and source-page repair."],
+      gaps: ["GPU historical pricing", "Enterprise adoption / ROI", "Data center financing fragility", "K4/K5 phase asset behavior"],
+      status: "evidence gaps / source review",
+      hardness: "item-by-item review",
+      related: ["Evidence Packs", "Long Wave Atlas"],
+      kill: ["Do not write evidence gaps as supported", "Do not write source review items as confirmed"]
+    },
+    validation: {
+      summary: "Current validation note holds: AI infrastructure capex shows real ground diffusion, while financing fragility remains an active watch item.",
+      evidence: ["EP_005 supports the ground-signal cross-check.", "KW-006 keeps ROI, GPU pricing, financing structure, and enterprise adoption on watch."],
+      gaps: ["Keep synchronizing EP_002-EP_005", "Next Current Reading data pack"],
+      status: "reading holds / K6 not confirmed",
+      hardness: "Evidence Pack cross-check + manual review",
+      related: ["EP_005 v0.2", "KW-006"],
+      kill: ["Do not confirm a systemic crisis", "Do not confirm AI as K6"]
+    },
+    macro: {
+      summary: "The Macro Clock needs a formal Current Reading before the page writes live macro numbers.",
+      evidence: ["BRD_002 defines the growth x inflation regime states.", "BRD_005 requires the first viewport to show reading, confidence, and source status."],
+      gaps: ["Current Reading v0.1 body copy", "Official data sources and source hardness"]
+    },
+    financial: {
+      summary: "The Financial Cycle layer focuses on AI capex, financing structure, and credit fragility without jumping to crisis language.",
+      evidence: ["EP_001 through EP_005 establish the KW-006 evidence chain.", "CoreWeave, GPU markets, data center REITs, and SignalOS cross-checks form four observation layers."],
+      gaps: ["Systemic stress triggers", "Funding spreads and default data", "GPU collateral value"]
+    },
+    policy: {
+      summary: "The Liquidity / Policy layer needs a separate source pack to avoid unverified real-time policy claims.",
+      evidence: ["BRD_002 says this layer covers rates, real rates, central-bank liquidity, fiscal space, and policy constraints."],
+      gaps: ["Fed / Treasury / FRED source pack", "Fiscal interest expense and policy space"]
+    },
+    dollar: {
+      summary: "The Global Dollar layer connects Rey's global financial cycle, dollar funding, VIX, and cross-border credit.",
+      evidence: ["The theory notes include Rey's global financial cycle.", "BRD_002 defines the Global Dollar layer."],
+      gaps: ["BIS / IMF / FRED source review", "VIX and dollar-funding state mapping"]
+    },
+    longwave: {
+      summary: "K5-E / K6 Candidate Watch is the long-wave context, not confirmed K6.",
+      evidence: ["BRD_004 states K5-E / AI can only be shown as K6 Candidate / transition watch.", "Decision015 says K6 uses manual, evidence-gated update mode."],
+      gaps: ["K5-E node draft", "AI productivity diffusion evidence", "Historical-analogy counter-evidence"]
+    },
+    market: {
+      summary: "Market validation is a validation layer, not a standalone source of truth for macro judgment.",
+      evidence: ["BRD_002 says market behavior can validate or challenge macro judgment, but cannot decide it alone."],
+      gaps: ["Asset-map evidence cards", "Historical phase asset behavior"]
+    },
+    k4a: {summary:"K4-A can show the skeleton, but source review is still in progress.", evidence:["Key evidence areas: gold-standard exit, debt deflation, banking crisis, and wartime fiscal mobilization."], gaps:["Wartime asset behavior","Industrial technology diffusion details","Cross-country comparable data"]},
+    k4b: {summary:"K4-B can show the skeleton, but asset behavior and industrial diffusion data remain thin.", evidence:["Postwar reconstruction, capital controls, dollar shortage, and European recovery."], gaps:["Marshall Plan details","Postwar debt repression","Equity recovery and rate controls"]},
+    k4c: {summary:"K4-C is contested / under source review.", evidence:["Triffin dilemma, gold pool, external dollar liabilities, and capital controls."], gaps:["1950s-1960s comparable asset behavior","Debate over Bretton Woods stability mechanisms"]},
+    k4d: {summary:"K4-D is a priority node because it connects inflation regime to the K5 financialization starting point.", evidence:["Nixon shock, 1970s inflation, oil shocks, and Volcker disinflation."], gaps:["Volcker source review","Quantified 1970s asset behavior"]},
+    k5a: {summary:"K5-A should not hard-code a 1982 starting point; it should show a 1979/82 transition window.", evidence:["Volcker disinflation, financial deregulation, Plaza / Louvre, and the 1987 crash."], gaps:["1980s financial liberalization evidence card","Asset-behavior evidence"]},
+    k5b: {summary:"K5-B supports the globalization / ICT / Great Moderation frame, but TFP effects remain contested.", evidence:["ICT productivity, Great Moderation, global supply chains, and dotcom bubble."], gaps:["Whether 2000-2004 should be a separate transition period"]},
+    k5c: {summary:"K5-C is a priority node for global imbalances, housing credit, shadow banking, and dollar leverage.", evidence:["Current-account imbalances, ABCP, securitization, and housing bubble."], gaps:["ABCP series code","Mapping shadow-banking scale to global imbalances"]},
+    k5d: {summary:"K5-D connects QE, platform economy, and low-rate asset repricing.", evidence:["Central-bank balance sheets, secular stagnation, platform economy, and low rates."], gaps:["Evidence conflict around platform economy and macro TFP"]},
+    k5e: {summary:"K5-E is the first-priority node, carrying fiscal-monetary shock, inflation return, and AI as K6 Candidate.", evidence:["KW-006 and EP_001 through EP_005 already form an evidence chain."], gaps:["AI productivity diffusion","Enterprise adoption / ROI","Traditional-industry profit-pool migration","Capex ROI"]},
+    k6ai: {summary:"AI is the most important K6 Candidate Watch item, but it still cannot confirm K6.", evidence:["KW-006 / EP_005 support real ground signals in AI infrastructure capex."], gaps:["Cross-industry productivity diffusion","Enterprise ROI","Traditional-industry profit-pool migration"], status:"candidate watch / unconfirmed", hardness:"partly reviewed / evidence-gated", related:["KW-001","KW-006"], kill:["AI adoption remains limited to a few industries or shallow functions","AI revenue cannot cover capex and depreciation pressure"]},
+    k6energy: {summary:"Energy and power constraints are physical-constraint watch items for K6 Candidate, not independent confirmation criteria.", evidence:["Data centers, grids, and power-equipment ground signals are observation entry points."], gaps:["Full NERC alert","Grid investment and bottleneck data","Energy-density constraints"], status:"candidate watch / unconfirmed", hardness:"source review", related:["KW-006","EP_005"], kill:["Power bottlenecks ease and do not limit AI diffusion","Energy constraints cannot explain the capex path"]},
+    k6auto: {summary:"Automation / robotics needs evidence that it moves from software efficiency into physical production and service workflows.", evidence:["The current page lists it only as a candidate watch, not a supported conclusion."], gaps:["Robotics adoption rate","Unit economics","Cross-industry labor productivity"], status:"candidate watch / unconfirmed", hardness:"evidence gap", related:["K6 Candidate Watch"], kill:["Automation remains limited to local scenarios","Productivity and profit-pool migration lack evidence"]},
+    k6bio: {summary:"Biotech remains a K6 Candidate watch item and needs stronger productivity and capital-formation evidence.", evidence:["It is retained only as a candidate direction, not as a supported reading."], gaps:["Industrialization speed","Capital-formation intensity","Productivity impact"], status:"candidate watch / unconfirmed", hardness:"evidence gap", related:["K6 Candidate Watch"], kill:["Technical progress does not produce broad capex or productivity diffusion"]},
+    kw1: {summary:"KW-001 watches whether AI moves from K5 late-phase financial mania into K6 diffusion.", evidence:["Acemoglu NBER WP32487 supports a cautious view.","Census BTOS supports adoption-rate tracking.","Brynjolfsson / Li / Raymond WP31161 provides micro-productivity counter-evidence."], gaps:["Company-level AI capex / ROI evidence","Traditional-industry profit-pool migration","Cross-industry productivity diffusion"], status:"active watch item", hardness:"partly source-checked / source review", related:["K5-E / K6 Candidate","KW-006"], kill:["AI adoption remains limited to a few industries or shallow functions","Capex ROI falls or AI revenue cannot cover depreciation pressure","BLS / BEA productivity does not diffuse"]},
+    kw2: {summary:"KW-002 watches whether the fiscal-monetary shock created a new inflation regime.", evidence:["FRED FYFSD can support deficit tracking.","FRED CPIAUCSL / CPILFESL can support headline / core CPI tracking."], gaps:["Direct CBO fiscal-shock sources","BEA transfer-payment details","Counter-evidence on long-run inflation center"], status:"active / contested", hardness:"FRED / BLS source-checked; CBO / BEA source review", related:["K5-E","Liquidity / Policy"], kill:["Inflation returns near 2% and long-run expectations stay anchored","Fiscal deficits shrink materially","Wage and services inflation decline"]},
+    kw3: {summary:"KW-003 watches whether high real rates permanently break low-rate asset pricing.", evidence:["FRED DFII10 is source-checked.","Loose NFCI conditions can act as counter-evidence."], gaps:["2020-now total-return sources for equities, bonds, commodities, and gold","Long-duration asset validation","Credit refinancing pressure"], status:"active / supported but contested", hardness:"FRED source-checked; asset total-return sources pending", related:["Asset Map","Current Reading"], kill:["The Fed is forced into major cuts again","Real rates return near zero or negative","Long-duration assets broadly regain leadership"]},
+    kw4: {summary:"KW-004 watches whether loose financial conditions offset high-rate tightening.", evidence:["FRED NFCI notes state that negative values indicate easier-than-average financial conditions.","FRED BAMLH0A0HYM2 can track high-yield credit spreads."], gaps:["Private-credit flows","C&I loans","Default or liquidity-stress evidence"], status:"active / supported", hardness:"FRED source-checked", related:["Financial Cycle","Current Reading"], kill:["NFCI turns positive","High-yield spreads rise quickly","Private credit shows defaults or liquidity stress"]},
+    kw5: {summary:"KW-005 watches whether gold is shifting from a real-rate asset toward a fiat-credit hedge.", evidence:["The direction is worth watching, but direct gold data sources are still under review."], gaps:["FRED / LBMA / World Gold Council direct sources","Central-bank gold buying","ETF flows"], status:"watching / source review", hardness:"source review", related:["Asset Map","Long Wave Atlas"], kill:["Rising real rates suppress gold again","Central-bank buying slows","Dollar-credit concerns ease"]},
+    kw6: {summary:"KW-006 is the current priority: AI capex has real ground signals, while financing fragility remains an active watch item.", evidence:["EP_001 master pack, EP_002 CoreWeave, EP_003 GPU pricing, EP_004 data center REITs, and EP_005 SignalOS cross-check."], gaps:["GPU historical pricing","Enterprise adoption / ROI","Full NERC alert","Equinix direct source","WoodMac transformer lead time"], status:"active watch item / partly source-checked", hardness:"Evidence Pack cross-check; remaining source review", related:["EP_001","EP_002","EP_003","EP_004","EP_005"], kill:["AI revenue and free cash flow sustainably cover capex","Financing is mostly internally funded by cash flow","Capex diffuses into traditional industries and lifts profits"]},
+    ep1: {summary:"EP_001 is the KW-006 master evidence pack.", evidence:["It centralizes AI capex, cash flow, RPO, commitments, leases, debt, and financing fragility."], gaps:["Keep synchronizing conclusions from EP_002-EP_005"]},
+    ep2: {summary:"EP_002 is the CoreWeave rolling tracker.", evidence:["It tracks revenue, backlog, interest expense, debt maturity, PPE purchases, and lease exposure."], gaps:["Quarterly updates against GPU pricing / utilization"]},
+    ep3: {summary:"EP_003 is the GPU cloud market price tracker.", evidence:["It starts with public listed-price baselines from Runpod / Lambda."], gaps:["Historical transaction prices, availability, utilization, and provider margins"]},
+    ep4: {summary:"EP_004 is the data center REIT financing tracker.", evidence:["It tracks DLR / EQIX debt maturity, development capex, leases, JV exposure, and tenant concentration."], gaps:["Private platforms: Vantage / CyrusOne / QTS / NTT"]},
+    ep5: {summary:"EP_005 is the SignalOS cross-check and source-review evidence pack.", evidence:["Conclusion: AI infrastructure capex has real industrial diffusion, but it does not support a confirmed systemic crisis or confirmed AI K6."], gaps:["Eaton cancellation rate, TSMC CoWoS, Arista target, NERC details, GPU historical pricing"]}
+  };
+
+  const drawerDataByLang = { zh: drawerDataZh, en: drawerDataEn };
+  const drawerLabels = {
+    zh: {
+      inspector: "来源检查器",
+      status: "状态",
+      hardness: "来源硬度",
+      related: "关联",
+      current: "当前读数",
+      evidence: "证据 / 来源状态",
+      gaps: "剩余缺口",
+      kill: "证伪条件 / 护栏",
+      rule: "产品规则",
+      ruleText: "正式进入网站正文前，需要保留证据状态、来源硬度、判断-来源映射和证伪条件。外部模型输出只作为搜索镜像。",
+      fallbackStatus: "待复核",
+      fallbackHardness: "混合 / 需要按来源逐条复核",
+      fallbackRelated: ["当前读数", "观察清单", "证据包"],
+      fallbackKill: ["保持证据状态；触发或证伪需由 CZ 手动复核。"]
+    },
+    en: {
+      inspector: "Source Inspector",
+      status: "Status",
+      hardness: "Source Hardness",
+      related: "Related",
+      current: "Current Reading",
+      evidence: "Evidence / Source Status",
+      gaps: "Remaining Gaps",
+      kill: "Kill Criteria / Guardrails",
+      rule: "Product Rule",
+      ruleText: "Before entering formal site copy, each claim must preserve evidence status, source hardness, claim-source mapping, and kill criteria. External model output is only a search mirror.",
+      fallbackStatus: "review-needed",
+      fallbackHardness: "mixed / source-by-source review needed",
+      fallbackRelated: ["Current Reading", "Watchlist", "Evidence Pack"],
+      fallbackKill: ["Keep evidence status; triggers or falsification require manual CZ review."]
+    }
+  };
+
+  const drawerTitle = document.getElementById("drawer-title");
+  const drawerBody = document.getElementById("drawer-body");
+  const drawer = document.querySelector(".drawer");
+  const translatableTextNodes = [];
+  const translatableAttrs = [];
+  const requestedLang = new URLSearchParams(window.location.search).get("lang");
+  const storedLang = readStoredLang();
+  let currentLang = requestedLang === "en" ? "en" : requestedLang === "zh" ? "zh" : storedLang === "en" ? "en" : "zh";
+  let lastDrawerKind = null;
+
+  function readStoredLang(){
+    try{
+      return localStorage.getItem("kairos_lang");
+    }catch(error){
+      return null;
+    }
+  }
+
+  function writeStoredLang(lang){
+    try{
+      localStorage.setItem("kairos_lang", lang);
+    }catch(error){
+      return;
+    }
+  }
+
+  function renderDrawer(title, kind){
+    lastDrawerKind = kind;
+    const labels = drawerLabels[currentLang];
+    const data = drawerDataByLang[currentLang] || drawerDataByLang.zh;
+    const item = data[kind] || data.watchlist;
+    const status = item.status || labels.fallbackStatus;
+    const hardness = item.hardness || labels.fallbackHardness;
+    const related = item.related || labels.fallbackRelated;
+    const kill = item.kill || labels.fallbackKill;
+    drawerTitle.textContent = title;
+    drawerBody.innerHTML = `
+      <div class="drawer-section">
+        <h4>${labels.inspector}</h4>
+        <div class="inspector-grid">
+          <span>${labels.status}</span><span>${status}</span>
+          <span>${labels.hardness}</span><span>${hardness}</span>
+          <span>${labels.related}</span><span>${related.join(" / ")}</span>
+        </div>
+      </div>
+      <div class="drawer-section">
+        <h4>${labels.current}</h4>
+        <p>${item.summary}</p>
+      </div>
+      <div class="drawer-section">
+        <h4>${labels.evidence}</h4>
+        <ul>${item.evidence.map(x => `<li>${x}</li>`).join("")}</ul>
+      </div>
+      <div class="drawer-section">
+        <h4>${labels.gaps}</h4>
+        <ul>${item.gaps.map(x => `<li>${x}</li>`).join("")}</ul>
+      </div>
+      <div class="drawer-section">
+        <h4>${labels.kill}</h4>
+        <ul>${kill.map(x => `<li>${x}</li>`).join("")}</ul>
+      </div>
+      <div class="drawer-section">
+        <h4>${labels.rule}</h4>
+        <p>${labels.ruleText}</p>
+      </div>
+    `;
+    document.body.classList.add("drawer-open");
+    drawer.setAttribute("aria-hidden", "false");
+  }
+
+  function closeDrawer(){
+    document.body.classList.remove("drawer-open");
+    drawer.setAttribute("aria-hidden", "true");
+  }
+
+  function collectStaticText(){
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        if(!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        const parent = node.parentElement;
+        if(!parent || parent.closest("script, style")) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    let node = walker.nextNode();
+    while(node){
+      translatableTextNodes.push({node, zh: node.nodeValue});
+      node = walker.nextNode();
+    }
+  }
+
+  function collectStaticAttrs(){
+    document.querySelectorAll("[aria-label], [data-title]").forEach(el => {
+      ["aria-label", "data-title"].forEach(attr => {
+        if(el.hasAttribute(attr)){
+          translatableAttrs.push({el, attr, zh: el.getAttribute(attr)});
+        }
+      });
+    });
+  }
+
+  function translateText(original, lang){
+    if(lang === "zh") return original;
+    const trimmed = original.trim();
+    if(!trimmed || !staticTextEn[trimmed]) return original;
+    return original.replace(trimmed, staticTextEn[trimmed]);
+  }
+
+  function getDrawerTitle(kind){
+    const trigger = document.querySelector(`.js-open[data-kind="${kind}"]`);
+    return trigger ? trigger.dataset.title : (currentLang === "en" ? "Evidence" : "证据");
+  }
+
+  function setMeta(selector, content){
+    const node = document.querySelector(selector);
+    if(node) node.setAttribute("content", content);
+  }
+
+  function applyMeta(lang){
+    const meta = pageMeta[lang] || pageMeta.zh;
+    setMeta('meta[name="description"]', meta.description);
+    setMeta('meta[property="og:title"]', meta.ogTitle);
+    setMeta('meta[property="og:description"]', meta.ogDescription);
+    setMeta('meta[property="og:locale"]', meta.ogLocale);
+    setMeta('meta[property="og:locale:alternate"]', meta.ogLocaleAlternate);
+    setMeta('meta[name="twitter:title"]', meta.twitterTitle);
+    setMeta('meta[name="twitter:description"]', meta.twitterDescription);
+  }
+
+  function applyLanguage(lang){
+    currentLang = lang === "en" ? "en" : "zh";
+    document.documentElement.lang = currentLang === "en" ? "en" : "zh-CN";
+    document.title = pageTitles[currentLang];
+    applyMeta(currentLang);
+    translatableTextNodes.forEach(item => {
+      item.node.nodeValue = translateText(item.zh, currentLang);
+    });
+    translatableAttrs.forEach(item => {
+      const translation = attrTextEn[item.zh];
+      item.el.setAttribute(item.attr, currentLang === "en" && translation ? translation : item.zh);
+    });
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      const active = btn.dataset.lang === currentLang;
+      btn.classList.toggle("active", active);
+      btn.setAttribute("aria-pressed", String(active));
+    });
+    writeStoredLang(currentLang);
+    if(document.body.classList.contains("drawer-open") && lastDrawerKind){
+      renderDrawer(getDrawerTitle(lastDrawerKind), lastDrawerKind);
+    }
+  }
+
+  document.querySelectorAll(".js-open").forEach(el => {
+    el.addEventListener("click", () => renderDrawer(el.dataset.title, el.dataset.kind));
+  });
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+  });
+  document.querySelectorAll(".js-close").forEach(el => el.addEventListener("click", closeDrawer));
+  document.addEventListener("keydown", event => {
+    if(event.key === "Escape") closeDrawer();
+  });
+  collectStaticText();
+  collectStaticAttrs();
+  applyLanguage(currentLang);
+</script>
+</body>
+</html>

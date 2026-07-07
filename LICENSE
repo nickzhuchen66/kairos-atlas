@@ -1,0 +1,52 @@
+# Kairos License Notice
+
+Copyright (c) 2026 Nick Zhu. All rights reserved except as expressly stated below.
+
+Kairos uses a split license model because this repository contains both website implementation code and original macro-cycle content.
+
+## 1. Website Implementation Code
+
+The website implementation code is licensed under the MIT License.
+
+See:
+
+```text
+LICENSE-CODE-MIT
+```
+
+For this repository, "website implementation code" means the HTML, CSS, and JavaScript structure and behavior used to render the public website interface.
+
+## 2. Kairos Content and Research Framing
+
+All Kairos content and research framing are all rights reserved unless a separate written license explicitly says otherwise.
+
+Protected content includes, without limitation:
+
+- the Kairos name and 周期天象图 name;
+- macro-cycle framing and interpretive language;
+- Long Wave Atlas structure and descriptions;
+- Watchlist wording and evidence status language;
+- Evidence Ledger wording;
+- regime descriptions;
+- public page copy;
+- research framing, judgment language, and conceptual presentation.
+
+See:
+
+```text
+CONTENT_LICENSE.md
+```
+
+## 3. Mixed Files
+
+Some files, especially `index.html`, contain both implementation code and protected content.
+
+In mixed files:
+
+- the implementation code portions are licensed under the MIT License;
+- the Kairos content and research framing portions are not licensed under MIT and remain all rights reserved.
+
+## 4. No Investment Advice
+
+Kairos is not investment advice, not a trading signal system, and not a date oracle.
+
