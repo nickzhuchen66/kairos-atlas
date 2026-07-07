@@ -1,5 +1,7 @@
 # Kairos · Macro Cycle Observatory
 
+**English** | [简体中文](README.zh-CN.md)
+
 **Kairos** is a public macro-cycle observatory for regime readings, long-wave context, watchlists, asset implications, and evidence-gated validation.
 
 Chinese name: **周期天象图**  
