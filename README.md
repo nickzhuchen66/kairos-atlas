@@ -12,6 +12,36 @@ Planned website domain: **kairos-atlas.com**
 
 Kairos is designed to make macro-cycle judgment more inspectable: every major reading should remain clickable, reviewable, and falsifiable.
 
+## Why Kairos Exists
+
+Long-wave and macro-cycle history is rich, but the useful material is scattered across books, papers, market frameworks, financial history, policy records, and current data. Many Kondratiev-style cycles look different on the surface, yet they often rhyme at the structural level:
+
+- credit expansion and refinancing pressure;
+- technology diffusion and capital expenditure booms;
+- monetary regime shifts and fiscal shocks;
+- inflation waves, dollar liquidity, and asset repricing;
+- speculative finance, fragility, and eventual validation or falsification.
+
+Kairos is an attempt to organize those recurring structures into a public macro-cycle weather map: not a date oracle, not a trading signal system, but a learning and observation layer for comparing historical regimes with the present.
+
+## Research Foundation
+
+Kairos draws from a private theoretical reading base that synthesizes long-wave theory, debt-cycle analysis, financial instability theory, monetary history, and asset-regime frameworks.
+
+The public release is influenced by research traditions associated with Schumpeter, Minsky, Kindleberger, Dalio, Howard Marks, Bordo and Eichengreen, Hélène Rey, Merrill Lynch's Investment Clock, and Chinese long-wave cycle literature.
+
+The private reading notes are not included in this public repository. They are used as a research foundation, while the public site exposes only curated structure, current watch items, evidence status, and falsifiable judgment boundaries.
+
+## Watchlist Highlights
+
+- **AI as K6 Candidate**: AI may become a new long-wave diffusion engine, but it must remain `Candidate Watch` until evidence supports broad productivity diffusion.
+- **AI capex financing fragility**: hyperscaler capex can still be supported by strong cash flow, while independent GPU cloud and data-center financing deserve a separate fragility watch.
+- **High real rates**: the post-2020 rate regime may challenge the low-rate asset-pricing system, but this remains a live question rather than a completed verdict.
+- **Loose financial conditions under high rates**: high policy rates do not automatically imply tight financial conditions; credit spreads, liquidity, and risk appetite still matter.
+- **Gold and fiat-credit hedging**: gold may be shifting from a simple real-rate asset toward a broader fiat-credit hedge, but the public source base still needs strengthening before the claim becomes supported.
+
+See [`research/`](research/) for curated public research briefs.
+
 ## Screenshots
 
 ![Kairos dashboard desktop screenshot](assets/screenshots/kairos-dashboard-desktop.png)
@@ -55,6 +85,7 @@ It includes:
 
 - the public website entry file;
 - public-facing README files;
+- curated public research briefs;
 - public release metadata;
 - content licensing notes.
 
@@ -87,7 +118,8 @@ http://127.0.0.1:8765/index.html?lang=en
 ├── CONTENT_LICENSE.md
 ├── PUBLIC_RELEASE_MANIFEST.md
 ├── .gitignore
-└── assets/
+├── assets/
+└── research/
 ```
 
 ## License

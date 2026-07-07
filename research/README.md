@@ -1,0 +1,23 @@
+# Kairos Public Research Briefs
+
+This folder contains curated public research briefs derived from Kairos' private research workspace.
+
+These files are not raw Evidence Packs. They remove internal workflow notes, private paths, external-model search traces, and unresolved verification details. Each brief keeps the public-facing structure:
+
+- core question;
+- current reading status;
+- evidence status;
+- watch triggers;
+- kill criteria;
+- rejected overclaims;
+- remaining open questions.
+
+## Available Briefs
+
+| Brief | Topic | Status |
+|---|---|---|
+| [`KW-006_AI_Capex_Financing_Fragility.md`](KW-006_AI_Capex_Financing_Fragility.md) | AI capex, financing fragility, and K6 Candidate Watch | Watchlist / partially source-checked |
+
+## Boundary
+
+Kairos research briefs are for macro-cycle learning and evidence-gated observation. They are not investment advice, trading signals, or claims that K6 has been confirmed.

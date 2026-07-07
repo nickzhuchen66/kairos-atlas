@@ -15,6 +15,7 @@
 | `.gitignore` | included | Public repo hygiene |
 | `assets/screenshots/` | included | Public README screenshots |
 | `assets/` | included | Reserved for OG image and static assets |
+| `research/` | included | Curated public research briefs only; not raw internal Evidence Packs |
 
 ## Excluded From Public Release
 
@@ -36,6 +37,8 @@
 ## Release Rule
 
 The public GitHub repository should be created from `Kairos_Public/`, not from the full private Kairos workspace.
+
+Raw internal Evidence Packs should not be copied directly. Public research material must be rewritten as curated briefs with clear status, source boundaries, watch triggers, and kill criteria.
 
 Before publishing:
 
