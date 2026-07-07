@@ -11,6 +11,7 @@
 | `README.zh-CN.md` | included | Chinese README |
 | `ROADMAP.md` | included | Public roadmap and collaboration tracks |
 | `CONTRIBUTING.md` | included | Public contribution rules and evidence discipline |
+| `CODE_OF_CONDUCT.md` | included | Public collaboration behavior expectations |
 | `LICENSE` | included | Split license notice |
 | `LICENSE-CODE-MIT` | included | MIT license for website implementation code |
 | `CONTENT_LICENSE.md` | included | Content and research framing rights boundary |

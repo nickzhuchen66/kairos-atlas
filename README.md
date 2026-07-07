@@ -2,6 +2,13 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
+<p>
+  <a href="https://kairos-atlas.com/"><img alt="Live site" src="https://img.shields.io/badge/live-kairos--atlas.com-c8a15a?style=for-the-badge"></a>
+  <a href="https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.1.0-public-launch"><img alt="Release" src="https://img.shields.io/github/v/release/nickzhuchen66/kairos-atlas?style=for-the-badge&label=release"></a>
+  <a href="CONTENT_LICENSE.md"><img alt="License" src="https://img.shields.io/badge/license-split--license-7fa8cf?style=for-the-badge"></a>
+  <a href="https://github.com/nickzhuchen66/kairos-atlas/discussions"><img alt="Discussions" src="https://img.shields.io/badge/discussions-open-78b7a8?style=for-the-badge"></a>
+</p>
+
 **Kairos** is a public macro-cycle observatory for regime readings, long-wave context, watchlists, asset implications, and evidence-gated validation.
 
 Chinese name: **周期天象图**  
@@ -13,6 +20,20 @@ Live website: **[kairos-atlas.com](https://kairos-atlas.com/)**
 `kairos-atlas` is the public repository and domain identity. `Macro Cycle Observatory` remains the product subtitle because the site is designed as an observatory-style macro dashboard, while the Atlas name anchors the public URL and the Long Wave Atlas concept.
 
 Kairos is designed to make macro-cycle judgment more inspectable: every major reading should remain clickable, reviewable, and falsifiable.
+
+<p>
+  <a href="https://kairos-atlas.com/"><strong>Open the live observatory</strong></a>
+  ·
+  <a href="ROADMAP.md">Roadmap</a>
+  ·
+  <a href="CONTRIBUTING.md">Contribute</a>
+  ·
+  <a href="research/OPEN_QUESTIONS.md">Open questions</a>
+  ·
+  <a href="https://github.com/nickzhuchen66/kairos-atlas/issues">Good first issues</a>
+</p>
+
+![Kairos dashboard desktop screenshot](assets/screenshots/kairos-dashboard-desktop.png)
 
 ## Why Kairos Exists
 
@@ -74,8 +95,6 @@ Good public contributions include source corrections, evidence contributions, al
 The contribution process is evidence-gated. Kairos does not accept unsupported macro predictions, trading advice, AI-generated summaries as evidence, or claims that K6 has already been confirmed.
 
 ## Screenshots
-
-![Kairos dashboard desktop screenshot](assets/screenshots/kairos-dashboard-desktop.png)
 
 | Long Wave Atlas | Mobile reading |
 |---|---|
@@ -146,6 +165,7 @@ http://127.0.0.1:8765/index.html?lang=en
 ├── README.zh-CN.md
 ├── ROADMAP.md
 ├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
 ├── LICENSE
 ├── LICENSE-CODE-MIT
 ├── CONTENT_LICENSE.md
