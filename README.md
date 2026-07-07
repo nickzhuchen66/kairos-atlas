@@ -12,6 +12,14 @@ Planned website domain: **kairos-atlas.com**
 
 Kairos is designed to make macro-cycle judgment more inspectable: every major reading should remain clickable, reviewable, and falsifiable.
 
+## Screenshots
+
+![Kairos dashboard desktop screenshot](assets/screenshots/kairos-dashboard-desktop.png)
+
+| Long Wave Atlas | Mobile reading |
+|---|---|
+| <img src="assets/screenshots/kairos-long-wave-atlas-desktop.png" alt="Kairos Long Wave Atlas desktop screenshot" width="720"> | <img src="assets/screenshots/kairos-mobile-home.png" alt="Kairos mobile dashboard screenshot" width="260"> |
+
 ## What Kairos Shows
 
 - **Current Regime**: the current macro-cycle weather map.

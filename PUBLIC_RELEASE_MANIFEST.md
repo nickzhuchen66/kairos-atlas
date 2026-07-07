@@ -13,7 +13,8 @@
 | `LICENSE-CODE-MIT` | included | MIT license for website implementation code |
 | `CONTENT_LICENSE.md` | included | Content and research framing rights boundary |
 | `.gitignore` | included | Public repo hygiene |
-| `assets/` | included | Empty for now; reserved for OG image and static assets |
+| `assets/screenshots/` | included | Public README screenshots |
+| `assets/` | included | Reserved for OG image and static assets |
 
 ## Excluded From Public Release
 

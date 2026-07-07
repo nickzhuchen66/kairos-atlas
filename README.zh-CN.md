@@ -12,6 +12,14 @@
 
 Kairos 的目标是把宏观周期判断做成可点击、可复盘、可证伪的观测仪，而不是把复杂判断包装成单一预测。
 
+## 网站截图
+
+![Kairos 桌面端仪表盘截图](assets/screenshots/kairos-dashboard-desktop.png)
+
+| 长波图谱 | 移动端读数 |
+|---|---|
+| <img src="assets/screenshots/kairos-long-wave-atlas-desktop.png" alt="Kairos 长波图谱桌面端截图" width="720"> | <img src="assets/screenshots/kairos-mobile-home.png" alt="Kairos 移动端仪表盘截图" width="260"> |
+
 ## Kairos 展示什么
 
 - **Current Regime**：当前宏观周期天气图。
