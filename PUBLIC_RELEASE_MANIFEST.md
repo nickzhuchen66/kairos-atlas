@@ -19,6 +19,7 @@
 | `.github/pull_request_template.md` | included | Pull request guardrails for research and website changes |
 | `.gitignore` | included | Public repo hygiene |
 | `assets/screenshots/` | included | Public README screenshots |
+| `assets/social/` | included | GitHub social preview and public sharing assets |
 | `assets/` | included | Reserved for OG image and static assets |
 | `research/` | included | Curated public research briefs only; not raw internal Evidence Packs |
 | `research/OPEN_QUESTIONS.md` | included | Public research questions open to source-backed contributions |
