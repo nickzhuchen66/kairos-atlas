@@ -16,6 +16,7 @@ These files are not raw Evidence Packs. They remove internal workflow notes, pri
 
 | Brief | Topic | Status |
 |---|---|---|
+| [`KW-001_AI_as_K6_Candidate.md`](KW-001_AI_as_K6_Candidate.md) | AI as a possible K6 diffusion engine | Watchlist / candidate boundary |
 | [`KW-006_AI_Capex_Financing_Fragility.md`](KW-006_AI_Capex_Financing_Fragility.md) | AI capex, financing fragility, and K6 Candidate Watch | Watchlist / partially source-checked |
 
 ## Boundary
