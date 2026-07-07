@@ -66,6 +66,8 @@ Kairos is an open working map, not final truth. Contributions are welcome when t
 - Read the public roadmap: [`ROADMAP.md`](ROADMAP.md)
 - Read the contribution guide: [`CONTRIBUTING.md`](CONTRIBUTING.md)
 - Explore open research questions: [`research/OPEN_QUESTIONS.md`](research/OPEN_QUESTIONS.md)
+- Discuss proposals: [GitHub Discussions](https://github.com/nickzhuchen66/kairos-atlas/discussions)
+- Contact CZ: [nickzhuchen@gmail.com](mailto:nickzhuchen@gmail.com)
 
 Good public contributions include source corrections, evidence contributions, alternative periodization proposals, counterevidence, website feedback, and curated research-brief improvements.
 

@@ -202,7 +202,7 @@
     color:#101113;
     background:var(--brass);
   }
-  .nav-link:focus-visible,.github-link:focus-visible,.btn:focus-visible,.js-open:focus-visible,.close:focus-visible{
+  .nav-link:focus-visible,.github-link:focus-visible,.footer-link:focus-visible,.btn:focus-visible,.js-open:focus-visible,.close:focus-visible{
     outline:1px solid var(--brass-2);
     outline-offset:3px;
   }
@@ -957,7 +957,7 @@
   }
   .footer-grid{
     display:grid;
-    grid-template-columns:.45fr 1fr;
+    grid-template-columns:.42fr .78fr .8fr;
     gap:24px;
   }
   .foot-brand{
@@ -970,6 +970,47 @@
     font-size:12.5px;
     border-left:2px solid var(--line);
     padding-left:16px;
+  }
+  .footer-collab{
+    border-left:1px solid rgba(200,161,90,.16);
+    padding-left:18px;
+  }
+  .footer-kicker{
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--brass-2);
+    margin-bottom:10px;
+  }
+  .footer-link-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .footer-link{
+    display:inline-flex;
+    align-items:center;
+    min-height:30px;
+    padding:6px 10px;
+    border:1px solid rgba(200,161,90,.22);
+    background:rgba(18,21,26,.48);
+    color:var(--ink);
+    font-family:var(--font-mono);
+    font-size:10.5px;
+    letter-spacing:.04em;
+    transition:border-color .18s ease, background .18s ease, transform .18s ease;
+  }
+  .footer-link:hover{
+    border-color:rgba(239,208,130,.52);
+    background:rgba(200,161,90,.08);
+    transform:translateY(-1px);
+  }
+  .footer-note{
+    color:var(--quiet);
+    font-size:12px;
+    line-height:1.6;
   }
 
   .drawer-backdrop{
@@ -1638,6 +1679,18 @@
       <p class="disclaimer">
         Kairos 输出的是带证据状态、置信度、观察清单和证伪条件的阶段 / 窗口判断，不是投资建议，也不是日期预言机。
       </p>
+      <div class="footer-collab" aria-label="参与 Kairos 协作">
+        <div class="footer-kicker">参与协作</div>
+        <div class="footer-link-grid">
+          <a class="footer-link" href="ROADMAP.md">Roadmap</a>
+          <a class="footer-link" href="CONTRIBUTING.md">Contributing</a>
+          <a class="footer-link" href="https://github.com/nickzhuchen66/kairos-atlas/discussions" target="_blank" rel="noopener noreferrer">Discussions</a>
+          <a class="footer-link" href="mailto:nickzhuchen@gmail.com">Email</a>
+        </div>
+        <div class="footer-note">
+          欢迎提交来源修正、证据补充、周期分期讨论和网站反馈；直接联系 CZ：nickzhuchen@gmail.com。
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -1832,6 +1885,8 @@
     "来源：Decision015": "Source: Decision015",
     "v1 静态仪表盘": "v1 static regime console",
     "Kairos 输出的是带证据状态、置信度、观察清单和证伪条件的阶段 / 窗口判断，不是投资建议，也不是日期预言机。": "Kairos outputs phase / window judgments with evidence status, confidence, watchlists, and kill criteria. It is not investment advice and not a date oracle.",
+    "参与协作": "Collaborate",
+    "欢迎提交来源修正、证据补充、周期分期讨论和网站反馈；直接联系 CZ：nickzhuchen@gmail.com。": "Contribute source corrections, evidence additions, periodization debates, and website feedback; contact CZ directly at nickzhuchen@gmail.com.",
     "证据抽屉": "Evidence Drawer",
     "证据": "Evidence",
     "关闭抽屉": "Close drawer"
