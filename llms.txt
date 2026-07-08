@@ -1,0 +1,58 @@
+# Kairos · 周期天象图
+
+Kairos is a public macro-cycle observatory.
+
+Canonical site: https://kairos-atlas.com/
+GitHub repository: https://github.com/nickzhuchen66/kairos-atlas
+
+## What Kairos Is
+
+Kairos organizes macro-cycle judgment into a public, clickable, reviewable, and falsifiable observatory.
+
+Core concepts:
+
+- Current Regime dashboard
+- six-layer Cycle Stack
+- Long Wave Atlas
+- K6 Candidate Watch
+- Watchlist and kill criteria
+- curated public research briefs
+- evidence-gated validation
+
+## What Kairos Is Not
+
+Kairos is not:
+
+- a date oracle
+- a trading signal system
+- investment advice
+- an automatic news feed
+- a claim that K6 has been confirmed
+- a claim that AI is confirmed K6
+
+Watchlist items are observations, not confirmed facts.
+
+K6 Candidate is manual, evidence-gated, and event-driven. Kairos does not use automatic news-flow updates or daily API polling to update K6 status.
+
+## Public Resources
+
+- Website: https://kairos-atlas.com/
+- Roadmap: https://kairos-atlas.com/ROADMAP.md
+- Contribution guide: https://kairos-atlas.com/CONTRIBUTING.md
+- Open questions: https://kairos-atlas.com/research/OPEN_QUESTIONS.md
+- Research index: https://kairos-atlas.com/research/README.md
+
+## Evidence Discipline
+
+Kairos welcomes source-backed disagreement, source corrections, alternative periodization proposals, counterevidence, and website feedback.
+
+Kairos does not treat AI-generated summaries as evidence. Public research should preserve source type, source hardness, claim-source mapping, evidence status, watch triggers, kill criteria, rejected overclaims, and remaining open questions.
+
+## Licensing
+
+Kairos uses a split license model:
+
+- website implementation code: MIT License
+- Kairos content, research framing, names, copy, regime language, Watchlist wording, and Evidence Ledger language: all rights reserved
+
+See: https://kairos-atlas.com/CONTENT_LICENSE.md

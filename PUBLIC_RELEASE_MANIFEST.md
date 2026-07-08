@@ -12,6 +12,9 @@
 | `ROADMAP.md` | included | Public roadmap and collaboration tracks |
 | `CONTRIBUTING.md` | included | Public contribution rules and evidence discipline |
 | `CODE_OF_CONDUCT.md` | included | Public collaboration behavior expectations |
+| `robots.txt` | included | Crawler access rules and sitemap pointer |
+| `sitemap.xml` | included | Public URL discovery map for the live site |
+| `llms.txt` | included | AI / LLM discovery summary with Kairos guardrails |
 | `LICENSE` | included | Split license notice |
 | `LICENSE-CODE-MIT` | included | MIT license for website implementation code |
 | `CONTENT_LICENSE.md` | included | Content and research framing rights boundary |
@@ -51,6 +54,9 @@ Before publishing:
 
 - create OG image if needed;
 - verify `index.html`;
+- verify `robots.txt` points to `sitemap.xml`;
+- verify `sitemap.xml` includes only public release URLs;
+- verify `llms.txt` preserves Kairos guardrails and does not present K6 / AI as confirmed;
 - check mobile layout;
 - confirm no private files are present;
 - confirm Roadmap / Contributing / issue templates preserve K6 Candidate and evidence-gated boundaries;
