@@ -41,12 +41,16 @@ K6 Candidate is manual, evidence-gated, and event-driven. Kairos does not use au
 - Contribution guide: https://kairos-atlas.com/CONTRIBUTING.md
 - Open questions: https://kairos-atlas.com/research/OPEN_QUESTIONS.md
 - Research index: https://kairos-atlas.com/research/README.md
+- Public source registry guide: https://kairos-atlas.com/research/sources/README.md
+- Public curated source registry: https://kairos-atlas.com/research/sources/public_source_registry.md
 
 ## Evidence Discipline
 
 Kairos welcomes source-backed disagreement, source corrections, alternative periodization proposals, counterevidence, and website feedback.
 
 Kairos does not treat AI-generated summaries as evidence. Public research should preserve source type, source hardness, claim-source mapping, evidence status, watch triggers, kill criteria, rejected overclaims, and remaining open questions.
+
+The Public Curated Source Registry is the public evidence-link layer for Source Inspector panels and public research briefs. It is not the internal evidence workspace and does not expose raw Evidence Packs, private notes, source-repair work logs, or external-model search transcripts.
 
 ## Licensing
 

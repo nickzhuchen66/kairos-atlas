@@ -51,6 +51,20 @@ The current public evidence base includes three broad directions:
 
 The most important open gap is not whether AI tools exist or whether capex is real. The open gap is whether AI produces broad, durable, cross-industry productivity diffusion.
 
+## Curated Evidence Links
+
+These links are drawn from the public curated source registry. They are suitable for public inspection, but they do not confirm K6.
+
+| Source | Type / hardness | Supports | Limits |
+|---|---|---|---|
+| [Large Firms With at Least 20 Employees Biggest AI Users](https://www.census.gov/library/stories/2026/05/ai-use-businesses.html) | official statistical article / primary | Supports AI adoption-rate watch by firm size and sector. | Experimental survey data; self-reported usage may miss embedded AI use and cannot confirm K6. |
+| [Businesses' Use of Artificial Intelligence in Producing Goods and Services](https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-25.html) | official working paper / primary | Supports details on AI use across business functions and tasks. | Does not by itself prove macro productivity diffusion. |
+| [Electricity 2024](https://www.iea.org/reports/electricity-2024) | multilateral energy report / high-quality secondary | Supports data-center, AI, and electricity-demand watch. | Forecasts are scenario-based and may shift with efficiency, siting, and policy. |
+| [The Simple Macroeconomics of AI](https://www.nber.org/papers/w32487) | academic working paper / high-quality secondary | Supports caution against premature broad TFP claims. | One model-based working paper view, not final truth. |
+| [Artificial Intelligence and the Modern Productivity Paradox](https://www.nber.org/papers/w24001) | academic working paper / high-quality secondary | Supports the framework that GPT benefits may lag adoption and require complementary investment. | Written before the current GenAI cycle; apply by analogy with caution. |
+
+Full registry: [Public Curated Source Registry](sources/public_source_registry.md)
+
 ## Watch Triggers
 
 The K6 candidate case strengthens if:

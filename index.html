@@ -74,7 +74,7 @@
   ]
 }
 </script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230b0d10'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23c8a15a' stroke-width='2'/%3E%3Cpath d='M32 8v48M8 32h48' stroke='%23343a43' stroke-width='1'/%3E%3Cpath d='M20 40L32 14l12 26' fill='none' stroke='%23efd082' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
 <style>
   :root{
     --night:#0b0d10;
@@ -1372,6 +1372,53 @@
     margin:0;
     padding-left:18px;
   }
+  .source-list{
+    display:grid;
+    gap:9px;
+    margin-top:2px;
+  }
+  .source-card{
+    display:block;
+    border:1px solid rgba(200,161,90,.2);
+    background:rgba(11,13,16,.36);
+    padding:10px;
+    color:var(--muted);
+    transition:border-color .18s ease, background .18s ease, transform .18s ease;
+  }
+  .source-card:hover{
+    border-color:rgba(200,161,90,.56);
+    background:rgba(23,27,34,.78);
+    transform:translateY(-1px);
+  }
+  .source-title{
+    display:block;
+    color:var(--ink);
+    font-size:12.5px;
+    line-height:1.3;
+  }
+  .source-meta{
+    display:block;
+    margin-top:4px;
+    color:var(--brass-2);
+    font-family:var(--font-mono);
+    font-size:9.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+  .source-note{
+    display:block;
+    margin-top:7px;
+    font-size:11.5px;
+    line-height:1.45;
+  }
+  .source-note b{
+    color:var(--quiet);
+    font-family:var(--font-mono);
+    font-size:9px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
   .inspector-grid{
     display:grid;
     grid-template-columns:145px 1fr;
@@ -2130,7 +2177,7 @@
           <a class="footer-link" href="https://github.com/nickzhuchen66/kairos-atlas/discussions" target="_blank" rel="noopener noreferrer">Discussions</a>
           <a class="footer-link" href="mailto:nickzhuchen@gmail.com">Email</a>
         </div>
-        <div class="footer-note">
+        <div class="footer-note" data-zh="欢迎提交来源修正、证据补充、周期分期讨论和网站反馈；直接联系 CZ：nickzhuchen@gmail.com。" data-en="Contribute source corrections, evidence additions, periodization debates, and website feedback; contact CZ directly at nickzhuchen@gmail.com.">
           欢迎提交来源修正、证据补充、周期分期讨论和网站反馈；直接联系 CZ：nickzhuchen@gmail.com。
         </div>
       </div>
@@ -2792,6 +2839,9 @@
       relatedAtlas: "Related Atlas node",
       relatedBrief: "Related public brief",
       contribution: "Contribution target",
+      sources: "Curated Evidence Links",
+      sourceSupports: "Supports",
+      sourceLimits: "Limits",
       rule: "护栏",
       ruleText: "公开页面只展示整理后的判断与贡献路径，不公开原始内部证据包；K6 与 Watchlist 必须保持候选 / 观察状态。",
       fallbackStatus: "待复核",
@@ -2811,12 +2861,98 @@
       relatedAtlas: "Related Atlas Node",
       relatedBrief: "Related Public Brief",
       contribution: "Contribution Target",
+      sources: "Curated Evidence Links",
+      sourceSupports: "Supports",
+      sourceLimits: "Limits",
       rule: "Guardrail",
       ruleText: "The public page shows curated readings and contribution paths, not raw internal evidence packs. K6 and Watchlist items must remain candidate / observation states.",
       fallbackStatus: "review-needed",
       fallbackHardness: "mixed / source-by-source review needed",
       fallbackRelated: "Current Reading / Watchlist / public brief",
       fallbackContribution: "Submit evidence contribution or source correction"
+    }
+  };
+
+  const sourceSets = {
+    zh: {
+      k4d: [
+        {title:"Nixon Shock", type:"official history / primary", url:"https://history.state.gov/milestones/1969-1976/nixon-shock", supports:"支持 1971 年美元黄金兑换暂停作为货币体系断裂。", limits:"不能单独证明长波断代、通胀路径或资产表现。"},
+        {title:"Consumer Price Index for All Urban Consumers: All Items in U.S. City Average", type:"official data / primary", url:"https://fred.stlouisfed.org/series/CPIAUCSL", supports:"支持 1970s 通胀状态的 CPI 数据观察。", limits:"需要正确转换为同比；不能单独解释因果。"},
+        {title:"Unemployment Rate", type:"official data / primary", url:"https://fred.stlouisfed.org/series/UNRATE", supports:"支持 1981-1982 衰退期劳动力市场压力观察。", limits:"不能单独证明资产行为或 Volcker 政策效果。"}
+      ],
+      k5a: [
+        {title:"Effective Federal Funds Rate", type:"official data / primary", url:"https://fred.stlouisfed.org/series/FEDFUNDS", supports:"支持 Volcker 与后 Volcker 去通胀阶段的利率路径观察。", limits:"月均有效利率不等同于 FOMC 目标利率。"},
+        {title:"Trade Weighted U.S. Dollar Index: Broad, Goods", type:"official data / primary", url:"https://fred.stlouisfed.org/series/TWEXBMTH", supports:"支持 1980s 广义美元走势观察。", limits:"不能直接证明 Plaza / Louvre 的全部资产影响。"},
+        {title:"Latin American Debt Crisis", type:"central-bank history / high-quality secondary", url:"https://www.federalreservehistory.org/essays/latin-american-debt-crisis", supports:"支持高利率、衰退、债务结构与新兴市场压力之间的历史联系。", limits:"不能把强美元写成唯一原因。"}
+      ],
+      k5e: [
+        {title:"The Federal Budget in Fiscal Year 2020", type:"official budget report / primary", url:"https://www.cbo.gov/publication/57170", supports:"支持 FY2020 财政冲击规模观察。", limits:"不能证明永久财政主导。"},
+        {title:"Chicago Fed National Financial Conditions Index", type:"official data / primary", url:"https://fred.stlouisfed.org/series/NFCI", supports:"支持高利率背景下金融条件松紧的跟踪。", limits:"综合指数可能掩盖小企业、银行信贷或私人信贷压力。"},
+        {title:"Large Firms With at Least 20 Employees Biggest AI Users", type:"official statistical article / primary", url:"https://www.census.gov/library/stories/2026/05/ai-use-businesses.html", supports:"支持按企业规模和行业观察 AI 采用率。", limits:"实验性调查和自报数据不能单独证明宏观生产率扩散。"}
+      ],
+      k6ai: [
+        {title:"Large Firms With at Least 20 Employees Biggest AI Users", type:"official statistical article / primary", url:"https://www.census.gov/library/stories/2026/05/ai-use-businesses.html", supports:"支持企业 AI 使用率与行业差异观察。", limits:"不能单独确认 K6 或长期生产率扩散。"},
+        {title:"Businesses' Use of Artificial Intelligence in Producing Goods and Services", type:"official working paper / primary", url:"https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-25.html", supports:"支持 AI 在业务功能与任务中的采用细节。", limits:"不等于宏观层面的 durable TFP 证据。"},
+        {title:"Electricity 2024", type:"multilateral energy report / high-quality secondary", url:"https://www.iea.org/reports/electricity-2024", supports:"支持数据中心、AI 与电力需求约束观察。", limits:"预测依赖情景，可能随效率、选址和政策变化。"},
+        {title:"The Simple Macroeconomics of AI", type:"academic working paper / high-quality secondary", url:"https://www.nber.org/papers/w32487", supports:"支持对过早宣称广泛 TFP 的审慎观点。", limits:"工作论文和模型视角，不是最终事实。"},
+        {title:"Artificial Intelligence and the Modern Productivity Paradox", type:"academic working paper / high-quality secondary", url:"https://www.nber.org/papers/w24001", supports:"支持 GPT 收益可能滞后且需要互补投资的框架。", limits:"写于当前 GenAI 周期前，只能谨慎类比。"}
+      ],
+      k6energy: [
+        {title:"Electricity 2024", type:"multilateral energy report / high-quality secondary", url:"https://www.iea.org/reports/electricity-2024", supports:"支持 AI / 数据中心电力需求观察。", limits:"情景预测不能单独证明资本开支脆弱性。"},
+        {title:"NERC Level 3 Alert", type:"reliability alert / primary", url:"https://www.nerc.com/newsroom/nerc-issues-level-3-alert-reliability-guideline-focused-on-large-load-challenges", supports:"支持大负荷接入与电网可靠性约束监控。", limits:"不能单独证明 AI 是唯一原因。"},
+        {title:"PJM Construction Metrics January 2026", type:"grid operator document / primary", url:"https://www.pjm.com/-/media/DotCom/committees-groups/subcommittees/ips/2026/20260126/20260126-item-04---construction-metrics.pdf", supports:"支持区域电力基础设施瓶颈跟踪。", limits:"区域文件不能直接推广到全球。"}
+      ],
+      kw1: "k6ai",
+      supported: "kw6",
+      financial: "kw6",
+      validation: "kw6",
+      kw6: [
+        {title:"Microsoft FY2025 Form 10-K", type:"company filing / primary", url:"https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm", supports:"支持 Microsoft capex、现金流、承诺和风险因素复核。", limits:"不能完全拆出纯 AI capex。"},
+        {title:"NVIDIA FY2026 Results", type:"company official results / primary", url:"https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026", supports:"支持 AI 加速器收入和需求背景观察。", limits:"供应商收入不能证明下游 ROI 或宏观生产率。"},
+        {title:"CoreWeave Q1 2026 Results", type:"company official results / primary", url:"https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-First-Quarter-2026-Results/", supports:"支持独立 AI 基础设施融资结构观察样本。", limits:"CoreWeave 不能代表整个 AI 周期。"},
+        {title:"Digital Realty Q1 2026 Results", type:"company official results / primary", url:"https://investor.digitalrealty.com/static-files/186019d2-aa98-4bf5-a1c6-15bb5af879ed", supports:"支持数据中心运营商融资与 capex 观察。", limits:"单一公司不能证明系统性融资压力。"},
+        {title:"NERC Level 3 Alert", type:"reliability alert / primary", url:"https://www.nerc.com/newsroom/nerc-issues-level-3-alert-reliability-guideline-focused-on-large-load-challenges", supports:"支持大负荷电网约束监控。", limits:"不能单独证明 AI capex 脆弱性。"}
+      ]
+    },
+    en: {
+      k4d: [
+        {title:"Nixon Shock", type:"official history / primary", url:"https://history.state.gov/milestones/1969-1976/nixon-shock", supports:"Supports the 1971 suspension of dollar-gold convertibility as a monetary-system break.", limits:"Does not quantify inflation, asset returns, or long-wave dating by itself."},
+        {title:"Consumer Price Index for All Urban Consumers: All Items in U.S. City Average", type:"official data / primary", url:"https://fred.stlouisfed.org/series/CPIAUCSL", supports:"Supports CPI-based observation of the 1970s inflation regime.", limits:"The level series must be transformed correctly; it does not explain causality alone."},
+        {title:"Unemployment Rate", type:"official data / primary", url:"https://fred.stlouisfed.org/series/UNRATE", supports:"Supports labor-market stress around the 1981-1982 recession.", limits:"Does not by itself prove asset behavior or Volcker policy effects."}
+      ],
+      k5a: [
+        {title:"Effective Federal Funds Rate", type:"official data / primary", url:"https://fred.stlouisfed.org/series/FEDFUNDS", supports:"Supports the interest-rate path during and after Volcker disinflation.", limits:"Monthly effective averages are not the same as FOMC target rates."},
+        {title:"Trade Weighted U.S. Dollar Index: Broad, Goods", type:"official data / primary", url:"https://fred.stlouisfed.org/series/TWEXBMTH", supports:"Supports broad dollar-index movement in the 1980s.", limits:"Does not directly prove the asset effects of Plaza or Louvre."},
+        {title:"Latin American Debt Crisis", type:"central-bank history / high-quality secondary", url:"https://www.federalreservehistory.org/essays/latin-american-debt-crisis", supports:"Supports the historical link among rates, recession, debt structure, and emerging-market stress.", limits:"Does not prove strong dollar as the sole cause."}
+      ],
+      k5e: [
+        {title:"The Federal Budget in Fiscal Year 2020", type:"official budget report / primary", url:"https://www.cbo.gov/publication/57170", supports:"Supports the scale of the FY2020 fiscal shock.", limits:"Does not prove permanent fiscal dominance."},
+        {title:"Chicago Fed National Financial Conditions Index", type:"official data / primary", url:"https://fred.stlouisfed.org/series/NFCI", supports:"Supports tracking whether financial conditions are tight or easy despite high rates.", limits:"A composite index can hide stress in smaller borrowers, bank credit, or private credit."},
+        {title:"Large Firms With at Least 20 Employees Biggest AI Users", type:"official statistical article / primary", url:"https://www.census.gov/library/stories/2026/05/ai-use-businesses.html", supports:"Supports AI adoption-rate watch by firm size and sector.", limits:"Experimental self-reported survey data cannot confirm macro productivity diffusion alone."}
+      ],
+      k6ai: [
+        {title:"Large Firms With at Least 20 Employees Biggest AI Users", type:"official statistical article / primary", url:"https://www.census.gov/library/stories/2026/05/ai-use-businesses.html", supports:"Supports business AI adoption tracking by firm size and sector.", limits:"Cannot confirm K6 or durable productivity diffusion by itself."},
+        {title:"Businesses' Use of Artificial Intelligence in Producing Goods and Services", type:"official working paper / primary", url:"https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-25.html", supports:"Supports details on AI use across business functions and tasks.", limits:"Does not by itself prove macro-level durable TFP diffusion."},
+        {title:"Electricity 2024", type:"multilateral energy report / high-quality secondary", url:"https://www.iea.org/reports/electricity-2024", supports:"Supports data-center, AI, and electricity-demand watch.", limits:"Forecasts are scenario-based and may shift with efficiency, siting, and policy."},
+        {title:"The Simple Macroeconomics of AI", type:"academic working paper / high-quality secondary", url:"https://www.nber.org/papers/w32487", supports:"Supports caution against premature broad TFP claims.", limits:"Working paper and model-based view, not final truth."},
+        {title:"Artificial Intelligence and the Modern Productivity Paradox", type:"academic working paper / high-quality secondary", url:"https://www.nber.org/papers/w24001", supports:"Supports the framework that GPT benefits can lag adoption and require complementary investment.", limits:"Written before the current GenAI cycle; apply by analogy with caution."}
+      ],
+      k6energy: [
+        {title:"Electricity 2024", type:"multilateral energy report / high-quality secondary", url:"https://www.iea.org/reports/electricity-2024", supports:"Supports AI and data-center electricity demand monitoring.", limits:"Scenario forecasts do not prove capex fragility by themselves."},
+        {title:"NERC Level 3 Alert", type:"reliability alert / primary", url:"https://www.nerc.com/newsroom/nerc-issues-level-3-alert-reliability-guideline-focused-on-large-load-challenges", supports:"Supports large-load interconnection and grid-reliability monitoring.", limits:"Does not establish AI as the sole cause."},
+        {title:"PJM Construction Metrics January 2026", type:"grid operator document / primary", url:"https://www.pjm.com/-/media/DotCom/committees-groups/subcommittees/ips/2026/20260126/20260126-item-04---construction-metrics.pdf", supports:"Supports regional power-infrastructure bottleneck tracking.", limits:"Regional document; cannot generalize globally without cross-check."}
+      ],
+      kw1: "k6ai",
+      supported: "kw6",
+      financial: "kw6",
+      validation: "kw6",
+      kw6: [
+        {title:"Microsoft FY2025 Form 10-K", type:"company filing / primary", url:"https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm", supports:"Supports Microsoft capex, cash flow, commitments, and risk-factor review.", limits:"Does not isolate pure AI capex from broader cloud infrastructure."},
+        {title:"NVIDIA FY2026 Results", type:"company official results / primary", url:"https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026", supports:"Supports AI accelerator revenue and demand context.", limits:"Vendor revenue does not prove downstream ROI or macro productivity."},
+        {title:"CoreWeave Q1 2026 Results", type:"company official results / primary", url:"https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-First-Quarter-2026-Results/", supports:"Supports one independent AI infrastructure financing watch example.", limits:"CoreWeave is not a proxy for the whole AI cycle."},
+        {title:"Digital Realty Q1 2026 Results", type:"company official results / primary", url:"https://investor.digitalrealty.com/static-files/186019d2-aa98-4bf5-a1c6-15bb5af879ed", supports:"Supports data-center operator financing and capex watch.", limits:"One company does not prove systemic financing stress."},
+        {title:"NERC Level 3 Alert", type:"reliability alert / primary", url:"https://www.nerc.com/newsroom/nerc-issues-level-3-alert-reliability-guideline-focused-on-large-load-challenges", supports:"Supports large-load grid constraint monitoring.", limits:"Does not by itself prove AI capex fragility."}
+      ]
     }
   };
 
@@ -2851,6 +2987,9 @@
     const labels = drawerLabels[currentLang];
     const data = drawerDataByLang[currentLang] || drawerDataByLang.zh;
     const item = data[kind] || data.watchlist;
+    const langSources = sourceSets[currentLang] || sourceSets.zh;
+    let sources = item.sources || langSources[kind] || [];
+    if(typeof sources === "string") sources = langSources[sources] || [];
     const claim = item.claim || item.summary || title;
     const status = item.status || labels.fallbackStatus;
     const hardness = item.hardness || labels.fallbackHardness;
@@ -2891,6 +3030,21 @@
         <h4>${labels.gaps}</h4>
         <ul>${gaps.map(x => `<li>${x}</li>`).join("")}</ul>
       </div>
+      ${sources.length ? `
+      <div class="drawer-section">
+        <h4>${labels.sources}</h4>
+        <div class="source-list">
+          ${sources.map(source => `
+            <a class="source-card" href="${source.url}" target="_blank" rel="noopener noreferrer">
+              <span class="source-title">${source.title}</span>
+              <span class="source-meta">${source.type}</span>
+              <span class="source-note"><b>${labels.sourceSupports}</b> ${source.supports}</span>
+              <span class="source-note"><b>${labels.sourceLimits}</b> ${source.limits}</span>
+            </a>
+          `).join("")}
+        </div>
+      </div>
+      ` : ""}
       <div class="drawer-section">
         <h4>${labels.rule}</h4>
         <p>${labels.ruleText}</p>
@@ -2967,6 +3121,9 @@
     document.documentElement.lang = currentLang === "en" ? "en" : "zh-CN";
     document.title = pageTitles[currentLang];
     applyMeta(currentLang);
+    document.querySelectorAll("[data-zh][data-en]").forEach(el => {
+      el.textContent = currentLang === "en" ? el.dataset.en : el.dataset.zh;
+    });
     translatableTextNodes.forEach(item => {
       item.node.nodeValue = translateText(item.zh, currentLang);
     });

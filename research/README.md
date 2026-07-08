@@ -19,6 +19,12 @@ These files are not raw Evidence Packs. They remove internal workflow notes, pri
 | [`OPEN_QUESTIONS.md`](OPEN_QUESTIONS.md) | Public research questions open to evidence, correction, and alternative interpretation | Open questions |
 | [`KW-001_AI_as_K6_Candidate.md`](KW-001_AI_as_K6_Candidate.md) | AI as a possible K6 diffusion engine | Watchlist / candidate boundary |
 | [`KW-006_AI_Capex_Financing_Fragility.md`](KW-006_AI_Capex_Financing_Fragility.md) | AI capex, financing fragility, and K6 Candidate Watch | Watchlist / partially source-checked |
+| [`sources/README.md`](sources/README.md) | Public source-layer boundary and use rules | Source registry guide |
+| [`sources/public_source_registry.md`](sources/public_source_registry.md) | Curated public source links for Source Inspector and public briefs | Public curated source registry |
+
+## Public Source Registry
+
+The `sources/` folder is a curated public source layer for website Source Inspector panels and public research briefs. It is not the internal evidence workspace and does not expose raw Evidence Packs, private notes, model-search transcripts, or unresolved source-repair material.
 
 ## Boundary
 

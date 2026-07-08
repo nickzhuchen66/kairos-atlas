@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Kairos favicon</title>
+  <desc id="desc">A brass K inside a dark macro-cycle observatory ring.</desc>
+  <rect width="512" height="512" rx="112" fill="#0b0d10"/>
+  <circle cx="256" cy="256" r="194" fill="none" stroke="#343a43" stroke-width="18"/>
+  <circle cx="256" cy="256" r="218" fill="none" stroke="#c8a15a" stroke-width="10" stroke-linecap="round" stroke-dasharray="245 78" transform="rotate(-28 256 256)"/>
+  <path d="M150 124h64v264h-64z" fill="#efd082"/>
+  <path d="M222 250 350 124h82L294 254l148 134h-86L222 265z" fill="#efd082"/>
+  <path d="M150 124h64v264h-64z" fill="#fff4b4" opacity=".16"/>
+  <circle cx="378" cy="126" r="14" fill="#c8a15a"/>
+</svg>

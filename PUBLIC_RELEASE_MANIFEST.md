@@ -15,6 +15,7 @@
 | `robots.txt` | included | Crawler access rules and sitemap pointer |
 | `sitemap.xml` | included | Public URL discovery map for the live site |
 | `llms.txt` | included | AI / LLM discovery summary with Kairos guardrails |
+| `favicon.svg` | included | Stable crawlable site icon for browsers and Google Search appearance |
 | `LICENSE` | included | Split license notice |
 | `LICENSE-CODE-MIT` | included | MIT license for website implementation code |
 | `CONTENT_LICENSE.md` | included | Content and research framing rights boundary |
@@ -26,6 +27,8 @@
 | `assets/` | included | Reserved for OG image and static assets |
 | `research/` | included | Curated public research briefs only; not raw internal Evidence Packs |
 | `research/OPEN_QUESTIONS.md` | included | Public research questions open to source-backed contributions |
+| `research/sources/README.md` | included | Public source-layer boundary and registry use rules |
+| `research/sources/public_source_registry.md` | included | Curated public source links for Source Inspector and public briefs; not raw internal Evidence Packs |
 
 ## Excluded From Public Release
 
@@ -57,6 +60,7 @@ Before publishing:
 - verify `robots.txt` points to `sitemap.xml`;
 - verify `sitemap.xml` includes only public release URLs;
 - verify `llms.txt` preserves Kairos guardrails and does not present K6 / AI as confirmed;
+- verify public source registry links are direct source URLs, not search wrappers or weak evidence links;
 - check mobile layout;
 - confirm no private files are present;
 - confirm Roadmap / Contributing / issue templates preserve K6 Candidate and evidence-gated boundaries;

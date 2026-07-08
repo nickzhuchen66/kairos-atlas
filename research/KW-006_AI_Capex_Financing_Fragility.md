@@ -45,7 +45,26 @@ Current source types used in the private evidence layer include:
 - official datasets and primary-source macro series where available;
 - industry-level cross-checks for data centers, grid constraints, semiconductors, networking, and power equipment.
 
-This public brief does not expose raw internal claim-source mapping. Future public updates may add direct source links once each public claim is cleaned for release.
+This public brief does not expose raw internal claim-source mapping. It uses a curated public source registry so readers can inspect the cleaned evidence layer without exposing internal Evidence Packs.
+
+## Curated Evidence Links
+
+These links are drawn from the public curated source registry. They support inspection of capex, financing structure, AI infrastructure demand, and power-grid constraints. They do not confirm systemic crisis, and they do not confirm AI as K6.
+
+| Source | Type / hardness | Supports | Limits |
+|---|---|---|---|
+| [Microsoft FY2025 Form 10-K](https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm) | company filing / primary | Supports Microsoft capex, cash flow, commitments, and risk-factor review. | Does not isolate pure AI capex from broader cloud infrastructure. |
+| [Alphabet FY2025 Form 10-K](https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm) | company filing / primary | Supports Alphabet capex and commitments review. | Does not prove future AI ROI. |
+| [Amazon FY2025 Form 10-K](https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm) | company filing / primary | Supports Amazon capex, AWS context, and financing review. | Does not separate every AI-specific infrastructure component. |
+| [Meta FY2025 Form 10-K](https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm) | company filing / primary | Supports Meta capex, AI infrastructure, and operating-risk review. | Does not confirm K6 or broad productivity diffusion. |
+| [NVIDIA FY2026 Results](https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026) | company official results / primary | Supports AI accelerator revenue and demand context. | Vendor revenue does not prove downstream ROI or macro productivity. |
+| [CoreWeave Q1 2026 Results](https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-First-Quarter-2026-Results/) | company official results / primary | Supports one independent AI infrastructure financing watch example. | CoreWeave is not a proxy for the whole AI cycle. |
+| [Digital Realty Q1 2026 Results](https://investor.digitalrealty.com/static-files/186019d2-aa98-4bf5-a1c6-15bb5af879ed) | company official results / primary | Supports data-center operator financing and capex watch. | One company does not prove systemic financing stress. |
+| [NERC Level 3 Alert](https://www.nerc.com/newsroom/nerc-issues-level-3-alert-reliability-guideline-focused-on-large-load-challenges) | reliability alert / primary | Supports large-load grid constraint monitoring. | Does not by itself prove AI capex fragility. |
+| [PJM Construction Metrics January 2026](https://www.pjm.com/-/media/DotCom/committees-groups/subcommittees/ips/2026/20260126/20260126-item-04---construction-metrics.pdf) | grid operator document / primary | Supports regional power-infrastructure bottleneck tracking. | Regional document; cannot generalize globally without cross-check. |
+| [DOE Emergency Order No. 202-26-23](https://www.energy.gov/documents/doe-emergency-order-no-202-26-23pdf) | government order / primary | Supports emergency-order monitoring as a power-system stress signal. | Does not establish AI as the sole cause. |
+
+Full registry: [Public Curated Source Registry](sources/public_source_registry.md)
 
 ## Watch Triggers
 
