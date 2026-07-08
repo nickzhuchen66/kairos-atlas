@@ -269,10 +269,17 @@
   .hero{
     min-height:calc(100vh - 62px);
     display:grid;
-    grid-template-columns:minmax(300px, .76fr) minmax(500px, 1.24fr);
-    gap:34px;
+    grid-template-columns:minmax(300px, .62fr) minmax(560px, 1.38fr);
+    gap:26px;
     align-items:center;
     padding:58px 0 44px;
+  }
+  .hero-intro{
+    min-width:0;
+    align-self:stretch;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
   }
   .eyebrow{
     font-family:var(--font-mono);
@@ -285,7 +292,7 @@
   h1{
     margin:14px 0 14px;
     font-family:var(--font-display);
-    font-size:clamp(54px,7.8vw,98px);
+    font-size:clamp(48px,6.2vw,78px);
     font-weight:500;
     line-height:.9;
     letter-spacing:.08em;
@@ -315,6 +322,28 @@
     gap:10px;
     margin-top:28px;
   }
+  .reading-summary{
+    display:grid;
+    gap:8px;
+    margin-top:22px;
+    padding:14px;
+    border:1px solid rgba(200,161,90,.22);
+    background:rgba(18,21,26,.55);
+  }
+  .reading-summary-row{
+    display:grid;
+    grid-template-columns:118px 1fr;
+    gap:12px;
+    font-size:12px;
+    line-height:1.35;
+  }
+  .reading-summary-row span:first-child{
+    color:var(--quiet);
+    font-family:var(--font-mono);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .reading-summary-row span:last-child{color:var(--muted)}
   .btn{
     display:inline-flex;
     align-items:center;
@@ -409,7 +438,7 @@
     position:relative;
     z-index:1;
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(5,1fr);
     gap:8px;
     margin:-8px 0 16px;
     animation:calibrateIn .5s ease .18s both;
@@ -494,6 +523,63 @@
     overflow:hidden;
     animation:calibrateIn .55s ease .28s both;
   }
+  .board-grid{
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:minmax(230px, .58fr) minmax(280px, .92fr);
+    gap:12px;
+    margin-bottom:14px;
+    animation:calibrateIn .55s ease .28s both;
+  }
+  .compact-stack{
+    border:1px solid rgba(200,161,90,.16);
+    background:rgba(11,13,16,.36);
+    padding:10px;
+    display:grid;
+    gap:7px;
+    align-content:start;
+  }
+  .compact-stack-title{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    align-items:center;
+    padding-bottom:8px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    font-family:var(--font-mono);
+    font-size:10px;
+    color:var(--brass-2);
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .compact-layer{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) auto;
+    gap:8px;
+    align-items:center;
+    min-height:34px;
+    padding:7px 8px;
+    border:1px solid rgba(255,255,255,.065);
+    background:rgba(18,21,26,.6);
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.2;
+  }
+  .compact-layer b{
+    color:var(--ink);
+    font-weight:520;
+  }
+  .compact-layer span:last-child{
+    font-family:var(--font-mono);
+    color:var(--quiet);
+    font-size:9.5px;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .compact-layer.watch span:last-child{color:var(--amber)}
+  .compact-layer.partial span:last-child{color:var(--blue)}
+  .compact-layer.manual span:last-child{color:var(--violet)}
   .orbital::before{
     content:"";
     position:absolute;
@@ -623,6 +709,38 @@
     color:var(--muted);
     line-height:1.52;
   }
+  .bucket-list{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:grid;
+    gap:7px;
+  }
+  .bucket-list li{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.42;
+    padding-left:12px;
+    position:relative;
+  }
+  .bucket-list li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:.68em;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:currentColor;
+    opacity:.82;
+  }
+  .bucket-link{
+    margin-top:10px;
+    color:var(--brass-2);
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:.06em;
+  }
 
   section{
     border-top:1px solid rgba(200,161,90,.16);
@@ -746,6 +864,10 @@
     letter-spacing:.08em;
   }
   .status-line span:last-child{color:var(--muted)}
+  .status-line.wide{
+    grid-template-columns:1fr;
+    gap:4px;
+  }
   .card-foot{
     margin-top:16px;
     padding-top:12px;
@@ -753,6 +875,44 @@
     color:var(--quiet);
     font-family:var(--font-mono);
     font-size:10.5px;
+  }
+  .phase-meta{
+    display:grid;
+    gap:6px;
+    margin-top:11px;
+    padding-top:10px;
+    border-top:1px solid rgba(255,255,255,.07);
+  }
+  .phase-meta div{
+    display:grid;
+    grid-template-columns:92px 1fr;
+    gap:8px;
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.3;
+  }
+  .phase-meta span:first-child{
+    color:var(--quiet);
+    font-family:var(--font-mono);
+    font-size:9.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .atlas-card.priority{
+    border-color:rgba(239,208,130,.42);
+    background:
+      linear-gradient(135deg, rgba(200,161,90,.12), transparent 42%),
+      linear-gradient(180deg, rgba(23,27,34,.96), rgba(18,21,26,.88));
+  }
+  .wave-row.candidate-zone{
+    opacity:.84;
+  }
+  .wave-row.candidate-zone .wave-label{
+    color:var(--violet);
+  }
+  .wave-row.candidate-zone .wave-label::after{
+    border-style:dashed;
+    border-color:var(--violet);
   }
 
   .split{
@@ -841,10 +1001,11 @@
     opacity:.28;
   }
   .atlas-card.candidate{
-    border-color:rgba(169,141,202,.42);
+    border-color:rgba(169,141,202,.3);
+    border-style:dashed;
     background:
-      linear-gradient(135deg, rgba(169,141,202,.13), transparent 42%),
-      linear-gradient(180deg, rgba(23,27,34,.94), rgba(18,21,26,.86));
+      linear-gradient(135deg, rgba(169,141,202,.07), transparent 42%),
+      linear-gradient(180deg, rgba(23,27,34,.78), rgba(18,21,26,.74));
   }
   .atlas-card h3{
     font-size:14px;
@@ -926,6 +1087,63 @@
     flex-wrap:wrap;
     gap:6px;
     margin-top:14px;
+  }
+  .watch-card.featured{
+    grid-column:span 2;
+  }
+  .watch-path{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:8px;
+    margin-top:14px;
+    padding-top:12px;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .watch-path div{
+    min-width:0;
+    border:1px solid rgba(255,255,255,.07);
+    background:rgba(11,13,16,.34);
+    padding:8px;
+  }
+  .watch-path span{
+    display:block;
+    color:var(--quiet);
+    font-family:var(--font-mono);
+    font-size:9px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .watch-path b{
+    display:block;
+    margin-top:3px;
+    color:var(--muted);
+    font-size:11.2px;
+    font-weight:500;
+    line-height:1.34;
+  }
+  .contribution-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:14px;
+  }
+  .contribution-link{
+    display:inline-flex;
+    align-items:center;
+    min-height:30px;
+    padding:6px 9px;
+    border:1px solid rgba(200,161,90,.24);
+    background:rgba(18,21,26,.58);
+    color:var(--ink);
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:.04em;
+    transition:border-color .18s ease, background .18s ease, transform .18s ease;
+  }
+  .contribution-link:hover{
+    border-color:rgba(239,208,130,.52);
+    background:rgba(200,161,90,.08);
+    transform:translateY(-1px);
   }
 
   .asset-table{
@@ -1156,7 +1374,7 @@
   }
   .inspector-grid{
     display:grid;
-    grid-template-columns:130px 1fr;
+    grid-template-columns:145px 1fr;
     gap:8px 12px;
     font-size:12.5px;
   }
@@ -1167,13 +1385,31 @@
     letter-spacing:.08em;
   }
   .inspector-grid span:nth-child(even){color:var(--muted)}
+  .drawer-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+  }
+  .drawer-action{
+    display:inline-flex;
+    align-items:center;
+    min-height:30px;
+    padding:6px 9px;
+    border:1px solid rgba(200,161,90,.24);
+    background:rgba(11,13,16,.34);
+    color:var(--ink);
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:.04em;
+  }
 
   @keyframes instrumentBoot{
     from{opacity:.78;transform:translateY(10px) scale(.992);filter:saturate(.8)}
     to{opacity:1;transform:none;filter:saturate(1)}
   }
   @keyframes calibrateIn{
-    from{opacity:0;transform:translateY(8px)}
+    from{opacity:.96;transform:translateY(8px)}
     to{opacity:1;transform:none}
   }
   @keyframes scanSweep{
@@ -1207,12 +1443,13 @@
   }
 
   @media(max-width:980px){
-    .hero,.section-head,.split,.footer-grid{grid-template-columns:1fr}
-    .dashboard{order:-1}
+    .hero,.section-head,.split,.footer-grid{grid-template-columns:minmax(0,1fr)}
+    .board-grid{grid-template-columns:1fr}
     .instrument-strip{grid-template-columns:repeat(2,1fr)}
     .stack-grid,.watch-grid{grid-template-columns:repeat(2,1fr)}
     .evidence-grid{grid-template-columns:repeat(2,1fr)}
     .validation-row,.asset-row{grid-template-columns:1fr}
+    .watch-card.featured{grid-column:span 2}
   }
   @media(max-width:680px){
     .wrap{width:calc(100% - 28px);max-width:1180px}
@@ -1222,16 +1459,32 @@
     .github-link{min-height:32px;padding:7px 10px;font-size:12px}
     .github-word-star{display:none}
     nav{width:100%}
-    .hero{padding-top:34px}
-    h1{font-size:clamp(46px,18vw,68px)}
-    .hero-title{font-size:25px}
+    .hero{padding-top:34px;overflow:hidden}
+    .hero-intro,.hero-title,.hero-copy,.reading-summary,.hero-actions{
+      width:calc(100vw - 28px);
+      max-width:calc(100vw - 28px);
+    }
+    h1{font-size:clamp(42px,16vw,62px)}
+    .hero-title{font-size:22px;max-width:100%;overflow-wrap:break-word}
+    .hero-copy{max-width:100%;overflow-wrap:break-word}
+    html[lang="en"] .hero-title{
+      font-size:22px;
+      width:min(320px, calc(100vw - 28px))!important;
+      max-width:min(320px, calc(100vw - 28px))!important;
+      line-height:1.18;
+    }
+    html[lang="en"] .hero-copy{max-width:calc(100vw - 28px)}
+    .hero-actions{display:grid;grid-template-columns:1fr;gap:9px}
+    .btn{width:100%;justify-content:flex-start}
+    .reading-summary{max-width:100%}
     .dashboard{padding:18px}
     .dashboard,.orbital{width:100%;max-width:100%}
-    .instrument-strip{grid-template-columns:1fr 1fr;gap:7px}
+    .instrument-strip,.watch-path{grid-template-columns:1fr;gap:7px}
     .instrument-cell{min-height:48px;padding:8px}
     .orbit-legend{grid-template-columns:repeat(2, auto);left:10px;bottom:9px;gap:4px 8px}
     .orbit-key{font-size:8px}
     .triad,.stack-grid,.phase-grid,.watch-grid,.evidence-grid{grid-template-columns:1fr}
+    .watch-card.featured{grid-column:auto}
     section{padding:58px 0}
     .orbital{min-height:334px}
     .rings{width:min(91%, 330px)}
@@ -1241,6 +1494,7 @@
     .dash-head{display:block}
     .status-block{text-align:left;margin-top:14px}
     .status-line{grid-template-columns:72px 1fr}
+    .reading-summary-row,.phase-meta div{grid-template-columns:1fr}
     .inspector-grid{grid-template-columns:1fr}
     .scanline::before{display:none}
   }
@@ -1293,17 +1547,25 @@
 
   <main id="home">
     <div class="wrap hero" id="reading">
-      <div>
-        <div class="eyebrow">Kairos v1 · 静态仪表盘</div>
+      <div class="hero-intro">
+        <div class="eyebrow">Kairos v0.2 · Current Regime Board</div>
         <h1>KAIROS</h1>
-        <p class="hero-title">把宏观周期做成可点击、可复盘、可证伪的天象图。</p>
+        <p class="hero-title">当前宏观周期读数，一眼可见，逐层可查。</p>
         <p class="hero-copy">
-          第一版不追逐每日新闻，不做日期预言机。Kairos 先回答“现在处在哪个周期状态”，再把读数连接到长波图谱、观察清单、证据包和来源检查器。
+          Kairos 将当前 regime、六层周期栈、长波图谱、观察清单和来源状态放在同一块仪表板上。它是工作地图，不是日期预言机，也不是交易信号。
         </p>
+        <div class="reading-summary" aria-label="当前读数摘要">
+          <div class="reading-summary-row"><span>主读数</span><span>K5-E / K6 Candidate Watch</span></div>
+          <div class="reading-summary-row"><span>置信度</span><span>Medium · 关键证据仍需人工复核</span></div>
+          <div class="reading-summary-row"><span>来源状态</span><span>Curated public briefs + source review needed</span></div>
+          <div class="reading-summary-row"><span>更新模式</span><span>Manual / evidence-gated / event-driven</span></div>
+        </div>
         <div class="hero-actions">
-          <a class="btn primary" href="#stack">-> 查看六层周期栈</a>
-          <a class="btn" href="#atlas">-> 进入长波图谱</a>
-          <a class="btn" href="#watchlist">-> 查看观察清单</a>
+          <a class="btn primary" href="#stack">-> Inspect Stack</a>
+          <a class="btn" href="#atlas">-> Open Atlas</a>
+          <a class="btn" href="#watchlist">-> Review KW-006</a>
+          <a class="btn" href="#evidence">-> Check Evidence</a>
+          <a class="btn" href="https://github.com/nickzhuchen66/kairos-atlas" target="_blank" rel="noopener noreferrer">-> GitHub</a>
         </div>
       </div>
 
@@ -1315,57 +1577,81 @@
             <div class="regime-title">K5-E / K6 候选观察</div>
           </div>
           <div class="status-block">
-            <div><b>手动复核</b></div>
-            <div>中等置信度</div>
-            <div>规格日期：2026-07-06</div>
-            <div>来源：Kairos 文件</div>
+            <div><b>Manual review</b></div>
+            <div>Medium confidence</div>
+            <div>Last reviewed: 2026-07-08</div>
+            <div>Source status: mixed</div>
           </div>
         </div>
 
         <div class="instrument-strip" aria-label="读数元信息">
-          <div class="instrument-cell"><span>更新模式</span><b>手动复核</b></div>
+          <div class="instrument-cell"><span>主读数</span><b>K5-E / K6 Watch</b></div>
           <div class="instrument-cell"><span>置信度</span><b>中等</b></div>
-          <div class="instrument-cell"><span>证据状态</span><b>证据门控</b></div>
+          <div class="instrument-cell"><span>来源状态</span><b>混合 / 待补源</b></div>
+          <div class="instrument-cell"><span>更新模式</span><b>手动 / 事件驱动</b></div>
           <div class="instrument-cell"><span>K6 状态</span><b>仅候选</b></div>
         </div>
 
-        <div class="orbital">
-          <div class="rings" aria-hidden="true">
-            <span style="--i:0"></span>
-            <span style="--i:1"></span>
-            <span style="--i:2"></span>
-            <span style="--i:3"></span>
-            <span style="--i:4"></span>
-            <span style="--i:5"></span>
+        <div class="board-grid">
+          <div class="compact-stack" aria-label="首页紧凑周期栈">
+            <div class="compact-stack-title"><span>Cycle Stack</span><span>6 Layers</span></div>
+            <div class="compact-layer watch"><b>Macro Clock</b><span>Watch</span></div>
+            <div class="compact-layer watch"><b>Financial Cycle</b><span>KW-006</span></div>
+            <div class="compact-layer partial"><b>Liquidity / Policy</b><span>Partial</span></div>
+            <div class="compact-layer partial"><b>Global Dollar</b><span>Review</span></div>
+            <div class="compact-layer manual"><b>Long Wave Context</b><span>Manual</span></div>
+            <div class="compact-layer watch"><b>Market Validation</b><span>Watch</span></div>
           </div>
-          <div class="needle" aria-hidden="true"></div>
-          <div class="center-reading">
-            <div class="small">长波背景</div>
-            <div class="big">K5 后段与 K6 转换观察重叠</div>
-            <div class="note">AI 资本开支有真实地面信号，但不支持确认 K6。</div>
-          </div>
-          <div class="orbit-legend" aria-hidden="true">
-            <span class="orbit-key">宏观</span>
-            <span class="orbit-key">信用</span>
-            <span class="orbit-key">政策</span>
-            <span class="orbit-key">美元</span>
-            <span class="orbit-key">长波</span>
-            <span class="orbit-key">市场</span>
+          <div class="orbital">
+            <div class="rings" aria-hidden="true">
+              <span style="--i:0"></span>
+              <span style="--i:1"></span>
+              <span style="--i:2"></span>
+              <span style="--i:3"></span>
+              <span style="--i:4"></span>
+              <span style="--i:5"></span>
+            </div>
+            <div class="needle" aria-hidden="true"></div>
+            <div class="center-reading">
+              <div class="small">当前主读数</div>
+              <div class="big">K5-E 与 K6 候选观察重叠</div>
+              <div class="note">AI 有真实地面信号，但不确认 K6；融资脆弱性仍是观察项。</div>
+            </div>
+            <div class="orbit-legend" aria-hidden="true">
+              <span class="orbit-key">宏观</span>
+              <span class="orbit-key">信用</span>
+              <span class="orbit-key">政策</span>
+              <span class="orbit-key">美元</span>
+              <span class="orbit-key">长波</span>
+              <span class="orbit-key">市场</span>
+            </div>
           </div>
         </div>
 
         <div class="triad">
           <button class="triad-card js-open" data-title="已支持方向" data-kind="supported">
             <h3 class="green">已支持方向</h3>
-            <p>AI 基础设施资本开支在电力设备、数据中心、半导体和网络设备端已有真实地面信号。</p>
+            <ul class="bucket-list">
+              <li>AI 基础设施资本开支有真实地面信号。</li>
+              <li>市场表现可验证读数，但不是唯一真相。</li>
+            </ul>
+            <div class="bucket-link">Open Source Inspector</div>
           </button>
           <button class="triad-card js-open" data-title="争议判断" data-kind="contested">
             <h3 class="red">争议判断</h3>
-            <p>AI 生产率扩散时点、2020 是否是 K5 硬终点、移动互联网 / 平台经济的 TFP 影响仍存在争议。</p>
+            <ul class="bucket-list">
+              <li>AI 生产率扩散时点仍有争议。</li>
+              <li>2020 是否为 K5 硬终点不能写成事实。</li>
+            </ul>
+            <div class="bucket-link">Challenge this reading</div>
           </button>
           <button class="triad-card js-open" data-title="活动观察清单" data-kind="watchlist">
             <h3 class="amber">观察清单</h3>
-            <p>KW-006 跟踪 AI 资本开支 ROI、GPU 定价、数据中心融资、电网瓶颈与企业采用。</p>
+            <ul class="bucket-list">
+              <li>KW-006 跟踪 AI capex ROI 与融资脆弱性。</li>
+              <li>KW-001 跟踪 AI 是否具备 K6 扩散证据。</li>
+            </ul>
+            <div class="bucket-link">Review Watchlist Path</div>
           </button>
         </div>
       </aside>
@@ -1389,10 +1675,13 @@
             </div>
             <p class="card-text">当前页面先采用观察状态：增长、通胀和政策约束需由后续当前读数内容正式填数。</p>
             <div class="status-lines">
-              <div class="status-line"><span>状态</span><span>当前数据包待补</span></div>
-              <div class="status-line"><span>证据</span><span>部分完成 / 证据门控</span></div>
+              <div class="status-line"><span>当前状态</span><span>增长 / 通胀组合待正式数据包填充</span></div>
+              <div class="status-line"><span>置信度</span><span>低到中等；不写实时数字</span></div>
+              <div class="status-line"><span>证据状态</span><span>Source review needed</span></div>
+              <div class="status-line"><span>关联观察</span><span>KW-002 / KW-003</span></div>
+              <div class="status-line wide"><span>触发 / 证伪</span><span>通胀、增长、政策空间数据共同改变当前 regime 时复核。</span></div>
             </div>
-            <div class="card-foot">待补：当前数据包 / 来源硬度</div>
+            <div class="card-foot">Inspect: Current state / confidence / source status</div>
           </button>
 
           <button class="stack-card js-open" data-title="金融周期" data-kind="financial">
@@ -1402,10 +1691,13 @@
             </div>
             <p class="card-text">AI 资本开支和融资结构是重点，不把局部脆弱性直接写成系统性危机。</p>
             <div class="status-lines">
-              <div class="status-line"><span>状态</span><span>融资脆弱性观察</span></div>
-              <div class="status-line"><span>证据</span><span>KW-006 / EP_001-EP_005</span></div>
+              <div class="status-line"><span>当前状态</span><span>AI capex 融资脆弱性观察</span></div>
+              <div class="status-line"><span>置信度</span><span>中等；局部强、系统性未确认</span></div>
+              <div class="status-line"><span>证据状态</span><span>Public brief + internal source index</span></div>
+              <div class="status-line"><span>关联观察</span><span>KW-006</span></div>
+              <div class="status-line wide"><span>触发 / 证伪</span><span>融资压力扩散会强化；现金流覆盖 capex 会削弱。</span></div>
             </div>
-            <div class="card-foot">关联：KW-006 / EP_001-EP_005</div>
+            <div class="card-foot">Inspect: KW-006 evidence path</div>
           </button>
 
           <button class="stack-card js-open" data-title="流动性 / 政策" data-kind="policy">
@@ -1415,10 +1707,13 @@
             </div>
             <p class="card-text">先展示政策约束层，不写未核验的实时利率或央行结论。</p>
             <div class="status-lines">
-              <div class="status-line"><span>状态</span><span>财政货币约束观察</span></div>
-              <div class="status-line"><span>证据</span><span>KW-002 / 来源补核中</span></div>
+              <div class="status-line"><span>当前状态</span><span>财政货币约束观察</span></div>
+              <div class="status-line"><span>置信度</span><span>中等偏低；仍需公开来源包</span></div>
+              <div class="status-line"><span>证据状态</span><span>Source review needed</span></div>
+              <div class="status-line"><span>关联观察</span><span>KW-002 / KW-003</span></div>
+              <div class="status-line wide"><span>触发 / 证伪</span><span>通胀中枢、财政赤字和实际利率路径共同改变时复核。</span></div>
             </div>
-            <div class="card-foot">待补：政策来源包</div>
+            <div class="card-foot">Inspect: policy constraint review</div>
           </button>
 
           <button class="stack-card js-open" data-title="全球美元" data-kind="dollar">
@@ -1428,10 +1723,13 @@
             </div>
             <p class="card-text">全球美元层用于连接 Rey 全球金融周期、美元融资与风险偏好。</p>
             <div class="status-lines">
-              <div class="status-line"><span>状态</span><span>融资压力观察</span></div>
-              <div class="status-line"><span>证据</span><span>BIS / IMF / FRED 来源补核中</span></div>
+              <div class="status-line"><span>当前状态</span><span>美元融资与风险偏好观察</span></div>
+              <div class="status-line"><span>置信度</span><span>中等偏低；公开来源待补强</span></div>
+              <div class="status-line"><span>证据状态</span><span>BIS / IMF / FRED source review</span></div>
+              <div class="status-line"><span>关联观察</span><span>KW-004</span></div>
+              <div class="status-line wide"><span>触发 / 证伪</span><span>美元融资压力、VIX、信用利差和跨境流动显著改变时复核。</span></div>
             </div>
-            <div class="card-foot">待补：FRED / BIS / IMF 来源补核</div>
+            <div class="card-foot">Inspect: dollar liquidity review</div>
           </button>
 
           <button class="stack-card js-open" data-title="长波背景" data-kind="longwave">
@@ -1441,10 +1739,13 @@
             </div>
             <p class="card-text">K5-E / K6 候选观察是当前长波背景，但 K6 不得写成已确认。</p>
             <div class="status-lines">
-              <div class="status-line"><span>状态</span><span>K5-E / K6 候选观察</span></div>
-              <div class="status-line"><span>模式</span><span>手动 / 证据门控</span></div>
+              <div class="status-line"><span>当前状态</span><span>K5-E / K6 Candidate Watch</span></div>
+              <div class="status-line"><span>置信度</span><span>中等；K6 未确认</span></div>
+              <div class="status-line"><span>证据状态</span><span>Manual / evidence-gated</span></div>
+              <div class="status-line"><span>关联观察</span><span>KW-001 / KW-006</span></div>
+              <div class="status-line wide"><span>触发 / 证伪</span><span>跨行业生产率扩散会强化；AI 收入无法覆盖 capex 会削弱。</span></div>
             </div>
-            <div class="card-foot">手动证据门控复核</div>
+            <div class="card-foot">Inspect: K5-E / K6 candidate boundary</div>
           </button>
 
           <button class="stack-card js-open" data-title="市场验证" data-kind="market">
@@ -1454,10 +1755,13 @@
             </div>
             <p class="card-text">市场表现是验证层，不是唯一真相。资产含义进入资产映射，而不是交易建议。</p>
             <div class="status-lines">
-              <div class="status-line"><span>状态</span><span>AI 主导分化观察</span></div>
-              <div class="status-line"><span>证据</span><span>资产映射 / 复盘记录</span></div>
+              <div class="status-line"><span>当前状态</span><span>AI 主导分化观察</span></div>
+              <div class="status-line"><span>置信度</span><span>中等；验证层，不是唯一真相</span></div>
+              <div class="status-line"><span>证据状态</span><span>Asset map / validation notes</span></div>
+              <div class="status-line"><span>关联观察</span><span>KW-003 / KW-004 / KW-006</span></div>
+              <div class="status-line wide"><span>触发 / 证伪</span><span>资产表现与宏观读数背离时，先进入 validation review。</span></div>
             </div>
-            <div class="card-foot">关联：资产映射 / 复盘记录</div>
+            <div class="card-foot">Inspect: validation layer</div>
           </button>
         </div>
       </div>
@@ -1482,21 +1786,45 @@
                   <span class="badge partial">来源补核中</span>
                   <h3>1930s-1945 · 大萧条 / 战争重置</h3>
                   <p>大萧条、金本位约束、战争财政和制度重置。</p>
+                  <div class="phase-meta">
+                    <div><span>Phase ID</span><span>K4-A</span></div>
+                    <div><span>Relevance</span><span>低；作为 crisis reset 骨架对照。</span></div>
+                    <div><span>Readiness</span><span>Skeleton / source review needed</span></div>
+                    <div><span>Open Q</span><span>战争财政与资产行为如何映射？</span></div>
+                  </div>
                 </button>
                 <button class="atlas-card js-open" data-title="K4-B 战后重建" data-kind="k4b">
                   <span class="badge partial">来源补核中</span>
                   <h3>1945-1958 · 战后重建</h3>
                   <p>战后重建、美国主导、布雷顿森林框架成形。</p>
+                  <div class="phase-meta">
+                    <div><span>Phase ID</span><span>K4-B</span></div>
+                    <div><span>Relevance</span><span>低；用于制度重建与美元短缺对照。</span></div>
+                    <div><span>Readiness</span><span>Skeleton / source review needed</span></div>
+                    <div><span>Open Q</span><span>战后债务压制如何影响资产？</span></div>
+                  </div>
                 </button>
                 <button class="atlas-card js-open" data-title="K4-C 布雷顿森林黄金时代" data-kind="k4c">
                   <span class="badge contested">有争议</span>
                   <h3>1958-1968/71 · 布雷顿森林黄金时代</h3>
                   <p>固定汇率、资本管制、美元-黄金体系共存。</p>
+                  <div class="phase-meta">
+                    <div><span>Phase ID</span><span>K4-C</span></div>
+                    <div><span>Relevance</span><span>中低；用于美元-黄金约束对照。</span></div>
+                    <div><span>Readiness</span><span>Skeleton / contested boundary</span></div>
+                    <div><span>Open Q</span><span>1958 与 1968/71 边界如何处理？</span></div>
+                  </div>
                 </button>
-                <button class="atlas-card js-open" data-title="K4-D 滞胀 / Volcker 重置" data-kind="k4d">
+                <button class="atlas-card priority js-open" data-title="K4-D 滞胀 / Volcker 重置" data-kind="k4d">
                   <span class="badge watch">重点</span>
                   <h3>1968/71-1982 · 滞胀 / Volcker 重置</h3>
                   <p>美元黄金脱钩、供给冲击、通胀失控与 Volcker 重置。</p>
+                  <div class="phase-meta">
+                    <div><span>Phase ID</span><span>K4-D</span></div>
+                    <div><span>Relevance</span><span>高；当前通胀与政策重置的历史对照。</span></div>
+                    <div><span>Readiness</span><span>Priority / partial evidence</span></div>
+                    <div><span>Open Q</span><span>1970s 资产行为如何量化？</span></div>
+                  </div>
                 </button>
               </div>
             </div>
@@ -1504,56 +1832,102 @@
             <div class="wave-row">
               <div class="wave-label">K5</div>
               <div class="phase-grid">
-                <button class="atlas-card js-open" data-title="K5-A 去通胀 / 金融化起点" data-kind="k5a">
+                <button class="atlas-card priority js-open" data-title="K5-A 去通胀 / 金融化起点" data-kind="k5a">
                   <span class="badge contested">重点</span>
                   <h3>1979/82-1991 · 去通胀 / 美元重置</h3>
                   <p>通胀被压制，利率下行长周期与金融化起点出现。</p>
+                  <div class="phase-meta">
+                    <div><span>Phase ID</span><span>K5-A</span></div>
+                    <div><span>Relevance</span><span>高；低利率金融化起点与当前反转对照。</span></div>
+                    <div><span>Readiness</span><span>Priority / contested soft start</span></div>
+                    <div><span>Open Q</span><span>1979/82 起点窗口如何标注？</span></div>
+                  </div>
                 </button>
                 <button class="atlas-card js-open" data-title="K5-B 全球化 / ICT" data-kind="k5b">
                   <span class="badge partial">部分核验</span>
                   <h3>1991-2000/04 · 全球化 / ICT</h3>
                   <p>全球化、ICT 扩散、低通胀增长和风险资产繁荣。</p>
+                  <div class="phase-meta">
+                    <div><span>Phase ID</span><span>K5-B</span></div>
+                    <div><span>Relevance</span><span>中；ICT 与 AI 扩散类比的参照。</span></div>
+                    <div><span>Readiness</span><span>Medium / TFP contested</span></div>
+                    <div><span>Open Q</span><span>2000-2004 是否应作过渡段？</span></div>
+                  </div>
                 </button>
                 <button class="atlas-card js-open" data-title="K5-C 信用泡沫" data-kind="k5c">
                   <span class="badge watch">重点</span>
                   <h3>2004-2008 · 信用泡沫 / 美元杠杆</h3>
                   <p>全球失衡、住房信用、影子银行和美元杠杆共振。</p>
+                  <div class="phase-meta">
+                    <div><span>Phase ID</span><span>K5-C</span></div>
+                    <div><span>Relevance</span><span>中高；融资脆弱性与杠杆类比。</span></div>
+                    <div><span>Readiness</span><span>Medium / source repair needed</span></div>
+                    <div><span>Open Q</span><span>AI capex 是否存在类似杠杆链？</span></div>
+                  </div>
                 </button>
                 <button class="atlas-card js-open" data-title="K5-D QE / 平台经济" data-kind="k5d">
                   <span class="badge watch">重点</span>
                   <h3>2008-2020 · QE / 低利率资产负债表时代</h3>
                   <p>QE、低利率、平台经济和久期资产重估。</p>
+                  <div class="phase-meta">
+                    <div><span>Phase ID</span><span>K5-D</span></div>
+                    <div><span>Relevance</span><span>中高；低利率资产定价反转的基准。</span></div>
+                    <div><span>Readiness</span><span>Medium / TFP contested</span></div>
+                    <div><span>Open Q</span><span>平台经济 TFP 影响如何评价？</span></div>
+                  </div>
                 </button>
-                <button class="atlas-card js-open" data-title="K5-E 财政货币冲击 / AI 作为 K6 候选" data-kind="k5e">
+                <button class="atlas-card priority js-open" data-title="K5-E 财政货币冲击 / AI 作为 K6 候选" data-kind="k5e">
                   <span class="badge manual">第一优先</span>
                   <h3>2020-now · 财政货币冲击 / AI 作为 K6 候选</h3>
                   <p>财政货币冲击、通胀回归、高利率重估、AI 成为 K6 候选。</p>
+                  <div class="phase-meta">
+                    <div><span>Phase ID</span><span>K5-E</span></div>
+                    <div><span>Relevance</span><span>最高；当前主读数所在阶段。</span></div>
+                    <div><span>Readiness</span><span>First priority / evidence-gated</span></div>
+                    <div><span>Open Q</span><span>AI 是否扩散成 K6，还是 K5 尾部狂热？</span></div>
+                  </div>
                 </button>
               </div>
             </div>
 
-            <div class="wave-row">
+            <div class="wave-row candidate-zone">
               <div class="wave-label">K6</div>
               <div class="phase-grid">
                 <button class="atlas-card candidate js-open" data-title="K6 Candidate Watch / AI" data-kind="k6ai">
-                  <span class="badge manual">候选观察</span>
+                  <span class="badge manual">Unconfirmed / Manual</span>
                   <h3>AI / 智能自动化</h3>
                   <p>观察 AI 是否从资本开支和局部生产率，扩散为跨行业生产范式。</p>
+                  <div class="phase-meta">
+                    <div><span>Status</span><span>Candidate Watch only</span></div>
+                    <div><span>Open Q</span><span>生产率扩散能否跨行业成立？</span></div>
+                  </div>
                 </button>
                 <button class="atlas-card candidate js-open" data-title="K6 Candidate Watch / Energy & Power" data-kind="k6energy">
-                  <span class="badge watch">候选观察</span>
+                  <span class="badge watch">Unconfirmed</span>
                   <h3>能源 / 电力约束</h3>
                   <p>观察电网、能源密度和数据中心需求是否成为新周期的物理约束。</p>
+                  <div class="phase-meta">
+                    <div><span>Status</span><span>Candidate constraint</span></div>
+                    <div><span>Open Q</span><span>电力瓶颈是否改变资本开支路径？</span></div>
+                  </div>
                 </button>
                 <button class="atlas-card candidate js-open" data-title="K6 Candidate Watch / Automation" data-kind="k6auto">
-                  <span class="badge watch">候选观察</span>
+                  <span class="badge watch">Unconfirmed</span>
                   <h3>自动化 / 机器人</h3>
                   <p>观察自动化是否从软件效率提升，进入实体生产和服务流程改造。</p>
+                  <div class="phase-meta">
+                    <div><span>Status</span><span>Candidate watch</span></div>
+                    <div><span>Open Q</span><span>实体生产率证据是否足够？</span></div>
+                  </div>
                 </button>
                 <button class="atlas-card candidate js-open" data-title="K6 Candidate Watch / Biotech" data-kind="k6bio">
-                  <span class="badge partial">候选观察</span>
+                  <span class="badge partial">Unconfirmed</span>
                   <h3>生物技术</h3>
                   <p>观察生物技术是否形成足够广泛的生产率和资本形成证据。</p>
+                  <div class="phase-meta">
+                    <div><span>Status</span><span>Candidate watch</span></div>
+                    <div><span>Open Q</span><span>资本形成与生产率影响是否足够广？</span></div>
+                  </div>
                 </button>
               </div>
             </div>
@@ -1626,7 +2000,21 @@
             <h3>AI 资本开支融资脆弱性</h3>
             <p>AI 基础设施资本开支有真实地面信号；ROI、融资脆弱性、GPU 定价、企业采用仍是活动观察项。</p>
             <div class="watch-meta"><span class="badge supported">地面信号</span><span class="badge watch">活动观察</span><span class="badge manual">手动</span></div>
+            <div class="watch-path">
+              <div><span>Watching</span><b>AI capex ROI、融资结构、GPU 定价、电力约束、企业采用。</b></div>
+              <div><span>Reading</span><b>真实地面扩散成立；系统性危机与 K6 均未确认。</b></div>
+              <div><span>Strengthen</span><b>收入 / 现金流无法覆盖 capex，融资压力扩散。</b></div>
+              <div><span>Weaken</span><b>AI 收入和自由现金流持续覆盖资本开支。</b></div>
+              <div><span>Kill Criteria</span><b>融资由现金流内生支持，且扩散到传统行业利润。</b></div>
+              <div><span>Contribution</span><b>补充来源、反证或修正 claim-source mismatch。</b></div>
+            </div>
           </button>
+        </div>
+        <div class="contribution-links" aria-label="公开贡献入口">
+          <a class="contribution-link" href="research/KW-006_AI_Capex_Financing_Fragility.md">Public brief: KW-006</a>
+          <a class="contribution-link" href="research/OPEN_QUESTIONS.md">Open questions</a>
+          <a class="contribution-link" href="https://github.com/nickzhuchen66/kairos-atlas/issues/new/choose" target="_blank" rel="noopener noreferrer">Contribute evidence</a>
+          <a class="contribution-link" href="https://github.com/nickzhuchen66/kairos-atlas/issues/new/choose" target="_blank" rel="noopener noreferrer">Report source mismatch</a>
         </div>
       </div>
     </section>
@@ -1678,34 +2066,34 @@
             <div class="eyebrow">判断依据</div>
             <h2>判断依据与复盘</h2>
           </div>
-          <p class="section-note">把证据拆成用户可读的状态桶：已支持、有争议、未确认、待补证和复盘记录。EP 编号保留为追溯索引。</p>
+          <p class="section-note">把证据拆成用户可读的 Source Inspector：每条判断都保留 claim、status、source hardness、supports、challenges、remaining gaps 和 contribution target。</p>
         </div>
 
         <div class="evidence-grid">
           <button class="evidence-card js-open" data-title="已支持：AI 地面信号" data-kind="supported">
             <h3>已支持</h3>
             <p>AI 基础设施资本开支存在真实产业扩散迹象，但这不确认 K6。</p>
-            <div class="evidence-index">EP_005 / KW-006</div>
+            <div class="evidence-index">Public brief / KW-006</div>
           </button>
           <button class="evidence-card js-open" data-title="有争议：生产率扩散" data-kind="contested">
             <h3>有争议</h3>
             <p>AI 生产率扩散、2020 是否为硬终点、平台经济 TFP 影响仍需反证并列。</p>
-            <div class="evidence-index">K4 / K5 / K6</div>
+            <div class="evidence-index">Open question / Atlas node</div>
           </button>
           <button class="evidence-card js-open" data-title="未确认：K6 仍是候选" data-kind="unconfirmed">
             <h3>未确认</h3>
             <p>K6 仍处于候选观察区，不写成已确认长波，也不自动随新闻更新。</p>
-            <div class="evidence-index">Decision015</div>
+            <div class="evidence-index">Candidate Watch / manual review</div>
           </button>
           <button class="evidence-card js-open" data-title="待补证：来源与数据缺口" data-kind="gaps">
             <h3>待补证</h3>
             <p>GPU 历史价格、企业 ROI、数据中心融资和 K4/K5 资产表现仍需补齐。</p>
-            <div class="evidence-index">EP_001-EP_005</div>
+            <div class="evidence-index">Source review needed</div>
           </button>
           <button class="evidence-card js-open" data-title="复盘记录：当前读数保持" data-kind="validation">
             <h3>复盘记录</h3>
             <p>当前结论保持：AI 有真实地面扩散，但融资脆弱性仍是活动观察项。</p>
-            <div class="evidence-index">EP_005 v0.2</div>
+            <div class="evidence-index">Validation note / KW-006</div>
           </button>
         </div>
 
@@ -1713,12 +2101,12 @@
           <div class="validation-row">
             <div class="mono brass">复盘记录</div>
             <p>KW-006 结论保持：AI 资本开支有真实地面扩散，但融资脆弱性仍为活动观察项；不确认系统性危机，不确认 AI 已确认 K6。</p>
-            <div class="mono quiet">来源：EP_005 v0.2</div>
+            <div class="mono quiet">来源：public brief + internal source index</div>
           </div>
           <div class="validation-row">
             <div class="mono brass">更新模式</div>
             <p>K6 候选默认手动复核、证据门控、事件驱动；不做自动新闻流或每日 API 轮询。</p>
-            <div class="mono quiet">来源：Decision015</div>
+            <div class="mono quiet">来源：maintainer review rule</div>
           </div>
         </div>
       </div>
@@ -1819,7 +2207,7 @@
     "金融周期": "Financial Cycle",
     "AI 资本开支和融资结构是重点，不把局部脆弱性直接写成系统性危机。": "AI capex and financing structure are the focus; localized fragility is not elevated into systemic-crisis language.",
     "融资脆弱性观察": "Fragility watch",
-    "关联：KW-006 / EP_001-EP_005": "Linked: KW-006 / EP_001-EP_005",
+    "关联：KW-006 / public source index": "Linked: KW-006 / public source index",
     "利率 / 财政": "Rates / Fiscal",
     "流动性 / 政策": "Liquidity / Policy",
     "部分": "Partial",
@@ -1934,10 +2322,10 @@
     "当前结论保持：AI 有真实地面扩散，但融资脆弱性仍是活动观察项。": "Current reading holds: AI has real ground diffusion, while financing fragility remains an active watch item.",
     "复盘记录": "Validation Note",
     "KW-006 结论保持：AI 资本开支有真实地面扩散，但融资脆弱性仍为活动观察项；不确认系统性危机，不确认 AI 已确认 K6。": "KW-006 reading holds: AI capex has real ground diffusion, but financing fragility remains an active watch item; no systemic crisis is confirmed, and AI is not confirmed K6.",
-    "来源：EP_005 v0.2": "Source: EP_005 v0.2",
+    "来源：public brief + internal source index": "Source: public brief + internal source index",
     "更新模式": "Update Mode",
     "K6 候选默认手动复核、证据门控、事件驱动；不做自动新闻流或每日 API 轮询。": "K6 Candidate is manually reviewed, evidence-gated, and event-driven by default; no automatic news feed or daily API polling.",
-    "来源：Decision015": "Source: Decision015",
+    "来源：maintainer review rule": "Source: maintainer review rule",
     "v1 静态仪表盘": "v1 static regime console",
     "Kairos 输出的是带证据状态、置信度、观察清单和证伪条件的阶段 / 窗口判断，不是投资建议，也不是日期预言机。": "Kairos outputs phase / window judgments with evidence status, confidence, watchlists, and kill criteria. It is not investment advice and not a date oracle.",
     "参与协作": "Collaborate",
@@ -1946,6 +2334,120 @@
     "证据": "Evidence",
     "关闭抽屉": "Close drawer"
   };
+
+  Object.assign(staticTextEn, {
+    "Kairos v0.2 · Current Regime Board": "Kairos v0.2 · Current Regime Board",
+    "当前宏观周期读数，一眼可见，逐层可查。": "The current macro-cycle reading, visible at a glance and inspectable layer by layer.",
+    "Kairos 将当前 regime、六层周期栈、长波图谱、观察清单和来源状态放在同一块仪表板上。它是工作地图，不是日期预言机，也不是交易信号。": "Kairos puts the current regime, six-layer cycle stack, Long Wave Atlas, watchlist, and source status on one board. It is a working map, not a date oracle or trading signal.",
+    "主读数": "Main Reading",
+    "K5-E / K6 Candidate Watch": "K5-E / K6 Candidate Watch",
+    "Medium · 关键证据仍需人工复核": "Medium · key evidence still requires manual review",
+    "来源状态": "Source Status",
+    "Curated public briefs + source review needed": "Curated public briefs + source review needed",
+    "Manual / evidence-gated / event-driven": "Manual / evidence-gated / event-driven",
+    "-> Inspect Stack": "-> Inspect Stack",
+    "-> Open Atlas": "-> Open Atlas",
+    "-> Review KW-006": "-> Review KW-006",
+    "-> Check Evidence": "-> Check Evidence",
+    "-> GitHub": "-> GitHub",
+    "Manual review": "Manual review",
+    "Medium confidence": "Medium confidence",
+    "Last reviewed: 2026-07-08": "Last reviewed: 2026-07-08",
+    "Source status: mixed": "Source status: mixed",
+    "混合 / 待补源": "Mixed / source review",
+    "手动 / 事件驱动": "Manual / event-driven",
+    "当前主读数": "Main Reading",
+    "K5-E 与 K6 候选观察重叠": "K5-E overlaps with K6 Candidate Watch",
+    "AI 有真实地面信号，但不确认 K6；融资脆弱性仍是观察项。": "AI has real ground signals, but K6 is not confirmed; financing fragility remains a watch item.",
+    "首页紧凑周期栈": "Compact Cycle Stack",
+    "2 条以内": "2 max",
+    "AI 基础设施资本开支有真实地面信号。": "AI infrastructure capex has real ground signals.",
+    "市场表现可验证读数，但不是唯一真相。": "Market behavior can validate the reading, but is not the only truth.",
+    "Open Source Inspector": "Open Source Inspector",
+    "AI 生产率扩散时点仍有争议。": "AI productivity diffusion timing remains contested.",
+    "2020 是否为 K5 硬终点不能写成事实。": "Whether 2020 is a hard K5 endpoint cannot be written as fact.",
+    "Challenge this reading": "Challenge this reading",
+    "KW-006 跟踪 AI capex ROI 与融资脆弱性。": "KW-006 tracks AI capex ROI and financing fragility.",
+    "KW-001 跟踪 AI 是否具备 K6 扩散证据。": "KW-001 tracks whether AI has K6 diffusion evidence.",
+    "Review Watchlist Path": "Review Watchlist Path",
+    "当前状态": "Current State",
+    "增长 / 通胀组合待正式数据包填充": "Growth / inflation mix pending formal data pack",
+    "低到中等；不写实时数字": "Low to medium; no unverified real-time numbers",
+    "证据状态": "Evidence Status",
+    "Source review needed": "Source review needed",
+    "关联观察": "Related Watchlist",
+    "触发 / 证伪": "Trigger / Kill",
+    "通胀、增长、政策空间数据共同改变当前 regime 时复核。": "Review when inflation, growth, and policy-space data jointly change the regime.",
+    "Inspect: Current state / confidence / source status": "Inspect: current state / confidence / source status",
+    "AI capex 融资脆弱性观察": "AI capex financing fragility watch",
+    "中等；局部强、系统性未确认": "Medium; local signals are stronger, systemic risk unconfirmed",
+    "Public brief + internal source index": "Public brief + internal source index",
+    "融资压力扩散会强化；现金流覆盖 capex 会削弱。": "Funding stress diffusion would strengthen it; cash-flow coverage would weaken it.",
+    "Inspect: KW-006 evidence path": "Inspect: KW-006 evidence path",
+    "中等偏低；仍需公开来源包": "Medium-low; public source pack still needed",
+    "财政货币约束观察": "Fiscal-monetary constraint watch",
+    "通胀中枢、财政赤字和实际利率路径共同改变时复核。": "Review when inflation center, fiscal deficit, and real-rate paths jointly shift.",
+    "Inspect: policy constraint review": "Inspect: policy constraint review",
+    "美元融资与风险偏好观察": "Dollar funding and risk appetite watch",
+    "中等偏低；公开来源待补强": "Medium-low; public sources need strengthening",
+    "BIS / IMF / FRED source review": "BIS / IMF / FRED source review",
+    "美元融资压力、VIX、信用利差和跨境流动显著改变时复核。": "Review when dollar funding stress, VIX, credit spreads, and cross-border flows shift materially.",
+    "Inspect: dollar liquidity review": "Inspect: dollar liquidity review",
+    "中等；K6 未确认": "Medium; K6 unconfirmed",
+    "Manual / evidence-gated": "Manual / evidence-gated",
+    "跨行业生产率扩散会强化；AI 收入无法覆盖 capex 会削弱。": "Cross-industry productivity diffusion would strengthen it; AI revenue failing to cover capex would weaken it.",
+    "Inspect: K5-E / K6 candidate boundary": "Inspect: K5-E / K6 candidate boundary",
+    "中等；验证层，不是唯一真相": "Medium; validation layer, not the only truth",
+    "Asset map / validation notes": "Asset map / validation notes",
+    "资产表现与宏观读数背离时，先进入 validation review。": "When asset behavior diverges from the macro reading, move first into validation review.",
+    "Inspect: validation layer": "Inspect: validation layer",
+    "Phase ID": "Phase ID",
+    "Relevance": "Relevance",
+    "Readiness": "Readiness",
+    "Open Q": "Open Q",
+    "低；作为 crisis reset 骨架对照。": "Low; skeleton comparison for crisis reset.",
+    "战争财政与资产行为如何映射？": "How should war finance map to asset behavior?",
+    "低；用于制度重建与美元短缺对照。": "Low; comparison for institutional rebuild and dollar shortage.",
+    "战后债务压制如何影响资产？": "How did postwar debt repression affect assets?",
+    "中低；用于美元-黄金约束对照。": "Medium-low; comparison for dollar-gold constraints.",
+    "1958 与 1968/71 边界如何处理？": "How should the 1958 and 1968/71 boundaries be handled?",
+    "高；当前通胀与政策重置的历史对照。": "High; historical comparison for inflation and policy reset.",
+    "1970s 资产行为如何量化？": "How should 1970s asset behavior be quantified?",
+    "高；低利率金融化起点与当前反转对照。": "High; comparison for the start of low-rate financialization and today's reversal.",
+    "1979/82 起点窗口如何标注？": "How should the 1979/82 start window be marked?",
+    "中；ICT 与 AI 扩散类比的参照。": "Medium; reference case for ICT and AI diffusion analogy.",
+    "2000-2004 是否应作过渡段？": "Should 2000-2004 be treated as a transition segment?",
+    "中高；融资脆弱性与杠杆类比。": "Medium-high; leverage comparison for financing fragility.",
+    "AI capex 是否存在类似杠杆链？": "Does AI capex contain a comparable leverage chain?",
+    "中高；低利率资产定价反转的基准。": "Medium-high; baseline for reversal of low-rate asset pricing.",
+    "平台经济 TFP 影响如何评价？": "How should platform-economy TFP effects be evaluated?",
+    "最高；当前主读数所在阶段。": "Highest; current main reading node.",
+    "AI 是否扩散成 K6，还是 K5 尾部狂热？": "Is AI diffusing into K6, or still late-K5 exuberance?",
+    "生产率扩散能否跨行业成立？": "Can productivity diffusion hold across industries?",
+    "电力瓶颈是否改变资本开支路径？": "Do power bottlenecks change the capex path?",
+    "实体生产率证据是否足够？": "Is physical productivity evidence strong enough?",
+    "资本形成与生产率影响是否足够广？": "Are capital formation and productivity effects broad enough?",
+    "Watching": "Watching",
+    "Reading": "Reading",
+    "Strengthen": "Strengthen",
+    "Weaken": "Weaken",
+    "Kill Criteria": "Kill Criteria",
+    "Contribution": "Contribution",
+    "AI capex ROI、融资结构、GPU 定价、电力约束、企业采用。": "AI capex ROI, financing structure, GPU pricing, power constraints, and enterprise adoption.",
+    "真实地面扩散成立；系统性危机与 K6 均未确认。": "Real ground diffusion is supported; systemic crisis and K6 remain unconfirmed.",
+    "收入 / 现金流无法覆盖 capex，融资压力扩散。": "Revenue / cash flow fails to cover capex and financing stress spreads.",
+    "AI 收入和自由现金流持续覆盖资本开支。": "AI revenue and free cash flow continue to cover capex.",
+    "融资由现金流内生支持，且扩散到传统行业利润。": "Financing is internally supported by cash flow and diffuses into traditional-industry profit.",
+    "补充来源、反证或修正 claim-source mismatch。": "Add sources, counterevidence, or claim-source mismatch corrections.",
+    "公开贡献入口": "Public contribution links",
+    "把证据拆成用户可读的 Source Inspector：每条判断都保留 claim、status、source hardness、supports、challenges、remaining gaps 和 contribution target。": "Evidence is organized as a readable Source Inspector: every reading keeps claim, status, source hardness, supports, challenges, remaining gaps, and contribution target.",
+    "Public brief / KW-006": "Public brief / KW-006",
+    "Open question / Atlas node": "Open question / Atlas node",
+    "Candidate Watch / manual review": "Candidate Watch / manual review",
+    "Validation note / KW-006": "Validation note / KW-006",
+    "来源：public brief + internal source index": "Source: public brief + internal source index",
+    "来源：maintainer review rule": "Source: maintainer review rule"
+  });
 
   const attrTextEn = {
     "Kairos 首页": "Kairos Home",
@@ -1981,11 +2483,7 @@
     "KW-004 金融条件": "KW-004 Financial Conditions",
     "KW-005 黄金 / 货币信任": "KW-005 Gold / Monetary Trust",
     "KW-006 AI 资本开支融资脆弱性": "KW-006 AI Capex Financing Fragility",
-    "EP_001 KW-006 主证据包": "EP_001 KW-006 Master Evidence Pack",
-    "EP_002 CoreWeave 滚动跟踪": "EP_002 CoreWeave Rolling Tracker",
-    "EP_003 GPU 云价格跟踪": "EP_003 GPU Cloud Price Tracker",
-    "EP_004 数据中心 REIT 融资跟踪": "EP_004 Data Center REIT Financing Tracker",
-    "EP_005 SignalOS 交叉验证": "EP_005 SignalOS Cross-Check",
+    "KW-006 public source index": "KW-006 public source index",
     "已支持：AI 地面信号": "Supported: AI Ground Signals",
     "有争议：生产率扩散": "Contested: Productivity Diffusion",
     "未确认：K6 仍是候选": "Unconfirmed: K6 Remains Candidate",
@@ -1994,6 +2492,12 @@
     "证据抽屉": "Evidence Drawer",
     "关闭抽屉": "Close drawer"
   };
+
+  Object.assign(attrTextEn, {
+    "当前读数摘要": "Current reading summary",
+    "首页紧凑周期栈": "Compact Cycle Stack",
+    "公开贡献入口": "Public contribution links"
+  });
 
   const pageTitles = {
     zh: "Kairos · 周期天象图 | Macro Cycle Observatory",
@@ -2023,30 +2527,46 @@
 
   const drawerDataZh = {
     supported: {
+      claim: "AI 基础设施资本开支有真实地面产业信号，但这不确认 K6。",
       summary: "可保留的强结论：AI 基础设施资本开支已经有真实地面产业信号，不能简单写成金融空转。",
-      evidence: ["EP_005 记录电力设备、数据中心、半导体、网络设备端的地面信号交叉验证。", "该结论仍不等于确认 K6，也不等于系统性危机。"],
+      evidence: ["公开 brief 记录电力设备、数据中心、半导体、网络设备端的地面信号交叉验证。", "该结论仍不等于确认 K6，也不等于系统性危机。"],
+      challenges: ["企业 ROI、跨行业生产率扩散和融资可持续性仍待观察。", "价格上涨或资本开支本身不能单独证明长波转换。"],
       gaps: ["企业端 ROI / 采用率", "GPU 云历史价格", "电网瓶颈与融资脆弱性的硬证据"],
       status: "已支持方向 / 不确认 K6",
       hardness: "混合：证据包交叉验证 + 剩余来源补核",
-      related: ["EP_005 SignalOS Cross-Check", "KW-006"],
+      related: ["public ground-signal cross-check", "KW-006"],
+      relatedWatchlist: "KW-006",
+      relatedAtlas: "K5-E / K6 Candidate Watch",
+      relatedBrief: "research/KW-006_AI_Capex_Financing_Fragility.md",
+      contribution: "补充企业 ROI、现金流覆盖、GPU 价格或电力瓶颈的 primary source",
       kill: ["不能由地面信号单独推出确认 K6", "不能写成系统性金融危机"]
     },
     contested: {
+      claim: "AI 生产率扩散、2020 K5 边界和平台经济 TFP 影响仍是 contested claims。",
       summary: "争议判断必须展示正反两侧，不能被包装成已支持结论。",
       evidence: ["AI 生产率扩散时点仍有明显争议。", "2020 是否是 K5 硬终点不能作为事实。", "K4/K5 长波断代默认采用软日期区间。"],
+      challenges: ["若出现跨行业生产率扩散和传统行业利润迁移，AI as K6 Candidate 会被强化。", "若扩散停留在少数行业或浅层功能，候选判断会被削弱。"],
       gaps: ["K4/K5 阶段证据卡", "历史资产表现量化", "反证材料整理"],
       status: "有争议",
       hardness: "混合 / 需要展示反证",
-      related: ["BRD_004 长波图谱", "BRD_005 网站体验"],
+      relatedWatchlist: "KW-001 / KW-006",
+      relatedAtlas: "K5-E / K6 Candidate Watch",
+      relatedBrief: "research/OPEN_QUESTIONS.md",
+      contribution: "提交 alternative periodization 或 counterevidence",
       kill: ["不得把争议判断包装成已支持结论"]
     },
     watchlist: {
+      claim: "Watchlist 是会改变读数的观察路径，不是 confirmed fact。",
       summary: "观察清单记录会改变判断的观察项，不等于已确认事实。",
       evidence: ["KW-006 是当前 K5-E / K6 候选下最重要的活动观察项。", "观察清单必须保留触发条件、证伪条件、复核模式和关联证据包。"],
-      gaps: ["下一轮可补 EP_005 剩余缺口", "当前读数数据包", "K5-E 节点内容补全"],
+      challenges: ["若观察项被证伪或关闭，需要保留 review note。", "不得把观察项直接升级为事实。"],
+      gaps: ["下一轮补 public source gaps", "当前读数数据包", "K5-E 节点内容补全"],
       status: "观察清单",
       hardness: "手动 / 证据门控",
-      related: ["Watchlist", "Evidence Ledger"],
+      relatedWatchlist: "KW-001 / KW-006",
+      relatedAtlas: "Current Regime Board",
+      relatedBrief: "research/OPEN_QUESTIONS.md",
+      contribution: "补充 source-backed evidence 或 source correction",
       kill: ["触发、证伪或关闭都必须保留 review note"]
     },
     unconfirmed: {
@@ -2060,7 +2580,7 @@
     },
     gaps: {
       summary: "待补证项用于公开说明当前判断还缺什么，而不是把来源状态变成页面噪音。",
-      evidence: ["EP_001-EP_005 已经形成 KW-006 的初始证据链。", "K4/K5 历史阶段仍需要资产表现与来源页码补强。"],
+      evidence: ["KW-006 已经形成初始 public brief 与来源索引路径。", "K4/K5 历史阶段仍需要资产表现与来源页码补强。"],
       gaps: ["GPU 历史价格", "企业采用 / ROI", "数据中心融资脆弱性", "K4/K5 阶段资产表现"],
       status: "待补证 / 来源补核中",
       hardness: "逐项补核",
@@ -2069,41 +2589,41 @@
     },
     validation: {
       summary: "当前复盘记录保持：AI 基础设施资本开支有真实地面扩散，但融资脆弱性仍是活动观察项。",
-      evidence: ["EP_005 支持地面信号交叉验证。", "KW-006 继续保留 ROI、GPU 定价、融资结构和企业采用观察。"],
-      gaps: ["持续同步 EP_002-EP_005", "下一版 Current Reading 数据包"],
+      evidence: ["公开来源索引支持地面信号交叉验证。", "KW-006 继续保留 ROI、GPU 定价、融资结构和企业采用观察。"],
+      gaps: ["持续同步 public source index", "下一版 Current Reading 数据包"],
       status: "读数保持 / 不确认 K6",
       hardness: "证据包交叉验证 + 人工复核",
-      related: ["EP_005 v0.2", "KW-006"],
+      related: ["validation note", "KW-006"],
       kill: ["不能确认系统性危机", "不能确认 AI 已经是 K6"]
     },
     macro: {
       summary: "宏观时钟需要正式当前读数内容填充，当前静态页面不写未核验的实时宏观数字。",
-      evidence: ["BRD_002 定义增长 x 通胀状态枚举。", "BRD_005 要求首页展示当前读数、置信度和来源状态。"],
+      evidence: ["Kairos public spec 使用增长 x 通胀状态枚举。", "当前页面要求首页展示当前读数、置信度和来源状态。"],
       gaps: ["当前读数 v0.1 正文", "官方数据源与来源硬度"]
     },
     financial: {
       summary: "金融周期当前重点在 AI 资本开支、融资结构和信用脆弱性，而不是直接断言危机。",
-      evidence: ["EP_001 至 EP_005 已建立 KW-006 证据链。", "CoreWeave、GPU 市场、数据中心 REIT 与 SignalOS 交叉验证形成四层观察。"],
+      evidence: ["KW-006 已建立公开 brief 与来源索引路径。", "CoreWeave、GPU 市场和数据中心融资形成四层观察。"],
       gaps: ["系统性压力触发条件", "融资利差和违约数据", "GPU 抵押价值"]
     },
     policy: {
       summary: "流动性 / 政策层需要单独来源包，避免写入未核验实时政策数字。",
-      evidence: ["BRD_002 要求政策层包括利率、真实利率、央行流动性、财政空间和政策约束。"],
+      evidence: ["Kairos policy layer covers rates, real rates, central-bank liquidity, fiscal space, and policy constraints."],
       gaps: ["Fed / Treasury / FRED 来源包", "财政利息支出与政策空间"]
     },
     dollar: {
       summary: "全球美元层连接 Rey 全球金融周期、美元融资、VIX 和跨境信用。",
-      evidence: ["理论笔记包含 Rey 全球金融周期。", "BRD_002 定义全球美元层。"],
+      evidence: ["Global financial cycle literature supports this layer.", "The public cycle stack keeps Global Dollar as a separate review layer."],
       gaps: ["BIS / IMF / FRED 来源补核", "VIX 与美元融资状态映射"]
     },
     longwave: {
       summary: "K5-E / K6 候选观察是长波背景，不是确认 K6。",
-      evidence: ["BRD_004 明确 K5-E / AI 只能作为 K6 候选 / 转换观察。", "Decision015 明确 K6 采用手动证据门控更新模式。"],
+      evidence: ["Kairos guardrails keep K5-E / AI as K6 Candidate Watch only.", "K6 uses manual, evidence-gated review mode."],
       gaps: ["K5-E 节点内容补全", "AI 生产率扩散证据", "历史类比反证"]
     },
     market: {
       summary: "市场验证是验证层，不是单独决定宏观判断的真理。",
-      evidence: ["BRD_002 明确市场表现可以验证或反驳宏观判断，但不能独立决定宏观判断。"],
+      evidence: ["Market behavior can validate or challenge macro judgment, but cannot decide it alone."],
       gaps: ["资产映射证据卡", "历史阶段资产行为"]
     },
     k4a: {summary:"K4-A 可展示骨架，但仍在来源补核中。", evidence:["金本位退出、债务通缩、银行危机、战时财政动员是证据重点。"], gaps:["战时资产表现","产业技术扩散细节","跨国可比数据"]},
@@ -2114,9 +2634,9 @@
     k5b: {summary:"K5-B 支持全球化 / ICT / 大缓和框架，但仍有 TFP 争议。", evidence:["ICT productivity、Great Moderation、global supply chains、dotcom bubble。"], gaps:["2000-2004 是否单独作为转折过渡期"]},
     k5c: {summary:"K5-C 是全球失衡、住房信用、影子银行和美元杠杆共振的重点节点。", evidence:["经常账户失衡、ABCP、证券化、住房泡沫。"], gaps:["ABCP 序列代码","影子银行规模与全球失衡映射"]},
     k5d: {summary:"K5-D 连接 QE、平台经济和低利率资产重估。", evidence:["央行资产负债表、长期停滞、平台经济、低利率。"], gaps:["平台经济与宏观 TFP 的证据冲突"]},
-    k5e: {summary:"K5-E 是第一优先节点，承接财政货币冲击、通胀回归与 AI 作为 K6 候选。", evidence:["KW-006 与 EP_001 至 EP_005 已形成证据链。"], gaps:["AI 生产率扩散","企业采用 / ROI","传统行业利润池迁移","资本开支 ROI"]},
-    k6ai: {summary:"AI 是当前最重要的 K6 Candidate Watch，但仍不能确认 K6。", evidence:["KW-006 / EP_005 支持 AI 基础设施资本开支存在真实地面信号。"], gaps:["跨行业生产率扩散","企业 ROI","传统行业利润池迁移"], status:"候选观察 / 未确认", hardness:"部分核验 / 证据门控", related:["KW-001","KW-006"], kill:["AI 采用停留在少数行业或浅层功能","AI 收入无法覆盖资本开支和折旧压力"]},
-    k6energy: {summary:"能源与电力约束是 K6 Candidate 的物理约束观察项，不是独立确认条件。", evidence:["数据中心、电网和电力设备地面信号可作为观察入口。"], gaps:["NERC 完整警报","电网投资与瓶颈数据","能源密度约束"], status:"候选观察 / 未确认", hardness:"来源补核中", related:["KW-006","EP_005"], kill:["电力瓶颈缓解且不限制 AI 扩散","能源约束不能解释资本开支路径"]},
+    k5e: {claim:"K5-E 是当前主读数所在阶段，AI 只能作为 K6 Candidate Watch。", summary:"K5-E 是第一优先节点，承接财政货币冲击、通胀回归与 AI 作为 K6 候选。", evidence:["KW-006 与公开研究 brief 已形成初始证据路径。"], challenges:["AI 生产率扩散仍未确认。","财政货币冲击是否改变长期通胀中枢仍需反证。"], gaps:["AI 生产率扩散","企业采用 / ROI","传统行业利润池迁移","资本开支 ROI"], status:"第一优先 / 证据门控", hardness:"public brief + source review", relatedWatchlist:"KW-001 / KW-006", relatedAtlas:"K5-E", relatedBrief:"research/KW-001_AI_as_K6_Candidate.md / research/KW-006_AI_Capex_Financing_Fragility.md", contribution:"补充 K5-E 边界、AI diffusion 或 fiscal-monetary shock 反证"},
+    k6ai: {claim:"AI 是 K6 Candidate Watch，不是 confirmed K6。", summary:"AI 是当前最重要的 K6 Candidate Watch，但仍不能确认 K6。", evidence:["KW-006 / public brief 支持 AI 基础设施资本开支存在真实地面信号。"], challenges:["企业 ROI、跨行业生产率和传统行业利润池迁移仍未确认。"], gaps:["跨行业生产率扩散","企业 ROI","传统行业利润池迁移"], status:"候选观察 / 未确认", hardness:"部分核验 / 证据门控", relatedWatchlist:"KW-001 / KW-006", relatedAtlas:"K6 Candidate Watch", relatedBrief:"research/KW-001_AI_as_K6_Candidate.md", contribution:"提交 AI adoption / productivity diffusion 的 primary source", kill:["AI 采用停留在少数行业或浅层功能","AI 收入无法覆盖资本开支和折旧压力"]},
+    k6energy: {summary:"能源与电力约束是 K6 Candidate 的物理约束观察项，不是独立确认条件。", evidence:["数据中心、电网和电力设备地面信号可作为观察入口。"], gaps:["NERC 完整警报","电网投资与瓶颈数据","能源密度约束"], status:"候选观察 / 未确认", hardness:"来源补核中", relatedWatchlist:"KW-006", relatedAtlas:"K6 Candidate Watch", relatedBrief:"research/OPEN_QUESTIONS.md", kill:["电力瓶颈缓解且不限制 AI 扩散","能源约束不能解释资本开支路径"]},
     k6auto: {summary:"自动化 / 机器人需要证明它从软件效率扩展到实体生产和服务流程。", evidence:["当前页面仅作为候选观察，不写成已支持结论。"], gaps:["机器人采用率","单位经济性","跨行业劳动生产率"], status:"候选观察 / 未确认", hardness:"待补证", related:["K6 Candidate Watch"], kill:["自动化仍停留在局部场景","生产率和利润池迁移缺乏证据"]},
     k6bio: {summary:"生物技术暂列 K6 Candidate 观察项，需要更强的生产率和资本形成证据。", evidence:["当前仅保留为候选方向，不进入已支持判断。"], gaps:["产业化速度","资本形成强度","生产率影响"], status:"候选观察 / 未确认", hardness:"待补证", related:["K6 Candidate Watch"], kill:["技术进展不能形成广泛资本开支或生产率扩散"]},
     kw1: {summary:"KW-001 观察 AI 是否从 K5 尾部金融狂热升级为 K6 扩散。", evidence:["Acemoglu NBER WP32487 支持审慎判断。","Census BTOS 支持采用率观察。","Brynjolfsson / Li / Raymond WP31161 支持微观生产率反证。"], gaps:["AI 资本开支 / ROI 公司级补证","传统行业利润池迁移","跨行业生产率扩散"], status:"活动观察项", hardness:"部分已核源 / 来源补核中", related:["K5-E / K6 候选","KW-006"], kill:["AI 采用停留在少数行业或浅层功能","资本开支 ROI 下降或 AI 收入无法覆盖折旧压力","BLS / BEA 生产率没有扩散"]},
@@ -2124,40 +2644,55 @@
     kw3: {summary:"KW-003 观察高实际利率是否永久打断低利率资产定价体系。", evidence:["FRED DFII10 已核源。","NFCI 宽松状态可作为反证。"], gaps:["2020-now 股债商品黄金总回报数据源","长久期资产验证","信用再融资压力"], status:"活动 / 已支持但有争议", hardness:"FRED 已核源；资产总回报来源待补", related:["资产映射","当前读数"], kill:["Fed 被迫重新大幅降息","实际利率回到接近 0 或负值","长久期资产重新全面占优"]},
     kw4: {summary:"KW-004 观察金融条件宽松是否抵消高利率紧缩。", evidence:["FRED NFCI notes 明确负值代表金融条件较平均更宽松。","FRED BAMLH0A0HYM2 可观察高收益信用利差。"], gaps:["私人信贷资金流向","C&I loans","违约或流动性压力证据"], status:"活动 / 已支持", hardness:"FRED 已核源", related:["金融周期","当前读数"], kill:["NFCI 转正","HY spreads 快速上行","私人信贷出现违约或流动性压力"]},
     kw5: {summary:"KW-005 观察黄金是否从真实利率资产转向法币信用对冲资产。", evidence:["当前方向值得观察，但黄金数据直接来源仍在补核中。"], gaps:["FRED / LBMA / World Gold Council 直接来源","央行买金","ETF flows"], status:"观察中 / 来源补核中", hardness:"来源补核中", related:["资产映射","长波图谱"], kill:["实际利率上行重新压制黄金","央行买入放缓","美元信用疑虑缓和"]},
-    kw6: {summary:"KW-006 是当前重点：AI 资本开支有真实地面信号，但融资脆弱性仍是活动观察项。", evidence:["EP_001 主证据包、EP_002 CoreWeave、EP_003 GPU 定价、EP_004 数据中心 REIT、EP_005 SignalOS 交叉验证。"], gaps:["GPU 历史价格","企业采用 / ROI","NERC 完整警报","Equinix 直接来源","WoodMac 变压器交付周期"], status:"活动观察项 / 部分已核源", hardness:"证据包交叉验证；仍有来源补核", related:["EP_001","EP_002","EP_003","EP_004","EP_005"], kill:["AI 收入和自由现金流能持续覆盖资本开支","融资结构主要由现金流内生支持","资本开支扩散到传统行业并带来利润提升"]},
-    ep1: {summary:"EP_001 是 KW-006 主证据包。", evidence:["集中管理 AI 资本开支、现金流、RPO、承诺、租赁、债务与融资脆弱性。"], gaps:["持续同步 EP_002-EP_005 的结论"]},
-    ep2: {summary:"EP_002 是 CoreWeave 滚动跟踪表。", evidence:["跟踪收入、backlog、利息费用、债务到期、PPE 购买、租赁敞口等。"], gaps:["季度更新与 GPU 价格 / 利用率对照"]},
-    ep3: {summary:"EP_003 是 GPU 云市场价格跟踪表。", evidence:["以 Runpod / Lambda 公开挂牌价格基线建立初始观察。"], gaps:["历史成交价、可用性、利用率、供应商利润率"]},
-    ep4: {summary:"EP_004 是数据中心 REIT 融资跟踪表。", evidence:["DLR / EQIX 债务到期、开发资本开支、租赁、JV 敞口、租户集中度。"], gaps:["私有平台：Vantage / CyrusOne / QTS / NTT"]},
-    ep5: {summary:"EP_005 是 SignalOS 交叉验证与来源补核证据包。", evidence:["结论：AI 基础设施资本开支有真实产业扩散，但不支持已确认系统性危机或 AI 已确认 K6。"], gaps:["Eaton 取消率、TSMC CoWoS、Arista target、NERC details、GPU historical pricing"]}
+    kw6: {claim:"AI capex financing fragility 是活动观察项；不确认系统性危机，也不确认 AI 为 K6。", summary:"KW-006 是当前重点：AI 资本开支有真实地面信号，但融资脆弱性仍是活动观察项。", evidence:["公开 brief 记录 AI 基础设施资本开支、GPU 定价、数据中心融资和企业采用的初始路径。","当前支持真实地面扩散，不支持系统性危机 confirmed。"], challenges:["若 AI 收入、自由现金流和内部融资持续覆盖资本开支，融资脆弱性会被削弱。","若传统行业采用和利润迁移扩大，K6 Candidate 会被强化但仍需复核。"], gaps:["GPU 历史价格","企业采用 / ROI","NERC 完整警报","Equinix 直接来源","WoodMac 变压器交付周期"], status:"活动观察项 / 部分已核源", hardness:"public brief + internal source index；仍有来源补核", relatedWatchlist:"KW-006", relatedAtlas:"K5-E / K6 Candidate Watch", relatedBrief:"research/KW-006_AI_Capex_Financing_Fragility.md", contribution:"提交 evidence contribution、source correction 或 counterevidence", kill:["AI 收入和自由现金流能持续覆盖资本开支","融资结构主要由现金流内生支持","资本开支扩散到传统行业并带来利润提升"]},
+    ep1: {summary:"KW-006 public source index is retained as a traceability layer.", evidence:["It tracks AI capex, cash flow, commitments, leases, debt, and financing fragility at a curated level."], gaps:["Keep public claims synced with reviewed source notes"]},
+    ep2: {summary:"CoreWeave remains one watch example, not a proxy for the whole AI cycle.", evidence:["Revenue, backlog, interest expense, debt maturity, and lease exposure are relevant watch fields."], gaps:["Quarterly updates against GPU pricing / utilization"]},
+    ep3: {summary:"GPU cloud market pricing remains a source-review gap.", evidence:["Public listed-price baselines can support the initial observation."], gaps:["Historical transaction prices, availability, utilization, and provider margins"]},
+    ep4: {summary:"Data center financing remains a source-review gap.", evidence:["Debt maturity, development capex, leases, JV exposure, and tenant concentration are relevant watch fields."], gaps:["Private platform data is still incomplete"]},
+    ep5: {summary:"Ground-signal cross-check remains a public validation layer.", evidence:["Conclusion: AI infrastructure capex has real industrial diffusion, but it does not support a confirmed systemic crisis or confirmed AI K6."], gaps:["Power equipment, semiconductor, network, and GPU historical-pricing sources"]}
   };
 
   const drawerDataEn = {
     supported: {
+      claim: "AI infrastructure capex has real ground signals, but this does not confirm K6.",
       summary: "Supported reading: AI infrastructure capex has real industrial ground signals and should not be reduced to pure financial churn.",
-      evidence: ["EP_005 records ground-signal cross-checks across power equipment, data centers, semiconductors, and networking.", "This does not confirm K6 and does not confirm a systemic crisis."],
+      evidence: ["The public brief records ground-signal cross-checks across power equipment, data centers, semiconductors, and networking.", "This does not confirm K6 and does not confirm a systemic crisis."],
+      challenges: ["Enterprise ROI, cross-industry productivity diffusion, and financing sustainability remain open.", "Price action or capex alone cannot prove a long-wave transition."],
       gaps: ["Enterprise ROI / adoption rate", "GPU cloud historical pricing", "Hard evidence connecting grid bottlenecks and financing fragility"],
       status: "supported reading / K6 not confirmed",
       hardness: "mixed: Evidence Pack cross-check + remaining source review",
-      related: ["EP_005 SignalOS Cross-Check", "KW-006"],
+      relatedWatchlist: "KW-006",
+      relatedAtlas: "K5-E / K6 Candidate Watch",
+      relatedBrief: "research/KW-006_AI_Capex_Financing_Fragility.md",
+      contribution: "Add primary sources for enterprise ROI, cash-flow coverage, GPU pricing, or power bottlenecks",
       kill: ["Ground signals alone cannot confirm K6", "Do not write this as a systemic financial crisis"]
     },
     contested: {
+      claim: "AI productivity diffusion, the 2020 K5 boundary, and platform-economy TFP effects remain contested.",
       summary: "Contested claims must show both sides and cannot be packaged as supported conclusions.",
       evidence: ["AI productivity diffusion timing remains contested.", "Whether 2020 is a hard K5 endpoint cannot be stated as fact.", "K4/K5 long-wave dating uses soft date ranges by default."],
+      challenges: ["Cross-industry productivity diffusion and traditional-industry profit migration would strengthen the K6 Candidate case.", "Shallow adoption or limited sector concentration would weaken it."],
       gaps: ["K4/K5 phase evidence cards", "Quantified historical asset behavior", "Counter-evidence review"],
       status: "contested",
       hardness: "mixed / counter-evidence required",
-      related: ["BRD_004 Long Wave Atlas", "BRD_005 Website Experience"],
+      relatedWatchlist: "KW-001 / KW-006",
+      relatedAtlas: "K5-E / K6 Candidate Watch",
+      relatedBrief: "research/OPEN_QUESTIONS.md",
+      contribution: "Submit alternative periodization or counterevidence",
       kill: ["Do not package contested judgment as supported conclusion"]
     },
     watchlist: {
+      claim: "The Watchlist is a path for observations that could change the reading, not confirmed fact.",
       summary: "The Watchlist records observations that could change the reading; it is not a confirmed-fact database.",
       evidence: ["KW-006 is the most important active watch item under the current K5-E / K6 Candidate Watch.", "Each watch item must retain triggers, kill criteria, review mode, and related evidence packs."],
-      gaps: ["Next EP_005 remaining gaps", "Current Reading data pack", "K5-E node draft"],
+      challenges: ["If a watch item is falsified or closed, it needs a review note.", "An observation cannot be upgraded into fact without source-backed review."],
+      gaps: ["Next public source gaps", "Current Reading data pack", "K5-E node draft"],
       status: "watchlist",
       hardness: "manual / evidence-gated",
-      related: ["Watchlist", "Evidence Ledger"],
+      relatedWatchlist: "KW-001 / KW-006",
+      relatedAtlas: "Current Regime Board",
+      relatedBrief: "research/OPEN_QUESTIONS.md",
+      contribution: "Add source-backed evidence or source corrections",
       kill: ["Any trigger, falsification, or close action must keep a review note"]
     },
     unconfirmed: {
@@ -2171,7 +2706,7 @@
     },
     gaps: {
       summary: "Evidence gaps publicly explain what the reading still needs, without turning source status into page noise.",
-      evidence: ["EP_001-EP_005 form the initial KW-006 evidence chain.", "K4/K5 historical phases still need stronger asset-behavior evidence and source-page repair."],
+      evidence: ["KW-006 has an initial public brief and source-index path.", "K4/K5 historical phases still need stronger asset-behavior evidence and source-page repair."],
       gaps: ["GPU historical pricing", "Enterprise adoption / ROI", "Data center financing fragility", "K4/K5 phase asset behavior"],
       status: "evidence gaps / source review",
       hardness: "item-by-item review",
@@ -2180,41 +2715,41 @@
     },
     validation: {
       summary: "Current validation note holds: AI infrastructure capex shows real ground diffusion, while financing fragility remains an active watch item.",
-      evidence: ["EP_005 supports the ground-signal cross-check.", "KW-006 keeps ROI, GPU pricing, financing structure, and enterprise adoption on watch."],
-      gaps: ["Keep synchronizing EP_002-EP_005", "Next Current Reading data pack"],
+      evidence: ["The public source index supports the ground-signal cross-check.", "KW-006 keeps ROI, GPU pricing, financing structure, and enterprise adoption on watch."],
+      gaps: ["Keep public source index synchronized", "Next Current Reading data pack"],
       status: "reading holds / K6 not confirmed",
       hardness: "Evidence Pack cross-check + manual review",
-      related: ["EP_005 v0.2", "KW-006"],
+      related: ["validation note", "KW-006"],
       kill: ["Do not confirm a systemic crisis", "Do not confirm AI as K6"]
     },
     macro: {
       summary: "The Macro Clock needs a formal Current Reading before the page writes live macro numbers.",
-      evidence: ["BRD_002 defines the growth x inflation regime states.", "BRD_005 requires the first viewport to show reading, confidence, and source status."],
+      evidence: ["Kairos public spec uses growth x inflation regime states.", "The current page requires the first viewport to show reading, confidence, and source status."],
       gaps: ["Current Reading v0.1 body copy", "Official data sources and source hardness"]
     },
     financial: {
       summary: "The Financial Cycle layer focuses on AI capex, financing structure, and credit fragility without jumping to crisis language.",
-      evidence: ["EP_001 through EP_005 establish the KW-006 evidence chain.", "CoreWeave, GPU markets, data center REITs, and SignalOS cross-checks form four observation layers."],
+      evidence: ["KW-006 has an initial public brief and source-index path.", "CoreWeave, GPU markets, and data-center financing form four observation layers."],
       gaps: ["Systemic stress triggers", "Funding spreads and default data", "GPU collateral value"]
     },
     policy: {
       summary: "The Liquidity / Policy layer needs a separate source pack to avoid unverified real-time policy claims.",
-      evidence: ["BRD_002 says this layer covers rates, real rates, central-bank liquidity, fiscal space, and policy constraints."],
+      evidence: ["This layer covers rates, real rates, central-bank liquidity, fiscal space, and policy constraints."],
       gaps: ["Fed / Treasury / FRED source pack", "Fiscal interest expense and policy space"]
     },
     dollar: {
       summary: "The Global Dollar layer connects Rey's global financial cycle, dollar funding, VIX, and cross-border credit.",
-      evidence: ["The theory notes include Rey's global financial cycle.", "BRD_002 defines the Global Dollar layer."],
+      evidence: ["Global financial cycle literature supports this layer.", "The public cycle stack keeps Global Dollar as a separate review layer."],
       gaps: ["BIS / IMF / FRED source review", "VIX and dollar-funding state mapping"]
     },
     longwave: {
       summary: "K5-E / K6 Candidate Watch is the long-wave context, not confirmed K6.",
-      evidence: ["BRD_004 states K5-E / AI can only be shown as K6 Candidate / transition watch.", "Decision015 says K6 uses manual, evidence-gated update mode."],
+      evidence: ["Kairos guardrails keep K5-E / AI as K6 Candidate Watch only.", "K6 uses manual, evidence-gated review mode."],
       gaps: ["K5-E node draft", "AI productivity diffusion evidence", "Historical-analogy counter-evidence"]
     },
     market: {
       summary: "Market validation is a validation layer, not a standalone source of truth for macro judgment.",
-      evidence: ["BRD_002 says market behavior can validate or challenge macro judgment, but cannot decide it alone."],
+      evidence: ["Market behavior can validate or challenge macro judgment, but cannot decide it alone."],
       gaps: ["Asset-map evidence cards", "Historical phase asset behavior"]
     },
     k4a: {summary:"K4-A can show the skeleton, but source review is still in progress.", evidence:["Key evidence areas: gold-standard exit, debt deflation, banking crisis, and wartime fiscal mobilization."], gaps:["Wartime asset behavior","Industrial technology diffusion details","Cross-country comparable data"]},
@@ -2225,9 +2760,9 @@
     k5b: {summary:"K5-B supports the globalization / ICT / Great Moderation frame, but TFP effects remain contested.", evidence:["ICT productivity, Great Moderation, global supply chains, and dotcom bubble."], gaps:["Whether 2000-2004 should be a separate transition period"]},
     k5c: {summary:"K5-C is a priority node for global imbalances, housing credit, shadow banking, and dollar leverage.", evidence:["Current-account imbalances, ABCP, securitization, and housing bubble."], gaps:["ABCP series code","Mapping shadow-banking scale to global imbalances"]},
     k5d: {summary:"K5-D connects QE, platform economy, and low-rate asset repricing.", evidence:["Central-bank balance sheets, secular stagnation, platform economy, and low rates."], gaps:["Evidence conflict around platform economy and macro TFP"]},
-    k5e: {summary:"K5-E is the first-priority node, carrying fiscal-monetary shock, inflation return, and AI as K6 Candidate.", evidence:["KW-006 and EP_001 through EP_005 already form an evidence chain."], gaps:["AI productivity diffusion","Enterprise adoption / ROI","Traditional-industry profit-pool migration","Capex ROI"]},
-    k6ai: {summary:"AI is the most important K6 Candidate Watch item, but it still cannot confirm K6.", evidence:["KW-006 / EP_005 support real ground signals in AI infrastructure capex."], gaps:["Cross-industry productivity diffusion","Enterprise ROI","Traditional-industry profit-pool migration"], status:"candidate watch / unconfirmed", hardness:"partly reviewed / evidence-gated", related:["KW-001","KW-006"], kill:["AI adoption remains limited to a few industries or shallow functions","AI revenue cannot cover capex and depreciation pressure"]},
-    k6energy: {summary:"Energy and power constraints are physical-constraint watch items for K6 Candidate, not independent confirmation criteria.", evidence:["Data centers, grids, and power-equipment ground signals are observation entry points."], gaps:["Full NERC alert","Grid investment and bottleneck data","Energy-density constraints"], status:"candidate watch / unconfirmed", hardness:"source review", related:["KW-006","EP_005"], kill:["Power bottlenecks ease and do not limit AI diffusion","Energy constraints cannot explain the capex path"]},
+    k5e: {claim:"K5-E is the current regime node; AI can only be shown as K6 Candidate Watch.", summary:"K5-E is the first-priority node, carrying fiscal-monetary shock, inflation return, and AI as K6 Candidate.", evidence:["KW-006 and public briefs form the initial evidence path."], challenges:["AI productivity diffusion is not confirmed.","Whether fiscal-monetary shock changed the long-run inflation center remains open."], gaps:["AI productivity diffusion","Enterprise adoption / ROI","Traditional-industry profit-pool migration","Capex ROI"], status:"first priority / evidence-gated", hardness:"public brief + source review", relatedWatchlist:"KW-001 / KW-006", relatedAtlas:"K5-E", relatedBrief:"research/KW-001_AI_as_K6_Candidate.md / research/KW-006_AI_Capex_Financing_Fragility.md", contribution:"Add K5-E boundary evidence, AI diffusion evidence, or fiscal-monetary shock counterevidence"},
+    k6ai: {claim:"AI is K6 Candidate Watch, not confirmed K6.", summary:"AI is the most important K6 Candidate Watch item, but it still cannot confirm K6.", evidence:["KW-006 / public brief support real ground signals in AI infrastructure capex."], challenges:["Enterprise ROI, cross-industry productivity, and traditional-industry profit migration remain unconfirmed."], gaps:["Cross-industry productivity diffusion","Enterprise ROI","Traditional-industry profit-pool migration"], status:"candidate watch / unconfirmed", hardness:"partly reviewed / evidence-gated", relatedWatchlist:"KW-001 / KW-006", relatedAtlas:"K6 Candidate Watch", relatedBrief:"research/KW-001_AI_as_K6_Candidate.md", contribution:"Submit primary sources for AI adoption or productivity diffusion", kill:["AI adoption remains limited to a few industries or shallow functions","AI revenue cannot cover capex and depreciation pressure"]},
+    k6energy: {summary:"Energy and power constraints are physical-constraint watch items for K6 Candidate, not independent confirmation criteria.", evidence:["Data centers, grids, and power-equipment ground signals are observation entry points."], gaps:["Full NERC alert","Grid investment and bottleneck data","Energy-density constraints"], status:"candidate watch / unconfirmed", hardness:"source review", relatedWatchlist:"KW-006", relatedAtlas:"K6 Candidate Watch", relatedBrief:"research/OPEN_QUESTIONS.md", kill:["Power bottlenecks ease and do not limit AI diffusion","Energy constraints cannot explain the capex path"]},
     k6auto: {summary:"Automation / robotics needs evidence that it moves from software efficiency into physical production and service workflows.", evidence:["The current page lists it only as a candidate watch, not a supported conclusion."], gaps:["Robotics adoption rate","Unit economics","Cross-industry labor productivity"], status:"candidate watch / unconfirmed", hardness:"evidence gap", related:["K6 Candidate Watch"], kill:["Automation remains limited to local scenarios","Productivity and profit-pool migration lack evidence"]},
     k6bio: {summary:"Biotech remains a K6 Candidate watch item and needs stronger productivity and capital-formation evidence.", evidence:["It is retained only as a candidate direction, not as a supported reading."], gaps:["Industrialization speed","Capital-formation intensity","Productivity impact"], status:"candidate watch / unconfirmed", hardness:"evidence gap", related:["K6 Candidate Watch"], kill:["Technical progress does not produce broad capex or productivity diffusion"]},
     kw1: {summary:"KW-001 watches whether AI moves from K5 late-phase financial mania into K6 diffusion.", evidence:["Acemoglu NBER WP32487 supports a cautious view.","Census BTOS supports adoption-rate tracking.","Brynjolfsson / Li / Raymond WP31161 provides micro-productivity counter-evidence."], gaps:["Company-level AI capex / ROI evidence","Traditional-industry profit-pool migration","Cross-industry productivity diffusion"], status:"active watch item", hardness:"partly source-checked / source review", related:["K5-E / K6 Candidate","KW-006"], kill:["AI adoption remains limited to a few industries or shallow functions","Capex ROI falls or AI revenue cannot cover depreciation pressure","BLS / BEA productivity does not diffuse"]},
@@ -2235,47 +2770,53 @@
     kw3: {summary:"KW-003 watches whether high real rates permanently break low-rate asset pricing.", evidence:["FRED DFII10 is source-checked.","Loose NFCI conditions can act as counter-evidence."], gaps:["2020-now total-return sources for equities, bonds, commodities, and gold","Long-duration asset validation","Credit refinancing pressure"], status:"active / supported but contested", hardness:"FRED source-checked; asset total-return sources pending", related:["Asset Map","Current Reading"], kill:["The Fed is forced into major cuts again","Real rates return near zero or negative","Long-duration assets broadly regain leadership"]},
     kw4: {summary:"KW-004 watches whether loose financial conditions offset high-rate tightening.", evidence:["FRED NFCI notes state that negative values indicate easier-than-average financial conditions.","FRED BAMLH0A0HYM2 can track high-yield credit spreads."], gaps:["Private-credit flows","C&I loans","Default or liquidity-stress evidence"], status:"active / supported", hardness:"FRED source-checked", related:["Financial Cycle","Current Reading"], kill:["NFCI turns positive","High-yield spreads rise quickly","Private credit shows defaults or liquidity stress"]},
     kw5: {summary:"KW-005 watches whether gold is shifting from a real-rate asset toward a fiat-credit hedge.", evidence:["The direction is worth watching, but direct gold data sources are still under review."], gaps:["FRED / LBMA / World Gold Council direct sources","Central-bank gold buying","ETF flows"], status:"watching / source review", hardness:"source review", related:["Asset Map","Long Wave Atlas"], kill:["Rising real rates suppress gold again","Central-bank buying slows","Dollar-credit concerns ease"]},
-    kw6: {summary:"KW-006 is the current priority: AI capex has real ground signals, while financing fragility remains an active watch item.", evidence:["EP_001 master pack, EP_002 CoreWeave, EP_003 GPU pricing, EP_004 data center REITs, and EP_005 SignalOS cross-check."], gaps:["GPU historical pricing","Enterprise adoption / ROI","Full NERC alert","Equinix direct source","WoodMac transformer lead time"], status:"active watch item / partly source-checked", hardness:"Evidence Pack cross-check; remaining source review", related:["EP_001","EP_002","EP_003","EP_004","EP_005"], kill:["AI revenue and free cash flow sustainably cover capex","Financing is mostly internally funded by cash flow","Capex diffuses into traditional industries and lifts profits"]},
-    ep1: {summary:"EP_001 is the KW-006 master evidence pack.", evidence:["It centralizes AI capex, cash flow, RPO, commitments, leases, debt, and financing fragility."], gaps:["Keep synchronizing conclusions from EP_002-EP_005"]},
-    ep2: {summary:"EP_002 is the CoreWeave rolling tracker.", evidence:["It tracks revenue, backlog, interest expense, debt maturity, PPE purchases, and lease exposure."], gaps:["Quarterly updates against GPU pricing / utilization"]},
-    ep3: {summary:"EP_003 is the GPU cloud market price tracker.", evidence:["It starts with public listed-price baselines from Runpod / Lambda."], gaps:["Historical transaction prices, availability, utilization, and provider margins"]},
-    ep4: {summary:"EP_004 is the data center REIT financing tracker.", evidence:["It tracks DLR / EQIX debt maturity, development capex, leases, JV exposure, and tenant concentration."], gaps:["Private platforms: Vantage / CyrusOne / QTS / NTT"]},
-    ep5: {summary:"EP_005 is the SignalOS cross-check and source-review evidence pack.", evidence:["Conclusion: AI infrastructure capex has real industrial diffusion, but it does not support a confirmed systemic crisis or confirmed AI K6."], gaps:["Eaton cancellation rate, TSMC CoWoS, Arista target, NERC details, GPU historical pricing"]}
+    kw6: {claim:"AI capex financing fragility is an active watch item; it does not confirm systemic crisis or AI as K6.", summary:"KW-006 is the current priority: AI capex has real ground signals, while financing fragility remains an active watch item.", evidence:["The public brief tracks AI infrastructure capex, GPU pricing, data-center financing, and enterprise adoption as an initial path.","Current evidence supports real ground diffusion, not confirmed systemic crisis."], challenges:["If AI revenue, free cash flow, and internal funding sustainably cover capex, the fragility watch weakens.","If traditional-industry adoption and profit migration broaden, K6 Candidate strengthens but still requires review."], gaps:["GPU historical pricing","Enterprise adoption / ROI","Full NERC alert","Equinix direct source","WoodMac transformer lead time"], status:"active watch item / partly source-checked", hardness:"public brief + internal source index; source review remains", relatedWatchlist:"KW-006", relatedAtlas:"K5-E / K6 Candidate Watch", relatedBrief:"research/KW-006_AI_Capex_Financing_Fragility.md", contribution:"Submit evidence contribution, source correction, or counterevidence", kill:["AI revenue and free cash flow sustainably cover capex","Financing is mostly internally funded by cash flow","Capex diffuses into traditional industries and lifts profits"]},
+    ep1: {summary:"KW-006 public source index is retained as a traceability layer.", evidence:["It tracks AI capex, cash flow, commitments, leases, debt, and financing fragility at a curated level."], gaps:["Keep public claims synced with reviewed source notes"]},
+    ep2: {summary:"CoreWeave remains one watch example, not a proxy for the whole AI cycle.", evidence:["Revenue, backlog, interest expense, debt maturity, and lease exposure are relevant watch fields."], gaps:["Quarterly updates against GPU pricing / utilization"]},
+    ep3: {summary:"GPU cloud market pricing remains a source-review gap.", evidence:["Public listed-price baselines can support the initial observation."], gaps:["Historical transaction prices, availability, utilization, and provider margins"]},
+    ep4: {summary:"Data center financing remains a source-review gap.", evidence:["Debt maturity, development capex, leases, JV exposure, and tenant concentration are relevant watch fields."], gaps:["Private platform data is still incomplete"]},
+    ep5: {summary:"Ground-signal cross-check remains a public validation layer.", evidence:["Conclusion: AI infrastructure capex has real industrial diffusion, but it does not support a confirmed systemic crisis or confirmed AI K6."], gaps:["Power equipment, semiconductor, network, and GPU historical-pricing sources"]}
   };
 
   const drawerDataByLang = { zh: drawerDataZh, en: drawerDataEn };
   const drawerLabels = {
     zh: {
-      inspector: "来源检查器",
+      inspector: "Source Inspector",
+      claim: "Claim",
       status: "状态",
       hardness: "来源硬度",
-      related: "关联",
-      current: "当前读数",
-      evidence: "证据 / 来源状态",
-      gaps: "剩余缺口",
-      kill: "证伪条件 / 护栏",
-      rule: "产品规则",
-      ruleText: "正式进入网站正文前，需要保留证据状态、来源硬度、判断-来源映射和证伪条件。外部模型输出只作为搜索镜像。",
+      supports: "Supports",
+      challenges: "Challenges",
+      gaps: "Remaining gaps",
+      relatedWatchlist: "Related Watchlist",
+      relatedAtlas: "Related Atlas node",
+      relatedBrief: "Related public brief",
+      contribution: "Contribution target",
+      rule: "护栏",
+      ruleText: "公开页面只展示整理后的判断与贡献路径，不公开原始内部证据包；K6 与 Watchlist 必须保持候选 / 观察状态。",
       fallbackStatus: "待复核",
       fallbackHardness: "混合 / 需要按来源逐条复核",
-      fallbackRelated: ["当前读数", "观察清单", "证据包"],
-      fallbackKill: ["保持证据状态；触发或证伪需由 CZ 手动复核。"]
+      fallbackRelated: "当前读数 / Watchlist / public brief",
+      fallbackContribution: "提交 evidence contribution 或 source correction"
     },
     en: {
       inspector: "Source Inspector",
+      claim: "Claim",
       status: "Status",
       hardness: "Source Hardness",
-      related: "Related",
-      current: "Current Reading",
-      evidence: "Evidence / Source Status",
+      supports: "Supports",
+      challenges: "Challenges",
       gaps: "Remaining Gaps",
-      kill: "Kill Criteria / Guardrails",
-      rule: "Product Rule",
-      ruleText: "Before entering formal site copy, each claim must preserve evidence status, source hardness, claim-source mapping, and kill criteria. External model output is only a search mirror.",
+      relatedWatchlist: "Related Watchlist",
+      relatedAtlas: "Related Atlas Node",
+      relatedBrief: "Related Public Brief",
+      contribution: "Contribution Target",
+      rule: "Guardrail",
+      ruleText: "The public page shows curated readings and contribution paths, not raw internal evidence packs. K6 and Watchlist items must remain candidate / observation states.",
       fallbackStatus: "review-needed",
       fallbackHardness: "mixed / source-by-source review needed",
-      fallbackRelated: ["Current Reading", "Watchlist", "Evidence Pack"],
-      fallbackKill: ["Keep evidence status; triggers or falsification require manual CZ review."]
+      fallbackRelated: "Current Reading / Watchlist / public brief",
+      fallbackContribution: "Submit evidence contribution or source correction"
     }
   };
 
@@ -2310,39 +2851,52 @@
     const labels = drawerLabels[currentLang];
     const data = drawerDataByLang[currentLang] || drawerDataByLang.zh;
     const item = data[kind] || data.watchlist;
+    const claim = item.claim || item.summary || title;
     const status = item.status || labels.fallbackStatus;
     const hardness = item.hardness || labels.fallbackHardness;
-    const related = item.related || labels.fallbackRelated;
-    const kill = item.kill || labels.fallbackKill;
+    const supports = item.supports || item.evidence || [];
+    const challenges = item.challenges || item.kill || [];
+    const gaps = item.remainingGaps || item.gaps || [];
+    const relatedWatchlist = item.relatedWatchlist || item.watchlist || (Array.isArray(item.related) ? item.related.join(" / ") : labels.fallbackRelated);
+    const relatedAtlas = item.relatedAtlas || item.atlas || "Current Regime Board";
+    const relatedBrief = item.relatedBrief || item.brief || "research/OPEN_QUESTIONS.md";
+    const contribution = item.contribution || labels.fallbackContribution;
+    const actions = item.actions || [
+      {label: currentLang === "en" ? "Contribute evidence" : "Contribute evidence", href: "https://github.com/nickzhuchen66/kairos-atlas/issues/new/choose"},
+      {label: currentLang === "en" ? "Report source mismatch" : "Report source mismatch", href: "https://github.com/nickzhuchen66/kairos-atlas/issues/new/choose"}
+    ];
     drawerTitle.textContent = title;
     drawerBody.innerHTML = `
       <div class="drawer-section">
         <h4>${labels.inspector}</h4>
         <div class="inspector-grid">
+          <span>${labels.claim}</span><span>${claim}</span>
           <span>${labels.status}</span><span>${status}</span>
           <span>${labels.hardness}</span><span>${hardness}</span>
-          <span>${labels.related}</span><span>${related.join(" / ")}</span>
+          <span>${labels.relatedWatchlist}</span><span>${relatedWatchlist}</span>
+          <span>${labels.relatedAtlas}</span><span>${relatedAtlas}</span>
+          <span>${labels.relatedBrief}</span><span>${relatedBrief}</span>
+          <span>${labels.contribution}</span><span>${contribution}</span>
         </div>
       </div>
       <div class="drawer-section">
-        <h4>${labels.current}</h4>
-        <p>${item.summary}</p>
+        <h4>${labels.supports}</h4>
+        <ul>${supports.map(x => `<li>${x}</li>`).join("")}</ul>
       </div>
       <div class="drawer-section">
-        <h4>${labels.evidence}</h4>
-        <ul>${item.evidence.map(x => `<li>${x}</li>`).join("")}</ul>
+        <h4>${labels.challenges}</h4>
+        <ul>${challenges.map(x => `<li>${x}</li>`).join("")}</ul>
       </div>
       <div class="drawer-section">
         <h4>${labels.gaps}</h4>
-        <ul>${item.gaps.map(x => `<li>${x}</li>`).join("")}</ul>
-      </div>
-      <div class="drawer-section">
-        <h4>${labels.kill}</h4>
-        <ul>${kill.map(x => `<li>${x}</li>`).join("")}</ul>
+        <ul>${gaps.map(x => `<li>${x}</li>`).join("")}</ul>
       </div>
       <div class="drawer-section">
         <h4>${labels.rule}</h4>
         <p>${labels.ruleText}</p>
+        <div class="drawer-actions">
+          ${actions.map(action => `<a class="drawer-action" href="${action.href}" target="_blank" rel="noopener noreferrer">${action.label}</a>`).join("")}
+        </div>
       </div>
     `;
     document.body.classList.add("drawer-open");
