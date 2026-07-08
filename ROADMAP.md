@@ -56,7 +56,120 @@ The public release does not include:
 - AI collaboration context;
 - internal build logs or recovery handoffs.
 
-## 4. Roadmap Tracks
+## 4. v0.2 Focus: Dashboard-led, Research-open
+
+The v0.2 priority is to make Kairos more useful as a public observatory.
+
+Kairos v0.1 established the public release foundation: a live website, bilingual README files, public roadmap, contribution guide, open research questions, issue templates, and curated research briefs.
+
+Kairos v0.2 should move from "publicly released" to "publicly inspectable."
+
+The focus is:
+
+```text
+Dashboard-led, Research-open
+```
+
+This means:
+
+- the website remains the primary product surface;
+- GitHub remains the primary collaboration surface;
+- public research briefs support the website, but do not replace it;
+- contributions should improve concrete claims, phase nodes, sources, open questions, or website readability;
+- K6 Candidate remains manual, evidence-gated, and event-driven.
+
+### v0.2 Priorities
+
+1. **Improve the Current Regime dashboard**
+
+   Make the current macro-cycle reading easier to inspect:
+
+   - current regime summary;
+   - six-layer Cycle Stack;
+   - confidence and evidence status;
+   - last reviewed date;
+   - top supported claims;
+   - top contested claims;
+   - top watchlist items.
+
+2. **Strengthen the Long Wave Atlas**
+
+   Improve the public K4 / K5 / K6 working map without pretending it is final:
+
+   - clearer soft date ranges;
+   - better phase-card summaries;
+   - visible content readiness;
+   - explicit contested boundaries;
+   - better links from phase nodes to public research briefs and open questions.
+
+3. **Connect Watchlist items to public evidence paths**
+
+   Watchlist items should remain observations, not confirmed facts.
+
+   v0.2 should make it easier to see:
+
+   - what would strengthen a watch item;
+   - what would weaken it;
+   - what would kill the hypothesis;
+   - which public brief or open question is related.
+
+4. **Make contribution targets more concrete**
+
+   External contributors should be able to help with specific objects:
+
+   - a claim;
+   - a source;
+   - a phase boundary;
+   - an open question;
+   - a research brief;
+   - a website readability issue.
+
+5. **Keep research briefs curated**
+
+   Public research briefs should remain readable, source-aware summaries.
+
+   They should include:
+
+   - current reading status;
+   - evidence status;
+   - watch triggers;
+   - kill criteria;
+   - rejected overclaims;
+   - remaining open questions.
+
+### v0.2 Not Now
+
+Kairos v0.2 is not planning to add:
+
+- user accounts;
+- subscriptions;
+- saved readings;
+- automatic news-flow updates;
+- daily API polling;
+- automatic K6 status updates;
+- trading recommendations;
+- publication of raw private notes;
+- publication of raw internal Evidence Packs.
+
+A future public data layer may be considered after the content model, evidence model, and contribution workflow become more stable.
+
+### How Contributors Can Help in v0.2
+
+Good v0.2 contributions include:
+
+- source corrections;
+- claim-source mismatch reports;
+- alternative K4 / K5 periodization proposals;
+- counterevidence for open questions;
+- evidence for or against K6 Candidate Watch;
+- website readability and mobile feedback;
+- public research brief improvements.
+
+Kairos welcomes disagreement when it is source-backed.
+
+Kairos does not accept unsupported macro predictions, hype-only K6 claims, AI-generated summaries as evidence, or claims that Watchlist items are already confirmed facts.
+
+## 5. Long-Term Roadmap Tracks
 
 ### Track A: Long Wave Atlas
 
@@ -228,7 +341,7 @@ Guardrail:
 
 K6 Candidate will remain manual, event-driven, and evidence-gated. Kairos should not automatically update K6 judgments from news flow or API polling.
 
-## 5. Working Map, Not Final Truth
+## 6. Working Map, Not Final Truth
 
 K4 / K5 / K6 are public working maps.
 
@@ -242,7 +355,7 @@ The current periodization is useful only if it remains:
 
 Kairos welcomes alternative periodization proposals when they include sources, reasoning, and implications.
 
-## 6. How To Contribute
+## 7. How To Contribute
 
 Start with:
 
@@ -259,7 +372,7 @@ Best first contributions:
 - report a website / mobile layout issue;
 - propose an alternative K4 / K5 phase boundary with sources.
 
-## 7. What We Are Not Doing
+## 8. What We Are Not Doing
 
 Kairos is not currently doing:
 
@@ -271,7 +384,7 @@ Kairos is not currently doing:
 - publication of raw internal Evidence Packs;
 - unrestricted reuse of Kairos content and research framing.
 
-## 8. Maintainer Review Principles
+## 9. Maintainer Review Principles
 
 Maintainers should ask:
 
