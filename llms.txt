@@ -37,12 +37,22 @@ K6 Candidate is manual, evidence-gated, and event-driven. Kairos does not use au
 ## Public Resources
 
 - Website: https://kairos-atlas.com/
+- Current Regime: https://kairos-atlas.com/current-regime/
+- Long Wave Atlas: https://kairos-atlas.com/long-wave-atlas/
+- K6 Candidate Watch: https://kairos-atlas.com/research/k6-candidate-watch/
+- AI capex financing fragility: https://kairos-atlas.com/research/ai-capex-financing-fragility/
+- Public Source Registry: https://kairos-atlas.com/research/source-registry/
+
+## Public Source Material
+
 - Roadmap: https://kairos-atlas.com/ROADMAP.md
 - Contribution guide: https://kairos-atlas.com/CONTRIBUTING.md
 - Open questions: https://kairos-atlas.com/research/OPEN_QUESTIONS.md
 - Research index: https://kairos-atlas.com/research/README.md
 - Public source registry guide: https://kairos-atlas.com/research/sources/README.md
 - Public curated source registry: https://kairos-atlas.com/research/sources/public_source_registry.md
+- K6 candidate raw public brief: https://kairos-atlas.com/research/KW-001_AI_as_K6_Candidate.md
+- AI capex raw public brief: https://kairos-atlas.com/research/KW-006_AI_Capex_Financing_Fragility.md
 
 ## Evidence Discipline
 

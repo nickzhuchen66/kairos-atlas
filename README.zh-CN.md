@@ -17,6 +17,8 @@
 公开仓库名：**kairos-atlas**  
 正式网站：**[kairos-atlas.com](https://kairos-atlas.com/)**
 
+公开研究页面：[当前宏观周期读数](https://kairos-atlas.com/current-regime/) · [Long Wave Atlas](https://kairos-atlas.com/long-wave-atlas/) · [K6 Candidate Watch](https://kairos-atlas.com/research/k6-candidate-watch/) · [AI 资本开支与融资脆弱性](https://kairos-atlas.com/research/ai-capex-financing-fragility/) · [公开证据索引](https://kairos-atlas.com/research/source-registry/)
+
 `kairos-atlas` 用作公开仓库和域名身份；`Macro Cycle Observatory` 继续作为产品英文副标题，因为当前网站更接近一个“宏观周期观测仪表盘”，而 Atlas 更适合作为公开入口和 Long Wave Atlas 的命名锚点。
 
 Kairos 的目标是把宏观周期判断做成可点击、可复盘、可证伪的观测仪，而不是把复杂判断包装成单一预测。

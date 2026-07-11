@@ -17,6 +17,8 @@ English subtitle: **Macro Cycle Observatory**
 Public repository: **kairos-atlas**  
 Live website: **[kairos-atlas.com](https://kairos-atlas.com/)**
 
+Public research pages: [Current Regime](https://kairos-atlas.com/current-regime/) · [Long Wave Atlas](https://kairos-atlas.com/long-wave-atlas/) · [K6 Candidate Watch](https://kairos-atlas.com/research/k6-candidate-watch/) · [AI capex financing fragility](https://kairos-atlas.com/research/ai-capex-financing-fragility/) · [Source Registry](https://kairos-atlas.com/research/source-registry/)
+
 `kairos-atlas` is the public repository and domain identity. `Macro Cycle Observatory` remains the product subtitle because the site is designed as an observatory-style macro dashboard, while the Atlas name anchors the public URL and the Long Wave Atlas concept.
 
 Kairos is designed to make macro-cycle judgment more inspectable: every major reading should remain clickable, reviewable, and falsifiable.
