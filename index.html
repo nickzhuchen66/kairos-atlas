@@ -1014,6 +1014,58 @@
     color:var(--ink);
   }
   .atlas-card p{font-size:12px;color:var(--muted);line-height:1.45}
+  .node-kicker{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    margin-top:8px;
+    color:var(--brass-2);
+    font-family:var(--font-mono);
+    font-size:9px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .node-line{
+    margin-top:6px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.45;
+  }
+  .node-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+    margin-top:11px;
+  }
+  .node-action{
+    border:1px solid rgba(200,161,90,.18);
+    background:rgba(11,13,16,.28);
+    color:var(--quiet);
+    font-family:var(--font-mono);
+    font-size:9px;
+    letter-spacing:.06em;
+    line-height:1.25;
+    padding:7px 8px;
+    text-align:left;
+  }
+  .k5-flow{
+    grid-column:1 / -1;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:2px;
+  }
+  .k5-flow span{
+    border:1px solid rgba(200,161,90,.2);
+    background:rgba(200,161,90,.06);
+    color:var(--muted);
+    font-family:var(--font-mono);
+    font-size:9px;
+    letter-spacing:.08em;
+    padding:4px 7px;
+    text-transform:uppercase;
+  }
   .priority-panel{
     border:1px solid rgba(200,161,90,.34);
     background:linear-gradient(180deg, rgba(200,161,90,.1), rgba(18,21,26,.8));
@@ -1879,60 +1931,67 @@
             <div class="wave-row">
               <div class="wave-label">K5</div>
               <div class="phase-grid">
+                <div class="k5-flow" aria-label="K5 主线">
+                  <span>Reset</span>
+                  <span>Diffusion</span>
+                  <span>Leverage</span>
+                  <span>Balance Sheet</span>
+                  <span>Regime Stress</span>
+                </div>
                 <button class="atlas-card priority js-open" data-title="K5-A 去通胀 / 金融化起点" data-kind="k5a">
                   <span class="badge contested">重点</span>
-                  <h3>1979/82-1991 · 去通胀 / 美元重置</h3>
-                  <p>通胀被压制，利率下行长周期与金融化起点出现。</p>
+                  <div class="node-kicker"><span>K5-A · Reset</span><span>1979/82-1991</span></div>
+                  <h3>Disinflation / Dollar Reset / Financialization Start</h3>
+                  <p>Volcker disinflation、美元协调和金融化起点，把 K4-D 滞胀切换进 K5。</p>
                   <div class="phase-meta">
-                    <div><span>Phase ID</span><span>K5-A</span></div>
-                    <div><span>Relevance</span><span>高；低利率金融化起点与当前反转对照。</span></div>
-                    <div><span>Readiness</span><span>Priority / contested soft start</span></div>
-                    <div><span>Open Q</span><span>1979/82 起点窗口如何标注？</span></div>
+                    <div><span>Evidence</span><span>supported + contested boundary</span></div>
+                    <div><span>Confidence</span><span>Medium</span></div>
                   </div>
+                  <div class="node-actions"><span class="node-action">View evidence</span><span class="node-action">What would change this?</span></div>
                 </button>
                 <button class="atlas-card js-open" data-title="K5-B 全球化 / ICT" data-kind="k5b">
                   <span class="badge partial">部分核验</span>
-                  <h3>1991-2000/04 · 全球化 / ICT</h3>
-                  <p>全球化、ICT 扩散、低通胀增长和风险资产繁荣。</p>
+                  <div class="node-kicker"><span>K5-B · Diffusion</span><span>1991-2000 / 2004 corridor</span></div>
+                  <h3>Globalization / ICT Diffusion / Great Moderation</h3>
+                  <p>ICT、贸易扩张和大缓和释放 K5 红利，但不等于新长波起点。</p>
                   <div class="phase-meta">
-                    <div><span>Phase ID</span><span>K5-B</span></div>
-                    <div><span>Relevance</span><span>中；ICT 与 AI 扩散类比的参照。</span></div>
-                    <div><span>Readiness</span><span>Medium / TFP contested</span></div>
-                    <div><span>Open Q</span><span>2000-2004 是否应作过渡段？</span></div>
+                    <div><span>Evidence</span><span>supported + repair gaps</span></div>
+                    <div><span>Confidence</span><span>Medium</span></div>
                   </div>
+                  <div class="node-actions"><span class="node-action">View evidence</span><span class="node-action">What would change this?</span></div>
                 </button>
                 <button class="atlas-card js-open" data-title="K5-C 信用泡沫" data-kind="k5c">
                   <span class="badge watch">重点</span>
-                  <h3>2004-2008 · 信用泡沫 / 美元杠杆</h3>
-                  <p>全球失衡、住房信用、影子银行和美元杠杆共振。</p>
+                  <div class="node-kicker"><span>K5-C · Leverage</span><span>2004-2008</span></div>
+                  <h3>Credit Bubble / Housing / Dollar Leverage</h3>
+                  <p>低利率、储蓄过剩、住房信用和离岸美元杠杆放大私人信用机器。</p>
                   <div class="phase-meta">
-                    <div><span>Phase ID</span><span>K5-C</span></div>
-                    <div><span>Relevance</span><span>中高；融资脆弱性与杠杆类比。</span></div>
-                    <div><span>Readiness</span><span>Medium / source repair needed</span></div>
-                    <div><span>Open Q</span><span>AI capex 是否存在类似杠杆链？</span></div>
+                    <div><span>Evidence</span><span>supported + source repair</span></div>
+                    <div><span>Confidence</span><span>Medium</span></div>
                   </div>
+                  <div class="node-actions"><span class="node-action">View evidence</span><span class="node-action">What would change this?</span></div>
                 </button>
                 <button class="atlas-card js-open" data-title="K5-D QE / 平台经济" data-kind="k5d">
                   <span class="badge watch">重点</span>
-                  <h3>2008-2020 · QE / 低利率资产负债表时代</h3>
-                  <p>QE、低利率、平台经济和久期资产重估。</p>
+                  <div class="node-kicker"><span>K5-D · Balance Sheet</span><span>2008-2020</span></div>
+                  <h3>QE / Platform Economy / Low-Rate Balance Sheet Era</h3>
+                  <p>公共资产负债表接管私人信用断裂，低贴现率支撑平台经济与资产再通胀。</p>
                   <div class="phase-meta">
-                    <div><span>Phase ID</span><span>K5-D</span></div>
-                    <div><span>Relevance</span><span>中高；低利率资产定价反转的基准。</span></div>
-                    <div><span>Readiness</span><span>Medium / TFP contested</span></div>
-                    <div><span>Open Q</span><span>平台经济 TFP 影响如何评价？</span></div>
+                    <div><span>Evidence</span><span>supported + contested TFP</span></div>
+                    <div><span>Confidence</span><span>Medium</span></div>
                   </div>
+                  <div class="node-actions"><span class="node-action">View evidence</span><span class="node-action">What would change this?</span></div>
                 </button>
                 <button class="atlas-card priority js-open" data-title="K5-E 财政货币冲击 / AI 作为 K6 候选" data-kind="k5e">
                   <span class="badge manual">第一优先</span>
-                  <h3>2020-now · 财政货币冲击 / AI 作为 K6 候选</h3>
-                  <p>财政货币冲击、通胀回归、高利率重估、AI 成为 K6 候选。</p>
+                  <div class="node-kicker"><span>K5-E · Regime Stress</span><span>2020-now</span></div>
+                  <h3>Fiscal-Monetary Shock / Inflation Return / AI Candidate Watch</h3>
+                  <p>财政货币冲击、通胀回归与 AI 资本开支并存；K6 仍是候选观察。</p>
                   <div class="phase-meta">
-                    <div><span>Phase ID</span><span>K5-E</span></div>
-                    <div><span>Relevance</span><span>最高；当前主读数所在阶段。</span></div>
-                    <div><span>Readiness</span><span>First priority / evidence-gated</span></div>
-                    <div><span>Open Q</span><span>AI 是否扩散成 K6，还是 K5 尾部狂热？</span></div>
+                    <div><span>Evidence</span><span>watchlist + evidence-gated</span></div>
+                    <div><span>Confidence</span><span>Medium</span></div>
                   </div>
+                  <div class="node-actions"><span class="node-action">View evidence</span><span class="node-action">What would change this?</span></div>
                 </button>
               </div>
             </div>
@@ -2448,6 +2507,11 @@
     "Asset map / validation notes": "Asset map / validation notes",
     "资产表现与宏观读数背离时，先进入 validation review。": "When asset behavior diverges from the macro reading, move first into validation review.",
     "Inspect: validation layer": "Inspect: validation layer",
+    "Volcker disinflation、美元协调和金融化起点，把 K4-D 滞胀切换进 K5。": "Volcker disinflation, dollar coordination, and the financialization starting point switch K4-D stagflation into K5.",
+    "ICT、贸易扩张和大缓和释放 K5 红利，但不等于新长波起点。": "ICT, trade expansion, and the Great Moderation release K5's dividend, but do not equal a new long-wave starting point.",
+    "低利率、储蓄过剩、住房信用和离岸美元杠杆放大私人信用机器。": "Low rates, excess savings, housing credit, and offshore dollar leverage amplify the private-credit machine.",
+    "公共资产负债表接管私人信用断裂，低贴现率支撑平台经济与资产再通胀。": "Public balance sheets take over after private-credit fracture, while low discount rates support platform economies and asset reinflation.",
+    "财政货币冲击、通胀回归与 AI 资本开支并存；K6 仍是候选观察。": "Fiscal-monetary shock, inflation return, and AI capex coexist; K6 remains a candidate watch.",
     "Phase ID": "Phase ID",
     "Relevance": "Relevance",
     "Readiness": "Readiness",
@@ -2677,11 +2741,11 @@
     k4b: {summary:"K4-B 可展示骨架，但资产表现和产业扩散数据不足。", evidence:["战后重建、资本管制、美元短缺、欧洲复兴。"], gaps:["马歇尔计划细节","战后债务压制","股票恢复与利率管制"]},
     k4c: {summary:"K4-C 是有争议 / 来源补核中节点。", evidence:["Triffin dilemma、黄金池、美元外部负债、资本管制。"], gaps:["1950s-1960s 可比资产表现","Bretton Woods 稳定机制争议"]},
     k4d: {summary:"K4-D 是优先补详细节点，连接通胀状态到 K5 金融化起点。", evidence:["Nixon shock、1970s inflation、oil shocks、Volcker disinflation。"], gaps:["Volcker 相关来源补核","1970s 资产行为定量化"]},
-    k5a: {summary:"K5-A 不应硬写 1982 起点，应显示 1979/82 转换窗口。", evidence:["Volcker disinflation、金融去管制、Plaza / Louvre、1987 crash。"], gaps:["1980s 金融自由化证据卡","资产表现证据"]},
-    k5b: {summary:"K5-B 支持全球化 / ICT / 大缓和框架，但仍有 TFP 争议。", evidence:["ICT productivity、Great Moderation、global supply chains、dotcom bubble。"], gaps:["2000-2004 是否单独作为转折过渡期"]},
-    k5c: {summary:"K5-C 是全球失衡、住房信用、影子银行和美元杠杆共振的重点节点。", evidence:["经常账户失衡、ABCP、证券化、住房泡沫。"], gaps:["ABCP 序列代码","影子银行规模与全球失衡映射"]},
-    k5d: {summary:"K5-D 连接 QE、平台经济和低利率资产重估。", evidence:["央行资产负债表、长期停滞、平台经济、低利率。"], gaps:["平台经济与宏观 TFP 的证据冲突"]},
-    k5e: {claim:"K5-E 是当前主读数所在阶段，AI 只能作为 K6 Candidate Watch。", summary:"K5-E 是第一优先节点，承接财政货币冲击、通胀回归与 AI 作为 K6 候选。", evidence:["KW-006 与公开研究 brief 已形成初始证据路径。"], challenges:["AI 生产率扩散仍未确认。","财政货币冲击是否改变长期通胀中枢仍需反证。"], gaps:["AI 生产率扩散","企业采用 / ROI","传统行业利润池迁移","资本开支 ROI"], status:"第一优先 / 证据门控", hardness:"public brief + source review", relatedWatchlist:"KW-001 / KW-006", relatedAtlas:"K5-E", relatedBrief:"research/KW-001_AI_as_K6_Candidate.md / research/KW-006_AI_Capex_Financing_Fragility.md", contribution:"补充 K5-E 边界、AI diffusion 或 fiscal-monetary shock 反证"},
+    k5a: {claim:"K5-A 是 K5 的制度重置期：去通胀、美元协调和金融化起点共同替代 K4-D 滞胀框架。", summary:"K5-A Reset 将 K4-D 的美元-黄金断裂与滞胀，切换为强美元、去通胀、利率下行和金融化资产定价的起点。", evidence:["Fed funds 高位与回落、Plaza / Louvre 协调、Latin American debt crisis 和广义美元路径支持 reset 框架。","资产行为方向：美债收益率长期下行起点较清晰，美元先强后政策协调回调。"], challenges:["1979、1982 或整个 1979/82 transition window 都不能写成机械硬起点。","强美元不是债务危机唯一原因；金融化也不是突然从零开始。"], gaps:["REPAIR-007：股票、黄金和债券 total-return 口径仍需统一。","1980s 金融化起点与加速点的证据卡仍需细化。"], status:"supported + contested soft boundary", hardness:"primary data + official archive + high-quality secondary", relatedWatchlist:"K5 periodization / source correction", relatedAtlas:"K5-A Reset", relatedBrief:"research/sources/public_source_registry.md", contribution:"补充 1980s 资产 total-return、金融自由化证据或 K5-A 起点反证", kill:["Plaza / Louvre 方向不得写反","1982 不得写成机械起点","金融化不得写成突然从零开始"]},
+    k5b: {claim:"K5-B 是 K5 的扩散与稳定繁荣窗口：全球化、ICT diffusion 和 Great Moderation 共同释放 K5 红利。", summary:"K5-B Diffusion 展示技术-制度红利释放，但它不是新 K-wave 起点；2000-2004 仍应作为 transition corridor 观察。", evidence:["NBER recession chronology 支持 1990-91 后长扩张锚点。","Great Moderation、ICT productivity acceleration、trade % GDP 上升和 Greenspan irrational exuberance 支持扩散与估值繁荣框架。"], challenges:["Great Moderation 成因存在政策、结构变化和 good luck 争议。","ICT 是否足以构成新长波、强美元与商品弱势的精确因果仍未定。"], gaps:["REPAIR-002 / REPAIR-003：DXY、Nasdaq、黄金和 dot-com 资产表现仍需硬来源。","REPAIR-005 / REPAIR-006：NAFTA / WTO / EM crises 仍需官方 source package。"], status:"supported + contested mixed", hardness:"official chronology + central-bank speeches + official multilateral data + academic paper", relatedWatchlist:"AI diffusion analogy / K5-B transition corridor", relatedAtlas:"K5-B Diffusion", relatedBrief:"research/OPEN_QUESTIONS.md", contribution:"补充 ICT productivity、trade globalization 或 2000-2004 transition 反证", kill:["不得把 Great Moderation 写成央行能力的单一胜利","不得把 2000 写成 K5 结束"]},
+    k5c: {claim:"K5-C 是 K5 的杠杆错觉期：住房信用、证券化、全球失衡和美元杠杆共同放大私人信用机器。", summary:"K5-C Leverage 从 K5-B 的技术与全球化红利，转入不可持续的信用扩张、住房泡沫和全球失衡。", evidence:["Bernanke global saving glut、global imbalances、NY Fed saving / banking glut、Fed crisis response 和 WTI oil data 支持信用与流动性压力框架。","2007-08 流动性工具是从私人信用断裂走向公共资产负债表接管的桥。"], challenges:["China-WTO 不能写成单一主因；global saving glut 也不是唯一解释。","2004 SEC 净资本规则、ABCP 总量和 Eurodollar 总量仍需补证。"], gaps:["REPAIR-004：ABCP / shadow banking 直接数据仍需修复。","REPAIR-005 / REPAIR-006：China-WTO 与 EM crises source package 仍需补强。"], status:"supported + source repair needed", hardness:"central-bank speeches + central-bank research + official policy source + official data", relatedWatchlist:"KW-006 financing-fragility analogy", relatedAtlas:"K5-C Leverage", relatedBrief:"research/KW-006_AI_Capex_Financing_Fragility.md", contribution:"补充 ABCP、shadow banking、housing credit 或 global imbalances 的 direct source", kill:["不做中国责任论","不把模型估计写成直接事实","不把储蓄过剩写成唯一原因"]},
+    k5d: {claim:"K5-D 是公共资产负债表接管期：QE、ZLB、低利率、平台经济和资产再通胀共同构成后危机时代。", summary:"K5-D Balance Sheet 表示私人信用泡沫破裂后，周期由央行资产负债表、低贴现率和平台经济集中度维持。", evidence:["Fed balance sheet expansion、S&P 500 price index、10-year Treasury yield 和 federal deficit data 支持 QE / low-rate balance-sheet era 框架。","2008 后资产再通胀和久期资产重估是理解当前高利率反转的基准。"], challenges:["平台经济是否显著提升宏观 TFP 仍有争议。","长期停滞、全球储蓄过剩和低利率资产表现之间的解释权重仍需分解。"], gaps:["REPAIR-007：S&P 500 price index 不是 total return；10Y yield 也不是债券 total return。","平台经济与宏观 TFP 的 source-backed counterevidence 仍需整理。"], status:"supported + contested TFP", hardness:"official data + market data + source review", relatedWatchlist:"platform productivity / low-rate regime reversal", relatedAtlas:"K5-D Balance Sheet", relatedBrief:"research/OPEN_QUESTIONS.md", contribution:"补充平台经济 TFP、资产 total-return 或 QE transmission 证据", kill:["不得把平台经济写成 confirmed K6","不得把低利率资产表现等同于实体生产率复兴"]},
+    k5e: {claim:"K5-E 是当前主读数所在阶段：财政货币冲击、通胀回归、高利率和宽金融条件并存；AI 只能作为 K6 Candidate Watch。", summary:"K5-E Regime Stress 是 K5 尾部变形区，也是判断 K5 是否向 K6 过渡的观察窗口。", evidence:["CBO fiscal shock、NFCI、real-rate / HY spread 数据支持 regime tension。","Census AI adoption、IEA electricity、NBER AI productivity papers 与 KW-006 source set 支持 K6 Candidate Watch，但不确认 K6。"], challenges:["财政主导是否成为长期 regime、高实际利率下股票和黄金同涨主因、AI 是否能形成广泛生产率扩散仍有争议。","若 capex ROI 弱化或采用停滞，AI 更像 K5 late-cycle overbuild。"], gaps:["AI adoption / ROI、传统行业利润池迁移、生产率扩散仍需持续补证。","黄金、央行买金、跨资产 total-return 和电力约束仍有 source-repair 项。"], status:"watchlist + evidence-gated", hardness:"official fiscal data + market data + public brief + source review", relatedWatchlist:"KW-001 / KW-006", relatedAtlas:"K5-E Regime Stress / K6 Candidate Watch", relatedBrief:"research/KW-001_AI_as_K6_Candidate.md / research/KW-006_AI_Capex_Financing_Fragility.md", contribution:"补充 AI diffusion、capex ROI、power-grid bottleneck 或 fiscal-monetary shock 反证", kill:["AI 不是 confirmed K6","K6 不是 confirmed","Watchlist 不是 confirmed fact","K6 不自动随新闻更新"]},
     k6ai: {claim:"AI 是 K6 Candidate Watch，不是 confirmed K6。", summary:"AI 是当前最重要的 K6 Candidate Watch，但仍不能确认 K6。", evidence:["KW-006 / public brief 支持 AI 基础设施资本开支存在真实地面信号。"], challenges:["企业 ROI、跨行业生产率和传统行业利润池迁移仍未确认。"], gaps:["跨行业生产率扩散","企业 ROI","传统行业利润池迁移"], status:"候选观察 / 未确认", hardness:"部分核验 / 证据门控", relatedWatchlist:"KW-001 / KW-006", relatedAtlas:"K6 Candidate Watch", relatedBrief:"research/KW-001_AI_as_K6_Candidate.md", contribution:"提交 AI adoption / productivity diffusion 的 primary source", kill:["AI 采用停留在少数行业或浅层功能","AI 收入无法覆盖资本开支和折旧压力"]},
     k6energy: {summary:"能源与电力约束是 K6 Candidate 的物理约束观察项，不是独立确认条件。", evidence:["数据中心、电网和电力设备地面信号可作为观察入口。"], gaps:["NERC 完整警报","电网投资与瓶颈数据","能源密度约束"], status:"候选观察 / 未确认", hardness:"来源补核中", relatedWatchlist:"KW-006", relatedAtlas:"K6 Candidate Watch", relatedBrief:"research/OPEN_QUESTIONS.md", kill:["电力瓶颈缓解且不限制 AI 扩散","能源约束不能解释资本开支路径"]},
     k6auto: {summary:"自动化 / 机器人需要证明它从软件效率扩展到实体生产和服务流程。", evidence:["当前页面仅作为候选观察，不写成已支持结论。"], gaps:["机器人采用率","单位经济性","跨行业劳动生产率"], status:"候选观察 / 未确认", hardness:"待补证", related:["K6 Candidate Watch"], kill:["自动化仍停留在局部场景","生产率和利润池迁移缺乏证据"]},
@@ -2803,11 +2867,11 @@
     k4b: {summary:"K4-B can show the skeleton, but asset behavior and industrial diffusion data remain thin.", evidence:["Postwar reconstruction, capital controls, dollar shortage, and European recovery."], gaps:["Marshall Plan details","Postwar debt repression","Equity recovery and rate controls"]},
     k4c: {summary:"K4-C is contested / under source review.", evidence:["Triffin dilemma, gold pool, external dollar liabilities, and capital controls."], gaps:["1950s-1960s comparable asset behavior","Debate over Bretton Woods stability mechanisms"]},
     k4d: {summary:"K4-D is a priority node because it connects inflation regime to the K5 financialization starting point.", evidence:["Nixon shock, 1970s inflation, oil shocks, and Volcker disinflation."], gaps:["Volcker source review","Quantified 1970s asset behavior"]},
-    k5a: {summary:"K5-A should not hard-code a 1982 starting point; it should show a 1979/82 transition window.", evidence:["Volcker disinflation, financial deregulation, Plaza / Louvre, and the 1987 crash."], gaps:["1980s financial liberalization evidence card","Asset-behavior evidence"]},
-    k5b: {summary:"K5-B supports the globalization / ICT / Great Moderation frame, but TFP effects remain contested.", evidence:["ICT productivity, Great Moderation, global supply chains, and dotcom bubble."], gaps:["Whether 2000-2004 should be a separate transition period"]},
-    k5c: {summary:"K5-C is a priority node for global imbalances, housing credit, shadow banking, and dollar leverage.", evidence:["Current-account imbalances, ABCP, securitization, and housing bubble."], gaps:["ABCP series code","Mapping shadow-banking scale to global imbalances"]},
-    k5d: {summary:"K5-D connects QE, platform economy, and low-rate asset repricing.", evidence:["Central-bank balance sheets, secular stagnation, platform economy, and low rates."], gaps:["Evidence conflict around platform economy and macro TFP"]},
-    k5e: {claim:"K5-E is the current regime node; AI can only be shown as K6 Candidate Watch.", summary:"K5-E is the first-priority node, carrying fiscal-monetary shock, inflation return, and AI as K6 Candidate.", evidence:["KW-006 and public briefs form the initial evidence path."], challenges:["AI productivity diffusion is not confirmed.","Whether fiscal-monetary shock changed the long-run inflation center remains open."], gaps:["AI productivity diffusion","Enterprise adoption / ROI","Traditional-industry profit-pool migration","Capex ROI"], status:"first priority / evidence-gated", hardness:"public brief + source review", relatedWatchlist:"KW-001 / KW-006", relatedAtlas:"K5-E", relatedBrief:"research/KW-001_AI_as_K6_Candidate.md / research/KW-006_AI_Capex_Financing_Fragility.md", contribution:"Add K5-E boundary evidence, AI diffusion evidence, or fiscal-monetary shock counterevidence"},
+    k5a: {claim:"K5-A is the K5 institutional reset: disinflation, dollar coordination, and financialization replace the K4-D stagflation frame.", summary:"K5-A Reset moves from K4-D dollar-gold rupture and stagflation into strong-dollar disinflation, falling-rate financialization, and a new asset-pricing frame.", evidence:["High and falling fed funds, Plaza / Louvre coordination, the Latin American debt crisis, and broad-dollar movement support the reset frame.","Asset behavior: the long-rate downtrend is clearer; the dollar first strengthened, then entered policy-coordinated adjustment."], challenges:["1979, 1982, or the whole 1979/82 transition window should not be written as a mechanical hard start.","Strong dollar was not the sole debt-crisis cause; financialization did not suddenly start from zero."], gaps:["REPAIR-007: equity, gold, and bond total-return sources still need a unified source base.","The distinction between financialization starting point and acceleration point still needs evidence cards."], status:"supported + contested soft boundary", hardness:"primary data + official archive + high-quality secondary", relatedWatchlist:"K5 periodization / source correction", relatedAtlas:"K5-A Reset", relatedBrief:"research/sources/public_source_registry.md", contribution:"Add 1980s asset total-return, financial-liberalization evidence, or K5-A starting-boundary counterevidence", kill:["Do not reverse Plaza / Louvre direction","Do not write 1982 as a mechanical start","Do not write financialization as suddenly starting from zero"]},
+    k5b: {claim:"K5-B is K5's diffusion and stable prosperity window: globalization, ICT diffusion, and the Great Moderation release K5's technology-institution dividend.", summary:"K5-B Diffusion shows the technology-institution dividend being released, but it is not a new K-wave starting point; 2000-2004 remains a transition corridor.", evidence:["NBER recession chronology anchors the long expansion after 1990-91.","Great Moderation, ICT productivity acceleration, rising trade % GDP, and Greenspan's irrational-exuberance warning support the diffusion and valuation-boom frame."], challenges:["Great Moderation causes remain contested across policy, structural change, and good luck.","Whether ICT was enough to define a new long wave, and the exact dollar / commodity causality, remain open."], gaps:["REPAIR-002 / REPAIR-003: DXY, Nasdaq, gold, and dot-com asset performance still need harder sources.","REPAIR-005 / REPAIR-006: NAFTA / WTO / EM crises need official source packages."], status:"supported + contested mixed", hardness:"official chronology + central-bank speeches + official multilateral data + academic paper", relatedWatchlist:"AI diffusion analogy / K5-B transition corridor", relatedAtlas:"K5-B Diffusion", relatedBrief:"research/OPEN_QUESTIONS.md", contribution:"Add ICT productivity, trade globalization, or 2000-2004 transition counterevidence", kill:["Do not write the Great Moderation as a single central-bank victory","Do not write 2000 as the end of K5"]},
+    k5c: {claim:"K5-C is K5's leverage illusion: housing credit, securitization, global imbalances, and dollar leverage amplify the private-credit machine.", summary:"K5-C Leverage moves from K5-B technology and globalization dividends into unsustainable credit expansion, housing bubbles, and global imbalances.", evidence:["Bernanke's global saving glut, global imbalances, NY Fed saving / banking glut research, Fed crisis response, and WTI oil data support the credit and liquidity-stress frame.","2007-08 liquidity facilities bridge the break in private credit to the public balance-sheet takeover."], challenges:["China-WTO cannot be written as the single cause; the global saving glut is not the only explanation.","The 2004 SEC net capital rule, ABCP totals, and Eurodollar scale still need stronger evidence."], gaps:["REPAIR-004: ABCP / shadow-banking direct data still needs repair.","REPAIR-005 / REPAIR-006: China-WTO and EM-crisis source packages still need strengthening."], status:"supported + source repair needed", hardness:"central-bank speeches + central-bank research + official policy source + official data", relatedWatchlist:"KW-006 financing-fragility analogy", relatedAtlas:"K5-C Leverage", relatedBrief:"research/KW-006_AI_Capex_Financing_Fragility.md", contribution:"Add direct sources for ABCP, shadow banking, housing credit, or global imbalances", kill:["Do not turn this into a China-blame narrative","Do not write model estimates as direct facts","Do not write saving glut as the only cause"]},
+    k5d: {claim:"K5-D is the public balance-sheet takeover: QE, ZLB, low rates, platform economy, and asset reinflation define the post-crisis era.", summary:"K5-D Balance Sheet means that after the private-credit bubble broke, the cycle was maintained by central-bank balance sheets, low discount rates, and platform-economy concentration.", evidence:["Fed balance-sheet expansion, S&P 500 price index, 10-year Treasury yield, and federal deficit data support the QE / low-rate balance-sheet era frame.","Post-2008 asset reinflation and duration repricing are the baseline for understanding today's higher-rate reversal."], challenges:["Whether the platform economy materially raised macro TFP remains contested.","The relative roles of secular stagnation, global saving glut, and low-rate asset behavior still need decomposition."], gaps:["REPAIR-007: S&P 500 price index is not total return; 10Y yield is not bond total return.","Source-backed counterevidence on platform economy and macro TFP still needs organization."], status:"supported + contested TFP", hardness:"official data + market data + source review", relatedWatchlist:"platform productivity / low-rate regime reversal", relatedAtlas:"K5-D Balance Sheet", relatedBrief:"research/OPEN_QUESTIONS.md", contribution:"Add platform-economy TFP, asset total-return, or QE transmission evidence", kill:["Do not write platform economy as confirmed K6","Do not equate low-rate asset performance with real productivity revival"]},
+    k5e: {claim:"K5-E is the current regime node: fiscal-monetary shock, inflation return, high rates, and loose financial conditions coexist; AI is only K6 Candidate Watch.", summary:"K5-E Regime Stress is K5's late deformation zone and the observation window for whether K5 is transitioning toward K6.", evidence:["CBO fiscal shock, NFCI, real-rate / HY spread data support the regime-tension reading.","Census AI adoption, IEA electricity, NBER AI productivity papers, and the KW-006 source set support K6 Candidate Watch, not confirmed K6."], challenges:["Long-run fiscal dominance, the drivers of stocks and gold rising under high real rates, and broad AI productivity diffusion remain contested.","If capex ROI weakens or adoption stalls, AI looks more like K5 late-cycle overbuild."], gaps:["AI adoption / ROI, traditional-industry profit-pool migration, and productivity diffusion still need evidence.","Gold, central-bank buying, cross-asset total returns, and power constraints still contain source-repair items."], status:"watchlist + evidence-gated", hardness:"official fiscal data + market data + public brief + source review", relatedWatchlist:"KW-001 / KW-006", relatedAtlas:"K5-E Regime Stress / K6 Candidate Watch", relatedBrief:"research/KW-001_AI_as_K6_Candidate.md / research/KW-006_AI_Capex_Financing_Fragility.md", contribution:"Add AI diffusion, capex ROI, power-grid bottleneck, or fiscal-monetary shock counterevidence", kill:["AI is not confirmed K6","K6 is not confirmed","Watchlist is not confirmed fact","K6 does not auto-update from news flow"]},
     k6ai: {claim:"AI is K6 Candidate Watch, not confirmed K6.", summary:"AI is the most important K6 Candidate Watch item, but it still cannot confirm K6.", evidence:["KW-006 / public brief support real ground signals in AI infrastructure capex."], challenges:["Enterprise ROI, cross-industry productivity, and traditional-industry profit migration remain unconfirmed."], gaps:["Cross-industry productivity diffusion","Enterprise ROI","Traditional-industry profit-pool migration"], status:"candidate watch / unconfirmed", hardness:"partly reviewed / evidence-gated", relatedWatchlist:"KW-001 / KW-006", relatedAtlas:"K6 Candidate Watch", relatedBrief:"research/KW-001_AI_as_K6_Candidate.md", contribution:"Submit primary sources for AI adoption or productivity diffusion", kill:["AI adoption remains limited to a few industries or shallow functions","AI revenue cannot cover capex and depreciation pressure"]},
     k6energy: {summary:"Energy and power constraints are physical-constraint watch items for K6 Candidate, not independent confirmation criteria.", evidence:["Data centers, grids, and power-equipment ground signals are observation entry points."], gaps:["Full NERC alert","Grid investment and bottleneck data","Energy-density constraints"], status:"candidate watch / unconfirmed", hardness:"source review", relatedWatchlist:"KW-006", relatedAtlas:"K6 Candidate Watch", relatedBrief:"research/OPEN_QUESTIONS.md", kill:["Power bottlenecks ease and do not limit AI diffusion","Energy constraints cannot explain the capex path"]},
     k6auto: {summary:"Automation / robotics needs evidence that it moves from software efficiency into physical production and service workflows.", evidence:["The current page lists it only as a candidate watch, not a supported conclusion."], gaps:["Robotics adoption rate","Unit economics","Cross-industry labor productivity"], status:"candidate watch / unconfirmed", hardness:"evidence gap", related:["K6 Candidate Watch"], kill:["Automation remains limited to local scenarios","Productivity and profit-pool migration lack evidence"]},
@@ -2883,12 +2947,36 @@
       k5a: [
         {title:"Effective Federal Funds Rate", type:"official data / primary", url:"https://fred.stlouisfed.org/series/FEDFUNDS", supports:"支持 Volcker 与后 Volcker 去通胀阶段的利率路径观察。", limits:"月均有效利率不等同于 FOMC 目标利率。"},
         {title:"Trade Weighted U.S. Dollar Index: Broad, Goods", type:"official data / primary", url:"https://fred.stlouisfed.org/series/TWEXBMTH", supports:"支持 1980s 广义美元走势观察。", limits:"不能直接证明 Plaza / Louvre 的全部资产影响。"},
+        {title:"Statement of the G5 Finance Ministers and Central Bank Governors", type:"official document archive / high-quality secondary", url:"https://g7.utoronto.ca/finance/fm850922.htm", supports:"支持 1985 Plaza Accord 的美元政策协调节点。", limits:"归档主机是二级来源；不得把政策方向写反。"},
+        {title:"Statement of the G6 Finance Ministers and Central Bank Governors", type:"official document archive / high-quality secondary", url:"https://g7.utoronto.ca/finance/fm870222.htm", supports:"支持 1987 Louvre Accord 作为 Plaza 后的政策协调阶段。", limits:"不能单独证明资产表现。"},
         {title:"Latin American Debt Crisis", type:"central-bank history / high-quality secondary", url:"https://www.federalreservehistory.org/essays/latin-american-debt-crisis", supports:"支持高利率、衰退、债务结构与新兴市场压力之间的历史联系。", limits:"不能把强美元写成唯一原因。"}
+      ],
+      k5b: [
+        {title:"U.S. Business Cycle Expansions and Contractions", type:"business-cycle chronology / primary", url:"https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions", supports:"支持 1990-91 recession 后长扩张的周期锚点。", limits:"NBER 日期不能单独定义长波分期。"},
+        {title:"The Great Moderation", type:"central-bank speech / primary", url:"https://www.federalreserve.gov/boarddocs/speeches/2004/20040220/", supports:"支持低宏观波动作为 Great Moderation 框架。", limits:"成因仍包括政策、结构变化和 good luck 争议。"},
+        {title:"Central Banking in a Democratic Society", type:"central-bank speech / primary", url:"https://www.federalreserve.gov/boarddocs/speeches/1996/19961205.htm", supports:"支持 irrational exuberance 作为早期估值警示。", limits:"不能证明 dot-com 峰值或崩盘时点。"},
+        {title:"Trade (% of GDP)", type:"official multilateral data / primary", url:"https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS", supports:"支持全球贸易占 GDP 比重上升的观察。", limits:"不能单独拆出供应链外包、转移定价或 China-WTO 效应。"},
+        {title:"The Resurgence of Growth in the Late 1990s", type:"academic paper / high-quality secondary", url:"https://ideas.repec.org/a/aea/jecper/v14y2000i4p3-22.html", supports:"支持 ICT capital deepening 与 late-1990s productivity acceleration 框架。", limits:"增长核算是模型解释，不是单一因果证明。"}
+      ],
+      k5c: [
+        {title:"The Global Saving Glut and the U.S. Current Account Deficit", type:"central-bank speech / primary", url:"https://www.federalreserve.gov/boarddocs/speeches/2005/200503102/", supports:"支持 global-saving-glut 与经常账户失衡框架。", limits:"政策制定者框架不是金融危机全因解释。"},
+        {title:"Global Imbalances: Links to Economic and Financial Stability", type:"central-bank speech / primary", url:"https://www.federalreserve.gov/newsevents/speech/bernanke20110218a.htm", supports:"支持全球失衡与金融稳定关系的后续讨论。", limits:"不能替代住房、影子银行或证券化的直接数据。"},
+        {title:"The Effects of the Saving and Banking Glut on the U.S. Economy", type:"central-bank research / high-quality secondary", url:"https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr648.pdf", supports:"支持区分 saving glut 与 banking glut 渠道。", limits:"模型估计不能不加说明地写成直接事实。"},
+        {title:"Crisis Response", type:"official policy source / primary", url:"https://www.federalreserve.gov/monetarypolicy/bst_crisisresponse.htm", supports:"支持 2007-08 危机流动性工具及其桥接作用。", limits:"不能单独解释 K5-C 到 K5-D 的完整转换。"},
+        {title:"Crude Oil Prices: West Texas Intermediate", type:"official data / primary", url:"https://fred.stlouisfed.org/series/DCOILWTICO", supports:"支持 2008 前后 WTI 油价与商品压力观察。", limits:"需区分现货、期货、日频、月频和盘中高点。"}
+      ],
+      k5d: [
+        {title:"Assets: Total Assets: Total Assets (Less Eliminations from Consolidation)", type:"official data / primary", url:"https://fred.stlouisfed.org/series/WALCL", supports:"支持 Fed balance-sheet expansion 与 QE regime 观察。", limits:"不单独识别具体 QE program 效应。"},
+        {title:"S&P 500", type:"market data / primary", url:"https://fred.stlouisfed.org/series/SP500", supports:"支持 S&P 500 price-index 观察。", limits:"这是 price index，不是 total return。"},
+        {title:"Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity", type:"official data / primary", url:"https://fred.stlouisfed.org/series/GS10", supports:"支持 10-year Treasury yield 长端利率观察。", limits:"收益率序列不能直接证明债券 total return。"},
+        {title:"Federal Surplus or Deficit", type:"official data / primary", url:"https://fred.stlouisfed.org/series/FYFSD", supports:"支持 2020 财政冲击作为 K5-D 尾部断点。", limits:"年度财政数据不能展示月度转移支付时点。"}
       ],
       k5e: [
         {title:"The Federal Budget in Fiscal Year 2020", type:"official budget report / primary", url:"https://www.cbo.gov/publication/57170", supports:"支持 FY2020 财政冲击规模观察。", limits:"不能证明永久财政主导。"},
+        {title:"Federal Net Interest Outlays, 1940 to 2034", type:"official fiscal projection / primary", url:"https://www.cbo.gov/publication/60114", supports:"支持净利息压力作为财政观察项。", limits:"预测路径取决于未来利率、赤字和债务动态。"},
         {title:"Chicago Fed National Financial Conditions Index", type:"official data / primary", url:"https://fred.stlouisfed.org/series/NFCI", supports:"支持高利率背景下金融条件松紧的跟踪。", limits:"综合指数可能掩盖小企业、银行信贷或私人信贷压力。"},
-        {title:"Large Firms With at Least 20 Employees Biggest AI Users", type:"official statistical article / primary", url:"https://www.census.gov/library/stories/2026/05/ai-use-businesses.html", supports:"支持按企业规模和行业观察 AI 采用率。", limits:"实验性调查和自报数据不能单独证明宏观生产率扩散。"}
+        {title:"10-Year Treasury Inflation-Indexed Security, Constant Maturity", type:"official data / primary", url:"https://fred.stlouisfed.org/series/DFII10", supports:"支持 10-year real-rate regime 观察。", limits:"实际利率不能单独解释黄金、股票或信用条件。"},
+        {title:"ICE BofA US High Yield Index Option-Adjusted Spread", type:"market data / primary", url:"https://fred.stlouisfed.org/series/BAMLH0A0HYM2", supports:"支持 high-yield spread 作为信用压力观察项。", limits:"指数构成可能不能覆盖私人信贷或小企业压力。"}
       ],
       k6ai: [
         {title:"Large Firms With at Least 20 Employees Biggest AI Users", type:"official statistical article / primary", url:"https://www.census.gov/library/stories/2026/05/ai-use-businesses.html", supports:"支持企业 AI 使用率与行业差异观察。", limits:"不能单独确认 K6 或长期生产率扩散。"},
@@ -2923,12 +3011,36 @@
       k5a: [
         {title:"Effective Federal Funds Rate", type:"official data / primary", url:"https://fred.stlouisfed.org/series/FEDFUNDS", supports:"Supports the interest-rate path during and after Volcker disinflation.", limits:"Monthly effective averages are not the same as FOMC target rates."},
         {title:"Trade Weighted U.S. Dollar Index: Broad, Goods", type:"official data / primary", url:"https://fred.stlouisfed.org/series/TWEXBMTH", supports:"Supports broad dollar-index movement in the 1980s.", limits:"Does not directly prove the asset effects of Plaza or Louvre."},
+        {title:"Statement of the G5 Finance Ministers and Central Bank Governors", type:"official document archive / high-quality secondary", url:"https://g7.utoronto.ca/finance/fm850922.htm", supports:"Supports the 1985 Plaza Accord as a dollar-policy coordination node.", limits:"Archive host is secondary; policy direction must not be reversed."},
+        {title:"Statement of the G6 Finance Ministers and Central Bank Governors", type:"official document archive / high-quality secondary", url:"https://g7.utoronto.ca/finance/fm870222.htm", supports:"Supports the 1987 Louvre Accord as a post-Plaza coordination phase.", limits:"Does not by itself prove asset performance."},
         {title:"Latin American Debt Crisis", type:"central-bank history / high-quality secondary", url:"https://www.federalreservehistory.org/essays/latin-american-debt-crisis", supports:"Supports the historical link among rates, recession, debt structure, and emerging-market stress.", limits:"Does not prove strong dollar as the sole cause."}
+      ],
+      k5b: [
+        {title:"U.S. Business Cycle Expansions and Contractions", type:"business-cycle chronology / primary", url:"https://www.nber.org/research/data/us-business-cycle-expansions-and-contractions", supports:"Supports the post-1990-91 expansion anchor.", limits:"NBER dates do not define long-wave phases by themselves."},
+        {title:"The Great Moderation", type:"central-bank speech / primary", url:"https://www.federalreserve.gov/boarddocs/speeches/2004/20040220/", supports:"Supports lower volatility as the Great Moderation framework.", limits:"Causes remain contested across policy, structural change, and good luck."},
+        {title:"Central Banking in a Democratic Society", type:"central-bank speech / primary", url:"https://www.federalreserve.gov/boarddocs/speeches/1996/19961205.htm", supports:"Supports irrational exuberance as an early valuation warning.", limits:"Does not time the dot-com peak or prove a crash prediction."},
+        {title:"Trade (% of GDP)", type:"official multilateral data / primary", url:"https://data.worldbank.org/indicator/NE.TRD.GNFS.ZS", supports:"Supports global trade expansion as a share of GDP.", limits:"Does not isolate outsourcing, transfer pricing, or China-WTO effects."},
+        {title:"The Resurgence of Growth in the Late 1990s", type:"academic paper / high-quality secondary", url:"https://ideas.repec.org/a/aea/jecper/v14y2000i4p3-22.html", supports:"Supports ICT capital deepening and late-1990s productivity acceleration.", limits:"Growth accounting is model-based and not single-cause proof."}
+      ],
+      k5c: [
+        {title:"The Global Saving Glut and the U.S. Current Account Deficit", type:"central-bank speech / primary", url:"https://www.federalreserve.gov/boarddocs/speeches/2005/200503102/", supports:"Supports the global-saving-glut and current-account imbalance framework.", limits:"Policy-maker framework, not an exhaustive crisis cause."},
+        {title:"Global Imbalances: Links to Economic and Financial Stability", type:"central-bank speech / primary", url:"https://www.federalreserve.gov/newsevents/speech/bernanke20110218a.htm", supports:"Supports later discussion of global imbalances and financial stability.", limits:"Does not replace direct housing, shadow-banking, or securitization data."},
+        {title:"The Effects of the Saving and Banking Glut on the U.S. Economy", type:"central-bank research / high-quality secondary", url:"https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr648.pdf", supports:"Supports distinguishing saving glut and banking glut channels.", limits:"Model estimates should not be quoted as direct facts without caveat."},
+        {title:"Crisis Response", type:"official policy source / primary", url:"https://www.federalreserve.gov/monetarypolicy/bst_crisisresponse.htm", supports:"Supports the list and role of 2007-08 crisis liquidity facilities.", limits:"Does not explain the full K5-C to K5-D transition by itself."},
+        {title:"Crude Oil Prices: West Texas Intermediate", type:"official data / primary", url:"https://fred.stlouisfed.org/series/DCOILWTICO", supports:"Supports WTI oil-price and commodity-stress observation around 2008.", limits:"Distinguish spot, futures, daily, monthly, and intraday peaks."}
+      ],
+      k5d: [
+        {title:"Assets: Total Assets: Total Assets (Less Eliminations from Consolidation)", type:"official data / primary", url:"https://fred.stlouisfed.org/series/WALCL", supports:"Supports Fed balance-sheet expansion and QE-regime observation.", limits:"Does not identify specific QE program effects alone."},
+        {title:"S&P 500", type:"market data / primary", url:"https://fred.stlouisfed.org/series/SP500", supports:"Supports S&P 500 price-index observations.", limits:"Price index only; not total return."},
+        {title:"Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity", type:"official data / primary", url:"https://fred.stlouisfed.org/series/GS10", supports:"Supports 10-year Treasury yield and long-rate observations.", limits:"Yield series does not directly prove bond total returns."},
+        {title:"Federal Surplus or Deficit", type:"official data / primary", url:"https://fred.stlouisfed.org/series/FYFSD", supports:"Supports 2020 fiscal shock as a K5-D tail break.", limits:"Annual fiscal data cannot show monthly transfer timing."}
       ],
       k5e: [
         {title:"The Federal Budget in Fiscal Year 2020", type:"official budget report / primary", url:"https://www.cbo.gov/publication/57170", supports:"Supports the scale of the FY2020 fiscal shock.", limits:"Does not prove permanent fiscal dominance."},
+        {title:"Federal Net Interest Outlays, 1940 to 2034", type:"official fiscal projection / primary", url:"https://www.cbo.gov/publication/60114", supports:"Supports net-interest pressure as a fiscal watch item.", limits:"Forecast path depends on future rates, deficits, and debt dynamics."},
         {title:"Chicago Fed National Financial Conditions Index", type:"official data / primary", url:"https://fred.stlouisfed.org/series/NFCI", supports:"Supports tracking whether financial conditions are tight or easy despite high rates.", limits:"A composite index can hide stress in smaller borrowers, bank credit, or private credit."},
-        {title:"Large Firms With at Least 20 Employees Biggest AI Users", type:"official statistical article / primary", url:"https://www.census.gov/library/stories/2026/05/ai-use-businesses.html", supports:"Supports AI adoption-rate watch by firm size and sector.", limits:"Experimental self-reported survey data cannot confirm macro productivity diffusion alone."}
+        {title:"10-Year Treasury Inflation-Indexed Security, Constant Maturity", type:"official data / primary", url:"https://fred.stlouisfed.org/series/DFII10", supports:"Supports 10-year real-rate regime observation.", limits:"Real rates alone do not explain gold, equities, or credit conditions."},
+        {title:"ICE BofA US High Yield Index Option-Adjusted Spread", type:"market data / primary", url:"https://fred.stlouisfed.org/series/BAMLH0A0HYM2", supports:"Supports high-yield spread tracking as a credit-stress watch item.", limits:"Index composition may not capture private credit or small-business lending stress."}
       ],
       k6ai: [
         {title:"Large Firms With at Least 20 Employees Biggest AI Users", type:"official statistical article / primary", url:"https://www.census.gov/library/stories/2026/05/ai-use-businesses.html", supports:"Supports business AI adoption tracking by firm size and sector.", limits:"Cannot confirm K6 or durable productivity diffusion by itself."},
