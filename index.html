@@ -1880,31 +1880,106 @@
   }
   @media(max-width:680px){
     .wrap{width:calc(100% - 28px);max-width:1180px}
-    .topbar-inner{align-items:flex-start;flex-direction:column;padding:12px 0}
-    .top-actions{width:100%;align-items:flex-start;flex-direction:column;gap:8px}
-    .utility-actions{width:100%;justify-content:space-between}
-    .github-link{min-height:32px;padding:7px 10px;font-size:12px}
+    .topbar-inner{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:8px 10px;
+      align-items:center;
+      padding:10px 0;
+    }
+    .brand{
+      min-width:0;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:1px;
+    }
+    .brand-name{font-size:21px;line-height:1.05}
+    .brand-sub{
+      max-width:120px;
+      color:var(--quiet);
+      font-size:9px!important;
+      line-height:1.2;
+      letter-spacing:.04em!important;
+      white-space:normal;
+      overflow-wrap:normal;
+    }
+    .top-actions{display:contents}
+    .utility-actions{
+      grid-column:2;
+      grid-row:1;
+      width:auto;
+      justify-content:flex-end;
+      gap:6px;
+    }
+    .github-link{min-height:30px;padding:6px 8px;font-size:11px}
     .github-word-star{display:none}
-    nav{width:100%}
-    .hero{padding-top:34px;overflow:visible}
+    .lang-btn{padding:5px 6px}
+    nav{
+      grid-column:1 / -1;
+      grid-row:2;
+      width:100%;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:2px;
+      overflow:visible;
+    }
+    .nav-link{
+      min-width:0;
+      padding:6px 2px;
+      font-size:9px;
+      letter-spacing:.02em;
+      line-height:1.2;
+      text-align:center;
+    }
+    .hero{
+      grid-template-columns:minmax(0,1fr);
+      gap:0;
+      padding-top:22px;
+      overflow:visible;
+    }
+    .hero-intro{display:contents}
     .hero-intro,.hero-title,.hero-copy,.reading-summary,.hero-actions{
       width:100%;
       max-width:100%;
       min-width:0;
     }
-    h1{font-size:clamp(42px,16vw,62px)}
-    .hero-title{font-size:22px;max-width:100%;overflow-wrap:break-word}
-    .hero-copy{max-width:100%;overflow-wrap:break-word}
+    .hero-intro > .eyebrow{order:1}
+    h1{order:2;margin:10px 0 12px;font-size:46px}
+    .hero-title{order:3;margin-bottom:12px;font-size:21px;max-width:100%;overflow-wrap:break-word}
+    .hero-copy{order:4;max-width:100%;font-size:13.5px;line-height:1.55;overflow-wrap:break-word}
     html[lang="en"] .hero-title{
-      font-size:22px;
-      width:min(320px, calc(100vw - 28px))!important;
-      max-width:min(320px, calc(100vw - 28px))!important;
-      line-height:1.18;
+      font-size:20px;
+      width:100%!important;
+      max-width:100%!important;
+      line-height:1.16;
     }
-    html[lang="en"] .hero-copy{max-width:calc(100vw - 28px)}
-    .hero-actions{display:grid;grid-template-columns:1fr;gap:9px}
-    .btn{width:100%;justify-content:flex-start}
-    .reading-summary{max-width:100%}
+    html[lang="en"] .hero-copy{max-width:100%}
+    .reading-summary{display:contents}
+    .reading-summary-row{
+      min-width:0;
+      grid-template-columns:92px minmax(0,1fr)!important;
+      gap:10px;
+    }
+    .summary-primary{
+      order:5;
+      margin-top:14px;
+      padding:10px 12px;
+      border:1px solid rgba(200,161,90,.26);
+      background:rgba(18,21,26,.56);
+    }
+    .summary-secondary{
+      order:9;
+      padding:8px 10px;
+      border-left:1px solid rgba(200,161,90,.18);
+      border-right:1px solid rgba(200,161,90,.18);
+      background:rgba(18,21,26,.34);
+    }
+    .summary-details-start{margin-top:14px;border-top:1px solid rgba(200,161,90,.18)}
+    .summary-details-end{border-bottom:1px solid rgba(200,161,90,.18)}
+    .hero-actions{display:contents}
+    .hero-actions .btn{width:100%;justify-content:flex-start}
+    .hero-actions .primary{order:6;margin-top:12px}
+    .hero-actions .btn:not(.primary){order:8;margin-top:8px}
     .dashboard{padding:18px}
     .dashboard,.orbital{width:100%;max-width:100%}
     .instrument-strip,.watch-path{grid-template-columns:1fr;gap:7px}
@@ -1922,27 +1997,28 @@
     .dash-head{display:block}
     .status-block{text-align:left;margin-top:14px}
     .status-line{grid-template-columns:72px 1fr}
-    .reading-summary-row,.phase-meta div{grid-template-columns:1fr}
+    .phase-meta div{grid-template-columns:1fr}
     .inspector-grid{grid-template-columns:1fr}
     .scanline::before{display:none}
-    .hero-atlas{min-height:auto;padding:16px 0 0}
-    .instrument-heading{align-items:flex-start;flex-direction:column;gap:8px}
-    .instrument-heading p{text-align:left;max-width:none}
+    .hero-atlas{order:7;min-height:auto;padding:14px 0 0}
+    .instrument-heading{align-items:flex-start;flex-direction:column;gap:5px;margin-bottom:8px}
+    .instrument-heading h2{font-size:24px}
+    .instrument-heading p{max-width:none;text-align:left;font-size:10px;line-height:1.4}
     .compact-orbital,.full-orbital{display:none}
     .hero-phase-timeline,.mobile-phase-timeline{
       display:grid;
-      gap:8px;
+      gap:6px;
     }
     .phase-node{
       position:relative;
       width:100%;
       min-width:0;
-      min-height:54px;
+      min-height:48px;
       display:grid;
       grid-template-columns:58px minmax(0,1fr);
       gap:10px;
       align-items:center;
-      padding:10px 12px 10px 42px;
+      padding:8px 10px 8px 40px;
       border:1px solid rgba(200,161,90,.24);
       background:rgba(18,21,26,.74);
       color:var(--ink);
@@ -1952,7 +2028,7 @@
     .phase-node::before{
       content:"";
       position:absolute;
-      left:17px;
+      left:16px;
       top:50%;
       width:10px;
       height:10px;
@@ -1976,6 +2052,7 @@
     .phase-node.candidate .node-code{color:var(--regime-candidate)}
     .context-strips{grid-template-columns:minmax(0,1fr)}
     .selected-readout{min-height:0}
+    .hero-proof-strip{order:10}
   }
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -2032,11 +2109,11 @@
         <p class="hero-title" data-zh="周期天象图：先定位当前阶段，再检查轨道与证据。" data-en="Macro Cycle Observatory: locate the current phase, then inspect its orbit and evidence.">周期天象图：先定位当前阶段，再检查轨道与证据。</p>
         <p class="hero-copy" data-zh="当前工作读数是 K5-E Regime Stress；K6 仍是 Candidate Watch。每个节点都能回到可复核的 Source Inspector。" data-en="The current working reading is K5-E Regime Stress; K6 remains Candidate Watch. Every node leads back to a reviewable Source Inspector.">当前工作读数是 K5-E Regime Stress；K6 仍是 Candidate Watch。每个节点都能回到可复核的 Source Inspector。</p>
         <div class="reading-summary" aria-label="当前读数摘要">
-          <div class="reading-summary-row"><span>主读数</span><span>K5-E / K6 Candidate Watch</span></div>
-          <div class="reading-summary-row"><span>置信度</span><span>Medium · 关键证据仍需人工复核</span></div>
-          <div class="reading-summary-row"><span>来源状态</span><span>Curated public briefs + source review needed</span></div>
-          <div class="reading-summary-row"><span>最近复核</span><span>2026-07-08</span></div>
-          <div class="reading-summary-row"><span>更新模式</span><span>Manual / evidence-gated / event-driven</span></div>
+          <div class="reading-summary-row summary-primary"><span>主读数</span><span>K5-E / K6 Candidate Watch</span></div>
+          <div class="reading-summary-row summary-secondary summary-details-start"><span>置信度</span><span>Medium · 关键证据仍需人工复核</span></div>
+          <div class="reading-summary-row summary-secondary"><span>来源状态</span><span>Curated public briefs + source review needed</span></div>
+          <div class="reading-summary-row summary-secondary"><span>最近复核</span><span>2026-07-08</span></div>
+          <div class="reading-summary-row summary-secondary summary-details-end"><span>更新模式</span><span>Manual / evidence-gated / event-driven</span></div>
         </div>
         <div class="hero-actions">
           <button class="btn primary js-open" type="button" data-title="K5-E 财政货币冲击 / AI 作为 K6 候选" data-kind="k5e" data-zh="检查 K5-E 来源" data-en="Inspect K5-E sources">检查 K5-E 来源</button>
