@@ -31,7 +31,7 @@
         "name":"当前宏观周期读数 | Kairos 周期天象图",
         "description":"Kairos 当前宏观周期工作读数：K5-E Regime Stress 与 K6 Candidate Watch，包含证据状态、争议、观察项和人工复核边界。",
         "inLanguage":"zh-CN",
-        "dateModified":"2026-07-11",
+        "dateModified":"2026-07-12",
         "isAccessibleForFree":true,
         "image":"https://kairos-atlas.com/assets/social/kairos-github-preview.png"
       },
@@ -75,7 +75,9 @@
           <div class="status-row"><span>主读数</span><span>K5-E / K6 Candidate Watch</span></div>
           <div class="status-row"><span>置信度</span><span>Medium · 关键证据仍需人工复核</span></div>
           <div class="status-row"><span>来源状态</span><span>Curated public sources + source review needed</span></div>
-          <div class="status-row"><span>最近复核</span><span>2026-07-08</span></div>
+          <div class="status-row"><span>Page updated</span><span>2026-07-12</span></div>
+          <div class="status-row"><span>Evidence last reviewed</span><span>2026-07-08</span></div>
+          <div class="status-row"><span>Data period</span><span>2020–2026, source-specific</span></div>
           <div class="status-row"><span>更新模式</span><span>Manual / evidence-gated / event-driven</span></div>
         </div>
       </header>
@@ -99,9 +101,9 @@
             <div class="section-label">Supported</div>
             <h2>当前较有支撑的方向</h2>
             <ul>
-              <li>2020 财政冲击、央行资产负债表扩张和通胀回归构成 K5-E 的制度背景。</li>
-              <li>NFCI、实际利率与高收益信用利差显示，高政策利率不自动等于所有金融条件冻结。</li>
-              <li>AI 基础设施资本开支、企业采用和电力需求已有真实地面信号，值得进入候选观察。</li>
+              <li>2020 财政冲击、央行资产负债表扩张和通胀回归构成 K5-E 的制度背景。<span class="evidence-path"><b>Evidence path</b><a href="#evidence-fiscal-shock">CBO FY2020</a><a href="#evidence-balance-sheet">WALCL</a><a href="#evidence-inflation">CPIAUCSL</a><span class="limit">Limit：方向性证据不证明永久财政主导，也不单独确认 K5-E 分期。</span></span></li>
+              <li>NFCI、实际利率与高收益信用利差显示，高政策利率不自动等于所有金融条件冻结。<span class="evidence-path"><b>Evidence path</b><a href="#evidence-financial-conditions">NFCI</a><a href="#evidence-real-rates">DFII10</a><a href="#evidence-credit-stress">BAMLH0A0HYM2</a><span class="limit">Limit：综合与市场序列不覆盖全部私人信贷，也不能单独解释资产价格。</span></span></li>
+              <li>AI 基础设施资本开支、企业采用和电力需求已有真实地面信号，值得进入候选观察。<span class="evidence-path"><b>Evidence path</b><a href="#evidence-ai-adoption">Census AI adoption</a><a href="#evidence-ai-electricity">IEA Electricity 2024</a><a href="/research/ai-capex-financing-fragility/">AI capex brief</a><span class="limit">Limit：不证明广泛生产率扩散，也不确认 K6。</span></span></li>
             </ul>
           </section>
 
@@ -141,10 +143,14 @@
             <div class="section-label">Curated Evidence</div>
             <h2>公开证据入口</h2>
             <div class="source-list">
-              <article class="source-card"><div class="source-type">official budget report / primary</div><h3><a href="https://www.cbo.gov/publication/57170">The Federal Budget in Fiscal Year 2020</a></h3><p><b>Supports</b><br>FY2020 财政冲击规模。</p><p><b>Limits</b><br>不能单独证明永久财政主导。</p></article>
-              <article class="source-card"><div class="source-type">official data / primary</div><h3><a href="https://fred.stlouisfed.org/series/NFCI">Chicago Fed NFCI</a></h3><p><b>Supports</b><br>金融条件松紧的综合跟踪。</p><p><b>Limits</b><br>可能掩盖局部信贷压力。</p></article>
-              <article class="source-card"><div class="source-type">official data / primary</div><h3><a href="https://fred.stlouisfed.org/series/DFII10">10-Year Real Rate</a></h3><p><b>Supports</b><br>实际利率 regime 观察。</p><p><b>Limits</b><br>不能单独解释黄金或股票。</p></article>
-              <article class="source-card"><div class="source-type">market data / primary</div><h3><a href="https://fred.stlouisfed.org/series/BAMLH0A0HYM2">US High Yield OAS</a></h3><p><b>Supports</b><br>信用压力观察。</p><p><b>Limits</b><br>不覆盖全部私人信贷。</p></article>
+              <article class="source-card" id="evidence-fiscal-shock"><div class="source-type">official budget report / primary</div><h3><a href="https://www.cbo.gov/publication/57170">The Federal Budget in Fiscal Year 2020</a></h3><p><b>Supports</b><br>FY2020 财政冲击规模。</p><p><b>Limits</b><br>不能单独证明永久财政主导或 K5-E 分期。</p></article>
+              <article class="source-card" id="evidence-balance-sheet"><div class="source-type">official data / primary</div><h3><a href="https://fred.stlouisfed.org/series/WALCL">Federal Reserve Total Assets</a></h3><p><b>Supports</b><br>央行资产负债表扩张路径。</p><p><b>Limits</b><br>不识别单一工具效果，也不确认 K5-E 分期。</p></article>
+              <article class="source-card" id="evidence-inflation"><div class="source-type">official data / primary</div><h3><a href="https://fred.stlouisfed.org/series/CPIAUCSL">U.S. CPI</a></h3><p><b>Supports</b><br>通胀回归的数据路径。</p><p><b>Limits</b><br>level series 需要正确转换同比，不解释完整因果。</p></article>
+              <article class="source-card" id="evidence-financial-conditions"><div class="source-type">official data / primary</div><h3><a href="https://fred.stlouisfed.org/series/NFCI">Chicago Fed NFCI</a></h3><p><b>Supports</b><br>金融条件松紧的综合跟踪。</p><p><b>Limits</b><br>可能掩盖局部信贷压力。</p></article>
+              <article class="source-card" id="evidence-real-rates"><div class="source-type">official data / primary</div><h3><a href="https://fred.stlouisfed.org/series/DFII10">10-Year Real Rate</a></h3><p><b>Supports</b><br>实际利率 regime 观察。</p><p><b>Limits</b><br>不能单独解释黄金或股票。</p></article>
+              <article class="source-card" id="evidence-credit-stress"><div class="source-type">market data / primary</div><h3><a href="https://fred.stlouisfed.org/series/BAMLH0A0HYM2">US High Yield OAS</a></h3><p><b>Supports</b><br>信用压力观察。</p><p><b>Limits</b><br>不覆盖全部私人信贷。</p></article>
+              <article class="source-card" id="evidence-ai-adoption"><div class="source-type">official statistical article / primary</div><h3><a href="https://www.census.gov/library/stories/2026/05/ai-use-businesses.html">AI Use by Businesses</a></h3><p><b>Supports</b><br>按企业规模和行业观察 AI 采用。</p><p><b>Limits</b><br>实验性、自报数据不证明广泛生产率扩散。</p></article>
+              <article class="source-card" id="evidence-ai-electricity"><div class="source-type">multilateral report / high-quality secondary</div><h3><a href="https://www.iea.org/reports/electricity-2024">Electricity 2024</a></h3><p><b>Supports</b><br>数据中心与电力需求观察。</p><p><b>Limits</b><br>情景预测不证明 AI 是唯一驱动，也不确认 K6。</p></article>
             </div>
             <a class="action-link" href="/research/source-registry/">打开 Public Source Registry</a>
           </section>

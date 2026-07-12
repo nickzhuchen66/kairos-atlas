@@ -15,6 +15,7 @@
 | `robots.txt` | included | Crawler access rules and sitemap pointer |
 | `sitemap.xml` | included | Public URL discovery map for the live site |
 | `llms.txt` | included | AI / LLM discovery summary with Kairos guardrails |
+| `_headers` | included | Exact-path crawler headers for three supporting Markdown artifacts; no wildcard Markdown policy |
 | `favicon.svg` | included | Stable crawlable site icon for browsers and Google Search appearance |
 | `LICENSE` | included | Split license notice |
 | `LICENSE-CODE-MIT` | included | MIT license for website implementation code |
