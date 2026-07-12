@@ -188,5 +188,32 @@
       <div class="footer-links"><a href="/">Observatory</a><a href="/CONTRIBUTING.md">Contributing</a><a href="mailto:nickzhuchen@gmail.com">Email</a></div>
     </div>
   </footer>
+  <script>
+  (() => {
+    const stabilizeFragment = () => {
+      let fragment;
+      try {
+        fragment = decodeURIComponent(window.location.hash.slice(1));
+      } catch {
+        return;
+      }
+      if (!fragment) return;
+      const target = document.getElementById(fragment);
+      if (!target) return;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        target.scrollIntoView({block: "start", behavior: "auto"});
+      }));
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", stabilizeFragment, {once: true});
+    } else {
+      stabilizeFragment();
+    }
+    window.addEventListener("load", stabilizeFragment, {once: true});
+    if (document.fonts?.ready) document.fonts.ready.then(stabilizeFragment).catch(() => {});
+    window.addEventListener("hashchange", stabilizeFragment);
+  })();
+  </script>
 </body>
 </html>
