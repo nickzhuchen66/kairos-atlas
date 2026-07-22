@@ -190,3 +190,8 @@ Because `index.html` contains both implementation code and Kairos content, the M
 ## Language
 
 The website supports Chinese and English modes. The GitHub repository uses English as the default language for global accessibility, with Chinese documentation provided in `README.zh-CN.md`.
+
+## GitHub Social Preview
+
+This repository includes a custom social preview image at `assets/kairos-social-preview.png` (1280 × 640 px).  
+To activate it, upload this image in the repository **Settings → Social preview** section on GitHub.
