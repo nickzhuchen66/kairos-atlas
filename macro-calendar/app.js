@@ -40,6 +40,8 @@
       gdpRevision: "GDP revision vs previous stage", privateSalesRevision: "Private-sales revision vs previous stage",
       baselineStage: "Not applicable · first stage in this chain",
       invalidTitle: "Event link not found.", invalidBody: "The requested record is outside this fixed public inventory.", dismiss: "Dismiss",
+      contextAria: "Calendar context", timelineLegendAria: "Timeline legend",
+      loadingCode: "LOCAL DATASET · LOADING", errorCode: "RENDER FAILURE · SAFE STOP", emptyCode: "NO MATCHING INVENTORY",
       visualNote: "Timeline node size and position do not encode importance, score, or forecast.",
       clear: "Clear filters",
       footerBoundary: "Semi-static · human-reviewed · event-driven · no automatic regime update",
@@ -72,6 +74,8 @@
       gdpRevision: "GDP 较上一估值修订", privateSalesRevision: "私人国内最终销售较上一估值修订",
       baselineStage: "不适用 · 该链首次估值",
       invalidTitle: "未找到该事件链接。", invalidBody: "请求的记录不在这份固定公开清单内。", dismiss: "关闭提示",
+      contextAria: "日历上下文", timelineLegendAria: "时间线图例",
+      loadingCode: "本地数据集 · 正在载入", errorCode: "渲染失败 · 安全停止", emptyCode: "无匹配事件",
       visualNote: "时间线节点大小与位置不表达重要性、评分或预测。",
       clear: "清除筛选",
       footerBoundary: "半静态 · 人工复核 · 事件驱动 · 不自动改变周期判断",
@@ -513,7 +517,7 @@
     const copy = COPY[state.lang];
     eventList.innerHTML = "";
     emptyState.hidden = false;
-    emptyState.querySelector(".empty-code").textContent = kind === "loading" ? "LOCAL DATASET · LOADING" : "RENDER FAILURE · SAFE STOP";
+    emptyState.querySelector(".empty-code").textContent = kind === "loading" ? copy.loadingCode : copy.errorCode;
     emptyState.querySelector("h3").textContent = kind === "loading" ? copy.loadingTitle : copy.errorTitle;
     emptyState.querySelector("p").textContent = kind === "loading" ? copy.loadingBody : copy.errorBody;
     emptyState.querySelector("button").textContent = copy.clear;
@@ -530,7 +534,7 @@
       eventList.innerHTML = "";
       emptyState.hidden = false;
       emptyState.removeAttribute("role");
-      emptyState.querySelector(".empty-code").textContent = "NO MATCHING INVENTORY";
+      emptyState.querySelector(".empty-code").textContent = copy.emptyCode;
       emptyState.querySelector("h3").textContent = copy.emptyTitle;
       emptyState.querySelector("p").textContent = copy.emptyBody;
       emptyState.querySelector("button").textContent = copy.clear;
@@ -689,6 +693,8 @@
     $(".skip-link").textContent = zh ? "跳到事件流" : "Skip to event stream";
     $(".brand-lockup").setAttribute("aria-label", zh ? "返回 Kairos 首页" : "Back to Kairos home");
     $(".language-switch").setAttribute("aria-label", zh ? "页面语言" : "Page language");
+    $(".context-grid").setAttribute("aria-label", copy.contextAria);
+    $(".timeline-legend").setAttribute("aria-label", copy.timelineLegendAria);
     setText("#controls-title", zh ? "日历控制" : "Calendar controls");
     $(".view-control").setAttribute("aria-label", zh ? "事件视图" : "Event view");
     $(".family-control").setAttribute("aria-label", zh ? "事件类别" : "Event family");
