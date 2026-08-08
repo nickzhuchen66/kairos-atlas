@@ -42,6 +42,7 @@ K6 Candidate is manual, evidence-gated, and event-driven. Kairos does not use au
 - K6 Candidate Watch: https://kairos-atlas.com/research/k6-candidate-watch/
 - AI capex financing fragility: https://kairos-atlas.com/research/ai-capex-financing-fragility/
 - Public Source Registry: https://kairos-atlas.com/research/source-registry/
+- Macro Calendar and Event Ledger: https://kairos-atlas.com/macro-calendar/
 
 ## Public Source Material
 

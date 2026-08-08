@@ -17,7 +17,7 @@ English subtitle: **Macro Cycle Observatory**
 Public repository: **kairos-atlas**  
 Live website: **[kairos-atlas.com](https://kairos-atlas.com/)**
 
-Public research pages: [Current Regime](https://kairos-atlas.com/current-regime/) · [Long Wave Atlas](https://kairos-atlas.com/long-wave-atlas/) · [K6 Candidate Watch](https://kairos-atlas.com/research/k6-candidate-watch/) · [AI capex financing fragility](https://kairos-atlas.com/research/ai-capex-financing-fragility/) · [Source Registry](https://kairos-atlas.com/research/source-registry/)
+Public surfaces: [Macro Calendar](https://kairos-atlas.com/macro-calendar/) · [Current Regime](https://kairos-atlas.com/current-regime/) · [Long Wave Atlas](https://kairos-atlas.com/long-wave-atlas/) · [K6 Candidate Watch](https://kairos-atlas.com/research/k6-candidate-watch/) · [AI capex financing fragility](https://kairos-atlas.com/research/ai-capex-financing-fragility/) · [Source Registry](https://kairos-atlas.com/research/source-registry/)
 
 `kairos-atlas` is the public repository and domain identity. `Macro Cycle Observatory` remains the product subtitle because the site is designed as an observatory-style macro dashboard, while the Atlas name anchors the public URL and the Long Wave Atlas concept.
 
@@ -110,6 +110,7 @@ The contribution process is evidence-gated. Kairos does not accept unsupported m
 - **Watchlist**: observations that could change the current reading.
 - **Asset Behavior Map**: regime implications across major asset groups.
 - **Evidence Ledger**: supported, contested, unconfirmed, evidence gaps, and validation notes.
+- **Macro Calendar**: a fixed-cutoff timeline and event ledger for official FOMC, employment, CPI, PCE, and GDP releases.
 
 ## What Kairos Is Not
 
@@ -163,6 +164,7 @@ http://127.0.0.1:8765/index.html?lang=en
 ```text
 .
 ├── index.html
+├── macro-calendar/
 ├── README.md
 ├── README.zh-CN.md
 ├── ROADMAP.md
