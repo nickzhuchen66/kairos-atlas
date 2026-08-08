@@ -18,7 +18,7 @@
   <meta name="twitter:description" content="五类美国官方宏观事件的时间线、事件流、修订链与证据边界。">
   <meta name="twitter:image" content="https://kairos-atlas.com/assets/social/kairos-github-preview.png">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=0.1.0">
+  <link rel="stylesheet" href="styles.css?v=0.1.1">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,16 +44,16 @@
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#event-stream">Skip to event stream</a>
+  <a class="skip-link" href="#event-stream">跳到事件流</a>
 
   <header class="app-header">
     <div class="shell header-inner">
       <a class="brand-lockup" href="/" aria-label="返回 Kairos 首页">
         <span class="brand">KAIROS</span>
-        <span class="product-name" data-i18n="product">Macro Calendar</span>
+        <span class="product-name" data-i18n="product">宏观日历</span>
       </a>
       <div class="header-meta">
-        <a class="candidate-mark" href="/" data-i18n="observatory">MACRO CYCLE OBSERVATORY</a>
+        <a class="candidate-mark" href="/" data-i18n="observatory">周期天象图</a>
         <div class="language-switch" aria-label="页面语言">
           <button class="lang-button" type="button" data-lang="en" aria-pressed="false">EN</button>
           <button class="lang-button is-active" type="button" data-lang="zh" aria-pressed="true">中文</button>
@@ -102,33 +102,33 @@
     </section>
 
     <section class="controls" aria-labelledby="controls-title">
-      <h2 id="controls-title" class="visually-hidden">Calendar controls</h2>
-      <div class="control-group view-control" aria-label="Event view">
-        <button type="button" class="control-button" data-view="upcoming">Upcoming</button>
-        <button type="button" class="control-button is-active" data-view="released" aria-pressed="true">Released</button>
-        <button type="button" class="control-button" data-view="fed">Fed Decisions</button>
+      <h2 id="controls-title" class="visually-hidden">日历控制</h2>
+      <div class="control-group view-control" aria-label="事件视图">
+        <button type="button" class="control-button" data-view="upcoming">未来事件</button>
+        <button type="button" class="control-button is-active" data-view="released" aria-pressed="true">已发布</button>
+        <button type="button" class="control-button" data-view="fed">美联储决策</button>
       </div>
-      <div class="control-group family-control" aria-label="Event family">
-        <button type="button" class="filter-button is-active" data-family="all" aria-pressed="true">All</button>
+      <div class="control-group family-control" aria-label="事件类别">
+        <button type="button" class="filter-button is-active" data-family="all" aria-pressed="true">全部</button>
         <button type="button" class="filter-button" data-family="FOMC">FOMC</button>
-        <button type="button" class="filter-button" data-family="EMP">Employment</button>
+        <button type="button" class="filter-button" data-family="EMP">就业</button>
         <button type="button" class="filter-button" data-family="CPI">CPI</button>
         <button type="button" class="filter-button" data-family="PCE">PCE</button>
         <button type="button" class="filter-button" data-family="GDP">GDP</button>
       </div>
       <label class="year-control">
-        <span>Year</span>
+        <span>年份</span>
         <select id="year-select">
           <option value="2026">2026</option>
-          <option value="2027">2027 · no inventory</option>
+          <option value="2027">2027 · 暂无清单</option>
         </select>
       </label>
-      <button type="button" class="clear-button" id="clear-filters">Clear filters</button>
+      <button type="button" class="clear-button" id="clear-filters">清除筛选</button>
     </section>
 
     <div id="invalid-link" class="inline-alert" role="status" hidden>
-      <div><strong>Event link not found.</strong> The requested record is outside this fixed public inventory.</div>
-      <button type="button" id="dismiss-invalid">Dismiss</button>
+      <div><strong>未找到该事件链接。</strong> 请求的记录不在这份固定公开清单内。</div>
+      <button type="button" id="dismiss-invalid">关闭提示</button>
     </div>
 
     <section class="timeline-section" aria-labelledby="timeline-title">
@@ -168,8 +168,8 @@
       </div>
       <noscript>
         <div class="noscript-list">
-          <h3>Readable event summary</h3>
-          <p>JavaScript is optional for the facts. Representative records: 29 Jul FOMC hold 3.50%–3.75%, 30 Jul GDP Q2 Advance 1.5% SAAR, 30 Jul PCE June headline −0.1% MoM / 3.7% YoY, 12 Aug CPI scheduled 08:30 ET. All released records remain Kairos review pending at the fixed cutoff.</p>
+          <h3>可读事件摘要</h3>
+          <p>无需 JavaScript 也能读取关键事实。代表记录：7月29日 FOMC 维持 3.50%–3.75%；7月30日第二季度 GDP 首次估值为 1.5% SAAR；7月30日6月总体 PCE 为 −0.1% 月率 / 3.7% 年率；8月12日 CPI 排期为 08:30 ET。固定截止时点内，全部已发布记录仍为 Kairos 待复核。</p>
         </div>
       </noscript>
     </section>
@@ -195,6 +195,6 @@
     </div>
   </dialog>
 
-  <script src="app.js?v=0.1.0"></script>
+  <script src="app.js?v=0.1.1"></script>
 </body>
 </html>

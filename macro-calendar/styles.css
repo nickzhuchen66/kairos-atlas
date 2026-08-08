@@ -94,12 +94,13 @@ button.context-cell:hover { background: var(--panel-2); box-shadow: inset 0 2px 
 .timeline-month.is-cutoff { box-shadow: inset 0 3px 0 var(--brass); }
 .month-label { display: flex; justify-content: space-between; gap: 4px; color: var(--quiet); font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; }
 .month-label strong { color: var(--ink); font-weight: 500; }
-.timeline-nodes { display: grid; grid-template-columns: repeat(2, 40px); gap: 4px; margin-top: 12px; }
-.timeline-node { position: relative; width: 40px; height: 40px; border: 1px solid var(--family-color, var(--line)); border-radius: 50%; color: var(--ink); background: var(--panel); cursor: pointer; font-family: var(--font-mono); font-size: 9px; }
+.timeline-nodes { display: grid; grid-template-columns: repeat(2, 44px); gap: 4px; margin-top: 12px; }
+.timeline-node { position: relative; width: 44px; height: 44px; border: 1px solid var(--family-color, var(--line)); border-radius: 50%; color: var(--ink); background: var(--panel); cursor: pointer; font-family: var(--font-mono); font-size: 9px; }
 .timeline-node[data-status="released"] { background: color-mix(in srgb, var(--family-color) 18%, var(--panel)); }
 .timeline-node[data-status="scheduled"] { border-style: dashed; color: var(--muted); }
-.timeline-node[data-status="rescheduled"] { border-radius: 4px; transform: rotate(45deg); }
-.timeline-node[data-status="rescheduled"] > span { display: block; transform: rotate(-45deg); }
+.timeline-node[data-status="rescheduled"] { border-color: transparent; }
+.timeline-node[data-status="rescheduled"]::before { content: ""; position: absolute; inset: 7px; border: 1px solid var(--amber); border-radius: 3px; transform: rotate(45deg); }
+.timeline-node[data-status="rescheduled"] > span { position: relative; z-index: 1; }
 .timeline-node[data-status="superseded"] { border-style: double; }
 .timeline-node .review-mark { position: absolute; top: -6px; right: -4px; width: 15px; height: 15px; display: grid; place-items: center; border-radius: 50%; color: var(--night); background: var(--brass-2); font-size: 9px; font-weight: 700; }
 .month-jumps { display: none; }
@@ -163,10 +164,14 @@ button.context-cell:hover { background: var(--panel-2); box-shadow: inset 0 2px 
 .fact-grid dd strong { color: var(--ink); }
 .qualifier-box { padding: 12px 14px; border-left: 2px solid var(--brass); color: var(--muted); background: rgba(200,161,90,.07); font-size: 12.5px; }
 .revision-chain { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.revision-step { display: grid; grid-template-columns: 86px 1fr auto; gap: 12px; align-items: center; padding: 10px; border: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+.revision-step { display: grid; gap: 8px; padding: 11px 12px; border-left: 2px solid var(--line); color: var(--muted); background: var(--panel-2); font-size: 12px; }
+.revision-step.is-selected { border-left-color: var(--brass-2); background: rgba(200,161,90,.09); }
+.revision-step.is-later { border-left-style: dashed; opacity: .78; }
+.revision-step > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; }
 .revision-step span:first-child { color: var(--quiet); font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; }
+.revision-step b { color: var(--brass-2); font-family: var(--font-mono); font-size: 9px; font-weight: 500; }
 .revision-step strong { color: var(--ink); }
-.revision-step em { color: var(--brass-2); font-family: var(--font-mono); font-size: 10px; font-style: normal; }
+.revision-step small { color: var(--quiet); font-family: var(--font-mono); font-size: 9px; line-height: 1.6; }
 .ledger details { border: 1px solid var(--line); }
 .ledger summary { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 12px; cursor: pointer; color: var(--ink); font-family: var(--font-mono); font-size: 10px; list-style: none; }
 .ledger summary::after { content: "+"; color: var(--brass-2); }
@@ -262,7 +267,7 @@ button.context-cell:hover { background: var(--panel-2); box-shadow: inset 0 2px 
   .event-row { grid-template-columns: 62px minmax(0,1fr); }
   .event-snapshot, .event-status { padding-left: 74px; }
   .status-label { white-space: normal; }
-  .revision-step { grid-template-columns: 1fr; gap: 4px; }
+  .revision-step > div { display: grid; gap: 4px; }
 }
 
 @keyframes ledger-up { from { opacity: .7; transform: translateY(16px); } to { opacity: 1; transform: none; } }
