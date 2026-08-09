@@ -111,7 +111,7 @@ The contribution process is evidence-gated. Kairos does not accept unsupported m
 
 ### Macro Calendar
 
-![Kairos Macro Calendar desktop screenshot](assets/screenshots/kairos-macro-calendar-desktop.png)
+![Kairos Macro Calendar English desktop screenshot](assets/screenshots/kairos-macro-calendar-desktop-en.png)
 
 | Long Wave Atlas | Mobile reading |
 |---|---|

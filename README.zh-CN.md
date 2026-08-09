@@ -111,7 +111,7 @@ Kairos 是一张开放的 working map，不是 final truth。欢迎外部贡献�
 
 ### 宏观日历
 
-![Kairos 宏观日历桌面端截图](assets/screenshots/kairos-macro-calendar-desktop.png)
+![Kairos 宏观日历英文桌面端截图](assets/screenshots/kairos-macro-calendar-desktop-en.png)
 
 | 长波图谱 | 移动端读数 |
 |---|---|
