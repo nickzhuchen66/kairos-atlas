@@ -4,7 +4,7 @@
 
 <p>
   <a href="https://kairos-atlas.com/"><img alt="Live site" src="https://img.shields.io/badge/live-kairos--atlas.com-c8a15a?style=for-the-badge"></a>
-  <a href="https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.1.0-public-launch"><img alt="Release" src="https://img.shields.io/github/v/release/nickzhuchen66/kairos-atlas?style=for-the-badge&label=release"></a>
+  <a href="https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview"><img alt="Current preview" src="https://img.shields.io/badge/preview-v0.5.1-c8a15a?style=for-the-badge"></a>
   <a href="CONTENT_LICENSE.md"><img alt="License" src="https://img.shields.io/badge/license-split--license-7fa8cf?style=for-the-badge"></a>
   <a href="https://github.com/nickzhuchen66/kairos-atlas/discussions"><img alt="Discussions" src="https://img.shields.io/badge/discussions-open-78b7a8?style=for-the-badge"></a>
 </p>
@@ -16,6 +16,7 @@ English subtitle: **Macro Cycle Observatory**
 
 Public repository: **kairos-atlas**  
 Live website: **[kairos-atlas.com](https://kairos-atlas.com/)**
+Current public preview: **[v0.5.1-preview](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview)**
 
 Public surfaces: [Macro Calendar](https://kairos-atlas.com/macro-calendar/) · [Current Regime](https://kairos-atlas.com/current-regime/) · [Long Wave Atlas](https://kairos-atlas.com/long-wave-atlas/) · [K6 Candidate Watch](https://kairos-atlas.com/research/k6-candidate-watch/) · [AI capex financing fragility](https://kairos-atlas.com/research/ai-capex-financing-fragility/) · [Source Registry](https://kairos-atlas.com/research/source-registry/)
 
@@ -36,6 +37,16 @@ Kairos is designed to make macro-cycle judgment more inspectable: every major re
 </p>
 
 ![Kairos dashboard desktop screenshot](assets/screenshots/kairos-dashboard-desktop.png)
+
+## Current Public Preview
+
+`v0.5.1-preview` adds a public **Macro Calendar** alongside the Current Regime dashboard and Long Wave Atlas.
+
+- **Annual Timeline + Event Stream + Decision Ledger** for official FOMC, Employment Situation, CPI, PCE, and GDP releases.
+- **58 release events**, with 35 released records and 23 scheduled records at the fixed cutoff of **2026-08-07 00:00 ET**.
+- **Semi-static and human-reviewed**: official releases do not automatically rewrite Current Regime, K6 Candidate Watch, or any Kairos judgment.
+
+Open the [Macro Calendar](https://kairos-atlas.com/macro-calendar/) or read the [v0.5.1 preview notes](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview).
 
 ## Why Kairos Exists
 
@@ -98,6 +109,10 @@ The contribution process is evidence-gated. Kairos does not accept unsupported m
 
 ## Screenshots
 
+### Macro Calendar
+
+![Kairos Macro Calendar desktop screenshot](assets/screenshots/kairos-macro-calendar-desktop.png)
+
 | Long Wave Atlas | Mobile reading |
 |---|---|
 | <img src="assets/screenshots/kairos-long-wave-atlas-desktop.png" alt="Kairos Long Wave Atlas desktop screenshot" width="720"> | <img src="assets/screenshots/kairos-mobile-home.png" alt="Kairos mobile dashboard screenshot" width="260"> |
@@ -157,6 +172,7 @@ Open:
 ```text
 http://127.0.0.1:8765/index.html
 http://127.0.0.1:8765/index.html?lang=en
+http://127.0.0.1:8765/macro-calendar/
 ```
 
 ## Repository Structure

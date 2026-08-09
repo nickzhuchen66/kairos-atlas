@@ -24,7 +24,7 @@
 | `.github/ISSUE_TEMPLATE/` | included | Structured public issue templates for evidence, source correction, periodization, website feedback, and research questions |
 | `.github/pull_request_template.md` | included | Pull request guardrails for research and website changes |
 | `.gitignore` | included | Public repo hygiene |
-| `assets/screenshots/` | included | Public README screenshots |
+| `assets/screenshots/` | included | Current Regime, Long Wave Atlas, Macro Calendar, and mobile README screenshots |
 | `assets/social/` | included | GitHub social preview and public sharing assets |
 | `assets/` | included | Reserved for OG image and static assets |
 | `research/` | included | Curated public research briefs only; not raw internal Evidence Packs |

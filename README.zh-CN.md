@@ -4,7 +4,7 @@
 
 <p>
   <a href="https://kairos-atlas.com/"><img alt="Live site" src="https://img.shields.io/badge/live-kairos--atlas.com-c8a15a?style=for-the-badge"></a>
-  <a href="https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.1.0-public-launch"><img alt="Release" src="https://img.shields.io/github/v/release/nickzhuchen66/kairos-atlas?style=for-the-badge&label=release"></a>
+  <a href="https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview"><img alt="当前预览版" src="https://img.shields.io/badge/preview-v0.5.1-c8a15a?style=for-the-badge"></a>
   <a href="CONTENT_LICENSE.md"><img alt="License" src="https://img.shields.io/badge/license-split--license-7fa8cf?style=for-the-badge"></a>
   <a href="https://github.com/nickzhuchen66/kairos-atlas/discussions"><img alt="Discussions" src="https://img.shields.io/badge/discussions-open-78b7a8?style=for-the-badge"></a>
 </p>
@@ -16,6 +16,7 @@
 
 公开仓库名：**kairos-atlas**  
 正式网站：**[kairos-atlas.com](https://kairos-atlas.com/)**
+当前公开预览版：**[v0.5.1-preview](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview)**
 
 公开页面：[宏观日历](https://kairos-atlas.com/macro-calendar/) · [当前宏观周期读数](https://kairos-atlas.com/current-regime/) · [Long Wave Atlas](https://kairos-atlas.com/long-wave-atlas/) · [K6 Candidate Watch](https://kairos-atlas.com/research/k6-candidate-watch/) · [AI 资本开支与融资脆弱性](https://kairos-atlas.com/research/ai-capex-financing-fragility/) · [公开证据索引](https://kairos-atlas.com/research/source-registry/)
 
@@ -36,6 +37,16 @@ Kairos 的目标是把宏观周期判断做成可点击、可复盘、可证伪�
 </p>
 
 ![Kairos 桌面端仪表盘截图](assets/screenshots/kairos-dashboard-desktop.png)
+
+## 当前公开预览版
+
+`v0.5.1-preview` 在 Current Regime 仪表盘与 Long Wave Atlas 之外，新增了公开的 **宏观日历**。
+
+- 采用 **年度时间线 + 事件流 + 决策账本**，覆盖 FOMC、就业形势报告、CPI、PCE 与 GDP 官方发布。
+- 在 **2026-08-07 00:00 ET** 的固定截止时间下，共整理 58 个发布事件，其中 35 个已发布、23 个已排期。
+- 维持 **半静态、人工复核**：官方数据发布不会自动改写 Current Regime、K6 Candidate Watch 或其他 Kairos 判断。
+
+打开[宏观日历](https://kairos-atlas.com/macro-calendar/)，或查看 [v0.5.1 preview 发布说明](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview)。
 
 ## 为什么做 Kairos
 
@@ -97,6 +108,10 @@ Kairos 是一张开放的 working map，不是 final truth。欢迎外部贡献�
 贡献过程必须遵守 evidence-gated 原则。Kairos 不接受无来源宏观预测、交易建议、把 AI 摘要当证据，或把 K6 写成已确认的贡献。
 
 ## 网站截图
+
+### 宏观日历
+
+![Kairos 宏观日历桌面端截图](assets/screenshots/kairos-macro-calendar-desktop.png)
 
 | 长波图谱 | 移动端读数 |
 |---|---|
@@ -165,6 +180,7 @@ python3 -m http.server 8765
 ```text
 http://127.0.0.1:8765/index.html
 http://127.0.0.1:8765/index.html?lang=en
+http://127.0.0.1:8765/macro-calendar/
 ```
 
 ## 目录结构
@@ -172,6 +188,7 @@ http://127.0.0.1:8765/index.html?lang=en
 ```text
 .
 ├── index.html
+├── macro-calendar/
 ├── README.md
 ├── README.zh-CN.md
 ├── ROADMAP.md

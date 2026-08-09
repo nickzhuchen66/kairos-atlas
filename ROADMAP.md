@@ -2,398 +2,192 @@
 
 **Kairos / 周期天象图** is an open macro-cycle observatory.
 
-This roadmap explains what the public project is trying to build, where outside contributors can help, and how Kairos protects its evidence discipline.
+Current public preview: **[v0.5.1-preview](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview)**
+Roadmap updated: **2026-08-09**
 
-Kairos is a working map, not final truth. K4 / K5 / K6 candidate boundaries are open to correction, alternative periodization, and better evidence.
+This roadmap explains what has shipped, what the project is improving now, where outside contributors can help, and how Kairos protects its evidence discipline.
 
-## 1. What Kairos Is Building
+Kairos is a working map, not final truth. K4 / K5 / K6 candidate boundaries remain open to correction, alternative periodization, and better evidence.
 
-Kairos aims to make macro-cycle judgment more inspectable.
+## 1. Product North Star
 
-The public project is organized around:
+Kairos makes macro-cycle judgment inspectable through:
 
-- current regime readings;
-- a six-layer macro cycle stack;
+- Current Regime readings;
+- a six-layer Cycle Stack;
 - Long Wave Atlas;
 - K6 Candidate Watch;
-- watchlists and kill criteria;
-- asset-regime implications;
+- an official-source Macro Calendar;
+- watchlists, asset implications, and kill criteria;
 - curated public research briefs;
 - evidence-gated validation.
+
+The website is the primary product surface. GitHub is the public collaboration and correction surface.
 
 Kairos is not a date oracle, trading signal system, investment advice product, or automatic news feed.
 
 ## 2. Public Guardrails
 
-Every public roadmap item must respect these guardrails:
+Every public roadmap item must respect these boundaries:
 
 - K6 remains `Candidate Watch`, not confirmed K6.
 - AI is not confirmed K6.
 - Watchlist items are observations, not confirmed facts.
-- Contested claims must remain visibly contested.
-- Partial / source-review material must not be presented as supported.
-- Public research must be curated and source-aware.
-- Raw internal Evidence Packs and private theoretical notes are not part of the public release.
+- Contested claims remain visibly contested.
+- Partial or source-review material is not presented as supported.
+- Official releases do not automatically update Current Regime or K6 judgments.
+- K6 review remains manual, event-driven, and evidence-gated.
+- Raw internal Evidence Packs and private theoretical notes are not public release material.
 
-## 3. Current Public Release
+## 3. Shipped Milestones
 
-The current public release includes:
+### v0.1 · Public Foundation
 
-- static website entry: `index.html`;
+- live static website and public GitHub repository;
 - bilingual README files;
-- screenshots;
-- split license documentation;
-- public release manifest;
-- curated public research briefs in `research/`;
-- public GitHub-facing roadmap and contribution workflow.
+- split license and curated public release boundary;
+- public roadmap, contribution guide, issue templates, and Discussions.
 
-The public release does not include:
+### v0.2 · Research-open Foundation
 
-- private theoretical extraction notes;
-- internal BRDs;
-- raw Watchlist files;
-- raw Evidence Packs;
-- AI collaboration context;
-- internal build logs or recovery handoffs.
+- indexable Current Regime, Long Wave Atlas, K6 Candidate, AI capex, and Source Registry pages;
+- canonical metadata, structured data, sitemap, `robots.txt`, and `llms.txt`;
+- curated source links with precise raw-artifact indexing boundaries.
 
-## 4. v0.2 Focus: Dashboard-led, Research-open
+### v0.3 · Evidence-linked K5 Content
 
-The v0.2 priority is to make Kairos more useful as a public observatory.
+- standardized K5-A to K5-E node cards;
+- visible evidence status, limits, and cross-page source paths;
+- public source registry and claim-source repair work.
 
-Kairos v0.1 established the public release foundation: a live website, bilingual README files, public roadmap, contribution guide, open research questions, issue templates, and curated research briefs.
+### v0.4 · Orbital Atlas Experience
 
-Kairos v0.2 should move from "publicly released" to "publicly inspectable."
+- compact Orbital Atlas and mobile phase timeline;
+- more inspectable K5 / K6 Candidate nodes;
+- responsive, keyboard, reduced-motion, and Source Inspector QA.
 
-The focus is:
+### v0.5 · Macro Calendar
 
-```text
-Dashboard-led, Research-open
-```
+- annual Timeline + Event Stream + Decision Ledger;
+- official FOMC, Employment Situation, CPI, PCE, and GDP releases;
+- released, scheduled, rescheduled, superseded, source-restricted, and review-pending states;
+- 58 events at the fixed cutoff of 2026-08-07 00:00 ET;
+- a visible homepage and top-navigation entry in `v0.5.1-preview`.
 
-This means:
+## 4. Now · Stabilize v0.5
 
-- the website remains the primary product surface;
-- GitHub remains the primary collaboration surface;
-- public research briefs support the website, but do not replace it;
-- contributions should improve concrete claims, phase nodes, sources, open questions, or website readability;
-- K6 Candidate remains manual, evidence-gated, and event-driven.
+Status: **in progress**
 
-### v0.2 Priorities
+Goal: make the shipped Macro Calendar and observatory easier to maintain, inspect, and discover without introducing automatic data ingestion.
 
-1. **Improve the Current Regime dashboard**
+Priority work:
 
-   Make the current macro-cycle reading easier to inspect:
+- maintain the 2026 calendar through bounded, manual, official-source updates;
+- preserve event-time actuals, latest-at-cutoff values, and revision chains;
+- complete human review of bilingual terminology and accessibility behavior;
+- keep README, screenshots, release notes, sitemap, and repository metadata aligned;
+- monitor indexing and canonical behavior through bounded Search Console checks;
+- collect source corrections and calendar-event corrections through GitHub.
 
-   - current regime summary;
-   - six-layer Cycle Stack;
-   - confidence and evidence status;
-   - last reviewed date;
-   - top supported claims;
-   - top contested claims;
-   - top watchlist items.
+Contributor opportunities:
 
-2. **Strengthen the Long Wave Atlas**
+- `macro-calendar`
+- `source-correction`
+- `documentation`
+- `accessibility`
+- `website`
 
-   Improve the public K4 / K5 / K6 working map without pretending it is final:
+## 5. Next · Deepen the Observatory
 
-   - clearer soft date ranges;
-   - better phase-card summaries;
-   - visible content readiness;
-   - explicit contested boundaries;
-   - better links from phase nodes to public research briefs and open questions.
+Status: **planned**
 
-3. **Connect Watchlist items to public evidence paths**
+### Long Wave Atlas
 
-   Watchlist items should remain observations, not confirmed facts.
+- deepen K4 and K5 node evidence without hardening soft dates into false certainty;
+- expose stronger supports, challenges, source gaps, and alternative periodizations;
+- connect phase nodes to curated public briefs and open questions.
 
-   v0.2 should make it easier to see:
+### Current Regime
 
-   - what would strengthen a watch item;
-   - what would weaken it;
-   - what would kill the hypothesis;
-   - which public brief or open question is related.
+- improve versioned snapshots so past readings cannot be silently rewritten;
+- make confidence, evidence status, watch items, and kill criteria easier to compare;
+- keep macro releases separate from Kairos interpretation.
 
-4. **Make contribution targets more concrete**
+### Public Research Briefs
 
-   External contributors should be able to help with specific objects:
+- publish focused briefs only when the public evidence base is ready;
+- prioritize high real rates, financial conditions, gold and fiat-credit hedging, global dollar liquidity, and AI diffusion evidence;
+- preserve rejected overclaims and remaining gaps.
 
-   - a claim;
-   - a source;
-   - a phase boundary;
-   - an open question;
-   - a research brief;
-   - a website readability issue.
+### Evidence Contribution System
 
-5. **Keep research briefs curated**
+- make claim, source, phase-boundary, and calendar corrections easier to submit;
+- require source title, URL, publisher, publication date, source type, and claim-source mapping;
+- keep accepted public material curated instead of exposing the private research workspace.
 
-   Public research briefs should remain readable, source-aware summaries.
+## 6. Later · Exploratory Tracks
 
-   They should include:
+Status: **exploratory**
 
-   - current reading status;
-   - evidence status;
-   - watch triggers;
-   - kill criteria;
-   - rejected overclaims;
-   - remaining open questions.
+- manually curated indicator pages;
+- versioned public reading archives;
+- static JSON or CSV exports for approved non-sensitive public data;
+- richer 2.5D or motion-based exploration that preserves readability and reduced-motion support;
+- real static English routes with reciprocal hreflang, if bilingual content maintenance becomes sustainable;
+- macro-to-micro cross-validation with SignalOS while keeping the two systems independent.
 
-### v0.2 Not Now
+These tracks are not commitments. They require a stable content model, a clear maintenance owner, and evidence-safe implementation boundaries.
 
-Kairos v0.2 is not planning to add:
+## 7. Contribution Tracks
 
-- user accounts;
-- subscriptions;
-- saved readings;
-- automatic news-flow updates;
-- daily API polling;
-- automatic K6 status updates;
-- trading recommendations;
-- publication of raw private notes;
-- publication of raw internal Evidence Packs.
+Good public contributions include:
 
-A future public data layer may be considered after the content model, evidence model, and contribution workflow become more stable.
-
-### How Contributors Can Help in v0.2
-
-Good v0.2 contributions include:
-
-- source corrections;
+- source corrections and stronger primary sources;
 - claim-source mismatch reports;
-- alternative K4 / K5 periodization proposals;
-- counterevidence for open questions;
-- evidence for or against K6 Candidate Watch;
-- website readability and mobile feedback;
-- public research brief improvements.
-
-Kairos welcomes disagreement when it is source-backed.
-
-Kairos does not accept unsupported macro predictions, hype-only K6 claims, AI-generated summaries as evidence, or claims that Watchlist items are already confirmed facts.
-
-## 5. Long-Term Roadmap Tracks
-
-### Track A: Long Wave Atlas
-
-Goal: improve the public long-wave working map without pretending that the map is final.
-
-Planned work:
-
-- refine K4 / K5 phase cards;
-- make soft dating explicit;
-- collect alternative periodization proposals;
-- strengthen evidence cards for major phase transitions;
-- document where K4 / K5 boundaries are contested;
-- connect phase nodes to public research briefs.
-
-Good contributions:
-
-- source-backed corrections to phase dating;
-- alternative periodization with evidence;
-- better historical source references;
-- asset behavior evidence for specific phases;
-- corrections to overconfident historical analogy.
-
-Not accepted:
-
-- unsupported cycle dates;
-- claims that a specific year is the final truth;
-- historical analogy that directly predicts the present without evidence.
-
-### Track B: K6 Candidate Watch
-
-Goal: track whether AI, energy, automation, biotech, or another cluster becomes a credible K6 diffusion engine.
-
-Planned work:
-
-- maintain AI as K6 Candidate Watch;
-- separate productivity diffusion from market narrative;
-- track adoption, ROI, capex, financing structure, energy constraints, and sectoral profit migration;
-- add curated public briefs when evidence matures;
-- keep K6 review manual, event-driven, and evidence-gated.
-
-Good contributions:
-
-- source-backed productivity evidence;
-- enterprise adoption data;
-- capex ROI evidence;
-- infrastructure and energy constraint evidence;
-- counterevidence against AI diffusion;
-- alternative K6 candidate proposals with sources.
-
-Not accepted:
-
-- claims that AI has already confirmed K6;
-- hype-only submissions;
-- price action as the only evidence;
-- automatic news-flow updates to K6 status.
-
-### Track C: Evidence Contribution System
-
-Goal: make public evidence contributions useful, reviewable, and safe.
-
-Planned work:
-
-- use structured GitHub issue templates;
-- require source title, URL, publisher, date, source type, and claim-source mapping;
-- label submissions by evidence status;
-- turn accepted contributions into curated research briefs;
-- keep raw internal Evidence Packs private.
-
-Good contributions:
-
-- direct primary source links;
-- source correction;
-- publication date correction;
-- source type correction;
-- claim-source mismatch reports;
-- rejected-overclaim notes.
-
-Not accepted:
-
-- Google search links as sources;
-- AI summaries as evidence;
-- unsourced macro claims;
-- materials that cannot be legally or ethically reused.
-
-### Track D: Public Research Briefs
-
-Goal: publish curated, readable, evidence-gated briefs without exposing the private research workspace.
-
-Planned work:
-
-- expand `research/` with public briefs;
-- keep each brief focused on one open question;
-- include current reading status, evidence status, watch triggers, kill criteria, rejected overclaims, and open questions;
-- link briefs back to the website where useful.
-
-Candidate briefs:
-
-- high real rates and asset repricing;
-- loose financial conditions under high policy rates;
-- gold and fiat-credit hedging;
-- global dollar cycle;
-- Long Wave Atlas periodization notes;
-- AI adoption and productivity diffusion.
-
-### Track E: Website / Product Experience
-
-Goal: make the observatory readable, inspectable, and useful without turning it into a trading app.
-
-Planned work:
-
-- improve mobile readability;
-- make evidence drawer / source inspector clearer;
-- add better links from website sections to public research briefs;
-- improve bilingual copy consistency;
-- add public roadmap and contributing links;
-- keep static-first architecture until the content model is stable.
-
-Good contributions:
-
-- UI / UX feedback;
-- accessibility fixes;
-- copy clarity;
-- mobile layout issues;
-- dead link reports;
-- screenshot / documentation improvements.
-
-### Track F: Community Contributions
-
-Goal: invite outside help while preserving Kairos' evidence discipline.
-
-Planned work:
-
-- add issue templates;
-- add contribution labels;
-- use pull request review guardrails;
-- keep research and code contributions separate;
-- encourage corrections and counterevidence.
+- calendar date, release, revision, or source corrections;
+- alternative K4 / K5 periodization with evidence;
+- counterevidence for K6 Candidate Watch;
+- accessibility, responsive layout, and documentation improvements;
+- curated research-brief proposals.
 
 Useful labels:
 
+- `good-first-issue`
 - `evidence`
 - `source-correction`
+- `macro-calendar`
 - `alternative-periodization`
 - `open-question`
-- `watchlist`
 - `website`
+- `accessibility`
 - `documentation`
 - `needs-source`
 - `needs-review`
 - `contested`
-- `accepted-for-brief`
-- `rejected-overclaim`
-- `good-first-issue`
 
-### Track G: Future Data Layer
+Start with [`CONTRIBUTING.md`](CONTRIBUTING.md), [`research/OPEN_QUESTIONS.md`](research/OPEN_QUESTIONS.md), or the [issue templates](https://github.com/nickzhuchen66/kairos-atlas/issues/new/choose).
 
-Goal: decide whether Kairos should add a public data layer after the content and evidence model matures.
+## 8. Not Now
 
-Possible future work:
+Kairos is not currently planning:
 
-- manually curated indicator pages;
-- versioned current reading snapshots;
-- public validation log;
-- source registry;
-- light data visualization;
-- static JSON or CSV exports for non-sensitive public data.
-
-Guardrail:
-
-K6 Candidate will remain manual, event-driven, and evidence-gated. Kairos should not automatically update K6 judgments from news flow or API polling.
-
-## 6. Working Map, Not Final Truth
-
-K4 / K5 / K6 are public working maps.
-
-The current periodization is useful only if it remains:
-
-- open to correction;
-- source-aware;
-- explicitly contested where necessary;
-- connected to falsifiable watch criteria;
-- honest about uncertainty.
-
-Kairos welcomes alternative periodization proposals when they include sources, reasoning, and implications.
-
-## 7. How To Contribute
-
-Start with:
-
-- `CONTRIBUTING.md`;
-- `research/OPEN_QUESTIONS.md`;
-- GitHub issue templates.
-
-Best first contributions:
-
-- report a source mismatch;
-- propose a better source;
-- add counterevidence to an open question;
-- suggest a clearer wording for a contested claim;
-- report a website / mobile layout issue;
-- propose an alternative K4 / K5 phase boundary with sources.
-
-## 8. What We Are Not Doing
-
-Kairos is not currently doing:
-
-- daily macro signal updates;
-- automatic K6 updates;
-- trading advice;
-- portfolio recommendations;
-- publication of raw private notes;
-- publication of raw internal Evidence Packs;
-- unrestricted reuse of Kairos content and research framing.
+- user accounts, subscriptions, or saved readings;
+- a SaaS product layer;
+- daily API polling;
+- automatic news-flow updates;
+- automatic Current Regime or K6 status changes;
+- trading advice or portfolio recommendations;
+- publication of raw private notes or internal Evidence Packs.
 
 ## 9. Maintainer Review Principles
 
 Maintainers should ask:
 
-- Does this contribution improve the working map?
-- Is the source direct and inspectable?
-- Does the source actually support the claim?
-- Does the contribution distinguish evidence from interpretation?
-- Does it preserve K6 Candidate boundaries?
-- Does it avoid turning Watchlist into confirmed fact?
-- Should this become a public research brief, a source correction, or stay out?
+- Does this improve the working map or the user's ability to inspect it?
+- Is the source direct, public, and appropriate for the claim?
+- Does the contribution separate official fact from Kairos interpretation?
+- Does it preserve uncertainty, review status, and revision history?
+- Does it preserve K6 Candidate and Watchlist boundaries?
+- Should it become a public brief, a source correction, a calendar correction, or stay out?
 
-When in doubt, label as `needs-review` or `contested` rather than upgrading the claim.
+When in doubt, label the claim `needs-review` or `contested` rather than upgrading it.
