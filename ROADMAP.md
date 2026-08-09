@@ -2,7 +2,7 @@
 
 **Kairos / 周期天象图** is an open macro-cycle observatory.
 
-Current public preview: **[v0.5.1-preview](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview)**
+Current public release: **[v0.5.2](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.2)**
 Roadmap updated: **2026-08-09**
 
 This roadmap explains what has shipped, what the project is improving now, where outside contributors can help, and how Kairos protects its evidence discipline.
@@ -71,8 +71,9 @@ Every public roadmap item must respect these boundaries:
 - annual Timeline + Event Stream + Decision Ledger;
 - official FOMC, Employment Situation, CPI, PCE, and GDP releases;
 - released, scheduled, rescheduled, superseded, source-restricted, and review-pending states;
-- 58 events at the fixed cutoff of 2026-08-07 00:00 ET;
-- a visible homepage and top-navigation entry in `v0.5.1-preview`.
+- 58 events at the fixed cutoff of 2026-08-09 00:00 ET;
+- 36 released records and 22 scheduled records after the 7 August Employment Situation update;
+- a visible homepage and top-navigation entry.
 
 ## 4. Now · Stabilize v0.5
 

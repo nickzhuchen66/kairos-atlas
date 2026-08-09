@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const CUTOFF = "2026-08-07T04:00:00Z";
+  const CUTOFF = "2026-08-09T04:00:00Z";
   const MONTHS = {
     en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     zh: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
@@ -17,7 +17,7 @@
     en: {
       product: "Macro Calendar", title: "Macro events, without the false certainty.",
       observatory: "MACRO CYCLE OBSERVATORY",
-      cutoff: "Data cutoff · 07 Aug 2026 · 00:00 ET",
+      cutoff: "Data cutoff · 09 Aug 2026 · 00:00 ET",
       boundary: "Official release ≠ Kairos interpretation. Every record remains human-reviewed and versioned.",
       released: "Released", scheduled: "Scheduled", rescheduled: "Released · rescheduled", superseded: "Released · snapshot superseded",
       pending: "Kairos review pending", restricted: "Batch source restricted · browser verified",
@@ -51,7 +51,7 @@
     zh: {
       product: "宏观日历", title: "记录宏观事件，不制造虚假的确定性。",
       observatory: "周期天象图",
-      cutoff: "数据截止 · 2026年8月7日 · 美东时间 00:00",
+      cutoff: "数据截止 · 2026年8月9日 · 美东时间 00:00",
       boundary: "官方发布 ≠ Kairos 解读。每条记录均保留人工复核与版本边界。",
       released: "已发布", scheduled: "已排期", rescheduled: "已发布 · 曾改期", superseded: "已发布 · 快照已被后续版本取代",
       pending: "Kairos 待复核", restricted: "批量来源受限 · 已经浏览器核验",
@@ -121,6 +121,7 @@
     "EMP-2026-05": "https://www.bls.gov/news.release/archives/empsit_05082026.htm",
     "EMP-2026-06": "https://www.bls.gov/news.release/archives/empsit_06052026.htm",
     "EMP-2026-07": "https://www.bls.gov/news.release/archives/empsit_07022026.htm",
+    "EMP-2026-08": "https://www.bls.gov/news.release/archives/empsit_08072026.htm",
     "CPI-2026-01": "https://www.bls.gov/news.release/archives/cpi_01132026.htm",
     "CPI-2026-02": "https://www.bls.gov/news.release/archives/cpi_02132026.htm",
     "CPI-2026-03": "https://www.bls.gov/news.release/archives/cpi_03112026.htm",
@@ -317,8 +318,9 @@
     "EMP-2026-03": employmentSnapshot("−92k", "−156k", "−92k → −133k → −156k", "−64k", "Dec 2025 +48k → −17k; Jan 2026 +130k → +126k", "−69k", "4.4%", "62.0% with updated population estimates", "62.0%，采用更新后人口估计", "+0.4% MoM / +3.8% YoY", "34.3h", "Two routine revisions observed. Health-care payrolls reflected strike activity; January and February household data include updated population estimates.", "已观察到两次常规修订。医疗保健就业受罢工活动影响；1月与2月住户数据采用更新后人口估计。"),
     "EMP-2026-04": employmentSnapshot("+178k", "+214k", "+178k → +185k → +214k", "+36k", "Jan 2026 +126k → +160k; Feb 2026 −92k → −133k", "−7k", "4.3%", "61.9%", "61.9%", "+0.2% MoM / +3.5% YoY", "34.2h", "Two routine revisions observed at the fixed cutoff; later annual benchmark revisions may still alter the series.", "固定截止时点已观察到两次常规修订；后续年度基准修订仍可能改变该序列。"),
     "EMP-2026-05": employmentSnapshot("+115k", "+148k", "+115k → +179k → +148k", "+33k", "Feb 2026 −133k → −156k; Mar 2026 +178k → +185k", "−16k", "4.3%", "61.8%", "61.8%", "+0.2% MoM / +3.6% YoY", "34.3h", "Two routine revisions observed at the fixed cutoff; latest does not mean final benchmark value.", "固定截止时点已观察到两次常规修订；“最新”不等于最终基准值。"),
-    "EMP-2026-06": employmentSnapshot("+172k", "+129k", "+172k → +129k", "−43k", "Mar 2026 +185k → +214k; Apr 2026 +115k → +179k", "+93k", "4.3%", "61.8%", "61.8%", "+0.3% MoM / +3.4% YoY", "34.3h", "Only one subsequent routine revision was available before the fixed cutoff.", "固定截止时点前仅有一次后续常规修订。"),
-    "EMP-2026-07": { ...employmentSnapshot("+57k", "+57k", "+57k", "0k", "Apr 2026 +179k → +148k; May 2026 +172k → +129k", "−74k", "4.2%", "61.5%, down 0.3pp in the release", "61.5%，本次发布下降 0.3 个百分点", "+0.3% MoM / +3.5% YoY", "34.3h", "Unrevised at the fixed cutoff. The preliminary benchmark scheduled for 28 Aug does not update official CES estimates; the final benchmark is due with the January 2027 report.", "固定截止时点尚未修订。8月28日预定公布的初步基准不会改写官方 CES 估值；最终基准预计随 2027年1月报告发布。"), sourceRestricted: true },
+    "EMP-2026-06": employmentSnapshot("+172k", "+63k", "+172k → +129k → +63k", "−109k", "Mar 2026 +185k → +214k; Apr 2026 +115k → +179k", "+93k", "4.3%", "61.8%", "61.8%", "+0.3% MoM / +3.4% YoY", "34.3h", "Two routine revisions observed at the current cutoff; latest does not mean final benchmark value.", "当前截止时点已观察到两次常规修订；“最新”不等于最终基准值。"),
+    "EMP-2026-07": { ...employmentSnapshot("+57k", "+20k", "+57k → +20k", "−37k", "Apr 2026 +179k → +148k; May 2026 +172k → +129k", "−74k", "4.2%", "61.5%, down 0.3pp in the release", "61.5%，本次发布下降 0.3 个百分点", "+0.3% MoM / +3.5% YoY", "34.3h", "One routine revision observed at the current cutoff. The preliminary benchmark scheduled for 28 Aug does not update official CES estimates.", "当前截止时点已观察到一次常规修订。8月28日预定公布的初步基准不会改写官方 CES 估值。"), sourceRestricted: true },
+    "EMP-2026-08": { ...employmentSnapshot("−23k", "−23k", "−23k", "0k", "May 2026 +129k → +63k; June 2026 +57k → +20k", "−103k", "4.1%", "61.4%; employment-population ratio 58.9%", "61.4%；就业人口比 58.9%", "+0.1% MoM (+$0.02) / +3.2% YoY", "34.3h", "Unrevised at the current cutoff. Local government education −50k, retail −19k and financial activities −14k offset health care +22k. The preliminary benchmark due 28 Aug does not update official CES estimates.", "当前截止时点尚未修订。地方政府教育就业减少 5 万、零售减少 1.9 万、金融活动减少 1.4 万，抵消了医疗保健增加 2.2 万。8月28日预定公布的初步基准不会改写官方 CES 估值。"), sourceRestricted: true },
 
     "CPI-2026-01": cpiSnapshot("+0.3% / 2.7%", "+0.2% / 2.6%", "+0.7%", "+0.3%", "+0.4%", "Shelter was the largest headline factor; food rose 0.7%.", "住房是总体指数最大贡献项；食品上涨 0.7%。", "October/November 2025 gaps limit a continuous short-term sequence; CPI is not the Fed's PCE target.", "2025年10月/11月缺口限制了连续短期比较；CPI 不是美联储的 PCE 目标指标。"),
     "CPI-2026-02": cpiSnapshot("+0.2% / 2.4%", "+0.3% / 2.5%", "+0.2%", "−1.5%", "+0.2%", "Shelter rose while energy fell 1.5%.", "住房上涨，能源下降 1.5%。", "Headline deceleration does not isolate persistent services inflation. The release moved from 11 Feb to 13 Feb after an official schedule change.", "总体通胀放缓不能单独识别持续性服务通胀。本次发布因官方日程调整由2月11日改至2月13日。", { state: "rescheduled" }),
@@ -382,7 +384,7 @@
       throw new Error(`Missing structured released facts for ${event.id}`);
     }
   }
-  if (releasedStructuredFacts !== 35) throw new Error(`Expected 35 structured released records, found ${releasedStructuredFacts}`);
+  if (releasedStructuredFacts !== 36) throw new Error(`Expected 36 structured released records, found ${releasedStructuredFacts}`);
 
   function parseLocationState() {
     const params = new URLSearchParams(location.search);
@@ -486,7 +488,7 @@
     timeline.setAttribute("aria-label", `${state.year} ${state.lang === "zh" ? "年度宏观事件时间线" : "annual macro event timeline"}`);
     const summary = $(".timeline-section .section-heading > p");
     if (summary) summary.textContent = yearEvents.length
-      ? (state.lang === "zh" ? "58 个发布事件 · cutoff 前已发布 35 个 · 共 36 条观察记录" : "58 release events · 35 released before cutoff · 36 observation rows")
+      ? (state.lang === "zh" ? "58 个发布事件 · cutoff 前已发布 36 个 · 共 37 条观察记录" : "58 release events · 36 released before cutoff · 37 observation rows")
       : (state.lang === "zh" ? `${state.year} 年没有固定公开事件清单` : `No fixed public inventory for ${state.year}`);
     timeline.innerHTML = MONTHS[state.lang].map((month, index) => {
       const inMonth = yearEvents.filter(event => dateParts(event).month === index + 1);
@@ -713,15 +715,15 @@
     const context = $$(".context-cell");
     if (context.length === 4) {
       const rows = zh ? [
-        ["CUTOFF 时点下一项", "就业形势报告", "8月7日 · 08:30 ET", context[0].querySelector("small")?.textContent],
-        ["最近同日组", "GDP + PCE", "7月30日 · 两条独立记录", "Q2 首次估算 / 2026年6月"],
+        ["CUTOFF 时点下一项", "消费者价格指数", "8月12日 · 08:30 ET", context[0].querySelector("small")?.textContent],
+        ["最近发布", "就业形势报告", "8月7日 · 2026年7月", "非农 −23k · 失业率 4.1%"],
         ["美联储", "维持 · 3.50%–3.75%", "7月29日 · 声明表决 9–3", "9 票维持 / 3 票倾向加息"],
-        ["复核", "35 个已发布事件", "全部仍为待复核", "不改变 Current Regime"]
+        ["复核", "36 个已发布事件", "全部仍为待复核", "不改变 Current Regime"]
       ] : [
-        ["NEXT AT CUTOFF", "Employment Situation", "07 Aug · 08:30 ET", context[0].querySelector("small")?.textContent],
-        ["LATEST GROUP", "GDP + PCE", "30 Jul · two independent records", "Q2 Advance / Jun 2026"],
+        ["NEXT AT CUTOFF", "Consumer Price Index", "12 Aug · 08:30 ET", context[0].querySelector("small")?.textContent],
+        ["LATEST RELEASE", "Employment Situation", "07 Aug · July 2026", "Payrolls −23k · unemployment 4.1%"],
         ["FED", "Hold · 3.50%–3.75%", "29 Jul · 9–3 statement vote", "9 hold / 3 hike preference"],
-        ["REVIEW", "35 released events", "All remain review pending", "Does not change Current Regime"]
+        ["REVIEW", "36 released events", "All remain review pending", "Does not change Current Regime"]
       ];
       context.forEach((cell, index) => {
         const [key, strong, span, small] = rows[index];
@@ -733,7 +735,7 @@
     }
     setText(".timeline-section .section-index", zh ? "年度位置" : "ANNUAL POSITION");
     setText("#timeline-title", zh ? "年度时间线" : "Annual Timeline");
-    setText(".timeline-section .section-heading > p", zh ? "58 个发布事件 · cutoff 前已发布 35 个 · 共 36 条观察记录" : "58 release events · 35 released before cutoff · 36 observation rows");
+    setText(".timeline-section .section-heading > p", zh ? "58 个发布事件 · cutoff 前已发布 36 个 · 共 37 条观察记录" : "58 release events · 36 released before cutoff · 37 observation rows");
     const legend = $$(".timeline-legend span");
     const legendLabels = zh ? ["已发布", "已排期", "曾改期", "快照已被取代", "Kairos 待复核"] : ["Released", "Scheduled", "Rescheduled", "Superseded snapshot", "Kairos review pending"];
     legend.forEach((node, index) => {

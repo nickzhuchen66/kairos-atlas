@@ -4,7 +4,7 @@
 
 <p>
   <a href="https://kairos-atlas.com/"><img alt="Live site" src="https://img.shields.io/badge/live-kairos--atlas.com-c8a15a?style=for-the-badge"></a>
-  <a href="https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview"><img alt="当前预览版" src="https://img.shields.io/badge/preview-v0.5.1-c8a15a?style=for-the-badge"></a>
+  <a href="https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.2"><img alt="当前发布版" src="https://img.shields.io/badge/release-v0.5.2-c8a15a?style=for-the-badge"></a>
   <a href="CONTENT_LICENSE.md"><img alt="License" src="https://img.shields.io/badge/license-split--license-7fa8cf?style=for-the-badge"></a>
   <a href="https://github.com/nickzhuchen66/kairos-atlas/discussions"><img alt="Discussions" src="https://img.shields.io/badge/discussions-open-78b7a8?style=for-the-badge"></a>
 </p>
@@ -16,7 +16,7 @@
 
 公开仓库名：**kairos-atlas**  
 正式网站：**[kairos-atlas.com](https://kairos-atlas.com/)**
-当前公开预览版：**[v0.5.1-preview](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview)**
+当前公开发布版：**[v0.5.2](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.2)**
 
 公开页面：[宏观日历](https://kairos-atlas.com/macro-calendar/) · [当前宏观周期读数](https://kairos-atlas.com/current-regime/) · [Long Wave Atlas](https://kairos-atlas.com/long-wave-atlas/) · [K6 Candidate Watch](https://kairos-atlas.com/research/k6-candidate-watch/) · [AI 资本开支与融资脆弱性](https://kairos-atlas.com/research/ai-capex-financing-fragility/) · [公开证据索引](https://kairos-atlas.com/research/source-registry/)
 
@@ -38,15 +38,16 @@ Kairos 的目标是把宏观周期判断做成可点击、可复盘、可证伪�
 
 ![Kairos 桌面端仪表盘截图](assets/screenshots/kairos-dashboard-desktop.png)
 
-## 当前公开预览版
+## 当前公开发布版
 
-`v0.5.1-preview` 在 Current Regime 仪表盘与 Long Wave Atlas 之外，新增了公开的 **宏观日历**。
+`v0.5.2` 已将 8 月 7 日发布的美国就业形势报告补入公开 **宏观日历**。
 
 - 采用 **年度时间线 + 事件流 + 决策账本**，覆盖 FOMC、就业形势报告、CPI、PCE 与 GDP 官方发布。
-- 在 **2026-08-07 00:00 ET** 的固定截止时间下，共整理 58 个发布事件，其中 35 个已发布、23 个已排期。
+- 在 **2026-08-09 00:00 ET** 的固定截止时间下，共整理 58 个发布事件，其中 36 个已发布、22 个已排期。
+- **7 月就业形势报告**：非农就业 `−23k`、失业率 `4.1%`、劳动参与率 `61.4%`，并展示 5 月与 6 月的修订链。
 - 维持 **半静态、人工复核**：官方数据发布不会自动改写 Current Regime、K6 Candidate Watch 或其他 Kairos 判断。
 
-打开[宏观日历](https://kairos-atlas.com/macro-calendar/)，或查看 [v0.5.1 preview 发布说明](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview)。
+打开[宏观日历](https://kairos-atlas.com/macro-calendar/)，或查看 [v0.5.2 发布说明](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.2)。
 
 ## 宏观日历
 
@@ -69,7 +70,7 @@ Kairos 的目标是把宏观周期判断做成可点击、可复盘、可证伪�
 
 [打开英文版宏观日历](https://kairos-atlas.com/macro-calendar/?lang=en)
 
-![Kairos 宏观日历英文桌面端截图](assets/screenshots/kairos-macro-calendar-desktop-en.png)
+![Kairos 宏观日历英文桌面端截图](assets/screenshots/kairos-macro-calendar-desktop-en-v052.png)
 
 ## 为什么做 Kairos
 
