@@ -182,16 +182,20 @@
     display:flex;
     align-items:center;
     gap:4px;
+    min-width:0;
     overflow-x:auto;
     scrollbar-width:none;
   }
   nav::-webkit-scrollbar{display:none}
   .nav-link{
+    min-height:44px;
+    display:flex;
+    align-items:center;
     color:var(--muted);
     font-family:var(--font-mono);
-    font-size:11px;
-    letter-spacing:.06em;
-    padding:9px 10px;
+    font-size:10px;
+    letter-spacing:.045em;
+    padding:9px 5px;
     border:1px solid transparent;
     white-space:nowrap;
   }
@@ -1866,6 +1870,42 @@
     to{opacity:1;transform:none}
   }
 
+  @media(max-width:1220px){
+    .topbar-inner{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:8px 10px;
+      align-items:center;
+      padding:10px 0;
+    }
+    .top-actions{display:contents}
+    .utility-actions{
+      grid-column:2;
+      grid-row:1;
+      justify-content:flex-end;
+    }
+    nav{
+      grid-column:1 / -1;
+      grid-row:2;
+      width:100%;
+      display:grid;
+      grid-template-columns:repeat(7,minmax(0,1fr));
+      gap:2px;
+      overflow:visible;
+    }
+    .nav-link{
+      min-width:0;
+      min-height:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px 4px;
+      line-height:1.25;
+      text-align:center;
+      white-space:normal;
+      overflow-wrap:anywhere;
+    }
+  }
   @media(max-width:980px){
     .hero,.section-head,.split,.footer-grid{grid-template-columns:minmax(0,1fr)}
     .hero-atlas{min-height:520px}
@@ -1918,17 +1958,23 @@
       grid-row:2;
       width:100%;
       display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
+      grid-template-columns:repeat(4,minmax(0,1fr));
       gap:2px;
       overflow:visible;
     }
     .nav-link{
       min-width:0;
-      padding:6px 2px;
+      min-height:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px 3px;
       font-size:9px;
       letter-spacing:.02em;
-      line-height:1.2;
+      line-height:1.25;
       text-align:center;
+      white-space:normal;
+      overflow-wrap:anywhere;
     }
     .hero{
       grid-template-columns:minmax(0,1fr);
@@ -1978,7 +2024,8 @@
     .hero-actions{display:contents}
     .hero-actions .btn{width:100%;justify-content:flex-start}
     .hero-actions .primary{order:6;margin-top:12px}
-    .hero-actions .btn:not(.primary){order:8;margin-top:8px}
+    .hero-actions .btn:not(.primary):not(.calendar-entry){order:8;margin-top:8px}
+    .hero-actions .btn.calendar-entry{order:6;margin-top:8px}
     .dashboard{padding:18px}
     .dashboard,.orbital{width:100%;max-width:100%}
     .instrument-strip,.watch-path{grid-template-columns:1fr;gap:7px}
@@ -2075,13 +2122,14 @@
         <span class="brand-sub">周期天象图</span>
       </a>
       <div class="top-actions">
-        <nav aria-label="Kairos 分区">
-          <a class="nav-link" href="#reading">当前读数</a>
-          <a class="nav-link" href="#stack">周期栈</a>
-          <a class="nav-link" href="#atlas">长波图谱</a>
-          <a class="nav-link" href="#watchlist">观察清单</a>
-          <a class="nav-link" href="#assets">资产映射</a>
-          <a class="nav-link" href="#evidence">证据</a>
+        <nav aria-label="Kairos 页面与站点导航">
+          <a class="nav-link" href="#reading" data-zh="当前读数" data-en="Current Reading">当前读数</a>
+          <a class="nav-link" href="#stack" data-zh="周期栈" data-en="Cycle Stack">周期栈</a>
+          <a class="nav-link" href="#atlas" data-zh="长波图谱" data-en="Long Wave Atlas">长波图谱</a>
+          <a class="nav-link" href="#watchlist" data-zh="观察清单" data-en="Watchlist">观察清单</a>
+          <a class="nav-link" href="#assets" data-zh="资产映射" data-en="Asset Map">资产映射</a>
+          <a class="nav-link" href="#evidence" data-zh="证据" data-en="Evidence">证据</a>
+          <a class="nav-link" href="/macro-calendar/" data-zh="宏观日历" data-en="Macro Calendar">宏观日历</a>
         </nav>
         <div class="utility-actions">
           <a class="github-link" href="https://github.com/nickzhuchen66/kairos-atlas" target="_blank" rel="noopener noreferrer" aria-label="Open Kairos on GitHub">
@@ -2118,6 +2166,7 @@
           <button class="btn primary js-open" type="button" data-title="K5-E 财政货币冲击 / AI 作为 K6 候选" data-kind="k5e" data-zh="检查 K5-E 来源" data-en="Inspect K5-E sources">检查 K5-E 来源</button>
           <a class="btn" href="#atlas" data-zh="打开完整图谱" data-en="Open full Atlas">打开完整图谱</a>
           <a class="btn" href="#stack" data-zh="检查周期栈" data-en="Inspect Cycle Stack">检查周期栈</a>
+          <a class="btn calendar-entry" href="/macro-calendar/" data-zh="打开宏观日历" data-en="Open Macro Calendar">打开宏观日历</a>
         </div>
       </div>
 
@@ -3084,6 +3133,7 @@
   const attrTextEn = {
     "Kairos 首页": "Kairos Home",
     "Kairos 分区": "Kairos sections",
+    "Kairos 页面与站点导航": "Kairos page and site navigation",
     "语言切换": "Language switch",
     "当前周期状态仪表盘": "Current regime dashboard",
     "读数元信息": "Reading metadata",
