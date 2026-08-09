@@ -28,6 +28,7 @@ Good contribution types:
 - **Alternative periodization**: a better K4 / K5 / K6 candidate boundary proposal with sources.
 - **Counterevidence**: evidence that weakens or falsifies an existing Kairos watch item.
 - **Research brief improvement**: clearer wording, stronger source boundary, better rejected overclaims.
+- **Macro Calendar correction**: an official release date, event status, observation, revision relationship, or source-link correction.
 - **Website feedback**: layout, mobile, accessibility, copy clarity, broken links, screenshots.
 - **Documentation improvement**: README, roadmap, contribution guide, open questions.
 
@@ -77,7 +78,20 @@ Less preferred:
 - social media posts;
 - AI summaries.
 
-## 5. Source Hardness
+## 5. Macro Calendar Corrections
+
+The Macro Calendar is semi-static and manually reviewed. A useful correction should include:
+
+- event family and event ID, if visible;
+- the field that needs correction;
+- the value currently shown and the proposed correction;
+- a direct Federal Reserve, BLS, or BEA source URL;
+- the official release or revision date;
+- whether the correction changes event-time actual, latest-at-cutoff, or revision-chain information.
+
+An official release correction does not automatically change Current Regime, K6 Candidate Watch, or any other Kairos interpretation.
+
+## 6. Source Hardness
 
 Use this simple scale:
 
@@ -89,7 +103,7 @@ Use this simple scale:
 
 Kairos may use secondary sources for orientation, but major public claims should not rely only on weak secondary sources.
 
-## 6. K6 Candidate Rules
+## 7. K6 Candidate Rules
 
 K6 Candidate is manually reviewed, evidence-gated, and event-driven.
 
@@ -105,7 +119,7 @@ Do not submit a contribution that treats AI, energy, automation, biotech, or any
 
 K6 review is not automatic and not news-flow driven.
 
-## 7. Watchlist Rules
+## 8. Watchlist Rules
 
 Watchlist items are observations, not confirmed facts.
 
@@ -116,7 +130,7 @@ A useful Watchlist contribution should say:
 - what would kill the hypothesis;
 - what sources support or challenge it.
 
-## 8. Public Research Briefs
+## 9. Public Research Briefs
 
 The `research/` folder contains curated public briefs.
 
@@ -130,7 +144,7 @@ These briefs are not raw internal Evidence Packs. They remove:
 
 If your contribution is accepted, maintainers may turn it into a curated public brief or add it to an existing brief.
 
-## 9. Pull Requests
+## 10. Pull Requests
 
 Before opening a pull request:
 
@@ -142,7 +156,7 @@ Before opening a pull request:
 
 Maintainers may request that a research-heavy PR starts as an issue first.
 
-## 10. Licensing
+## 11. Licensing
 
 Kairos uses a split license model:
 
@@ -153,7 +167,7 @@ By contributing, you agree that your contribution may be incorporated into the p
 
 Do not submit content you do not have the right to contribute.
 
-## 11. Review Outcomes
+## 12. Review Outcomes
 
 Possible outcomes:
 

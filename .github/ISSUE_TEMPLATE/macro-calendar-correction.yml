@@ -1,0 +1,87 @@
+name: Macro Calendar correction
+description: Report an official release date, value, revision, status, or source issue.
+title: "[Macro Calendar]: "
+labels: ["macro-calendar", "source-correction", "needs-review"]
+body:
+  - type: dropdown
+    id: family
+    attributes:
+      label: Event family
+      options:
+        - FOMC
+        - Employment Situation
+        - CPI
+        - PCE
+        - GDP
+    validations:
+      required: true
+  - type: input
+    id: event
+    attributes:
+      label: Event ID or release date
+      description: Use the Event ID shown in the Ledger when available.
+      placeholder: "FOMC-2026-05 or 2026-07-29"
+    validations:
+      required: true
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Correction type
+      options:
+        - release date or time
+        - event status
+        - released observation
+        - revision relationship
+        - official source link
+        - bilingual wording
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What Kairos currently shows
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Direct official source URL
+      description: Use a Federal Reserve, BLS, or BEA release or schedule page.
+      placeholder: "https://www.bls.gov/..."
+    validations:
+      required: true
+  - type: input
+    id: source_date
+    attributes:
+      label: Official release or revision date
+      placeholder: "YYYY-MM-DD"
+    validations:
+      required: true
+  - type: dropdown
+    id: time_semantics
+    attributes:
+      label: Which time meaning changes?
+      options:
+        - event-time actual
+        - latest-at-cutoff value
+        - revision chain
+        - schedule only
+        - not sure
+    validations:
+      required: true
+  - type: checkboxes
+    id: guardrails
+    attributes:
+      label: Guardrails
+      options:
+        - label: The source is a direct Federal Reserve, BLS, or BEA page rather than a search result or AI summary.
+          required: true
+        - label: I understand that correcting an official release does not automatically change a Kairos regime or K6 judgment.
+          required: true
