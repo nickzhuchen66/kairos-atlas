@@ -17,6 +17,7 @@
 | `llms.txt` | included | AI / LLM discovery summary with Kairos guardrails |
 | `_headers` | included | Exact-path crawler headers for three supporting Markdown artifacts; no wildcard Markdown policy |
 | `favicon.svg` | included | Stable crawlable site icon for browsers and Google Search appearance |
+| `macro-calendar/` | included | Static Macro Calendar route, event data module, styles, and dependency-free verifier |
 | `LICENSE` | included | Split license notice |
 | `LICENSE-CODE-MIT` | included | MIT license for website implementation code |
 | `CONTENT_LICENSE.md` | included | Content and research framing rights boundary |
