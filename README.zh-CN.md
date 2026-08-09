@@ -48,6 +48,29 @@ Kairos 的目标是把宏观周期判断做成可点击、可复盘、可证伪�
 
 打开[宏观日历](https://kairos-atlas.com/macro-calendar/)，或查看 [v0.5.1 preview 发布说明](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview)。
 
+## 宏观日历
+
+**宏观日历**是 Kairos 用于整理美国重要宏观数据发布与美联储决策的半静态、人工复核记录。它帮助读者查看事件原定何时发生、官方实际发布了什么、后续修订改变了什么，以及哪些内容仍等待 Kairos 复核。
+
+当前 2026 年版本覆盖：
+
+- **FOMC 决策**：目标利率区间、表决、利率偏好、实施细节、SEP 与会议纪要状态；
+- **就业形势报告**：非农就业、失业率及相关官方观测值；
+- **CPI 与 PCE**：通胀发布、改期事件和被后续版本取代的快照；
+- **GDP**：预估、第二次估计和第三次估计，以及清晰可见的修订关系。
+
+| 展示层 | 可以查看什么 |
+|---|---|
+| **年度时间线** | 全年的已排期与已发布事件，包括改期和被取代状态。 |
+| **事件流** | 按月份和发布类别组织、可筛选的时间顺序阅读路径。 |
+| **决策 / 事件账本** | 官方数值、事件发生时读数、截止时间下的最新值、修订链、复核状态和官方来源。 |
+
+官方发布事实与 Kairos 解释严格分开。日历采用固定数据截止时间，不轮询 API 或新闻流，也不会自动改写 Current Regime 或 K6 Candidate Watch。
+
+[打开英文版宏观日历](https://kairos-atlas.com/macro-calendar/?lang=en)
+
+![Kairos 宏观日历英文桌面端截图](assets/screenshots/kairos-macro-calendar-desktop-en.png)
+
 ## 为什么做 Kairos
 
 长波周期和宏观周期的资料很丰富，但真正有用的材料散落在书籍、论文、市场框架、金融史、政策史和当前数据里。很多康波阶段的表层事件不同，但底层结构经常相似：
@@ -108,10 +131,6 @@ Kairos 是一张开放的 working map，不是 final truth。欢迎外部贡献�
 贡献过程必须遵守 evidence-gated 原则。Kairos 不接受无来源宏观预测、交易建议、把 AI 摘要当证据，或把 K6 写成已确认的贡献。
 
 ## 网站截图
-
-### 宏观日历
-
-![Kairos 宏观日历英文桌面端截图](assets/screenshots/kairos-macro-calendar-desktop-en.png)
 
 | 长波图谱 | 移动端读数 |
 |---|---|

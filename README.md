@@ -48,6 +48,29 @@ Kairos is designed to make macro-cycle judgment more inspectable: every major re
 
 Open the [Macro Calendar](https://kairos-atlas.com/macro-calendar/) or read the [v0.5.1 preview notes](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.1-preview).
 
+## Macro Calendar
+
+The **Macro Calendar** is Kairos' semi-static, human-reviewed record of major U.S. macro releases and Federal Reserve decisions. It helps readers see when an event was scheduled, what was officially released, what changed in later revisions, and which facts still need Kairos review.
+
+The current 2026 edition covers:
+
+- **FOMC decisions**: target range, vote, rate preferences, implementation details, SEP and minutes status;
+- **Employment Situation**: nonfarm payrolls, unemployment and related official observations;
+- **CPI and PCE**: inflation releases, rescheduled events and superseded snapshots;
+- **GDP**: advance, second and third estimates with visible revision relationships.
+
+| Surface | What it helps you inspect |
+|---|---|
+| **Annual Timeline** | The year's scheduled and released events, including rescheduled and superseded states. |
+| **Event Stream** | A chronological, filterable reading path grouped by month and release family. |
+| **Decision / Event Ledger** | Official values, event-time actuals, latest-at-cutoff readings, revision chains, review status and direct official sources. |
+
+Official release facts and Kairos interpretation remain separate. The calendar uses a fixed data cutoff, does not poll APIs or news feeds, and never updates Current Regime or K6 Candidate Watch automatically.
+
+[Open the live Macro Calendar](https://kairos-atlas.com/macro-calendar/?lang=en)
+
+![Kairos Macro Calendar English desktop screenshot](assets/screenshots/kairos-macro-calendar-desktop-en.png)
+
 ## Why Kairos Exists
 
 Long-wave and macro-cycle history is rich, but the useful material is scattered across books, papers, market frameworks, financial history, policy records, and current data. Many Kondratiev-style cycles look different on the surface, yet they often rhyme at the structural level:
@@ -108,10 +131,6 @@ Good public contributions include source corrections, evidence contributions, al
 The contribution process is evidence-gated. Kairos does not accept unsupported macro predictions, trading advice, AI-generated summaries as evidence, or claims that K6 has already been confirmed.
 
 ## Screenshots
-
-### Macro Calendar
-
-![Kairos Macro Calendar English desktop screenshot](assets/screenshots/kairos-macro-calendar-desktop-en.png)
 
 | Long Wave Atlas | Mobile reading |
 |---|---|
