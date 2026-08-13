@@ -40,14 +40,15 @@ Kairos is designed to make macro-cycle judgment more inspectable: every major re
 
 ## Current Public Release
 
-`v0.5.2` updates the public **Macro Calendar** with the 7 August Employment Situation release.
+`v0.5.3` updates the public **Macro Calendar** through the 12 August July CPI release.
 
 - **Annual Timeline + Event Stream + Decision Ledger** for official FOMC, Employment Situation, CPI, PCE, and GDP releases.
-- **58 release events**, with 36 released records and 22 scheduled records at the fixed cutoff of **2026-08-09 00:00 ET**.
+- **58 release events**, with 37 released records and 21 scheduled records at the fixed cutoff of **2026-08-13 00:00 ET**.
 - **July Employment Situation**: payrolls `−23k`, unemployment `4.1%`, participation `61.4%`, plus the visible May/June revision chain.
+- **July CPI**: headline `+0.1% MoM / 3.4% YoY`, core `+0.2% MoM / 2.5% YoY`, with shelter and energy boundaries kept visible.
 - **Semi-static and human-reviewed**: official releases do not automatically rewrite Current Regime, K6 Candidate Watch, or any Kairos judgment.
 
-Open the [Macro Calendar](https://kairos-atlas.com/macro-calendar/) or read the [v0.5.2 release notes](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.2).
+Open the [Macro Calendar](https://kairos-atlas.com/macro-calendar/) or read the [v0.5.3 release notes](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.3).
 
 ## Macro Calendar
 
@@ -70,7 +71,7 @@ Official release facts and Kairos interpretation remain separate. The calendar u
 
 [Open the live Macro Calendar](https://kairos-atlas.com/macro-calendar/?lang=en)
 
-![Kairos Macro Calendar English desktop screenshot](assets/screenshots/kairos-macro-calendar-desktop-en-v052.png)
+![Kairos Macro Calendar English desktop screenshot](assets/screenshots/kairos-macro-calendar-desktop-en-v053.png)
 
 ## Why Kairos Exists
 

@@ -21,10 +21,10 @@ const allowedHosts = new Set(["www.federalreserve.gov", "www.bls.gov", "www.bea.
 
 assert.equal(ids.length, 58, "fixed release-event inventory must contain 58 unique IDs");
 assert.deepEqual(familyCounts, { FOMC: 8, EMP: 12, CPI: 12, PCE: 13, GDP: 13 });
-assert.equal(directSourceBindings.length, 36, "all 36 released events must bind a direct official release/statement URL");
-assert.equal(structuredSnapshotIds.length, 36, "all 36 released events must bind structured facts");
-assert.deepEqual(structuredFamilyCounts, { FOMC: 5, EMP: 8, CPI: 7, PCE: 8, GDP: 8 }, "structured fact coverage must match the five approved released-family baselines");
-assert.deepEqual(new Set(structuredSnapshotIds), directSourceIds, "structured facts must cover the same 36 released IDs as direct official sources");
+assert.equal(directSourceBindings.length, 37, "all 37 released events must bind a direct official release/statement URL");
+assert.equal(structuredSnapshotIds.length, 37, "all 37 released events must bind structured facts");
+assert.deepEqual(structuredFamilyCounts, { FOMC: 5, EMP: 8, CPI: 8, PCE: 8, GDP: 8 }, "structured fact coverage must match the five approved released-family baselines");
+assert.deepEqual(new Set(structuredSnapshotIds), directSourceIds, "structured facts must cover the same 37 released IDs as direct official sources");
 assert.equal(ids.filter(id => directSourceIds.has(id) || scheduleFamilies.has(id.split("-")[0])).length, 58, "all 58 event ledgers must resolve to a direct release or family schedule URL");
 assert.match(app, /One release event contains Oct and Nov child observations/, "the combined PCE release must preserve the 35-event / 36-observation distinction");
 assert.match(app, /const releasedStructuredFacts = Object\.keys\(snapshots\)\.length/);
@@ -74,7 +74,8 @@ assert.match(app, /PCE-2026-08/);
 assert.match(app, /GDP-2026-08/);
 assert.match(app, /"EMP-2026-08": \{ \.\.\.employmentSnapshot\("−23k", "−23k"/);
 assert.match(app, /May 2026 \+129k → \+63k; June 2026 \+57k → \+20k/);
-assert.match(app, /const CUTOFF = "2026-08-09T04:00:00Z"/);
+assert.match(app, /"CPI-2026-08": \{ \.\.\.cpiSnapshot\("\+0.1% \/ 3.4%", "\+0.2% \/ 2.5%"/);
+assert.match(app, /const CUTOFF = "2026-08-13T04:00:00Z"/);
 assert.match(app, /<a class="source-link"/);
 assert.match(app, /target="_blank"/);
 assert.match(app, /rel="noopener noreferrer"/);
@@ -89,10 +90,10 @@ assert.doesNotMatch(html, /<canvas\b/i, "timeline must not rely on canvas");
 
 const result = {
   status: "PASS",
-  inventory: { releaseEvents: ids.length, familyCounts, releasedAtCutoff: 36, scheduledAtCutoff: 22, observationRows: 37, releasedStructuredFacts: structuredSnapshotIds.length },
+  inventory: { releaseEvents: ids.length, familyCounts, releasedAtCutoff: 37, scheduledAtCutoff: 21, observationRows: 38, releasedStructuredFacts: structuredSnapshotIds.length },
   runtime: "public-candidate static HTML/CSS/JS; no API, polling, SaaS or external dependency",
   requiredSurfaces: ["Annual Timeline", "month-grouped Event Stream", "FOMC Decision Ledger", "GDP revision-chain Event Ledger"],
-  sourceContract: { ledgerOfficialLinks: 58, releasedDirectLinks: directSourceBindings.length, scheduledOfficialScheduleLinks: 22, officialUrlCount: officialUrls.length, allowedHosts: [...allowedHosts] },
+  sourceContract: { ledgerOfficialLinks: 58, releasedDirectLinks: directSourceBindings.length, scheduledOfficialScheduleLinks: 21, officialUrlCount: officialUrls.length, allowedHosts: [...allowedHosts] },
   navigationContract: "filter changes push history; popstate reparses query and hash",
   mobileContract: "Event Stream is moved before Timeline at <=767px; desktop/tablet order is restored",
   guardrails: ["no canvas-only timeline", "no continuous animation", "no network runtime", "no internal source-path text"]

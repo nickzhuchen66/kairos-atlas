@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const CUTOFF = "2026-08-09T04:00:00Z";
+  const CUTOFF = "2026-08-13T04:00:00Z";
   const MONTHS = {
     en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     zh: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
@@ -17,7 +17,7 @@
     en: {
       product: "Macro Calendar", title: "Macro events, without the false certainty.",
       observatory: "MACRO CYCLE OBSERVATORY",
-      cutoff: "Data cutoff · 09 Aug 2026 · 00:00 ET",
+      cutoff: "Data cutoff · 13 Aug 2026 · 00:00 ET",
       boundary: "Official release ≠ Kairos interpretation. Every record remains human-reviewed and versioned.",
       released: "Released", scheduled: "Scheduled", rescheduled: "Released · rescheduled", superseded: "Released · snapshot superseded",
       pending: "Kairos review pending", restricted: "Batch source restricted · browser verified",
@@ -51,7 +51,7 @@
     zh: {
       product: "宏观日历", title: "记录宏观事件，不制造虚假的确定性。",
       observatory: "周期天象图",
-      cutoff: "数据截止 · 2026年8月9日 · 美东时间 00:00",
+      cutoff: "数据截止 · 2026年8月13日 · 美东时间 00:00",
       boundary: "官方发布 ≠ Kairos 解读。每条记录均保留人工复核与版本边界。",
       released: "已发布", scheduled: "已排期", rescheduled: "已发布 · 曾改期", superseded: "已发布 · 快照已被后续版本取代",
       pending: "Kairos 待复核", restricted: "批量来源受限 · 已经浏览器核验",
@@ -129,6 +129,7 @@
     "CPI-2026-05": "https://www.bls.gov/news.release/archives/cpi_05122026.htm",
     "CPI-2026-06": "https://www.bls.gov/news.release/archives/cpi_06102026.htm",
     "CPI-2026-07": "https://www.bls.gov/news.release/archives/cpi_07142026.htm",
+    "CPI-2026-08": "https://www.bls.gov/news.release/archives/cpi_08122026.htm",
     "PCE-2026-01": "https://www.bea.gov/news/2026/personal-income-and-outlays-october-and-november-2025",
     "PCE-2026-02": "https://www.bea.gov/news/2026/personal-income-and-outlays-december-2025",
     "PCE-2026-03": "https://www.bea.gov/news/2026/personal-income-and-outlays-january-2026",
@@ -329,6 +330,7 @@
     "CPI-2026-05": cpiSnapshot("+0.6% / 3.8%", "+0.4% / 2.8%", "+0.5%", "+3.8%", "+0.6%", "Energy accounted for more than 40% of headline MoM; shelter also rose 0.6%.", "能源贡献了总体月率的 40% 以上；住房也上涨 0.6%。", "Core rose 0.4%, so the month was not energy-only; it still does not independently confirm a regime shift.", "核心 CPI 上涨 0.4%，因此并非仅由能源驱动；但仍不能单独确认 regime 转变。"),
     "CPI-2026-06": cpiSnapshot("+0.5% / 4.2%", "+0.2% / 2.9%", "+0.2%", "+3.9%", "+0.3%", "Energy +3.9% accounted for more than 60% of headline MoM.", "能源上涨 3.9%，贡献了总体月率的 60% 以上。", "Core remained positive at +0.2%; component evidence must be reviewed with PCE and other families.", "核心 CPI 仍上涨 0.2%；分项证据必须与 PCE 及其他事件类别交叉复核。"),
     "CPI-2026-07": cpiSnapshot("−0.4% / 3.5%", "0.0% / 2.6%", "+0.2%", "−5.7%", "+0.1%", "Energy −5.7% was the largest contributor to the headline decline.", "能源下降 5.7%，是总体指数下跌的最大贡献项。", "Core was flat rather than negative; shelter and food still rose. One reversal does not confirm the end of a supply shock.", "核心 CPI 为持平而非负增长；住房与食品仍上涨。一次反转不能确认供应冲击已经结束。"),
+    "CPI-2026-08": { ...cpiSnapshot("+0.1% / 3.4%", "+0.2% / 2.5%", "+0.1%", "−1.5%", "+0.1%", "Shelter rose 0.1% and accounted for roughly two-thirds of the monthly all-items increase; lower energy prices restrained headline CPI.", "住房上涨 0.1%，约占总体 CPI 月度涨幅的三分之二；能源价格下降压低了总体读数。", "One month does not confirm a durable inflation-regime change. Energy fell month over month but remained 14.7% higher year over year; CPI is not the Fed's PCE target.", "单月数据不足以确认持久的通胀 regime 转换。能源环比下降，但同比仍上涨 14.7%；CPI 不是美联储的 PCE 目标指标。"), sourceRestricted: true },
 
     "PCE-2026-01": { summary: bi("Combined release · two observation rows", "合并发布 · 两条观察记录"), facts: [
       fact("Oct observation · headline / core", "10月观察 · 总体 / 核心 PCE", "+0.2% / 2.7% · +0.2% / 2.7%"),
@@ -384,7 +386,7 @@
       throw new Error(`Missing structured released facts for ${event.id}`);
     }
   }
-  if (releasedStructuredFacts !== 36) throw new Error(`Expected 36 structured released records, found ${releasedStructuredFacts}`);
+  if (releasedStructuredFacts !== 37) throw new Error(`Expected 37 structured released records, found ${releasedStructuredFacts}`);
 
   function parseLocationState() {
     const params = new URLSearchParams(location.search);
@@ -488,7 +490,7 @@
     timeline.setAttribute("aria-label", `${state.year} ${state.lang === "zh" ? "年度宏观事件时间线" : "annual macro event timeline"}`);
     const summary = $(".timeline-section .section-heading > p");
     if (summary) summary.textContent = yearEvents.length
-      ? (state.lang === "zh" ? "58 个发布事件 · cutoff 前已发布 36 个 · 共 37 条观察记录" : "58 release events · 36 released before cutoff · 37 observation rows")
+      ? (state.lang === "zh" ? "58 个发布事件 · cutoff 前已发布 37 个 · 共 38 条观察记录" : "58 release events · 37 released before cutoff · 38 observation rows")
       : (state.lang === "zh" ? `${state.year} 年没有固定公开事件清单` : `No fixed public inventory for ${state.year}`);
     timeline.innerHTML = MONTHS[state.lang].map((month, index) => {
       const inMonth = yearEvents.filter(event => dateParts(event).month === index + 1);
@@ -715,15 +717,15 @@
     const context = $$(".context-cell");
     if (context.length === 4) {
       const rows = zh ? [
-        ["CUTOFF 时点下一项", "消费者价格指数", "8月12日 · 08:30 ET", context[0].querySelector("small")?.textContent],
-        ["最近发布", "就业形势报告", "8月7日 · 2026年7月", "非农 −23k · 失业率 4.1%"],
+        ["最近发布", "消费者价格指数", "8月12日 · 2026年7月", "总体 +0.1% 月率 / 3.4% 年率"],
+        ["就业", "就业形势报告", "8月7日 · 2026年7月", "非农 −23k · 失业率 4.1%"],
         ["美联储", "维持 · 3.50%–3.75%", "7月29日 · 声明表决 9–3", "9 票维持 / 3 票倾向加息"],
-        ["复核", "36 个已发布事件", "全部仍为待复核", "不改变 Current Regime"]
+        ["复核", "37 个已发布事件", "全部仍为待复核", "不改变 Current Regime"]
       ] : [
-        ["NEXT AT CUTOFF", "Consumer Price Index", "12 Aug · 08:30 ET", context[0].querySelector("small")?.textContent],
-        ["LATEST RELEASE", "Employment Situation", "07 Aug · July 2026", "Payrolls −23k · unemployment 4.1%"],
+        ["LATEST RELEASE", "Consumer Price Index", "12 Aug · July 2026", "Headline +0.1% MoM / 3.4% YoY"],
+        ["EMPLOYMENT", "Employment Situation", "07 Aug · July 2026", "Payrolls −23k · unemployment 4.1%"],
         ["FED", "Hold · 3.50%–3.75%", "29 Jul · 9–3 statement vote", "9 hold / 3 hike preference"],
-        ["REVIEW", "36 released events", "All remain review pending", "Does not change Current Regime"]
+        ["REVIEW", "37 released events", "All remain review pending", "Does not change Current Regime"]
       ];
       context.forEach((cell, index) => {
         const [key, strong, span, small] = rows[index];
@@ -735,7 +737,7 @@
     }
     setText(".timeline-section .section-index", zh ? "年度位置" : "ANNUAL POSITION");
     setText("#timeline-title", zh ? "年度时间线" : "Annual Timeline");
-    setText(".timeline-section .section-heading > p", zh ? "58 个发布事件 · cutoff 前已发布 36 个 · 共 37 条观察记录" : "58 release events · 36 released before cutoff · 37 observation rows");
+    setText(".timeline-section .section-heading > p", zh ? "58 个发布事件 · cutoff 前已发布 37 个 · 共 38 条观察记录" : "58 release events · 37 released before cutoff · 38 observation rows");
     const legend = $$(".timeline-legend span");
     const legendLabels = zh ? ["已发布", "已排期", "曾改期", "快照已被取代", "Kairos 待复核"] : ["Released", "Scheduled", "Rescheduled", "Superseded snapshot", "Kairos review pending"];
     legend.forEach((node, index) => {
