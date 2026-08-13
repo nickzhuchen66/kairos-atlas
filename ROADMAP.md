@@ -2,7 +2,7 @@
 
 **Kairos / 周期天象图** is an open macro-cycle observatory.
 
-Current public release: **[v0.5.3](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.3)**
+Current public release: **[v0.5.4](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.4)**
 Roadmap updated: **2026-08-13**
 
 This roadmap explains what has shipped, what the project is improving now, where outside contributors can help, and how Kairos protects its evidence discipline.
