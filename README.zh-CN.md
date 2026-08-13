@@ -40,7 +40,7 @@ Kairos 的目标是把宏观周期判断做成可点击、可复盘、可证伪�
 
 ## 当前公开发布版
 
-`v0.5.4` 确保公开 **宏观日历**通过新的脚本版本加载 8 月 12 日发布的 7 月 CPI 更新。
+`v0.5.5` 在读者从首页打开公开 **宏观日历**时继承当前选择的中英文状态。
 
 - 采用 **年度时间线 + 事件流 + 决策账本**，覆盖 FOMC、就业形势报告、CPI、PCE 与 GDP 官方发布。
 - 在 **2026-08-13 00:00 ET** 的固定截止时间下，共整理 58 个发布事件，其中 37 个已发布、21 个已排期。
@@ -48,7 +48,7 @@ Kairos 的目标是把宏观周期判断做成可点击、可复盘、可证伪�
 - **7 月 CPI**：总体 `+0.1% 月率 / 3.4% 年率`、核心 `+0.2% 月率 / 2.5% 年率`，并保留住房与能源的解释边界。
 - 维持 **半静态、人工复核**：官方数据发布不会自动改写 Current Regime、K6 Candidate Watch 或其他 Kairos 判断。
 
-打开[宏观日历](https://kairos-atlas.com/macro-calendar/)，或查看 [v0.5.4 发布说明](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.4)。
+打开[宏观日历](https://kairos-atlas.com/macro-calendar/)，或查看 [v0.5.5 发布说明](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.5)。
 
 ## 宏观日历
 

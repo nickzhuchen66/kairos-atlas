@@ -3866,6 +3866,9 @@
       btn.classList.toggle("active", active);
       btn.setAttribute("aria-pressed", String(active));
     });
+    document.querySelectorAll('a[href^="/macro-calendar/"]').forEach(link => {
+      link.setAttribute("href", currentLang === "en" ? "/macro-calendar/?lang=en" : "/macro-calendar/");
+    });
     writeStoredLang(currentLang);
     updateAtlasSelection(activeAtlasKind);
     if(document.body.classList.contains("drawer-open") && lastDrawerKind){

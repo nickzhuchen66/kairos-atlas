@@ -40,7 +40,7 @@ Kairos is designed to make macro-cycle judgment more inspectable: every major re
 
 ## Current Public Release
 
-`v0.5.4` ensures the public **Macro Calendar** serves the 12 August July CPI update with a fresh versioned script.
+`v0.5.5` preserves the selected homepage language when readers open the public **Macro Calendar**.
 
 - **Annual Timeline + Event Stream + Decision Ledger** for official FOMC, Employment Situation, CPI, PCE, and GDP releases.
 - **58 release events**, with 37 released records and 21 scheduled records at the fixed cutoff of **2026-08-13 00:00 ET**.
@@ -48,7 +48,7 @@ Kairos is designed to make macro-cycle judgment more inspectable: every major re
 - **July CPI**: headline `+0.1% MoM / 3.4% YoY`, core `+0.2% MoM / 2.5% YoY`, with shelter and energy boundaries kept visible.
 - **Semi-static and human-reviewed**: official releases do not automatically rewrite Current Regime, K6 Candidate Watch, or any Kairos judgment.
 
-Open the [Macro Calendar](https://kairos-atlas.com/macro-calendar/) or read the [v0.5.4 release notes](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.4).
+Open the [Macro Calendar](https://kairos-atlas.com/macro-calendar/) or read the [v0.5.5 release notes](https://github.com/nickzhuchen66/kairos-atlas/releases/tag/v0.5.5).
 
 ## Macro Calendar
 
